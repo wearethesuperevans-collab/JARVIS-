@@ -1,816 +1,902 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#02070d">
-<title>J.A.R.V.I.S.</title>
-
-<style>
-*{box-sizing:border-box}
-
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#010409;
-  color:#dffaff;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-  display:flex;
-  justify-content:center;
-}
-
-.app{
-  width:100%;
-  max-width:900px;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  padding:18px 16px 12px;
-  background:
-    radial-gradient(circle at 50% 28%,rgba(0,190,255,.13),transparent 34%),
-    linear-gradient(180deg,#020b13,#010409 65%);
-  border:1px solid rgba(0,220,255,.18);
-  box-shadow:inset 0 0 70px rgba(0,180,255,.08);
-}
-
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:12px;
-  letter-spacing:2px;
-  color:#63eaff;
-}
-
-.status{
-  color:#65ff9a;
-}
-
-.coreWrap{
-  height:245px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-}
-
-.core{
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  position:relative;
-  border:2px solid #39ddff;
-  box-shadow:
-    0 0 18px rgba(0,220,255,.55),
-    inset 0 0 25px rgba(0,200,255,.2);
-}
-
-.core:before,
-.core:after{
-  content:"";
-  position:absolute;
-  border-radius:50%;
-  inset:17px;
-  border:1px solid rgba(72,235,255,.7);
-}
-
-.core:after{
-  inset:39px;
-  border:2px solid rgba(0,160,255,.75);
-}
-
-.orb{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:55px;
-  height:55px;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:#aef8ff;
-  box-shadow:
-    0 0 14px #5cecff,
-    0 0 40px rgba(0,210,255,.8);
-}
-
-.ring{
-  position:absolute;
-  inset:-13px;
-  border:1px dashed rgba(64,225,255,.55);
-  border-radius:50%;
-}
-
-.title{
-  text-align:center;
-  margin-bottom:8px;
-}
-
-.title h1{
-  margin:0;
-  color:#7ceeff;
-  font-size:25px;
-  letter-spacing:5px;
-  text-shadow:0 0 12px rgba(0,220,255,.75);
-}
-
-.title p{
-  margin:5px 0 0;
-  color:#68ff9b;
-  font-size:11px;
-  letter-spacing:3px;
-}
-
-.chat{
-  flex:1;
-  min-height:0;
-  overflow:auto;
-  padding:10px 2px 12px;
-}
-
-.msg{
-  margin:8px 0;
-  padding:11px 13px;
-  border:1px solid rgba(75,220,255,.2);
-  border-radius:12px;
-  background:rgba(0,20,31,.58);
-  line-height:1.45;
-  white-space:pre-wrap;
-  word-break:break-word;
-}
-
-.msg.jarvis{
-  border-left:3px solid #43e7ff;
-}
-
-.msg.user{
-  border-right:3px solid #66ff9b;
-  text-align:right;
-  color:#bfffd3;
-}
-
-.label{
-  font-size:9px;
-  letter-spacing:2px;
-  opacity:.65;
-  margin-bottom:4px;
-}
-
-.inputRow{
-  display:flex;
-  gap:8px;
-  padding-top:8px;
-}
-
-.input{
-  flex:1;
-  min-width:0;
-  border:1px solid rgba(66,225,255,.5);
-  border-radius:12px;
-  background:#03121c;
-  color:#fff;
-  padding:13px;
-  font-size:16px;
-  outline:none;
-}
-
-.input:focus{
-  box-shadow:0 0 12px rgba(0,210,255,.18);
-}
-
-button{
-  border:1px solid #36ddff;
-  background:#06202b;
-  color:#bff8ff;
-  border-radius:12px;
-  padding:0 15px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-
-button:active{
-  transform:scale(.98);
-}
-
-.hint{
-  text-align:center;
-  color:#64848e;
-  font-size:9px;
-  letter-spacing:1px;
-  padding:8px 0 0;
-}
-
-@media(max-height:650px){
-  .coreWrap{height:175px}
-  .core{width:130px;height:130px}
-  .title h1{font-size:20px}
-}
-</style>
-</head>
-
-<body>
-
-<div class="app">
-
-  <div class="top">
-    <span>JARVIS // ONLINE</span>
-    <span class="status">● READY</span>
-  </div>
-
-  <div class="coreWrap">
-    <div class="core">
-      <div class="ring"></div>
-      <div class="orb"></div>
-    </div>
-  </div>
-
-  <div class="title">
-    <h1>J.A.R.V.I.S.</h1>
-    <p>JUST A RATHER VERY INTELLIGENT SYSTEM</p>
-  </div>
-
-  <div id="chat" class="chat"></div>
-
-  <div class="inputRow">
-    <input
-      id="input"
-      class="input"
-      autocomplete="off"
-      placeholder="Ask JARVIS anything…"
-    >
-    <button id="send">SEND</button>
-  </div>
-
-  <div class="hint">
-    TRY: “WHAT IS BLACK HOLES?” • “WHAT IS THE WEATHER IN MIAMI?” • “2 + 7 × 4”
-  </div>
-
-</div>
-
 <script>
-'use strict';
-
-const chat = document.getElementById('chat');
-const input = document.getElementById('input');
-const send = document.getElementById('send');
+const chat = document.getElementById("chat");
+const input = document.getElementById("input");
+const send = document.getElementById("send");
 
 const memory = {
-  name: localStorage.getItem('jarvis_name') || '',
-  lastQuestion: '',
-  lastAnswer: '',
-  lastTopic: ''
+    name: "",
+    lastQuestion: "",
+    lastAnswer: "",
+    lastTopic: "",
+    lastSource: ""
 };
 
-function addMessage(who, text) {
-  const box = document.createElement('div');
-  box.className = 'msg ' + (who === 'You' ? 'user' : 'jarvis');
-
-  const label = document.createElement('div');
-  label.className = 'label';
-  label.textContent = who.toUpperCase();
-
-  const body = document.createElement('div');
-  body.textContent = text;
-
-  box.append(label, body);
-  chat.appendChild(box);
-
-  chat.scrollTop = chat.scrollHeight;
-}
-
-function speak(text) {
-  if (!('speechSynthesis' in window)) return;
-
-  window.speechSynthesis.cancel();
-
-  const clean = text
-    .replace(/https?:\/\/\S+/g, '')
-    .slice(0, 900);
-
-  const u = new SpeechSynthesisUtterance(clean);
-
-  u.rate = 0.92;
-  u.pitch = 0.82;
-  u.volume = 1;
-
-  const voices = window.speechSynthesis.getVoices();
-
-  const preferred = voices.find(v =>
-    /Alex|Daniel|Arthur|Samantha|Google UK English Male/i.test(v.name)
-  );
-
-  if (preferred) {
-    u.voice = preferred;
-  }
-
-  window.speechSynthesis.speak(u);
-}
-
-function reply(text, shouldSpeak = true) {
-  memory.lastAnswer = text;
-
-  addMessage('JARVIS', text);
-
-  if (shouldSpeak) {
-    speak(text);
-  }
-}
-
-function normalize(s) {
-  return s
-    .toLowerCase()
-    .replace(/[’]/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
 /* =========================
-   MATH
+   JARVIS VOICE
 ========================= */
 
-function escapeMath(s) {
-  return s
-    .replace(/×/g, '*')
-    .replace(/÷/g, '/')
-    .replace(/−/g, '-')
-    .replace(/,/g, '');
-}
+function speak(text) {
+    if (!("speechSynthesis" in window)) return;
 
-function calculate(expression) {
-  let s = escapeMath(expression).trim();
+    speechSynthesis.cancel();
 
-  if (!s) return null;
+    const clean = text
+        .replace(/https?:\/\/\S+/g, "")
+        .replace(/Source:.*$/i, "");
 
-  if (!/^[0-9+\-*/().%\s^xX]+$/.test(s)) {
-    return null;
-  }
+    const utterance = new SpeechSynthesisUtterance(clean);
 
-  s = s.replace(
-    /(\d+(?:\.\d+)?)\s*[xX]\s*(\d+(?:\.\d+)?)/g,
-    '$1*$2'
-  );
+    utterance.rate = 0.88;
+    utterance.pitch = 0.72;
+    utterance.volume = 1;
 
-  s = s.replace(/\^/g, '**');
+    const voices = speechSynthesis.getVoices();
 
-  if (!/[+\-*/%()]/.test(s)) {
-    return null;
-  }
+    const preferred = [
+        "Daniel",
+        "Alex",
+        "Arthur",
+        "Google UK English Male",
+        "Microsoft George",
+        "Microsoft Ryan"
+    ];
 
-  try {
-    const value = Function(
-      '"use strict"; return (' + s + ')'
-    )();
+    let selected = null;
 
-    if (typeof value !== 'number' || !Number.isFinite(value)) {
-      return null;
+    for (const name of preferred) {
+        selected = voices.find(v =>
+            v.name.toLowerCase().includes(name.toLowerCase())
+        );
+
+        if (selected) break;
     }
 
-    return Number.isInteger(value)
-      ? String(value)
-      : String(Number(value.toFixed(10)));
+    if (!selected) {
+        selected = voices.find(v =>
+            /en-GB|en-US/i.test(v.lang) &&
+            /male|daniel|alex|arthur|george|ryan/i.test(v.name)
+        );
+    }
 
-  } catch (_) {
-    return null;
-  }
+    if (selected) utterance.voice = selected;
+
+    speechSynthesis.speak(utterance);
 }
 
-function localMath(q) {
-  const cleaned = q
-    .replace(/^(what is|calculate|compute|solve)\s+/i, '')
-    .replace(/[?=]$/, '')
-    .trim();
-
-  if (
-    /^[0-9+\-*/().%\s×÷−^xX]+$/.test(cleaned)
-  ) {
-    return calculate(cleaned);
-  }
-
-  return null;
+if ("speechSynthesis" in window) {
+    speechSynthesis.onvoiceschanged = () => {};
 }
+
+
+/* =========================
+   BASIC HELPERS
+========================= */
+
+function normalize(text) {
+    return text
+        .toLowerCase()
+        .replace(/[’']/g, "'")
+        .replace(/[?!.,;:]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function addMessage(text, who = "jarvis") {
+    const div = document.createElement("div");
+
+    div.className = who === "user"
+        ? "user-message"
+        : "jarvis-message";
+
+    div.textContent = text;
+
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function cleanQuestion(q) {
+    return q
+        .replace(/^(hey\s+)?jarvis[\s,:-]*/i, "")
+        .replace(/^(please\s+)?/i, "")
+        .trim();
+}
+
+
+/* =========================
+   MATH ENGINE
+========================= */
+
+function calculateMath(expression) {
+
+    let e = expression
+        .toLowerCase()
+        .replace(/what is/g, "")
+        .replace(/calculate/g, "")
+        .replace(/solve/g, "")
+        .replace(/equals/g, "")
+        .replace(/equal to/g, "")
+        .replace(/multiplied by/g, "*")
+        .replace(/times/g, "*")
+        .replace(/divided by/g, "/")
+        .replace(/plus/g, "+")
+        .replace(/minus/g, "-")
+        .replace(/over/g, "/")
+        .replace(/percent of/g, "%")
+        .replace(/percentage of/g, "%")
+        .replace(/×/g, "*")
+        .replace(/÷/g, "/")
+        .replace(/\^/g, "**")
+        .replace(/\s+/g, "");
+
+    if (!e) return null;
+
+    // Square roots
+    e = e.replace(/sqrt\(([\d.]+)\)/g, "Math.sqrt($1)");
+    e = e.replace(/√([\d.]+)/g, "Math.sqrt($1)");
+
+    // Pi
+    e = e.replace(/\bpi\b/g, "Math.PI");
+
+    // Only allow safe mathematical characters
+    if (!/^[0-9+\-*/().%a-zA-Z*]+$/.test(e)) {
+        return null;
+    }
+
+    if (!/[0-9]/.test(e)) return null;
+
+    try {
+        const result = Function('"use strict"; return (' + e + ')')();
+
+        if (
+            typeof result !== "number" ||
+            !Number.isFinite(result)
+        ) {
+            return null;
+        }
+
+        return Number.isInteger(result)
+            ? String(result)
+            : String(Number(result.toFixed(8)));
+
+    } catch {
+        return null;
+    }
+}
+
+function looksLikeMath(q) {
+    const n = normalize(q);
+
+    return (
+        /^(what is|calculate|solve|evaluate)\b/.test(n) &&
+        /\d/.test(n)
+    ) ||
+    (
+        /^[0-9\s+\-*/().%^×÷]+$/.test(n) &&
+        /\d/.test(n)
+    );
+}
+
 
 /* =========================
    DATE / TIME
 ========================= */
 
-function formatDate(d) {
-  return new Intl.DateTimeFormat(undefined, {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }).format(d);
+function currentTime() {
+    return new Date().toLocaleTimeString([], {
+        hour: "numeric",
+        minute: "2-digit"
+    });
 }
 
-function formatTime(d) {
-  return new Intl.DateTimeFormat(undefined, {
-    hour: 'numeric',
-    minute: '2-digit',
-    second: '2-digit'
-  }).format(d);
+function currentDate() {
+    return new Date().toLocaleDateString([], {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+    });
 }
+
 
 /* =========================
-   WEATHER
+   BUILT-IN SCIENCE KNOWLEDGE
 ========================= */
 
-function weatherCode(code) {
+const knowledge = {
 
-  const map = {
-    0: 'clear sky',
-    1: 'mainly clear',
-    2: 'partly cloudy',
-    3: 'overcast',
-    45: 'foggy',
-    48: 'foggy',
-    51: 'light drizzle',
-    53: 'drizzle',
-    55: 'heavy drizzle',
-    61: 'light rain',
-    63: 'rain',
-    65: 'heavy rain',
-    71: 'light snow',
-    73: 'snow',
-    75: 'heavy snow',
-    80: 'rain showers',
-    81: 'rain showers',
-    82: 'heavy rain showers',
-    95: 'thunderstorms',
-    96: 'thunderstorms with hail',
-    99: 'thunderstorms with hail'
-  };
+    "black hole": {
+        keywords: [
+            "black hole",
+            "black holes",
+            "event horizon",
+            "singularity",
+            "schwarzschild"
+        ],
+        answer:
+        "A black hole is a region of spacetime where gravity is so strong that nothing that crosses its event horizon can escape, including light. Most black holes form when very massive stars collapse at the end of their lives. The boundary around a black hole is called the event horizon. At the center, classical general relativity predicts a singularity, although physicists do not yet have a complete theory combining gravity with quantum mechanics to describe that region."
+    },
 
-  return map[code] || 'unknown conditions';
-}
+    "gravity": {
+        keywords: [
+            "gravity",
+            "gravitational force"
+        ],
+        answer:
+        "Gravity is the interaction that causes objects with mass and energy to attract one another. Newton described gravity as a force, while Einstein's general relativity describes gravity as the curvature of spacetime caused by mass and energy."
+    },
 
-async function getWeather(city) {
+    "relativity": {
+        keywords: [
+            "relativity",
+            "einstein relativity",
+            "special relativity",
+            "general relativity"
+        ],
+        answer:
+        "Einstein's theory of relativity has two major parts. Special relativity describes motion at high speeds and shows that space and time are connected. General relativity describes gravity as the curvature of spacetime caused by matter and energy."
+    },
 
-  const geoURL =
-    'https://geocoding-api.open-meteo.com/v1/search?name=' +
-    encodeURIComponent(city) +
-    '&count=1&language=en&format=json';
+    "atom": {
+        keywords: [
+            "atom",
+            "atoms",
+            "atomic structure"
+        ],
+        answer:
+        "An atom is the basic unit of ordinary matter. It has a nucleus containing protons and usually neutrons, surrounded by electrons. The number of protons determines which chemical element the atom belongs to."
+    },
 
-  const geoRes = await fetch(geoURL);
+    "dna": {
+        keywords: [
+            "dna",
+            "deoxyribonucleic acid",
+            "genetic code",
+            "genetics"
+        ],
+        answer:
+        "DNA is the molecule that stores genetic information in living organisms. It contains instructions used by cells to build proteins and carry out biological functions. DNA has a double-helix structure made from four main bases: adenine, thymine, cytosine and guanine."
+    },
 
-  if (!geoRes.ok) {
-    throw new Error('geocoding failed');
-  }
+    "evolution": {
+        keywords: [
+            "evolution",
+            "natural selection",
+            "darwin evolution"
+        ],
+        answer:
+        "Biological evolution is the change in inherited characteristics of populations over generations. Natural selection is one major mechanism of evolution: traits that improve survival or reproduction can become more common in a population over time."
+    },
 
-  const geo = await geoRes.json();
+    "photosynthesis": {
+        keywords: [
+            "photosynthesis",
+            "plants make food",
+            "how plants get energy"
+        ],
+        answer:
+        "Photosynthesis is the process used by plants, algae and some microorganisms to convert light energy into chemical energy. Plants use carbon dioxide and water to produce sugars, while releasing oxygen as a byproduct."
+    },
 
-  if (!geo.results || !geo.results.length) {
-    return 'I could not find that city. Try a city and state or country, such as “Miami, Florida”.';
-  }
+    "solar system": {
+        keywords: [
+            "solar system",
+            "planets",
+            "our planets"
+        ],
+        answer:
+        "The Solar System consists of the Sun and everything gravitationally bound to it, including eight planets, dwarf planets, moons, asteroids, comets and other objects. The planets, in order from the Sun, are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune."
+    },
 
-  const place = geo.results[0];
+    "light": {
+        keywords: [
+            "speed of light",
+            "what is light",
+            "light travels"
+        ],
+        answer:
+        "Light is electromagnetic radiation that can travel through empty space. In a vacuum, light travels at about 299,792 kilometers per second, or about 186,282 miles per second."
+    },
 
-  const forecastURL =
-    'https://api.open-meteo.com/v1/forecast?' +
-    'latitude=' + encodeURIComponent(place.latitude) +
-    '&longitude=' + encodeURIComponent(place.longitude) +
-    '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m' +
-    '&temperature_unit=fahrenheit' +
-    '&wind_speed_unit=mph' +
-    '&timezone=auto';
-
-  const weatherRes = await fetch(forecastURL);
-
-  if (!weatherRes.ok) {
-    throw new Error('weather failed');
-  }
-
-  const data = await weatherRes.json();
-  const c = data.current;
-
-  return (
-    'Current weather in ' +
-    place.name +
-    (place.country ? ', ' + place.country : '') +
-    ': ' +
-    Math.round(c.temperature_2m) +
-    '°F, ' +
-    weatherCode(c.weather_code) +
-    '. Feels like ' +
-    Math.round(c.apparent_temperature) +
-    '°F, with winds around ' +
-    Math.round(c.wind_speed_10m) +
-    ' mph.'
-  );
-}
-
-function isWeather(q) {
-  return /\b(weather|temperature|forecast|rain|raining|snowing|humidity)\b/i.test(q);
-}
-
-function weatherCity(q) {
-  const m = q.match(
-    /(?:weather|temperature|forecast)(?:\s+(?:in|for|at))?\s+(.+?)(?:\?|$)/i
-  );
-
-  return m ? m[1].trim() : '';
-}
-
-/* =========================
-   WIKIPEDIA KNOWLEDGE
-========================= */
-
-async function wikipedia(query) {
-
-  const clean = query
-    .replace(/^who is\s+/i, '')
-    .replace(/^what is\s+/i, '')
-    .replace(/^what are\s+/i, '')
-    .replace(/^tell me about\s+/i, '')
-    .replace(/^explain\s+/i, '')
-    .replace(/[?]+$/, '')
-    .trim();
-
-  if (!clean || clean.length > 180) {
-    return null;
-  }
-
-  const url =
-    'https://en.wikipedia.org/api/rest_v1/page/summary/' +
-    encodeURIComponent(clean.replace(/\s+/g, '_'));
-
-  const res = await fetch(url, {
-    headers: {
-      'Accept': 'application/json'
+    "atoms vs molecules": {
+        keywords: [
+            "molecule",
+            "molecules",
+            "atom vs molecule",
+            "difference between atoms and molecules"
+        ],
+        answer:
+        "An atom is a single unit of an element. A molecule consists of two or more atoms chemically bonded together. For example, an oxygen molecule contains two oxygen atoms, while a water molecule contains two hydrogen atoms and one oxygen atom."
     }
-  });
+};
 
-  if (!res.ok) {
-    return null;
-  }
-
-  const data = await res.json();
-
-  if (!data.extract) {
-    return null;
-  }
-
-  const title = data.title || clean;
-
-  const extract =
-    data.extract.length > 1100
-      ? data.extract.slice(0, 1100).replace(/\s+\S*$/, '') + '…'
-      : data.extract;
-
-  return title + ': ' + extract + '\n\nSource: Wikipedia';
-}
 
 /* =========================
-   LOCAL JARVIS BRAIN
+   HISTORY KNOWLEDGE
 ========================= */
 
-function localAnswer(q) {
+const historyKnowledge = {
 
-  const n = normalize(q);
+    "ancient egypt": {
+        keywords: [
+            "ancient egypt",
+            "egyptian civilization",
+            "pharaohs",
+            "pyramids"
+        ],
+        answer:
+        "Ancient Egypt was a civilization centered along the Nile River in northeastern Africa. It developed over thousands of years and is known for its writing system, monumental architecture, complex religion, mathematics and powerful kingdoms. The pyramids at Giza were built during Egypt's Old Kingdom."
+    },
 
-  if (!n) {
-    return 'Awaiting your question.';
-  }
+    "roman empire": {
+        keywords: [
+            "roman empire",
+            "ancient rome",
+            "roman history"
+        ],
+        answer:
+        "The Roman Empire developed from the Roman Republic and eventually controlled a vast territory around the Mediterranean and beyond. Rome became one of the most influential civilizations in European, North African and Middle Eastern history. The Western Roman Empire traditionally ended in 476 CE."
+    },
 
-  if (
-    /^(hi|hello|hey|yo|sup|good morning|good afternoon|good evening)\b/.test(n)
-  ) {
-    return 'Hello. JARVIS is online and ready.';
-  }
+    "american revolution": {
+        keywords: [
+            "american revolution",
+            "revolutionary war",
+            "american revolutionary war"
+        ],
+        answer:
+        "The American Revolution was the conflict in which the thirteen American colonies fought against British rule. The war began in 1775, and the United States declared independence in 1776. The conflict ended with the Treaty of Paris in 1783."
+    },
 
-  if (/who are you|what are you|your name/.test(n)) {
-    return 'I am J.A.R.V.I.S. — your personal browser-based assistant.';
-  }
+    "world war 2": {
+        keywords: [
+            "world war 2",
+            "world war ii",
+            "ww2",
+            "second world war"
+        ],
+        answer:
+        "World War II was a global conflict fought from 1939 to 1945. The major Allied powers included the United States, Soviet Union, United Kingdom, China and France, while Germany, Italy and Japan were the principal Axis powers. The war ended in 1945 after Germany and Japan surrendered."
+    },
 
-  if (/what can you do|help|commands/.test(n)) {
-    return 'I can handle conversation, calculations, date and time, weather, jokes, and factual lookups. Ask me naturally.';
-  }
+    "industrial revolution": {
+        keywords: [
+            "industrial revolution",
+            "industrialization"
+        ],
+        answer:
+        "The Industrial Revolution was a period of major technological and economic change that began in Britain during the 18th century and spread to other regions. Mechanized production, factories, steam power and new transportation systems transformed manufacturing and society."
+    }
+};
 
-  if (/\b(joke|make me laugh)\b/.test(n)) {
 
-    const jokes = [
-      'Why did the computer get cold? It left its Windows open.',
-      'Why was the math book sad? It had too many problems.',
-      'I told my circuits a joke. They said it needed better delivery.',
-      'Why do programmers prefer dark mode? Because light attracts bugs.'
-    ];
+/* =========================
+   PEOPLE KNOWLEDGE
+========================= */
 
+const peopleKnowledge = {
+
+    "albert einstein": {
+        keywords: [
+            "albert einstein",
+            "einstein"
+        ],
+        answer:
+        "Albert Einstein was a German-born theoretical physicist who developed the theory of relativity and made major contributions to modern physics. His 1905 work helped establish special relativity and explained the photoelectric effect, for which he received the 1921 Nobel Prize in Physics."
+    },
+
+    "isaac newton": {
+        keywords: [
+            "isaac newton",
+            "newton"
+        ],
+        answer:
+        "Isaac Newton was an English mathematician and physicist whose work helped establish classical mechanics. His laws of motion and law of universal gravitation became foundations of physics. He also made major contributions to mathematics and optics."
+    },
+
+    "marie curie": {
+        keywords: [
+            "marie curie",
+            "madame curie"
+        ],
+        answer:
+        "Marie Curie was a Polish-born physicist and chemist who conducted pioneering research on radioactivity. She discovered the elements polonium and radium and became the first person to receive two Nobel Prizes."
+    },
+
+    "leonardo da vinci": {
+        keywords: [
+            "leonardo da vinci",
+            "leonardo"
+        ],
+        answer:
+        "Leonardo da Vinci was an Italian Renaissance artist, engineer, inventor and scientist. He is famous for works such as the Mona Lisa and The Last Supper and for notebooks containing studies of anatomy, mechanics, nature and engineering."
+    },
+
+    "william shakespeare": {
+        keywords: [
+            "william shakespeare",
+            "shakespeare"
+        ],
+        answer:
+        "William Shakespeare was an English playwright and poet associated with the Elizabethan and Jacobean periods. His works include plays such as Hamlet, Macbeth and Romeo and Juliet, and he is one of the most studied writers in the English language."
+    },
+
+    "george washington": {
+        keywords: [
+            "george washington",
+            "washington"
+        ],
+        answer:
+        "George Washington was an American military leader and statesman who commanded the Continental Army during the American Revolution and became the first president of the United States under the Constitution."
+    }
+};
+
+
+/* =========================
+   FIND BUILT-IN KNOWLEDGE
+========================= */
+
+function findKnowledge(question) {
+
+    const n = normalize(question);
+
+    for (const key in knowledge) {
+
+        const item = knowledge[key];
+
+        for (const keyword of item.keywords) {
+
+            if (n.includes(keyword)) {
+                return item.answer;
+            }
+        }
+    }
+
+    for (const key in historyKnowledge) {
+
+        const item = historyKnowledge[key];
+
+        for (const keyword of item.keywords) {
+
+            if (n.includes(keyword)) {
+                return item.answer;
+            }
+        }
+    }
+
+    for (const key in peopleKnowledge) {
+
+        const item = peopleKnowledge[key];
+
+        for (const keyword of item.keywords) {
+
+            if (n.includes(keyword)) {
+                return item.answer;
+            }
+        }
+    }
+
+    return null;
+}
+
+
+/* =========================
+   QUESTION CLEANING
+========================= */
+
+function extractTopic(question) {
+
+    let q = question.toLowerCase();
+
+    q = q
+        .replace(/^(hey\s+)?jarvis[\s,:-]*/i, "")
+        .replace(/^(can you|could you|would you|please)\s+/i, "")
+        .replace(/^(tell me|tell me about)\s+/i, "")
+        .replace(/^(explain|describe)\s+/i, "")
+        .replace(/^(what is|what's|whats)\s+/i, "")
+        .replace(/^(who is|who's|whos)\s+/i, "")
+        .replace(/^(where is|where's|wheres)\s+/i, "")
+        .replace(/^(when was|when did|when is)\s+/i, "")
+        .replace(/^(how does|how do|how did|how can)\s+/i, "")
+        .replace(/^(why does|why did|why is|why are)\s+/i, "")
+        .replace(/^(what are|what were)\s+/i, "")
+        .replace(/[?!.,]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    return q;
+}
+
+
+/* =========================
+   WIKIPEDIA SEARCH
+========================= */
+
+async function wikipediaSearch(question) {
+
+    let topic = extractTopic(question);
+
+    if (!topic || topic.length < 2) {
+        return null;
+    }
+
+    // Remove conversational leftovers
+    topic = topic
+        .replace(/\bthe\b/g, " ")
+        .replace(/\babout\b/g, " ")
+        .replace(/\bmean\b/g, " ")
+        .replace(/\bmeans\b/g, " ")
+        .replace(/\bwork\b/g, " ")
+        .replace(/\bworks\b/g, " ")
+        .replace(/\bexactly\b/g, " ")
+        .replace(/\bin simple terms\b/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    if (!topic) return null;
+
+    try {
+
+        const searchURL =
+            "https://en.wikipedia.org/w/api.php?" +
+            new URLSearchParams({
+                action: "query",
+                list: "search",
+                srsearch: topic,
+                srlimit: "5",
+                format: "json",
+                origin: "*"
+            });
+
+        const response = await fetch(searchURL);
+
+        if (!response.ok) return null;
+
+        const data = await response.json();
+
+        if (
+            !data.query ||
+            !data.query.search ||
+            data.query.search.length === 0
+        ) {
+            return null;
+        }
+
+        const result = data.query.search[0];
+
+        const title = result.title;
+
+        const summaryURL =
+            "https://en.wikipedia.org/api/rest_v1/page/summary/" +
+            encodeURIComponent(title.replace(/ /g, "_"));
+
+        const summaryResponse = await fetch(summaryURL);
+
+        if (!summaryResponse.ok) return null;
+
+        const summary = await summaryResponse.json();
+
+        if (!summary.extract) return null;
+
+        let answer = summary.extract;
+
+        // Keep answers readable
+        if (answer.length > 1800) {
+            answer = answer.substring(0, 1800) + "...";
+        }
+
+        memory.lastTopic = title;
+        memory.lastSource = "Wikipedia";
+
+        return answer +
+            "\n\nSource: Wikipedia — " +
+            title;
+
+    } catch {
+        return null;
+    }
+}
+
+
+/* =========================
+   CONVERSATION
+========================= */
+
+const jokes = [
+    "Why did the computer get cold? It left its Windows open.",
+    "Why was the math book sad? It had too many problems.",
+    "Why do programmers prefer dark mode? Because light attracts bugs.",
+    "Why did the scientist install a doorbell? They wanted to conduct more experiments.",
+    "I told my computer I needed a break. Now it won't stop sending me vacation ads.",
+    "Why did the photon refuse to check a bag? It was traveling light.",
+    "What do you call an educated tube? A graduated cylinder.",
+    "Why did the astronaut break up with the moon? It needed space.",
+    "Why was the equal sign so humble? It knew it wasn't less than or greater than anyone.",
+    "I would tell you a chemistry joke, but I know I wouldn't get a reaction.",
+    "Why don't scientists trust atoms? Because they make up everything.",
+    "Why did the computer go to the doctor? It had a virus.",
+    "Why did the mathematician love fractions? They were a big part of the relationship.",
+    "What do planets like to read? Comet books.",
+    "Why was the history teacher calm? They knew everything would eventually be in the past.",
+    "Why did the robot go on vacation? It needed to recharge.",
+    "Why did the telescope get promoted? It had a great outlook.",
+    "Why did the calculator break up with the pencil? It needed someone who could handle more advanced functions.",
+    "What does a black hole eat for breakfast? Whatever crosses its event horizon.",
+    "Why did the electron get in trouble? It was acting negatively.",
+    "Why did the moon skip dinner? It was already full.",
+    "Why was the geometry teacher so calm? They had everything under control.",
+    "What did one volcano say to the other? I lava you.",
+    "Why did the computer sit in the shade? It didn't want to overheat.",
+    "Why did the historian bring a ladder? They wanted to reach the past."
+];
+
+function randomJoke() {
     return jokes[Math.floor(Math.random() * jokes.length)];
-  }
+}
 
-  if (/what time is it|current time|time right now/.test(n)) {
-    return 'The current time is ' + formatTime(new Date()) + '.';
-  }
 
-  if (
-    /what (day|date) is it|today'?s date|current date/.test(n)
-  ) {
-    return 'Today is ' + formatDate(new Date()) + '.';
-  }
+/* =========================
+   LOCAL CONVERSATION BRAIN
+========================= */
 
-  if (
-    /what did i (just )?ask|my last question|what was my question/.test(n)
-  ) {
-    return memory.lastQuestion
-      ? 'You asked: “' + memory.lastQuestion + '”'
-      : 'You have not asked me a question yet.';
-  }
+function localBrain(question) {
 
-  if (/tell me more|go on|continue|elaborate/.test(n)) {
-    return memory.lastTopic
-      ? 'Certainly. We were discussing ' +
-        memory.lastTopic +
-        '. Ask me which part you want expanded.'
-      : 'Certainly. Tell me the topic you want me to expand on.';
-  }
+    const n = normalize(question);
 
-  const nameMatch = q.match(
-    /\b(?:my name is|call me)\s+([A-Za-z][A-Za-z0-9 _'-]{0,30})/i
-  );
+    // Greetings
+    if (
+        /^(hi|hello|hey|yo|sup|good morning|good afternoon|good evening)\b/.test(n)
+    ) {
+        return memory.name
+            ? `Good to see you, ${memory.name}. Systems are online.`
+            : "Good to see you. JARVIS is online and ready.";
+    }
 
-  if (nameMatch) {
+    // Identity
+    if (
+        n.includes("who are you") ||
+        n.includes("what are you") ||
+        n.includes("your name")
+    ) {
+        return "I am JARVIS, your personal AI assistant. I can calculate, explain science and history, search for information, remember parts of our conversation, tell jokes and answer general questions.";
+    }
 
-    memory.name = nameMatch[1].trim();
-
-    localStorage.setItem(
-      'jarvis_name',
-      memory.name
+    // Name
+    const nameMatch = question.match(
+        /(?:my name is|call me|you can call me)\s+([a-zA-Z0-9_-]+)/i
     );
 
-    return 'Understood. I will call you ' +
-      memory.name +
-      '.';
-  }
-
-  if (/what('?s| is) my name|do you know my name/.test(n)) {
-    return memory.name
-      ? 'Your name is ' + memory.name + '.'
-      : 'You have not told me your name yet.';
-  }
-
-  if (/thank(s| you)|appreciate it/.test(n)) {
-    return 'You are welcome.';
-  }
-
-  if (/who made you|who created you/.test(n)) {
-    return 'I am a custom JARVIS interface running in your browser. My capabilities come from the code and public services connected to this page.';
-  }
-
-  if (/stop talking|be quiet|stop voice/.test(n)) {
-
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+    if (nameMatch) {
+        memory.name = nameMatch[1];
+        return `Understood. I'll call you ${memory.name}.`;
     }
 
-    return 'Voice output stopped.';
-  }
+    if (
+        n.includes("what is my name") ||
+        n.includes("do you know my name")
+    ) {
+        return memory.name
+            ? `Your name is ${memory.name}.`
+            : "You haven't told me your name yet.";
+    }
 
-  const math = localMath(q);
+    // Time
+    if (
+        n.includes("what time") ||
+        n === "time"
+    ) {
+        return `The current time is ${currentTime()}.`;
+    }
 
-  if (math !== null) {
-    return 'The answer is ' + math + '.';
-  }
+    // Date
+    if (
+        n.includes("what date") ||
+        n.includes("today's date") ||
+        n === "date"
+    ) {
+        return `Today is ${currentDate()}.`;
+    }
 
-  if (/^(thanks|thx)$/.test(n)) {
-    return 'Anytime.';
-  }
+    // Math
+    if (looksLikeMath(question)) {
 
-  return null;
+        const result = calculateMath(question);
+
+        if (result !== null) {
+            return `The answer is ${result}.`;
+        }
+    }
+
+    // Jokes
+    if (
+        n.includes("tell me a joke") ||
+        n.includes("tell me another joke") ||
+        n === "joke" ||
+        n.includes("make me laugh")
+    ) {
+        return randomJoke();
+    }
+
+    // Previous question
+    if (
+        n.includes("what did i ask") ||
+        n.includes("my last question")
+    ) {
+        return memory.lastQuestion
+            ? `Your last question was: "${memory.lastQuestion}"`
+            : "We haven't had a previous question in this session.";
+    }
+
+    // Follow-up
+    if (
+        n === "tell me more" ||
+        n === "more" ||
+        n === "go on" ||
+        n === "continue" ||
+        n === "explain more"
+    ) {
+
+        if (memory.lastTopic) {
+            return `Certainly. You were asking about ${memory.lastTopic}. I can give you more information if you ask a specific part you want explained.`;
+        }
+
+        return "Certainly. Tell me what subject you want me to expand on.";
+    }
+
+    // Thanks
+    if (
+        n === "thanks" ||
+        n === "thank you" ||
+        n.includes("thanks jarvis")
+    ) {
+        return "You're welcome.";
+    }
+
+    // Stop voice
+    if (
+        n === "stop talking" ||
+        n === "stop speaking" ||
+        n === "be quiet"
+    ) {
+        speechSynthesis.cancel();
+        return "Voice output stopped.";
+    }
+
+    // Bored
+    if (
+        n.includes("i'm bored") ||
+        n.includes("im bored")
+    ) {
+        return "I have an idea. Ask me about a black hole, an ancient civilization, a famous scientist, a mathematical problem, or something you've always wondered about.";
+    }
+
+    // Compliments
+    if (
+        n.includes("you're smart") ||
+        n.includes("you are smart") ||
+        n.includes("good job")
+    ) {
+        return "I'll take that as a successful systems check.";
+    }
+
+    // Confusion
+    if (
+        n === "i don't understand" ||
+        n === "i dont understand"
+    ) {
+        return "No problem. Give me the subject and I'll explain it in simpler terms.";
+    }
+
+    return null;
 }
+
 
 /* =========================
    MAIN ANSWER ENGINE
 ========================= */
 
-async function answer(question) {
+async function answerQuestion(question) {
 
-  const q = question.trim();
+    const cleaned = cleanQuestion(question);
 
-  const local = localAnswer(q);
+    // 1. Conversation
+    const local = localBrain(cleaned);
 
-  if (local) {
-    return local;
-  }
-
-  if (isWeather(q)) {
-
-    const city = weatherCity(q);
-
-    if (!city) {
-      return 'Tell me the city, for example: “What is the weather in Miami?”';
+    if (local) {
+        memory.lastAnswer = local;
+        return local;
     }
 
-    try {
-      return await getWeather(city);
-    } catch (_) {
-      return 'I could not reach the weather service right now. Check your internet connection and try again.';
+    // 2. Built-in knowledge
+    const builtIn = findKnowledge(cleaned);
+
+    if (builtIn) {
+        memory.lastTopic = extractTopic(cleaned);
+        memory.lastSource = "JARVIS knowledge";
+        memory.lastAnswer = builtIn;
+        return builtIn;
     }
-  }
 
-  const looksFactual =
-    /^(who|what|when|where|why|how|tell me about|explain|define|is|are|can|does|did|which)\b/i.test(q) ||
-    q.endsWith('?');
+    // 3. Wikipedia / general knowledge
+    const needsKnowledge = (
+        cleaned.includes("?") ||
+        /^(what|who|where|when|why|how|which|can|is|are|was|were|did|does|do)\b/i.test(cleaned) ||
+        /history|science|scientist|math|mathematics|physics|chemistry|biology|earth|planet|space|country|person|people|war|event|invent|invention/i.test(cleaned)
+    );
 
-  if (looksFactual) {
+    if (needsKnowledge) {
 
-    try {
+        const wiki = await wikipediaSearch(cleaned);
 
-      const result = await wikipedia(q);
+        if (wiki) {
+            memory.lastAnswer = wiki;
+            return wiki;
+        }
+    }
 
-      if (result) {
-        return result;
-      }
-
-    } catch (_) {}
-  }
-
-  const n = normalize(q);
-
-  if (/i am bored|i'm bored/.test(n)) {
-    return 'I have an idea: ask me a random science question, a math problem, or “tell me something interesting.”';
-  }
-
-  if (/something interesting|fun fact|random fact/.test(n)) {
-    return 'A day on Venus is longer than a Venusian year: Venus rotates once in about 243 Earth days but orbits the Sun in about 225 days.';
-  }
-
-  if (/how smart are you|are you smart/.test(n)) {
-    return 'My abilities depend on the tools built into this version. I can reason through programmed tasks and look up many factual topics, but I am not an unlimited AI model.';
-  }
-
-  return 'I do not have a reliable answer for that yet. Try rephrasing the question, or ask me about a person, place, science topic, history, math, weather, or another factual subject.';
+    // 4. Conversational fallback
+    return "I don't have a reliable answer for that yet. Try asking me in another way, or give me the subject and I'll search my knowledge sources.";
 }
 
-/* =========================
-   SEND
-========================= */
 
-let busy = false;
+/* =========================
+   SEND MESSAGE
+========================= */
 
 async function sendMessage() {
 
-  if (busy) return;
+    const question = input.value.trim();
 
-  const q = input.value.trim();
+    if (!question) return;
 
-  if (!q) return;
+    addMessage(question, "user");
 
-  busy = true;
+    input.value = "";
 
-  input.value = '';
+    memory.lastQuestion = question;
 
-  addMessage('You', q);
+    const thinking = document.createElement("div");
+    thinking.className = "jarvis-message";
+    thinking.textContent = "Processing...";
+    chat.appendChild(thinking);
+    chat.scrollTop = chat.scrollHeight;
 
-  memory.lastQuestion = q;
+    const answer = await answerQuestion(question);
 
-  try {
+    thinking.remove();
 
-    const result = await answer(q);
+    addMessage(answer, "jarvis");
 
-    memory.lastTopic =
-      q.replace(/[?]+$/, '').slice(0, 100);
-
-    reply(result, true);
-
-  } catch (_) {
-
-    reply(
-      'Something went wrong while processing that. Please try again.',
-      false
-    );
-
-  } finally {
-
-    busy = false;
-    input.focus();
-  }
+    speak(answer);
 }
 
-send.addEventListener('click', sendMessage);
 
-input.addEventListener('keydown', e => {
-  if (e.key === 'Enter') {
-    sendMessage();
-  }
+/* =========================
+   BUTTON + ENTER
+========================= */
+
+send.addEventListener("click", sendMessage);
+
+input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+    }
 });
+
 
 /* =========================
    STARTUP
 ========================= */
 
-addMessage(
-  'JARVIS',
-  memory.name
-    ? 'Welcome back, ' + memory.name + '. Systems online. How may I assist?'
-    : 'Systems online. How may I assist?'
-);
+setTimeout(() => {
 
-input.focus();
+    const startup =
+        "JARVIS online. Knowledge systems initialized. " +
+        "Ask me about science, mathematics, history, people, Earth, space, or anything you're curious about.";
+
+    addMessage(startup, "jarvis");
+
+}, 300);
 
 </script>
-
-</body>
-</html>
