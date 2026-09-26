@@ -1,320 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="JARVIS">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#02070d">
-
 <title>J.A.R.V.I.S.</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#010409;
+  color:#dffaff;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-html,
-body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #02070d;
-    color: #d9fbff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+body{
+  display:flex;
+  justify-content:center;
 }
 
-body {
-    background:
-        radial-gradient(
-            circle at 50% 42%,
-            #073447 0%,
-            #02131d 30%,
-            #02070d 68%,
-            #000000 100%
-        );
+.app{
+  width:100%;
+  max-width:900px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  padding:18px 16px 12px;
+  background:
+    radial-gradient(circle at 50% 28%,rgba(0,190,255,.13),transparent 34%),
+    linear-gradient(180deg,#020b13,#010409 65%);
+  border:1px solid rgba(0,220,255,.18);
+  box-shadow:inset 0 0 70px rgba(0,180,255,.08);
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            rgba(0, 220, 255, 0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0, 220, 255, 0.035) 1px,
-            transparent 1px
-        );
-
-    background-size: 28px 28px;
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#63eaff;
 }
 
-.app {
-    width: 100%;
-    height: 100%;
-    max-width: 900px;
-    margin: auto;
-
-    padding:
-        calc(env(safe-area-inset-top) + 18px)
-        18px
-        calc(env(safe-area-inset-bottom) + 14px);
-
-    display: flex;
-    flex-direction: column;
+.status{
+  color:#65ff9a;
 }
 
-.top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.coreWrap{
+  height:245px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
 }
 
-.brand {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: 5px;
-
-    color: #c8fbff;
-
-    text-shadow:
-        0 0 8px #00dfff,
-        0 0 22px #00aaff;
+.core{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  position:relative;
+  border:2px solid #39ddff;
+  box-shadow:
+    0 0 18px rgba(0,220,255,.55),
+    inset 0 0 25px rgba(0,200,255,.2);
 }
 
-.online {
-    color: #65ff9a;
-    font-size: 12px;
-    letter-spacing: 2px;
+.core:before,
+.core:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  inset:17px;
+  border:1px solid rgba(72,235,255,.7);
 }
 
-.dot {
-    display: inline-block;
-
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #65ff9a;
-
-    box-shadow:
-        0 0 8px #65ff9a,
-        0 0 18px #65ff9a;
-
-    margin-right: 7px;
+.core:after{
+  inset:39px;
+  border:2px solid rgba(0,160,255,.75);
 }
 
-.coreArea {
-    flex: 1;
-    min-height: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
+.orb{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:55px;
+  height:55px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:#aef8ff;
+  box-shadow:
+    0 0 14px #5cecff,
+    0 0 40px rgba(0,210,255,.8);
 }
 
-.core {
-    width: min(65vw, 310px);
-    height: min(65vw, 310px);
-
-    position: relative;
-
-    display: grid;
-    place-items: center;
+.ring{
+  position:absolute;
+  inset:-13px;
+  border:1px dashed rgba(64,225,255,.55);
+  border-radius:50%;
 }
 
-.ring {
-    position: absolute;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(0, 224, 255, 0.8);
-
-    box-shadow:
-        0 0 22px rgba(0, 224, 255, 0.25),
-        inset 0 0 20px rgba(0, 224, 255, 0.1);
+.title{
+  text-align:center;
+  margin-bottom:8px;
 }
 
-.r1 {
-    inset: 3%;
-    border-width: 2px;
+.title h1{
+  margin:0;
+  color:#7ceeff;
+  font-size:25px;
+  letter-spacing:5px;
+  text-shadow:0 0 12px rgba(0,220,255,.75);
 }
 
-.r2 {
-    inset: 13%;
-    border-style: dashed;
+.title p{
+  margin:5px 0 0;
+  color:#68ff9b;
+  font-size:11px;
+  letter-spacing:3px;
 }
 
-.r3 {
-    inset: 24%;
-    border-width: 3px;
+.chat{
+  flex:1;
+  min-height:0;
+  overflow:auto;
+  padding:10px 2px 12px;
 }
 
-.r4 {
-    inset: 35%;
-
-    border-color: #8af7ff;
-
-    box-shadow:
-        0 0 35px #00dfff,
-        inset 0 0 25px #00dfff;
+.msg{
+  margin:8px 0;
+  padding:11px 13px;
+  border:1px solid rgba(75,220,255,.2);
+  border-radius:12px;
+  background:rgba(0,20,31,.58);
+  line-height:1.45;
+  white-space:pre-wrap;
+  word-break:break-word;
 }
 
-.core::before {
-    content: "";
-
-    width: 27%;
-    height: 27%;
-
-    border-radius: 50%;
-
-    background: #eaffff;
-
-    box-shadow:
-        0 0 18px #ffffff,
-        0 0 50px #00eaff,
-        0 0 95px #00aaff;
+.msg.jarvis{
+  border-left:3px solid #43e7ff;
 }
 
-.core::after {
-    content: "";
-
-    position: absolute;
-
-    width: 100%;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #00eaff,
-            transparent
-        );
-
-    box-shadow: 0 0 18px #00eaff;
+.msg.user{
+  border-right:3px solid #66ff9b;
+  text-align:right;
+  color:#bfffd3;
 }
 
-.panel {
-    width: 100%;
-    max-height: 170px;
-
-    overflow-y: auto;
-
-    margin-top: 20px;
-    padding: 14px;
-
-    border-radius: 14px;
-
-    border: 1px solid rgba(0, 224, 255, 0.35);
-
-    background: rgba(0, 15, 24, 0.72);
-
-    box-shadow:
-        0 0 30px rgba(0, 180, 255, 0.08);
+.label{
+  font-size:9px;
+  letter-spacing:2px;
+  opacity:.65;
+  margin-bottom:4px;
 }
 
-.who {
-    margin-bottom: 6px;
-
-    color: #6befff;
-
-    font-size: 10px;
-    letter-spacing: 2px;
+.inputRow{
+  display:flex;
+  gap:8px;
+  padding-top:8px;
 }
 
-.answer {
-    font-size: 15px;
-    line-height: 1.45;
-
-    white-space: pre-wrap;
+.input{
+  flex:1;
+  min-width:0;
+  border:1px solid rgba(66,225,255,.5);
+  border-radius:12px;
+  background:#03121c;
+  color:#fff;
+  padding:13px;
+  font-size:16px;
+  outline:none;
 }
 
-.inputRow {
-    display: flex;
-    gap: 8px;
+.input:focus{
+  box-shadow:0 0 12px rgba(0,210,255,.18);
 }
 
-input {
-    flex: 1;
-    min-width: 0;
-
-    padding: 13px;
-
-    border-radius: 12px;
-
-    border: 1px solid rgba(0, 224, 255, 0.5);
-
-    outline: none;
-
-    background: rgba(0, 20, 30, 0.9);
-
-    color: white;
-
-    font-size: 16px;
+button{
+  border:1px solid #36ddff;
+  background:#06202b;
+  color:#bff8ff;
+  border-radius:12px;
+  padding:0 15px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
-input:focus {
-    box-shadow:
-        0 0 15px rgba(0, 224, 255, 0.2);
+button:active{
+  transform:scale(.98);
 }
 
-button {
-    border: 1px solid #00dfff;
-
-    border-radius: 12px;
-
-    background: rgba(0, 160, 210, 0.16);
-
-    color: #bffaff;
-
-    font-weight: 700;
-
-    padding: 0 16px;
+.hint{
+  text-align:center;
+  color:#64848e;
+  font-size:9px;
+  letter-spacing:1px;
+  padding:8px 0 0;
 }
 
-button:active {
-    background: rgba(0, 220, 255, 0.3);
-}
-
-.actions {
-    display: flex;
-    gap: 8px;
-
-    margin-top: 8px;
-}
-
-.actions button {
-    flex: 1;
-
-    height: 38px;
-
-    font-size: 12px;
-}
-
-.footer {
-    margin-top: 9px;
-
-    text-align: center;
-
-    color: #477d8a;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
+@media(max-height:650px){
+  .coreWrap{height:175px}
+  .core{width:130px;height:130px}
+  .title h1{font-size:20px}
 }
 </style>
 </head>
@@ -323,955 +216,599 @@ button:active {
 
 <div class="app">
 
-    <div class="top">
+  <div class="top">
+    <span>JARVIS // ONLINE</span>
+    <span class="status">● READY</span>
+  </div>
 
-        <div class="brand">
-            J.A.R.V.I.S.
-        </div>
-
-        <div class="online">
-            <span class="dot"></span>
-            ONLINE
-        </div>
-
+  <div class="coreWrap">
+    <div class="core">
+      <div class="ring"></div>
+      <div class="orb"></div>
     </div>
+  </div>
 
+  <div class="title">
+    <h1>J.A.R.V.I.S.</h1>
+    <p>JUST A RATHER VERY INTELLIGENT SYSTEM</p>
+  </div>
 
-    <div class="coreArea">
+  <div id="chat" class="chat"></div>
 
-        <div class="core">
+  <div class="inputRow">
+    <input
+      id="input"
+      class="input"
+      autocomplete="off"
+      placeholder="Ask JARVIS anything…"
+    >
+    <button id="send">SEND</button>
+  </div>
 
-            <div class="ring r1"></div>
-            <div class="ring r2"></div>
-            <div class="ring r3"></div>
-            <div class="ring r4"></div>
-
-        </div>
-
-
-        <div class="panel">
-
-            <div class="who">
-                JARVIS
-            </div>
-
-            <div id="answer" class="answer">
-                Good day. All systems are online. How may I assist?
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="inputRow">
-
-        <input
-            id="input"
-            autocomplete="off"
-            placeholder="Ask JARVIS anything..."
-        >
-
-        <button id="send">
-            SEND
-        </button>
-
-    </div>
-
-
-    <div class="actions">
-
-        <button id="voice">
-            🔊 VOICE
-        </button>
-
-        <button id="clear">
-            CLEAR
-        </button>
-
-    </div>
-
-
-    <div class="footer">
-        PERSONAL JARVIS • LOCAL WEB APP
-    </div>
+  <div class="hint">
+    TRY: “WHAT IS BLACK HOLES?” • “WHAT IS THE WEATHER IN MIAMI?” • “2 + 7 × 4”
+  </div>
 
 </div>
 
-
 <script>
+'use strict';
 
-/* =========================================================
-   JARVIS
-   Local conversational assistant
-   ========================================================= */
+const chat = document.getElementById('chat');
+const input = document.getElementById('input');
+const send = document.getElementById('send');
 
-const answer = document.getElementById("answer");
-const input = document.getElementById("input");
-
-let speechEnabled = true;
-
-
-/* =========================================================
-   CONVERSATION MEMORY
-   ========================================================= */
-
-let memory = {
-    name: "",
-    lastQuestion: "",
-    lastTopic: "",
-    lastAnswer: ""
+const memory = {
+  name: localStorage.getItem('jarvis_name') || '',
+  lastQuestion: '',
+  lastAnswer: '',
+  lastTopic: ''
 };
 
+function addMessage(who, text) {
+  const box = document.createElement('div');
+  box.className = 'msg ' + (who === 'You' ? 'user' : 'jarvis');
 
-/* =========================================================
-   VOICE
-   ========================================================= */
+  const label = document.createElement('div');
+  label.className = 'label';
+  label.textContent = who.toUpperCase();
+
+  const body = document.createElement('div');
+  body.textContent = text;
+
+  box.append(label, body);
+  chat.appendChild(box);
+
+  chat.scrollTop = chat.scrollHeight;
+}
 
 function speak(text) {
+  if (!('speechSynthesis' in window)) return;
 
-    if (!speechEnabled) {
-        return;
-    }
+  window.speechSynthesis.cancel();
 
-    if (!("speechSynthesis" in window)) {
-        return;
-    }
+  const clean = text
+    .replace(/https?:\/\/\S+/g, '')
+    .slice(0, 900);
 
-    speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(clean);
 
-    const speech = new SpeechSynthesisUtterance(text);
+  u.rate = 0.92;
+  u.pitch = 0.82;
+  u.volume = 1;
 
-    speech.lang = "en-GB";
-    speech.rate = 0.88;
-    speech.pitch = 0.78;
-    speech.volume = 1;
+  const voices = window.speechSynthesis.getVoices();
 
-    speechSynthesis.speak(speech);
+  const preferred = voices.find(v =>
+    /Alex|Daniel|Arthur|Samantha|Google UK English Male/i.test(v.name)
+  );
+
+  if (preferred) {
+    u.voice = preferred;
+  }
+
+  window.speechSynthesis.speak(u);
 }
 
+function reply(text, shouldSpeak = true) {
+  memory.lastAnswer = text;
 
-/* =========================================================
-   TEXT HELPERS
-   ========================================================= */
+  addMessage('JARVIS', text);
 
-function clean(text) {
-
-    return text
-        .toLowerCase()
-        .trim()
-        .replace(/[?!.,]+$/g, "");
+  if (shouldSpeak) {
+    speak(text);
+  }
 }
 
-
-function contains(text, words) {
-
-    for (const word of words) {
-
-        if (text.includes(word)) {
-            return true;
-        }
-
-    }
-
-    return false;
+function normalize(s) {
+  return s
+    .toLowerCase()
+    .replace(/[’]/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
+/* =========================
+   MATH
+========================= */
 
-/* =========================================================
-   MATH ENGINE
-   ========================================================= */
+function escapeMath(s) {
+  return s
+    .replace(/×/g, '*')
+    .replace(/÷/g, '/')
+    .replace(/−/g, '-')
+    .replace(/,/g, '');
+}
 
-function solveMath(text) {
+function calculate(expression) {
+  let s = escapeMath(expression).trim();
 
-    let expression = text
-        .toLowerCase()
-        .replace(/what is/g, "")
-        .replace(/calculate/g, "")
-        .replace(/solve/g, "")
-        .replace(/equals/g, "")
-        .replace(/equal to/g, "")
-        .replace(/=/g, "")
-        .trim();
+  if (!s) return null;
 
+  if (!/^[0-9+\-*/().%\s^xX]+$/.test(s)) {
+    return null;
+  }
 
-    if (!expression) {
-        return null;
+  s = s.replace(
+    /(\d+(?:\.\d+)?)\s*[xX]\s*(\d+(?:\.\d+)?)/g,
+    '$1*$2'
+  );
+
+  s = s.replace(/\^/g, '**');
+
+  if (!/[+\-*/%()]/.test(s)) {
+    return null;
+  }
+
+  try {
+    const value = Function(
+      '"use strict"; return (' + s + ')'
+    )();
+
+    if (typeof value !== 'number' || !Number.isFinite(value)) {
+      return null;
     }
 
+    return Number.isInteger(value)
+      ? String(value)
+      : String(Number(value.toFixed(10)));
 
-    if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
-        return null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function localMath(q) {
+  const cleaned = q
+    .replace(/^(what is|calculate|compute|solve)\s+/i, '')
+    .replace(/[?=]$/, '')
+    .trim();
+
+  if (
+    /^[0-9+\-*/().%\s×÷−^xX]+$/.test(cleaned)
+  ) {
+    return calculate(cleaned);
+  }
+
+  return null;
+}
+
+/* =========================
+   DATE / TIME
+========================= */
+
+function formatDate(d) {
+  return new Intl.DateTimeFormat(undefined, {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(d);
+}
+
+function formatTime(d) {
+  return new Intl.DateTimeFormat(undefined, {
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit'
+  }).format(d);
+}
+
+/* =========================
+   WEATHER
+========================= */
+
+function weatherCode(code) {
+
+  const map = {
+    0: 'clear sky',
+    1: 'mainly clear',
+    2: 'partly cloudy',
+    3: 'overcast',
+    45: 'foggy',
+    48: 'foggy',
+    51: 'light drizzle',
+    53: 'drizzle',
+    55: 'heavy drizzle',
+    61: 'light rain',
+    63: 'rain',
+    65: 'heavy rain',
+    71: 'light snow',
+    73: 'snow',
+    75: 'heavy snow',
+    80: 'rain showers',
+    81: 'rain showers',
+    82: 'heavy rain showers',
+    95: 'thunderstorms',
+    96: 'thunderstorms with hail',
+    99: 'thunderstorms with hail'
+  };
+
+  return map[code] || 'unknown conditions';
+}
+
+async function getWeather(city) {
+
+  const geoURL =
+    'https://geocoding-api.open-meteo.com/v1/search?name=' +
+    encodeURIComponent(city) +
+    '&count=1&language=en&format=json';
+
+  const geoRes = await fetch(geoURL);
+
+  if (!geoRes.ok) {
+    throw new Error('geocoding failed');
+  }
+
+  const geo = await geoRes.json();
+
+  if (!geo.results || !geo.results.length) {
+    return 'I could not find that city. Try a city and state or country, such as “Miami, Florida”.';
+  }
+
+  const place = geo.results[0];
+
+  const forecastURL =
+    'https://api.open-meteo.com/v1/forecast?' +
+    'latitude=' + encodeURIComponent(place.latitude) +
+    '&longitude=' + encodeURIComponent(place.longitude) +
+    '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m' +
+    '&temperature_unit=fahrenheit' +
+    '&wind_speed_unit=mph' +
+    '&timezone=auto';
+
+  const weatherRes = await fetch(forecastURL);
+
+  if (!weatherRes.ok) {
+    throw new Error('weather failed');
+  }
+
+  const data = await weatherRes.json();
+  const c = data.current;
+
+  return (
+    'Current weather in ' +
+    place.name +
+    (place.country ? ', ' + place.country : '') +
+    ': ' +
+    Math.round(c.temperature_2m) +
+    '°F, ' +
+    weatherCode(c.weather_code) +
+    '. Feels like ' +
+    Math.round(c.apparent_temperature) +
+    '°F, with winds around ' +
+    Math.round(c.wind_speed_10m) +
+    ' mph.'
+  );
+}
+
+function isWeather(q) {
+  return /\b(weather|temperature|forecast|rain|raining|snowing|humidity)\b/i.test(q);
+}
+
+function weatherCity(q) {
+  const m = q.match(
+    /(?:weather|temperature|forecast)(?:\s+(?:in|for|at))?\s+(.+?)(?:\?|$)/i
+  );
+
+  return m ? m[1].trim() : '';
+}
+
+/* =========================
+   WIKIPEDIA KNOWLEDGE
+========================= */
+
+async function wikipedia(query) {
+
+  const clean = query
+    .replace(/^who is\s+/i, '')
+    .replace(/^what is\s+/i, '')
+    .replace(/^what are\s+/i, '')
+    .replace(/^tell me about\s+/i, '')
+    .replace(/^explain\s+/i, '')
+    .replace(/[?]+$/, '')
+    .trim();
+
+  if (!clean || clean.length > 180) {
+    return null;
+  }
+
+  const url =
+    'https://en.wikipedia.org/api/rest_v1/page/summary/' +
+    encodeURIComponent(clean.replace(/\s+/g, '_'));
+
+  const res = await fetch(url, {
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+  if (!res.ok) {
+    return null;
+  }
+
+  const data = await res.json();
+
+  if (!data.extract) {
+    return null;
+  }
+
+  const title = data.title || clean;
+
+  const extract =
+    data.extract.length > 1100
+      ? data.extract.slice(0, 1100).replace(/\s+\S*$/, '') + '…'
+      : data.extract;
+
+  return title + ': ' + extract + '\n\nSource: Wikipedia';
+}
+
+/* =========================
+   LOCAL JARVIS BRAIN
+========================= */
+
+function localAnswer(q) {
+
+  const n = normalize(q);
+
+  if (!n) {
+    return 'Awaiting your question.';
+  }
+
+  if (
+    /^(hi|hello|hey|yo|sup|good morning|good afternoon|good evening)\b/.test(n)
+  ) {
+    return 'Hello. JARVIS is online and ready.';
+  }
+
+  if (/who are you|what are you|your name/.test(n)) {
+    return 'I am J.A.R.V.I.S. — your personal browser-based assistant.';
+  }
+
+  if (/what can you do|help|commands/.test(n)) {
+    return 'I can handle conversation, calculations, date and time, weather, jokes, and factual lookups. Ask me naturally.';
+  }
+
+  if (/\b(joke|make me laugh)\b/.test(n)) {
+
+    const jokes = [
+      'Why did the computer get cold? It left its Windows open.',
+      'Why was the math book sad? It had too many problems.',
+      'I told my circuits a joke. They said it needed better delivery.',
+      'Why do programmers prefer dark mode? Because light attracts bugs.'
+    ];
+
+    return jokes[Math.floor(Math.random() * jokes.length)];
+  }
+
+  if (/what time is it|current time|time right now/.test(n)) {
+    return 'The current time is ' + formatTime(new Date()) + '.';
+  }
+
+  if (
+    /what (day|date) is it|today'?s date|current date/.test(n)
+  ) {
+    return 'Today is ' + formatDate(new Date()) + '.';
+  }
+
+  if (
+    /what did i (just )?ask|my last question|what was my question/.test(n)
+  ) {
+    return memory.lastQuestion
+      ? 'You asked: “' + memory.lastQuestion + '”'
+      : 'You have not asked me a question yet.';
+  }
+
+  if (/tell me more|go on|continue|elaborate/.test(n)) {
+    return memory.lastTopic
+      ? 'Certainly. We were discussing ' +
+        memory.lastTopic +
+        '. Ask me which part you want expanded.'
+      : 'Certainly. Tell me the topic you want me to expand on.';
+  }
+
+  const nameMatch = q.match(
+    /\b(?:my name is|call me)\s+([A-Za-z][A-Za-z0-9 _'-]{0,30})/i
+  );
+
+  if (nameMatch) {
+
+    memory.name = nameMatch[1].trim();
+
+    localStorage.setItem(
+      'jarvis_name',
+      memory.name
+    );
+
+    return 'Understood. I will call you ' +
+      memory.name +
+      '.';
+  }
+
+  if (/what('?s| is) my name|do you know my name/.test(n)) {
+    return memory.name
+      ? 'Your name is ' + memory.name + '.'
+      : 'You have not told me your name yet.';
+  }
+
+  if (/thank(s| you)|appreciate it/.test(n)) {
+    return 'You are welcome.';
+  }
+
+  if (/who made you|who created you/.test(n)) {
+    return 'I am a custom JARVIS interface running in your browser. My capabilities come from the code and public services connected to this page.';
+  }
+
+  if (/stop talking|be quiet|stop voice/.test(n)) {
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
     }
 
+    return 'Voice output stopped.';
+  }
 
-    if (!/[+\-*/%]/.test(expression)) {
-        return null;
+  const math = localMath(q);
+
+  if (math !== null) {
+    return 'The answer is ' + math + '.';
+  }
+
+  if (/^(thanks|thx)$/.test(n)) {
+    return 'Anytime.';
+  }
+
+  return null;
+}
+
+/* =========================
+   MAIN ANSWER ENGINE
+========================= */
+
+async function answer(question) {
+
+  const q = question.trim();
+
+  const local = localAnswer(q);
+
+  if (local) {
+    return local;
+  }
+
+  if (isWeather(q)) {
+
+    const city = weatherCity(q);
+
+    if (!city) {
+      return 'Tell me the city, for example: “What is the weather in Miami?”';
     }
 
+    try {
+      return await getWeather(city);
+    } catch (_) {
+      return 'I could not reach the weather service right now. Check your internet connection and try again.';
+    }
+  }
+
+  const looksFactual =
+    /^(who|what|when|where|why|how|tell me about|explain|define|is|are|can|does|did|which)\b/i.test(q) ||
+    q.endsWith('?');
+
+  if (looksFactual) {
 
     try {
 
-        const tokens = expression.match(
-            /(?:\d+(?:\.\d+)?)|[+\-*/%()]/g
-        );
+      const result = await wikipedia(q);
 
+      if (result) {
+        return result;
+      }
 
-        if (!tokens) {
-            return null;
-        }
+    } catch (_) {}
+  }
 
+  const n = normalize(q);
 
-        let position = 0;
+  if (/i am bored|i'm bored/.test(n)) {
+    return 'I have an idea: ask me a random science question, a math problem, or “tell me something interesting.”';
+  }
 
+  if (/something interesting|fun fact|random fact/.test(n)) {
+    return 'A day on Venus is longer than a Venusian year: Venus rotates once in about 243 Earth days but orbits the Sun in about 225 days.';
+  }
 
-        function expressionPart() {
+  if (/how smart are you|are you smart/.test(n)) {
+    return 'My abilities depend on the tools built into this version. I can reason through programmed tasks and look up many factual topics, but I am not an unlimited AI model.';
+  }
 
-            let value = term();
-
-
-            while (
-                tokens[position] === "+" ||
-                tokens[position] === "-"
-            ) {
-
-                const operator = tokens[position++];
-
-                const next = term();
-
-
-                if (operator === "+") {
-
-                    value += next;
-
-                } else {
-
-                    value -= next;
-
-                }
-
-            }
-
-
-            return value;
-        }
-
-
-        function term() {
-
-            let value = factor();
-
-
-            while (
-                tokens[position] === "*" ||
-                tokens[position] === "/"
-            ) {
-
-                const operator = tokens[position++];
-
-                const next = factor();
-
-
-                if (operator === "*") {
-
-                    value *= next;
-
-                } else {
-
-                    if (next === 0) {
-                        throw new Error("divide");
-                    }
-
-                    value /= next;
-                }
-
-            }
-
-
-            return value;
-        }
-
-
-        function factor() {
-
-            if (tokens[position] === "-") {
-
-                position++;
-
-                return -factor();
-            }
-
-
-            if (tokens[position] === "(") {
-
-                position++;
-
-                const value = expressionPart();
-
-
-                if (tokens[position] !== ")") {
-                    throw new Error("parentheses");
-                }
-
-
-                position++;
-
-                return value;
-            }
-
-
-            const value = Number(tokens[position++]);
-
-
-            if (!Number.isFinite(value)) {
-                throw new Error("number");
-            }
-
-
-            if (tokens[position] === "%") {
-
-                position++;
-
-                return value / 100;
-            }
-
-
-            return value;
-        }
-
-
-        const result = expressionPart();
-
-
-        if (
-            position !== tokens.length ||
-            !Number.isFinite(result)
-        ) {
-
-            return null;
-        }
-
-
-        return Number.isInteger(result)
-            ? String(result)
-            : String(Number(result.toFixed(8)));
-
-    } catch {
-
-        return null;
-    }
+  return 'I do not have a reliable answer for that yet. Try rephrasing the question, or ask me about a person, place, science topic, history, math, weather, or another factual subject.';
 }
 
-
-/* =========================================================
-   TIME
-   ========================================================= */
-
-function getTime() {
-
-    return new Intl.DateTimeFormat(
-        undefined,
-        {
-            hour: "numeric",
-            minute: "2-digit"
-        }
-    ).format(new Date());
-}
-
-
-/* =========================================================
-   DATE
-   ========================================================= */
-
-function getDate() {
-
-    return new Intl.DateTimeFormat(
-        undefined,
-        {
-            weekday: "long",
-            month: "long",
-            day: "numeric",
-            year: "numeric"
-        }
-    ).format(new Date());
-}
-
-
-/* =========================================================
-   GREETINGS
-   ========================================================= */
-
-function greeting(text) {
-
-    if (
-        /^(hi|hello|hey|yo|sup|what's up|whats up)\b/
-        .test(text)
-    ) {
-
-        return "Hello. JARVIS is online and ready.";
-
-    }
-
-
-    if (text.includes("good morning")) {
-
-        return "Good morning. All systems are online.";
-
-    }
-
-
-    if (text.includes("good afternoon")) {
-
-        return "Good afternoon. JARVIS is standing by.";
-
-    }
-
-
-    if (text.includes("good evening")) {
-
-        return "Good evening. How may I assist?";
-
-    }
-
-
-    return null;
-}
-
-
-/* =========================================================
-   CONVERSATIONAL BRAIN
-   ========================================================= */
-
-function respond(raw) {
-
-    const text = clean(raw);
-
-
-    if (!text) {
-
-        return "I'm listening.";
-
-    }
-
-
-    /*
-     NAME MEMORY
-    */
-
-    const nameMatch = text.match(
-        /(?:my name is|call me)\s+([a-zA-Z0-9_-]+)/
-    );
-
-
-    if (nameMatch) {
-
-        memory.name = nameMatch[1];
-
-        return (
-            "Understood. I'll call you " +
-            memory.name +
-            "."
-        );
-    }
-
-
-    if (
-        text === "what is my name" ||
-        text === "do you know my name"
-    ) {
-
-        if (memory.name) {
-
-            return (
-                "Your name is " +
-                memory.name +
-                "."
-            );
-
-        }
-
-        return "You haven't told me your name yet.";
-
-    }
-
-
-    /*
-     GREETINGS
-    */
-
-    const hello = greeting(text);
-
-    if (hello) {
-        return hello;
-    }
-
-
-    /*
-     FOLLOW-UP QUESTIONS
-    */
-
-    if (
-        text === "tell me more" ||
-        text === "explain more" ||
-        text === "go on" ||
-        text === "continue"
-    ) {
-
-        if (memory.lastTopic) {
-
-            return (
-                "Certainly. We were discussing " +
-                memory.lastTopic +
-                ". Give me another question about it and I'll continue."
-            );
-
-        }
-
-        return "Certainly. What would you like me to explain?";
-
-    }
-
-
-    if (
-        text.includes("what did i just ask") ||
-        text.includes("what was my last question")
-    ) {
-
-        if (memory.lastQuestion) {
-
-            return (
-                "Your last question was: " +
-                memory.lastQuestion
-            );
-
-        }
-
-        return "This is the first question in our current session.";
-
-    }
-
-
-    /*
-     MATH
-    */
-
-    const mathResult = solveMath(text);
-
-    if (mathResult !== null) {
-
-        memory.lastTopic = "mathematics";
-
-        return (
-            "The answer is " +
-            mathResult +
-            "."
-        );
-    }
-
-
-    /*
-     IDENTITY
-    */
-
-    if (
-        contains(text, [
-            "who are you",
-            "what are you",
-            "what is jarvis",
-            "tell me about yourself"
-        ])
-    ) {
-
-        memory.lastTopic = "JARVIS";
-
-        return (
-            "I am JARVIS, your personal digital assistant. " +
-            "I can handle calculations, time, dates, system information, " +
-            "conversation, and several useful commands locally."
-        );
-    }
-
-
-    /*
-     NAME
-    */
-
-    if (text.includes("your name")) {
-
-        return "My designation is J.A.R.V.I.S.";
-
-    }
-
-
-    /*
-     TIME
-    */
-
-    if (
-        text === "time" ||
-        text.includes("what time") ||
-        text.includes("current time")
-    ) {
-
-        memory.lastTopic = "the current time";
-
-        return (
-            "The current time is " +
-            getTime() +
-            "."
-        );
-    }
-
-
-    /*
-     DATE
-    */
-
-    if (
-        text === "date" ||
-        text.includes("what date") ||
-        text.includes("today's date") ||
-        text.includes("what day")
-    ) {
-
-        memory.lastTopic = "today's date";
-
-        return (
-            "Today is " +
-            getDate() +
-            "."
-        );
-    }
-
-
-    /*
-     STATUS
-    */
-
-    if (
-        contains(text, [
-            "status",
-            "system status",
-            "systems online",
-            "systems"
-        ])
-    ) {
-
-        memory.lastTopic = "system status";
-
-        return (
-            "All primary systems are online. " +
-            "Core stable. Interface nominal. " +
-            "Conversation system ready."
-        );
-    }
-
-
-    /*
-     ARMOR
-    */
-
-    if (text.includes("armor")) {
-
-        memory.lastTopic = "armor systems";
-
-        return (
-            "Armor systems are standing by. " +
-            "Diagnostics report nominal."
-        );
-    }
-
-
-    /*
-     REACTOR
-    */
-
-    if (
-        text.includes("reactor") ||
-        text.includes("power")
-    ) {
-
-        memory.lastTopic = "reactor power";
-
-        return (
-            "Arc reactor simulation is stable. " +
-            "Power systems are nominal."
-        );
-    }
-
-
-    /*
-     JOKES
-    */
-
-    if (
-        text.includes("tell me a joke") ||
-        text === "joke" ||
-        text.includes("make me laugh")
-    ) {
-
-        memory.lastTopic = "jokes";
-
-        return (
-            "Why did the computer get cold? " +
-            "It left its Windows open."
-        );
-    }
-
-
-    /*
-     THANKS
-    */
-
-    if (
-        contains(text, [
-            "thank you",
-            "thanks",
-            "thx"
-        ])
-    ) {
-
-        return "You're welcome. Always at your service.";
-
-    }
-
-
-    /*
-     SLANG
-    */
-
-    if (
-        text.includes("slang") ||
-        text.includes("talk normal") ||
-        text.includes("talk casual")
-    ) {
-
-        return (
-            "Got you. Casual mode enabled. " +
-            "What's good?"
-        );
-    }
-
-
-    /*
-     WEATHER
-    */
-
-    if (
-        text.includes("weather") ||
-        text.includes("temperature outside")
-    ) {
-
-        memory.lastTopic = "weather";
-
-        return (
-            "I can handle the JARVIS interface locally, " +
-            "but live weather requires an online weather service."
-        );
-    }
-
-
-    /*
-     HELP
-    */
-
-    if (
-        text === "help" ||
-        text.includes("what can you do")
-    ) {
-
-        return (
-            "I can handle math, percentages, time, dates, " +
-            "system status, armor, reactor power, jokes, " +
-            "basic conversation, name memory, and follow-up questions."
-        );
-    }
-
-
-    /*
-     GOODBYE
-    */
-
-    if (
-        text.includes("goodbye") ||
-        text === "bye" ||
-        text.includes("good night")
-    ) {
-
-        return "Until next time. JARVIS standing by.";
-
-    }
-
-
-    /*
-     POSITIVE CONVERSATION
-    */
-
-    if (
-        contains(text, [
-            "that's cool",
-            "thats cool",
-            "awesome",
-            "nice",
-            "cool"
-        ])
-    ) {
-
-        return "Indeed. Glad I could assist.";
-
-    }
-
-
-    /*
-     CONFUSION
-    */
-
-    if (
-        contains(text, [
-            "i don't understand",
-            "i dont understand",
-            "what do you mean"
-        ])
-    ) {
-
-        return (
-            "No problem. I'll explain it more simply. " +
-            "Tell me which part is confusing."
-        );
-    }
-
-
-    /*
-     USER FEELING
-    */
-
-    if (
-        contains(text, [
-            "i'm bored",
-            "im bored"
-        ])
-    ) {
-
-        return (
-            "Then let's change that. " +
-            "I can tell you a joke, help with math, " +
-            "or we can talk about something you're interested in."
-        );
-    }
-
-
-    /*
-     UNKNOWN REQUEST
-    */
-
-    return (
-        "I understand you're asking about \"" +
-        raw +
-        "\". My local knowledge is limited for that topic, " +
-        "but I'm ready for another question."
-    );
-}
-
-
-/* =========================================================
-   RUN JARVIS
-   ========================================================= */
-
-function runJarvis() {
-
-    const text = input.value.trim();
-
-
-    if (!text) {
-        return;
-    }
-
-
-    const response = respond(text);
-
-
-    memory.lastQuestion = text;
-    memory.lastAnswer = response;
-
-
-    answer.textContent = response;
-
-
-    speak(response);
-
-
-    input.value = "";
-
-    input.focus();
-}
-
-
-/* =========================================================
+/* =========================
    SEND
-   ========================================================= */
+========================= */
 
-document.getElementById("send").onclick = runJarvis;
+let busy = false;
 
+async function sendMessage() {
 
-input.addEventListener(
-    "keydown",
-    function(event) {
+  if (busy) return;
 
-        if (event.key === "Enter") {
+  const q = input.value.trim();
 
-            runJarvis();
+  if (!q) return;
 
-        }
+  busy = true;
 
-    }
+  input.value = '';
+
+  addMessage('You', q);
+
+  memory.lastQuestion = q;
+
+  try {
+
+    const result = await answer(q);
+
+    memory.lastTopic =
+      q.replace(/[?]+$/, '').slice(0, 100);
+
+    reply(result, true);
+
+  } catch (_) {
+
+    reply(
+      'Something went wrong while processing that. Please try again.',
+      false
+    );
+
+  } finally {
+
+    busy = false;
+    input.focus();
+  }
+}
+
+send.addEventListener('click', sendMessage);
+
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+});
+
+/* =========================
+   STARTUP
+========================= */
+
+addMessage(
+  'JARVIS',
+  memory.name
+    ? 'Welcome back, ' + memory.name + '. Systems online. How may I assist?'
+    : 'Systems online. How may I assist?'
 );
 
-
-/* =========================================================
-   VOICE BUTTON
-   ========================================================= */
-
-document.getElementById("voice").onclick =
-function() {
-
-    speechEnabled = !speechEnabled;
-
-
-    this.textContent =
-        speechEnabled
-        ? "🔊 VOICE"
-        : "🔇 VOICE OFF";
-
-
-    if (
-        !speechEnabled &&
-        "speechSynthesis" in window
-    ) {
-
-        speechSynthesis.cancel();
-
-    }
-
-};
-
-
-/* =========================================================
-   CLEAR
-   ========================================================= */
-
-document.getElementById("clear").onclick =
-function() {
-
-    answer.textContent =
-        "Interface cleared. JARVIS is standing by.";
-
-    memory.lastQuestion = "";
-    memory.lastTopic = "";
-    memory.lastAnswer = "";
-
-    input.focus();
-
-};
+input.focus();
 
 </script>
 
