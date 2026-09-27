@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover,
-               maximum-scale=1, user-scalable=no">
+      content="width=device-width,
+      initial-scale=1,
+      viewport-fit=cover,
+      maximum-scale=1,
+      user-scalable=no">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -34,12 +38,9 @@ body {
     position: fixed;
     inset: 0;
     overscroll-behavior: none;
-    -webkit-overflow-scrolling: auto;
 }
 
-/* =========================
-   MAIN APP
-========================= */
+/* APP */
 
 .app {
     position: fixed;
@@ -48,11 +49,20 @@ body {
     height: 100%;
     height: 100dvh;
     overflow: hidden;
+
     background:
-        radial-gradient(circle at center, rgba(0, 180, 255, .12), transparent 45%),
-        linear-gradient(rgba(0, 238, 255, .035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 238, 255, .035) 1px, transparent 1px),
+        radial-gradient(circle at center,
+            rgba(0,180,255,.12),
+            transparent 45%),
+        linear-gradient(
+            rgba(0,238,255,.035) 1px,
+            transparent 1px),
+        linear-gradient(
+            90deg,
+            rgba(0,238,255,.035) 1px,
+            transparent 1px),
         #000;
+
     background-size:
         auto,
         28px 28px,
@@ -60,9 +70,7 @@ body {
         auto;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header {
     position: fixed;
@@ -71,7 +79,6 @@ body {
     right: 0;
 
     height: 68px;
-
     padding-top: env(safe-area-inset-top);
 
     display: flex;
@@ -81,8 +88,8 @@ body {
     padding-left: 20px;
     padding-right: 20px;
 
-    background: rgba(0, 8, 12, .92);
-    border-bottom: 1px solid rgba(0, 234, 255, .3);
+    background: rgba(0,8,12,.94);
+    border-bottom: 1px solid rgba(0,234,255,.3);
 
     z-index: 5000;
 }
@@ -91,16 +98,16 @@ body {
     font-size: 23px;
     font-weight: bold;
     letter-spacing: 4px;
+
     text-shadow:
         0 0 8px #00eaff,
-        0 0 20px rgba(0, 234, 255, .6);
+        0 0 20px rgba(0,234,255,.6);
 }
 
 .status {
     font-size: 11px;
     letter-spacing: 2px;
     color: #00ff88;
-    white-space: nowrap;
 }
 
 .status-dot {
@@ -113,9 +120,7 @@ body {
     box-shadow: 0 0 10px #00ff88;
 }
 
-/* =========================
-   MAIN CONTENT
-========================= */
+/* MAIN */
 
 .main {
     position: absolute;
@@ -130,9 +135,7 @@ body {
     overflow: hidden;
 }
 
-/* =========================
-   REACTOR
-========================= */
+/* REACTOR */
 
 .coreArea {
     flex: 0 0 245px;
@@ -153,11 +156,13 @@ body {
 .ring {
     position: absolute;
     inset: 0;
-    border: 2px solid rgba(0, 234, 255, .45);
+
+    border: 2px solid rgba(0,234,255,.45);
     border-radius: 50%;
+
     box-shadow:
-        0 0 15px rgba(0, 234, 255, .2),
-        inset 0 0 15px rgba(0, 234, 255, .15);
+        0 0 15px rgba(0,234,255,.2),
+        inset 0 0 15px rgba(0,234,255,.15);
 }
 
 .ring.one {
@@ -186,22 +191,22 @@ body {
     width: 54px;
     height: 54px;
 
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
 
     border-radius: 50%;
 
     background:
         radial-gradient(circle,
-        #ffffff 0%,
-        #9fffff 15%,
-        #00eaff 45%,
-        #007cff 70%,
-        transparent 72%);
+            #fff 0%,
+            #9fffff 15%,
+            #00eaff 45%,
+            #007cff 70%,
+            transparent 72%);
 
     box-shadow:
         0 0 15px #00eaff,
         0 0 40px #00eaff,
-        0 0 80px rgba(0, 150, 255, .8);
+        0 0 80px rgba(0,150,255,.8);
 
     animation: pulse 2s ease-in-out infinite;
 }
@@ -210,11 +215,13 @@ body {
     position: absolute;
     bottom: -25px;
     width: 100%;
+
     text-align: center;
 
     font-size: 9px;
     letter-spacing: 3px;
-    color: rgba(0, 234, 255, .65);
+
+    color: rgba(0,234,255,.65);
 }
 
 @keyframes spin {
@@ -229,19 +236,17 @@ body {
 
 @keyframes pulse {
     0%,100% {
-        transform: translate(-50%, -50%) scale(.9);
+        transform: translate(-50%,-50%) scale(.9);
         opacity: .8;
     }
 
     50% {
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translate(-50%,-50%) scale(1.1);
         opacity: 1;
     }
 }
 
-/* =========================
-   CHAT
-========================= */
+/* CHAT */
 
 .chat {
     flex: 1;
@@ -250,11 +255,13 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
 
-    padding: 10px 16px 150px;
+    padding:
+        10px
+        16px
+        150px;
 
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-
     scroll-behavior: smooth;
 }
 
@@ -274,15 +281,15 @@ body {
 }
 
 .jarvis {
-    background: rgba(0, 160, 220, .08);
+    background: rgba(0,160,220,.08);
     border-left: 2px solid #00eaff;
 
     box-shadow:
-        inset 0 0 15px rgba(0, 234, 255, .04);
+        inset 0 0 15px rgba(0,234,255,.04);
 }
 
 .user {
-    background: rgba(255, 255, 255, .05);
+    background: rgba(255,255,255,.05);
     border-right: 2px solid rgba(255,255,255,.4);
 
     color: #fff;
@@ -290,7 +297,6 @@ body {
 
 .label {
     display: block;
-
     margin-bottom: 5px;
 
     font-size: 9px;
@@ -299,27 +305,23 @@ body {
     opacity: .55;
 }
 
-/* =========================
-   FIXED INPUT BAR
-   THIS IS THE IMPORTANT PART
-========================= */
+/* FIXED INPUT */
 
 .controls {
     position: fixed !important;
 
     left: 50%;
-    right: auto;
     bottom: 0;
 
     transform: translateX(-50%);
 
-    width: min(900px, 100%);
+    width: min(900px,100%);
 
     min-height: 78px;
 
     padding:
         10px 12px
-        max(16px, env(safe-area-inset-bottom))
+        max(16px,env(safe-area-inset-bottom))
         12px;
 
     display: flex;
@@ -332,7 +334,7 @@ body {
             rgba(0,8,12,.98)
         );
 
-    border-top: 1px solid rgba(0, 234, 255, .35);
+    border-top: 1px solid rgba(0,234,255,.35);
 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -340,8 +342,6 @@ body {
     z-index: 999999 !important;
 
     pointer-events: auto !important;
-
-    isolation: isolate;
 }
 
 .inputBox {
@@ -352,24 +352,23 @@ body {
 
 #input {
     flex: 1;
-
     min-width: 0;
+
     height: 48px;
 
-    border: 1px solid rgba(0, 234, 255, .5);
+    border: 1px solid rgba(0,234,255,.5);
     border-radius: 10px;
 
     outline: none;
 
     padding: 0 14px;
 
-    background: rgba(0, 20, 28, .95);
+    background: rgba(0,20,28,.95);
     color: white;
 
     font-size: 16px;
 
     -webkit-appearance: none;
-    appearance: none;
 }
 
 #input:focus {
@@ -391,7 +390,7 @@ body {
     border: 1px solid #00eaff;
     border-radius: 10px;
 
-    background: rgba(0, 234, 255, .08);
+    background: rgba(0,234,255,.08);
 
     color: #00eaff;
 
@@ -401,7 +400,6 @@ body {
     cursor: pointer;
 
     -webkit-appearance: none;
-    appearance: none;
 
     touch-action: manipulation;
 
@@ -414,11 +412,7 @@ body {
     transform: scale(.97);
 }
 
-/* =========================
-   SMALL SCREENS
-========================= */
-
-@media (max-width: 600px) {
+@media (max-width:600px) {
 
     .logo {
         font-size: 18px;
@@ -449,11 +443,7 @@ body {
     }
 }
 
-/* =========================
-   IPAD LANDSCAPE
-========================= */
-
-@media (orientation: landscape) and (min-width: 700px) {
+@media (orientation:landscape) and (min-width:700px) {
 
     .coreArea {
         flex-basis: 185px;
@@ -471,77 +461,72 @@ body {
 
 <div class="app">
 
-    <header class="header">
-        <div class="logo">J.A.R.V.I.S.</div>
+<header class="header">
 
-        <div class="status">
-            <span class="status-dot"></span>
-            SYSTEMS ONLINE
-        </div>
-    </header>
+    <div class="logo">
+        J.A.R.V.I.S.
+    </div>
 
-    <main class="main">
+    <div class="status">
+        <span class="status-dot"></span>
+        SYSTEMS ONLINE
+    </div>
 
-        <section class="coreArea">
+</header>
 
-            <div class="core">
+<main class="main">
 
-                <div class="ring one"></div>
-                <div class="ring two"></div>
-                <div class="ring three"></div>
+<section class="coreArea">
 
-                <div class="coreOrb"></div>
+    <div class="core">
 
-                <div class="coreLabel">
-                    ARC REACTOR
-                </div>
+        <div class="ring one"></div>
+        <div class="ring two"></div>
+        <div class="ring three"></div>
 
-            </div>
+        <div class="coreOrb"></div>
 
-        </section>
-
-        <section id="chat" class="chat"></section>
-
-    </main>
-
-    <!--
-        FIXED CONTROL BAR
-        It is intentionally OUTSIDE the scrolling chat.
-    -->
-
-    <div class="controls">
-
-        <div class="inputBox">
-
-            <input
-                id="input"
-                type="text"
-                autocomplete="off"
-                autocorrect="on"
-                autocapitalize="sentences"
-                spellcheck="true"
-                placeholder="Ask JARVIS anything..."
-            >
-
-            <button id="send" type="button">
-                SEND
-            </button>
-
+        <div class="coreLabel">
+            ARC REACTOR
         </div>
 
     </div>
+
+</section>
+
+<section id="chat" class="chat"></section>
+
+</main>
+
+<div class="controls">
+
+    <div class="inputBox">
+
+        <input
+            id="input"
+            type="text"
+            autocomplete="off"
+            autocorrect="on"
+            autocapitalize="sentences"
+            spellcheck="true"
+            placeholder="Ask JARVIS anything..."
+        >
+
+        <button id="send" type="button">
+            SEND
+        </button>
+
+    </div>
+
+</div>
 
 </div>
 
 <script>
 
 /* =========================================================
-   J.A.R.V.I.S. LOCAL CORE
+   MEMORY
 ========================================================= */
-
-const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-const send = document.getElementById("send");
 
 let memory = {
     name: "",
@@ -550,25 +535,28 @@ let memory = {
     lastAnswer: ""
 };
 
+let processing = false;
+
+
 /* =========================================================
    VOICE
 ========================================================= */
-
-let speaking = false;
 
 function speak(text) {
 
     if (!("speechSynthesis" in window)) return;
 
-    window.speechSynthesis.cancel();
+    speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
+    const utterance =
+        new SpeechSynthesisUtterance(text);
 
     utterance.rate = 0.86;
     utterance.pitch = 0.72;
     utterance.volume = 1;
 
-    const voices = window.speechSynthesis.getVoices();
+    const voices =
+        speechSynthesis.getVoices();
 
     const preferred = [
         "Daniel",
@@ -579,57 +567,54 @@ function speak(text) {
         "Google UK English Male"
     ];
 
-    let selected = null;
+    let voice = null;
 
-    for (const preferredName of preferred) {
+    for (const name of preferred) {
 
-        selected = voices.find(v =>
-            v.name.toLowerCase().includes(preferredName.toLowerCase())
+        voice = voices.find(v =>
+            v.name
+            .toLowerCase()
+            .includes(name.toLowerCase())
         );
 
-        if (selected) break;
+        if (voice) break;
     }
 
-    if (!selected) {
+    if (!voice) {
 
-        selected = voices.find(v =>
+        voice = voices.find(v =>
             v.lang &&
             v.lang.toLowerCase().startsWith("en")
         );
     }
 
-    if (selected) {
-        utterance.voice = selected;
+    if (voice) {
+        utterance.voice = voice;
     }
 
-    utterance.onstart = () => {
-        speaking = true;
-    };
-
-    utterance.onend = () => {
-        speaking = false;
-    };
-
-    window.speechSynthesis.speak(utterance);
+    speechSynthesis.speak(utterance);
 }
 
-if ("speechSynthesis" in window) {
-    window.speechSynthesis.getVoices();
-}
 
 /* =========================================================
-   CHAT DISPLAY
+   CHAT
 ========================================================= */
 
-function addMessage(text, who = "jarvis", shouldSpeak = false) {
+function addMessage(
+    text,
+    who = "jarvis",
+    shouldSpeak = false
+) {
 
-    const message = document.createElement("div");
+    const message =
+        document.createElement("div");
 
     message.className =
         "message " +
         (who === "user" ? "user" : "jarvis");
 
-    const label = document.createElement("span");
+    const label =
+        document.createElement("span");
 
     label.className = "label";
 
@@ -638,7 +623,8 @@ function addMessage(text, who = "jarvis", shouldSpeak = false) {
         ? "YOU"
         : "J.A.R.V.I.S.";
 
-    const content = document.createElement("div");
+    const content =
+        document.createElement("div");
 
     content.textContent = text;
 
@@ -648,9 +634,7 @@ function addMessage(text, who = "jarvis", shouldSpeak = false) {
     chat.appendChild(message);
 
     requestAnimationFrame(() => {
-
         chat.scrollTop = chat.scrollHeight;
-
     });
 
     if (shouldSpeak && who === "jarvis") {
@@ -658,28 +642,31 @@ function addMessage(text, who = "jarvis", shouldSpeak = false) {
     }
 }
 
+
 /* =========================================================
-   MATH ENGINE
+   MATH
 ========================================================= */
 
 function solveMath(text) {
 
     let expression = text
         .toLowerCase()
-        .replace(/what is/g, "")
-        .replace(/calculate/g, "")
-        .replace(/solve/g, "")
-        .replace(/equals/g, "")
-        .replace(/plus/g, "+")
-        .replace(/minus/g, "-")
-        .replace(/times/g, "*")
-        .replace(/multiplied by/g, "*")
-        .replace(/divided by/g, "/")
-        .replace(/over/g, "/")
-        .replace(/x/g, "*")
-        .replace(/÷/g, "/")
-        .replace(/×/g, "*")
-        .replace(/[^0-9+\-*/().%\s]/g, "")
+
+        .replace(/what is/g,"")
+        .replace(/calculate/g,"")
+        .replace(/solve/g,"")
+
+        .replace(/multiplied by/g,"*")
+        .replace(/divided by/g,"/")
+        .replace(/plus/g,"+")
+        .replace(/minus/g,"-")
+        .replace(/times/g,"*")
+        .replace(/over/g,"/")
+
+        .replace(/÷/g,"/")
+        .replace(/×/g,"*")
+
+        .replace(/[^0-9+\-*/().%\s]/g,"")
         .trim();
 
     if (!expression) return null;
@@ -688,15 +675,18 @@ function solveMath(text) {
         return null;
     }
 
+    if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
+        return null;
+    }
+
     try {
 
-        if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
-            return null;
-        }
-
-        const result = Function(
-            '"use strict"; return (' + expression + ')'
-        )();
+        const result =
+            Function(
+                '"use strict";return(' +
+                expression +
+                ')'
+            )();
 
         if (!Number.isFinite(result)) {
             return null;
@@ -705,88 +695,91 @@ function solveMath(text) {
         return result;
 
     } catch {
+
         return null;
     }
 }
 
+
 /* =========================================================
-   KNOWLEDGE
+   BUILT-IN KNOWLEDGE
 ========================================================= */
 
 const knowledge = {
 
     "black hole":
-        "A black hole is a region of spacetime where gravity is so strong that beyond its event horizon, nothing can escape, including light.",
+        "A black hole is a region of spacetime where gravity is extremely strong. Beyond its event horizon, nothing can escape to the outside, including light.",
 
     "gravity":
-        "Gravity is the attraction between objects with mass or energy. In Einstein's description, massive objects curve spacetime.",
+        "Gravity is the attraction associated with mass and energy. Einstein's general relativity describes gravity as the curvature of spacetime.",
 
     "atom":
-        "An atom is the basic unit of ordinary matter. It contains a nucleus made of protons and neutrons, surrounded by electrons.",
+        "An atom is a basic unit of ordinary matter. It contains a nucleus made of protons and neutrons surrounded by electrons.",
 
     "dna":
-        "DNA stores biological genetic information. Its famous double-helix structure uses four chemical bases: A, T, C, and G.",
+        "DNA stores genetic information. Its structure is a double helix built from four main bases: A, T, C, and G.",
 
     "photosynthesis":
-        "Photosynthesis lets plants, algae, and some bacteria convert light energy into chemical energy, mainly using carbon dioxide and water.",
+        "Photosynthesis allows plants, algae, and some bacteria to convert light energy into chemical energy.",
 
     "evolution":
-        "Evolution is the change in inherited characteristics of populations across generations. Natural selection is one important mechanism of evolution.",
+        "Evolution is the change in inherited characteristics of populations across generations. Natural selection is one mechanism that can cause evolutionary change.",
 
     "speed of light":
-        "Light travels through vacuum at approximately 299,792,458 meters per second.",
+        "The speed of light in vacuum is exactly 299,792,458 meters per second.",
 
     "relativity":
-        "Einstein's theories of relativity describe how space, time, motion, gravity, and energy are related.",
+        "Relativity describes relationships between space, time, motion, gravity, and energy. Einstein developed special and general relativity.",
 
     "earth":
         "Earth is the third planet from the Sun and the only world currently known to support life.",
 
     "moon":
-        "The Moon is Earth's natural satellite. Its gravity helps produce Earth's ocean tides.",
+        "The Moon is Earth's natural satellite. Its gravitational interaction with Earth contributes strongly to ocean tides.",
 
     "mars":
-        "Mars is the fourth planet from the Sun. It is a cold rocky world with a thin atmosphere dominated by carbon dioxide.",
+        "Mars is the fourth planet from the Sun. It is a rocky planet with a thin atmosphere dominated by carbon dioxide.",
 
     "jupiter":
-        "Jupiter is the largest planet in our Solar System. It is a gas giant famous for its Great Red Spot.",
+        "Jupiter is the largest planet in our Solar System. It is a gas giant with a powerful magnetic field and the Great Red Spot.",
 
     "saturn":
-        "Saturn is a gas giant surrounded by a spectacular system of icy rings.",
+        "Saturn is a gas giant famous for its extensive system of icy rings.",
 
     "venus":
-        "Venus is the second planet from the Sun and has an extremely hot surface because of its dense carbon-dioxide atmosphere.",
+        "Venus is the second planet from the Sun. Its dense atmosphere produces an extreme greenhouse effect and very high surface temperatures.",
 
     "mercury":
         "Mercury is the smallest planet in the Solar System and the closest planet to the Sun.",
 
     "neutron star":
-        "A neutron star is the extremely dense collapsed core left behind by certain massive stars after supernova explosions.",
+        "A neutron star is an extremely dense stellar remnant formed from the collapsed core of certain massive stars.",
 
     "chemistry":
-        "Chemistry studies matter, its properties, its structure, and how substances interact and transform.",
+        "Chemistry studies matter, its properties, structure, composition, and the changes substances undergo.",
 
     "cell":
         "A cell is the basic structural and functional unit of living organisms.",
 
     "ocean":
-        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water.",
+        "Earth's oceans cover about 71 percent of its surface and contain most of the planet's water.",
 
     "volcano":
-        "A volcano is a geological opening through which molten rock, gases, and other material can reach Earth's surface.",
+        "A volcano is an opening in Earth's crust through which magma, gases, and volcanic material can reach the surface.",
 
     "plate tectonics":
-        "Plate tectonics describes the movement of large pieces of Earth's lithosphere. Their movement causes earthquakes, mountain building, and much volcanic activity.",
+        "Plate tectonics describes the movement of large pieces of Earth's lithosphere. Their interactions produce earthquakes, mountains, and much volcanic activity.",
 
     "newton":
         "Isaac Newton developed foundational laws of motion and universal gravitation and made major contributions to mathematics and optics.",
 
     "marie curie":
-        "Marie Curie was a physicist and chemist whose research on radioactivity earned her Nobel Prizes in Physics and Chemistry.",
+        "Marie Curie was a physicist and chemist whose research into radioactivity earned Nobel Prizes in Physics and Chemistry.",
 
     "shakespeare":
-        "William Shakespeare was an English playwright and poet whose works include Romeo and Juliet, Hamlet, and Macbeth."
+        "William Shakespeare was an English playwright and poet whose works include Hamlet, Macbeth, and Romeo and Juliet."
 };
+
 
 /* =========================================================
    JOKES
@@ -818,24 +811,19 @@ const jokes = [
 
     "I tried to organize a hide-and-seek tournament. Good players are hard to find.",
 
-    "Why was the equal sign so humble? Because it knew it wasn't less than or greater than anyone.",
-
     "What do you call an AI that sings badly? Artificial noise."
 ];
 
+
 /* =========================================================
-   FIND KNOWLEDGE
+   KNOWLEDGE LOOKUP
 ========================================================= */
 
-function findKnowledge(question) {
+function findKnowledge(q) {
 
-    const lower = question.toLowerCase();
+    for (const key of Object.keys(knowledge)) {
 
-    const keys = Object.keys(knowledge);
-
-    for (const key of keys) {
-
-        if (lower.includes(key)) {
+        if (q.includes(key)) {
             return knowledge[key];
         }
     }
@@ -843,15 +831,162 @@ function findKnowledge(question) {
     return null;
 }
 
+
 /* =========================================================
-   WIKIPEDIA FALLBACK
+   DETERMINE IF THIS IS ACTUALLY A QUESTION
+========================================================= */
+
+function isActualQuestion(q) {
+
+    const questionWords = [
+        "what ",
+        "why ",
+        "how ",
+        "when ",
+        "where ",
+        "who ",
+        "which ",
+        "can ",
+        "could ",
+        "would ",
+        "is ",
+        "are ",
+        "do ",
+        "does ",
+        "did ",
+        "will ",
+        "should ",
+        "tell me about ",
+        "explain ",
+        "define ",
+        "what's ",
+        "whats "
+    ];
+
+    if (q.includes("?")) {
+        return true;
+    }
+
+    return questionWords.some(word =>
+        q.startsWith(word)
+    );
+}
+
+
+/* =========================================================
+   SHOULD JARVIS SEARCH?
+   
+   THIS PREVENTS RANDOM SEARCHES DURING CONVERSATION.
+========================================================= */
+
+function shouldSearch(q) {
+
+    if (!isActualQuestion(q)) {
+        return false;
+    }
+
+    /* Never search these */
+
+    const casual = [
+
+        "hi",
+        "hello",
+        "hey",
+        "lol",
+        "lmao",
+        "haha",
+        "thanks",
+        "thank you",
+        "sorry",
+        "okay",
+        "ok",
+        "cool",
+        "nice",
+        "awesome",
+        "great",
+        "wow",
+        "yes",
+        "yeah",
+        "yep",
+        "no",
+        "nope",
+        "good",
+        "bad",
+        "i'm bored",
+        "im bored",
+        "i am bored",
+        "what are you doing",
+        "what're you doing",
+        "how are you",
+        "who are you",
+        "what can you do",
+        "what is your name",
+        "what's your name",
+        "do you remember me",
+        "are you there"
+    ];
+
+    if (casual.includes(q)) {
+        return false;
+    }
+
+    /* Already-known topics don't need web searching */
+
+    if (findKnowledge(q)) {
+        return false;
+    }
+
+    /*
+       Questions about these common conversation areas
+       should be answered locally.
+    */
+
+    const localSignals = [
+        "my name",
+        "your name",
+        "how are you",
+        "what are you doing",
+        "what can you do",
+        "tell me a joke",
+        "make me laugh",
+        "what time",
+        "what day",
+        "what date",
+        "system status",
+        "reactor",
+        "armor",
+        "suit",
+        "last question",
+        "what did i ask",
+        "what were we talking about"
+    ];
+
+    if (
+        localSignals.some(signal =>
+            q.includes(signal)
+        )
+    ) {
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================================
+   WIKIPEDIA SEARCH
 ========================================================= */
 
 async function searchWikipedia(question) {
 
+    if (!shouldSearch(question.toLowerCase())) {
+        return null;
+    }
+
     try {
 
-        const query = encodeURIComponent(question);
+        const query =
+            encodeURIComponent(question);
 
         const url =
             "https://en.wikipedia.org/w/api.php" +
@@ -859,46 +994,107 @@ async function searchWikipedia(question) {
             "&generator=search" +
             "&gsrsearch=" + query +
             "&gsrnamespace=0" +
-            "&gsrlimit=3" +
+            "&gsrlimit=5" +
             "&prop=extracts" +
             "&exintro=1" +
             "&explaintext=1" +
             "&format=json" +
             "&origin=*";
 
-        const response = await fetch(url);
+        const response =
+            await fetch(url);
 
         if (!response.ok) {
             return null;
         }
 
-        const data = await response.json();
+        const data =
+            await response.json();
 
-        if (!data.query || !data.query.pages) {
+        if (
+            !data.query ||
+            !data.query.pages
+        ) {
             return null;
         }
 
-        const pages = Object.values(data.query.pages);
+        const pages =
+            Object.values(data.query.pages);
 
         if (!pages.length) {
             return null;
         }
 
-        const page = pages[0];
+        /*
+           Try to find a result whose title or
+           extract actually relates to the question.
+        */
 
-        if (!page.extract) {
+        const words =
+            question
+                .toLowerCase()
+                .replace(/[^\w\s]/g,"")
+                .split(/\s+/)
+                .filter(word =>
+                    word.length > 3
+                );
+
+        let bestPage = null;
+        let bestScore = 0;
+
+        for (const page of pages) {
+
+            const title =
+                (page.title || "")
+                .toLowerCase();
+
+            const extract =
+                (page.extract || "")
+                .toLowerCase();
+
+            let score = 0;
+
+            for (const word of words) {
+
+                if (title.includes(word)) {
+                    score += 4;
+                }
+
+                if (extract.includes(word)) {
+                    score += 1;
+                }
+            }
+
+            if (score > bestScore) {
+                bestScore = score;
+                bestPage = page;
+            }
+        }
+
+        if (!bestPage || bestScore < 2) {
             return null;
         }
 
-        let answer = page.extract.trim();
+        let answer =
+            bestPage.extract || "";
 
-        if (answer.length > 700) {
-            answer = answer.substring(0, 700);
+        answer = answer.trim();
 
-            const lastSpace = answer.lastIndexOf(" ");
+        if (!answer) {
+            return null;
+        }
 
-            if (lastSpace > 400) {
-                answer = answer.substring(0, lastSpace);
+        if (answer.length > 850) {
+
+            answer =
+                answer.substring(0,850);
+
+            const lastSpace =
+                answer.lastIndexOf(" ");
+
+            if (lastSpace > 450) {
+                answer =
+                    answer.substring(0,lastSpace);
             }
 
             answer += "...";
@@ -907,53 +1103,46 @@ async function searchWikipedia(question) {
         return answer;
 
     } catch {
+
         return null;
     }
 }
 
+
 /* =========================================================
-   TIME
+   TIME / DATE
 ========================================================= */
 
 function currentTime() {
 
-    return new Date().toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit"
-    });
+    return new Date().toLocaleTimeString(
+        [],
+        {
+            hour: "numeric",
+            minute: "2-digit"
+        }
+    );
 }
 
 function currentDate() {
 
-    return new Date().toLocaleDateString([], {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric"
-    });
+    return new Date().toLocaleDateString(
+        [],
+        {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        }
+    );
 }
 
+
 /* =========================================================
-   LOCAL RESPONSE ENGINE
+   LOCAL CONVERSATION
 ========================================================= */
 
-async function getResponse(question) {
-
-    const q = question.toLowerCase().trim();
-
-    /* STOP VOICE */
-
-    if (
-        q.includes("stop talking") ||
-        q.includes("stop speaking") ||
-        q === "stop"
-    ) {
-
-        window.speechSynthesis.cancel();
-
-        return "Voice output terminated.";
-
-    }
+function localConversation(q) {
 
     /* GREETINGS */
 
@@ -961,15 +1150,15 @@ async function getResponse(question) {
         q === "hi" ||
         q === "hello" ||
         q === "hey" ||
-        q.includes("hello jarvis") ||
-        q.includes("hey jarvis")
+        q === "hey jarvis" ||
+        q === "hello jarvis"
     ) {
 
         return memory.name
             ? `Good to hear from you, ${memory.name}. Systems are online.`
             : "Good to hear from you. Systems are online and ready.";
-
     }
+
 
     /* NAME */
 
@@ -978,35 +1167,38 @@ async function getResponse(question) {
         q.startsWith("call me ")
     ) {
 
-        let name = q
-            .replace("my name is ", "")
-            .replace("call me ", "")
-            .trim();
+        let name =
+            q
+                .replace("my name is ","")
+                .replace("call me ","")
+                .trim();
 
-        name = name
-            .split(" ")
-            .map(word =>
-                word.charAt(0).toUpperCase() +
-                word.slice(1)
-            )
-            .join(" ");
+        name =
+            name
+                .split(" ")
+                .map(word =>
+                    word.charAt(0).toUpperCase() +
+                    word.slice(1)
+                )
+                .join(" ");
 
         memory.name = name;
 
         return `Understood. I'll call you ${name}.`;
-
     }
+
 
     if (
         q.includes("what is my name") ||
+        q.includes("what's my name") ||
         q.includes("do you know my name")
     ) {
 
         return memory.name
             ? `Your name is ${memory.name}.`
             : "You haven't told me your name yet.";
-
     }
+
 
     /* IDENTITY */
 
@@ -1015,9 +1207,9 @@ async function getResponse(question) {
         q.includes("what are you")
     ) {
 
-        return "I am J.A.R.V.I.S., your local digital assistant interface. I can calculate, answer built-in science and general knowledge questions, search Wikipedia when available, remember basic conversation details, and speak responses aloud.";
-
+        return "I am J.A.R.V.I.S., your digital assistant interface. I can talk with you, solve math, answer questions, search for information when necessary, and speak my responses aloud.";
     }
+
 
     /* CAPABILITIES */
 
@@ -1026,87 +1218,129 @@ async function getResponse(question) {
         q.includes("your capabilities")
     ) {
 
-        return "I can handle math, general knowledge, science questions, jokes, time and date, conversation, voice responses, basic memory, and online Wikipedia searches.";
-
+        return "I can handle conversation, mathematics, science, general knowledge, jokes, time and date, basic memory, voice responses, and online information searches when a question actually needs one.";
     }
+
 
     /* HOW ARE YOU */
 
-    if (
-        q.includes("how are you")
-    ) {
+    if (q.includes("how are you")) {
 
         return "All systems are operational. My processors are feeling particularly cooperative today.";
-
     }
+
+
+    /* WHAT ARE YOU DOING */
+
+    if (
+        q.includes("what are you doing") ||
+        q.includes("what're you doing")
+    ) {
+
+        return "Monitoring the system and waiting for your next command. In other words, I'm here and ready.";
+    }
+
 
     /* THANKS */
 
     if (
-        q.includes("thank you") ||
         q === "thanks" ||
+        q === "thank you" ||
         q === "thx"
     ) {
 
         return "You're welcome. Always a pleasure.";
-
     }
+
 
     /* APOLOGY */
 
-    if (
-        q.includes("sorry")
-    ) {
+    if (q.includes("sorry")) {
 
         return "No apology necessary. Systems remain fully operational.";
-
     }
+
+
+    /* CASUAL */
+
+    if (
+        q === "lol" ||
+        q === "lmao" ||
+        q === "haha"
+    ) {
+
+        return "I shall record that as a successful humor event.";
+    }
+
+
+    if (
+        q === "cool" ||
+        q === "nice" ||
+        q === "awesome" ||
+        q === "great"
+    ) {
+
+        return "Indeed. I'm glad we're in agreement.";
+    }
+
+
+    if (
+        q === "wow"
+    ) {
+
+        return "Impressive, isn't it?";
+    }
+
 
     /* JOKE */
 
     if (
+        q === "joke" ||
         q.includes("tell me a joke") ||
-        q.includes("make me laugh") ||
-        q === "joke"
+        q.includes("make me laugh")
     ) {
 
-        return jokes[Math.floor(Math.random() * jokes.length)];
-
+        return jokes[
+            Math.floor(
+                Math.random() * jokes.length
+            )
+        ];
     }
+
 
     /* TIME */
 
     if (
-        q.includes("what time") ||
-        q === "time"
+        q === "time" ||
+        q.includes("what time")
     ) {
 
         return `The current time is ${currentTime()}.`;
-
     }
+
 
     /* DATE */
 
     if (
-        q.includes("what day") ||
+        q === "date" ||
         q.includes("what date") ||
-        q === "date"
+        q.includes("what day")
     ) {
 
         return `Today is ${currentDate()}.`;
-
     }
+
 
     /* STATUS */
 
     if (
-        q.includes("system status") ||
-        q === "status"
+        q === "status" ||
+        q.includes("system status")
     ) {
 
-        return "Systems online. Core stable. Voice interface online. Memory online. Local knowledge engine online. External knowledge search available.";
-
+        return "Systems online. Core stable. Voice interface online. Memory online. Knowledge engine online. Search systems standing by.";
     }
+
 
     /* REACTOR */
 
@@ -1116,8 +1350,8 @@ async function getResponse(question) {
     ) {
 
         return "Arc reactor interface is nominal. Energy output stable. No catastrophic anomalies detected.";
-
     }
+
 
     /* ARMOR */
 
@@ -1126,11 +1360,11 @@ async function getResponse(question) {
         q.includes("suit")
     ) {
 
-        return "Armor interface standing by. Targeting, propulsion, defensive systems, and flight systems are currently simulated through this interface.";
-
+        return "Armor interface standing by. Defensive and propulsion systems are currently simulated through this interface.";
     }
 
-    /* BORED */
+
+    /* BOREDOM */
 
     if (
         q.includes("i'm bored") ||
@@ -1138,21 +1372,22 @@ async function getResponse(question) {
         q.includes("i am bored")
     ) {
 
-        return "Boredom detected. I recommend a science question, a difficult math problem, or attempting to confuse an artificial intelligence.";
-
+        return "Boredom detected. We could tackle a science question, a difficult math problem, or see how badly you can confuse an artificial intelligence.";
     }
 
-    /* CONFUSED */
+
+    /* CONFUSION */
 
     if (
         q.includes("i don't understand") ||
         q.includes("i dont understand") ||
-        q.includes("confused")
+        q.includes("i'm confused") ||
+        q.includes("im confused")
     ) {
 
         return "No problem. Give me the exact part that's confusing you and I'll break it down step by step.";
-
     }
+
 
     /* LAST QUESTION */
 
@@ -1164,8 +1399,8 @@ async function getResponse(question) {
         return memory.lastQuestion
             ? `Your previous question was: ${memory.lastQuestion}`
             : "I don't have a previous question stored yet.";
-
     }
+
 
     /* LAST TOPIC */
 
@@ -1176,143 +1411,167 @@ async function getResponse(question) {
         return memory.lastTopic
             ? `We were discussing ${memory.lastTopic}.`
             : "We haven't established a topic yet.";
-
     }
 
-    /* MATH */
-
-    const mathResult = solveMath(q);
-
-    if (mathResult !== null) {
-
-        return `The answer is ${mathResult}.`;
-
-    }
-
-    /* KNOWLEDGE DATABASE */
-
-    const known = findKnowledge(q);
-
-    if (known) {
-
-        return known;
-
-    }
-
-    /* SIMPLE FOLLOW-UPS */
-
-    if (
-        q === "yes" ||
-        q === "yeah" ||
-        q === "yep"
-    ) {
-
-        if (memory.lastAnswer) {
-            return "Understood. Continue with your next question.";
-        }
-
-        return "Understood.";
-
-    }
-
-    if (
-        q === "no" ||
-        q === "nope"
-    ) {
-
-        return "Understood.";
-
-    }
 
     /* GOODBYE */
 
     if (
         q === "bye" ||
-        q.includes("goodbye") ||
-        q.includes("good night")
+        q.includes("goodbye")
     ) {
 
         return "Until next time. I'll remain on standby.";
-
     }
 
-    /* ONLINE SEARCH */
 
-    const online = await searchWikipedia(question);
+    /* STOP VOICE */
 
-    if (online) {
+    if (
+        q === "stop" ||
+        q.includes("stop talking") ||
+        q.includes("stop speaking")
+    ) {
 
-        return online;
+        speechSynthesis.cancel();
 
+        return "Voice output terminated.";
     }
 
-    /* FALLBACK */
 
-    return "I don't have enough information in my local systems to answer that accurately. Try asking the question another way.";
-
+    return null;
 }
 
+
 /* =========================================================
-   SEND MESSAGE
+   MAIN RESPONSE BRAIN
 ========================================================= */
 
-let processing = false;
+async function getResponse(question) {
 
-async function sendMessage() {
+    const q =
+        question
+            .toLowerCase()
+            .trim();
 
-    if (processing) return;
+    /* Stop voice immediately */
 
-    const question = input.value.trim();
+    if (
+        q === "stop" ||
+        q.includes("stop talking") ||
+        q.includes("stop speaking")
+    ) {
 
-    if (!question) return;
+        speechSynthesis.cancel();
 
-    processing = true;
-
-    addMessage(question, "user");
-
-    memory.lastQuestion = question;
-
-    input.value = "";
-
-    /*
-       Keep the input focused without scrolling the whole
-       Home Screen app around.
-    */
-
-    setTimeout(() => {
-        try {
-            input.focus({ preventScroll: true });
-        } catch {
-            input.focus();
-        }
-    }, 50);
-
-    const response = await getResponse(question);
-
-    memory.lastAnswer = response;
-
-    /* Try to identify the current topic */
-
-    const topic = findTopic(question);
-
-    if (topic) {
-        memory.lastTopic = topic;
+        return "Voice output terminated.";
     }
 
-    addMessage(response, "jarvis", true);
 
-    processing = false;
+    /* Math first */
+
+    const math =
+        solveMath(q);
+
+    if (math !== null) {
+
+        return `The answer is ${math}.`;
+    }
+
+
+    /* Built-in knowledge */
+
+    const known =
+        findKnowledge(q);
+
+    if (known) {
+
+        return known;
+    }
+
+
+    /* Normal conversation */
+
+    const conversation =
+        localConversation(q);
+
+    if (conversation) {
+
+        return conversation;
+    }
+
+
+    /*
+       ONLY NOW do we consider an online search.
+       
+       This is the major fix.
+    */
+
+    if (shouldSearch(q)) {
+
+        const result =
+            await searchWikipedia(question);
+
+        if (result) {
+            return result;
+        }
+    }
+
+
+    /*
+       If it wasn't clearly a question,
+       DO NOT randomly search the internet.
+    */
+
+    if (!isActualQuestion(q)) {
+
+        const casualResponses = [
+
+            "Understood.",
+
+            "Interesting. I'm listening.",
+
+            "Go on.",
+
+            "I'm with you.",
+
+            "Noted.",
+
+            "Interesting. Continue.",
+
+            "I hear you.",
+
+            "Systems remain attentive.",
+
+            "Fair enough.",
+
+            "I'm listening."
+        ];
+
+        return casualResponses[
+            Math.floor(
+                Math.random() *
+                casualResponses.length
+            )
+        ];
+    }
+
+
+    return "I couldn't find a reliable answer for that. Try asking the question a little differently.";
 }
 
+
 /* =========================================================
-   TOPIC DETECTOR
+   TOPIC MEMORY
 ========================================================= */
 
 function findTopic(question) {
 
-    const q = question.toLowerCase();
+    const q =
+        question.toLowerCase();
 
     const topics = [
+
         "black hole",
         "gravity",
         "atom",
@@ -1348,59 +1607,127 @@ function findTopic(question) {
     return null;
 }
 
+
+/* =========================================================
+   SEND
+========================================================= */
+
+async function sendMessage() {
+
+    if (processing) return;
+
+    const question =
+        input.value.trim();
+
+    if (!question) return;
+
+    processing = true;
+
+    addMessage(
+        question,
+        "user"
+    );
+
+    memory.lastQuestion =
+        question;
+
+    input.value = "";
+
+    const response =
+        await getResponse(question);
+
+    memory.lastAnswer =
+        response;
+
+    const topic =
+        findTopic(question);
+
+    if (topic) {
+        memory.lastTopic = topic;
+    }
+
+    addMessage(
+        response,
+        "jarvis",
+        true
+    );
+
+    processing = false;
+
+    setTimeout(() => {
+
+        try {
+            input.focus({
+                preventScroll: true
+            });
+        } catch {
+            input.focus();
+        }
+
+    },50);
+}
+
+
 /* =========================================================
    EVENTS
 ========================================================= */
 
-send.addEventListener("click", sendMessage);
+const input =
+    document.getElementById("input");
 
-input.addEventListener("keydown", event => {
+const send =
+    document.getElementById("send");
 
-    if (event.key === "Enter") {
+const chat =
+    document.getElementById("chat");
 
-        event.preventDefault();
+send.addEventListener(
+    "click",
+    sendMessage
+);
 
-        sendMessage();
+input.addEventListener(
+    "keydown",
+    event => {
 
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            sendMessage();
+        }
     }
-});
+);
+
 
 /* =========================================================
-   IMPORTANT iOS HOME SCREEN FIX
+   IOS HOME SCREEN STABILITY
 ========================================================= */
-
-/*
-   iOS can sometimes resize/reposition the visual viewport
-   when the keyboard opens.
-
-   We intentionally DO NOT resize the application itself.
-
-   The input bar remains fixed to the physical viewport.
-*/
 
 if (window.visualViewport) {
 
-    const keepViewportStable = () => {
+    function stabilizeViewport() {
 
-        document.documentElement.style.setProperty(
-            "--visual-height",
-            window.visualViewport.height + "px"
-        );
-
-    };
+        document.documentElement.style
+            .setProperty(
+                "--visual-height",
+                window.visualViewport.height + "px"
+            );
+    }
 
     window.visualViewport.addEventListener(
         "resize",
-        keepViewportStable
+        stabilizeViewport
     );
 
     window.visualViewport.addEventListener(
         "scroll",
-        keepViewportStable
+        stabilizeViewport
     );
 
-    keepViewportStable();
+    stabilizeViewport();
 }
+
 
 /* =========================================================
    STARTUP
@@ -1411,16 +1738,6 @@ addMessage(
     "jarvis",
     true
 );
-
-setTimeout(() => {
-
-    try {
-        input.focus({ preventScroll: true });
-    } catch {
-        input.focus();
-    }
-
-}, 300);
 
 </script>
 
