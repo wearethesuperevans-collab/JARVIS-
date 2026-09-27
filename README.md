@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>J.A.R.V.I.S.</title>
 
 <style>
@@ -10,7 +10,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -24,31 +25,44 @@ body {
     background:
         linear-gradient(rgba(0,220,255,.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,220,255,.035) 1px, transparent 1px),
-        radial-gradient(circle at center, #06202b 0%, #02080c 42%, #000 80%);
+        radial-gradient(circle at center, #06202b 0%, #02080c 42%, #000 82%);
     background-size: 35px 35px, 35px 35px, auto;
 }
 
 .app {
     width: 100%;
     height: 100%;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .header {
-    height: 72px;
+    height: 70px;
+    min-height: 70px;
+
     border-bottom: 1px solid rgba(0,234,255,.45);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 0 20px;
-    background: rgba(0,15,22,.75);
+
+    background: rgba(0,15,22,.82);
+
+    flex-shrink: 0;
 }
 
 .title {
     font-size: 25px;
     font-weight: 800;
     letter-spacing: 5px;
+
     text-shadow:
         0 0 8px #00eaff,
         0 0 20px rgba(0,234,255,.6);
@@ -60,27 +74,41 @@ body {
     letter-spacing: 2px;
 }
 
+/* =========================
+   MAIN
+========================= */
+
 .main {
     flex: 1;
+    min-height: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 0;
 }
 
+/* =========================
+   CORE
+========================= */
+
 .coreArea {
-    height: 300px;
     width: 100%;
+    height: 245px;
+    min-height: 245px;
+
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
     flex-shrink: 0;
 }
 
 .core {
     width: 190px;
     height: 190px;
+
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,7 +117,9 @@ body {
 .ring {
     position: absolute;
     border-radius: 50%;
+
     border: 2px solid rgba(0,234,255,.7);
+
     box-shadow:
         0 0 10px rgba(0,234,255,.5),
         inset 0 0 10px rgba(0,234,255,.15);
@@ -103,6 +133,7 @@ body {
 .r2 {
     width: 145px;
     height: 145px;
+
     border-style: dashed;
     opacity: .75;
 }
@@ -110,37 +141,91 @@ body {
 .r3 {
     width: 105px;
     height: 105px;
+
     border-width: 3px;
 }
 
 .coreLight {
     width: 58px;
     height: 58px;
+
     border-radius: 50%;
+
     background: #8fffff;
+
     box-shadow:
         0 0 12px #00eaff,
         0 0 30px #00eaff,
         0 0 60px rgba(0,234,255,.9);
 }
 
+/* =========================
+   CHAT
+========================= */
+
 .chat {
     width: min(900px, 94%);
+
     flex: 1;
-    min-height: 100px;
+    min-height: 0;
+
     overflow-y: auto;
-    padding: 10px 5px 20px;
-    scrollbar-width: thin;
-    scrollbar-color: #00dff5 transparent;
+    overflow-x: hidden;
+
+    /*
+       Makes scrolling much easier
+       on iPad touch screens.
+    */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+
+    /*
+       Gives messages breathing room.
+    */
+    padding: 8px 10px 35px;
+
+    /*
+       Keeps scrollbar visible.
+    */
+    scrollbar-width: auto;
+    scrollbar-color: #00eaff rgba(0,25,35,.7);
+}
+
+.chat::-webkit-scrollbar {
+    width: 11px;
+}
+
+.chat::-webkit-scrollbar-track {
+    background: rgba(0,20,30,.7);
+    border-radius: 12px;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background: #00eaff;
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 8px rgba(0,234,255,.7);
+}
+
+.chat::-webkit-scrollbar-thumb:active {
+    background: #9fffff;
 }
 
 .message {
     margin: 10px 0;
-    padding: 12px 15px;
+
+    padding: 13px 15px;
+
     border-left: 2px solid #00eaff;
-    background: rgba(0,30,40,.45);
-    line-height: 1.45;
+
+    background: rgba(0,30,40,.48);
+
+    line-height: 1.5;
+
     border-radius: 0 8px 8px 0;
+
+    overflow-wrap: anywhere;
 }
 
 .user {
@@ -150,48 +235,96 @@ body {
 
 .jarvis {
     color: #8ffaff;
-    text-shadow: 0 0 6px rgba(0,234,255,.3);
+
+    text-shadow:
+        0 0 6px rgba(0,234,255,.3);
 }
+
+/* =========================
+   INPUT AREA
+========================= */
 
 .controls {
     width: min(900px, 94%);
+
     display: flex;
-    gap: 8px;
-    padding: 12px 0 18px;
+    gap: 9px;
+
+    /*
+       This is what moves the bar
+       higher above the bottom.
+    */
+    margin-bottom: 35px;
+
+    /*
+       Extra space above the bar.
+    */
+    padding-top: 12px;
+
     flex-shrink: 0;
 }
 
 #input {
     flex: 1;
     min-width: 0;
-    padding: 14px;
-    border: 1px solid rgba(0,234,255,.6);
-    border-radius: 8px;
+
+    height: 52px;
+
+    padding: 0 15px;
+
+    border: 1px solid rgba(0,234,255,.65);
+    border-radius: 9px;
+
     outline: none;
-    background: rgba(0,15,22,.9);
+
+    background: rgba(0,15,22,.94);
+
     color: white;
+
     font-size: 16px;
+
+    -webkit-appearance: none;
 }
 
 #input:focus {
-    box-shadow: 0 0 12px rgba(0,234,255,.3);
+    border-color: #00eaff;
+
+    box-shadow:
+        0 0 12px rgba(0,234,255,.3);
 }
 
 button {
-    padding: 0 18px;
+    height: 52px;
+
+    padding: 0 19px;
+
     border: 1px solid #00eaff;
-    border-radius: 8px;
-    background: rgba(0,50,65,.7);
+    border-radius: 9px;
+
+    background: rgba(0,50,65,.75);
+
     color: #00eaff;
+
     font-weight: bold;
+
     cursor: pointer;
+
+    flex-shrink: 0;
 }
 
 button:active {
     background: rgba(0,234,255,.25);
 }
 
-@media(max-width:600px) {
+/* =========================
+   IPAD / SMALL SCREENS
+========================= */
+
+@media(max-width:700px) {
+
+    .header {
+        padding: 0 15px;
+    }
 
     .title {
         font-size: 19px;
@@ -200,14 +333,42 @@ button:active {
 
     .status {
         font-size: 9px;
+        letter-spacing: 1px;
     }
 
     .coreArea {
-        height: 235px;
+        height: 205px;
+        min-height: 205px;
     }
 
     .core {
-        transform: scale(.78);
+        transform: scale(.72);
+    }
+
+    .controls {
+        width: 94%;
+
+        /*
+           Still comfortably above
+           the bottom edge.
+        */
+        margin-bottom: 30px;
+
+        padding-top: 10px;
+    }
+
+    #input {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    button {
+        height: 50px;
+        padding: 0 16px;
+    }
+
+    .chat {
+        padding-bottom: 30px;
     }
 }
 </style>
@@ -236,17 +397,20 @@ button:active {
         <div id="chat" class="chat"></div>
 
         <div class="controls">
+
             <input
                 id="input"
+                type="text"
                 autocomplete="off"
                 placeholder="Speak to JARVIS..."
-                type="text"
             >
 
             <button id="send">SEND</button>
+
         </div>
 
     </div>
+
 </div>
 
 <script>
@@ -280,7 +444,7 @@ const memory = {
 
 
 /* =========================================================
-   NORMALIZATION
+   NORMALIZE
 ========================================================= */
 
 function normalize(text) {
@@ -295,7 +459,7 @@ function normalize(text) {
 
 
 /* =========================================================
-   CHAT
+   CHAT MESSAGE
 ========================================================= */
 
 function addMessage(text, who) {
@@ -312,6 +476,9 @@ function addMessage(text, who) {
 
     chat.appendChild(div);
 
+    /*
+       Always move to newest message.
+    */
     chat.scrollTop = chat.scrollHeight;
 
     return div;
@@ -332,12 +499,12 @@ function speak(text) {
 
         speechSynthesis.cancel();
 
-        const voice =
+        const utterance =
             new SpeechSynthesisUtterance(text);
 
-        voice.rate = 0.86;
-        voice.pitch = 0.72;
-        voice.volume = 1;
+        utterance.rate = 0.86;
+        utterance.pitch = 0.72;
+        utterance.volume = 1;
 
         const voices =
             speechSynthesis.getVoices();
@@ -345,14 +512,14 @@ function speak(text) {
         const preferred =
             voices.find(v =>
                 /Daniel|Alex|Arthur|George|Ryan|Google UK English Male/i
-                    .test(v.name)
+                .test(v.name)
             );
 
         if (preferred) {
-            voice.voice = preferred;
+            utterance.voice = preferred;
         }
 
-        speechSynthesis.speak(voice);
+        speechSynthesis.speak(utterance);
 
     } catch (error) {}
 }
@@ -369,23 +536,23 @@ function stopVoice() {
 
 
 /* =========================================================
-   MATH ENGINE
-   IMPORTANT: MATH NEVER GOES TO SEARCH.
+   MATH
+   NEVER SEARCHES
 ========================================================= */
 
 function solveMath(text) {
 
     let expression = normalize(text);
 
-    const hasMathWords =
+    const mathWords =
         /\b(plus|minus|times|multiplied|divided|over|squared|cubed|square root|sqrt|percent)\b/i
         .test(expression);
 
-    const hasMathSymbols =
+    const mathSymbols =
         /[0-9]\s*[\+\-\*\/\%\^×÷]\s*[0-9]/
         .test(expression);
 
-    if (!hasMathWords && !hasMathSymbols) {
+    if (!mathWords && !mathSymbols) {
         return null;
     }
 
@@ -415,13 +582,13 @@ function solveMath(text) {
 
     expression =
         expression.replace(
-            /(\d+(?:\.\d+)?)\s*(?:squared)/gi,
+            /(\d+(?:\.\d+)?)\s+squared/gi,
             "($1**2)"
         );
 
     expression =
         expression.replace(
-            /(\d+(?:\.\d+)?)\s*(?:cubed)/gi,
+            /(\d+(?:\.\d+)?)\s+cubed/gi,
             "($1**3)"
         );
 
@@ -443,15 +610,11 @@ function solveMath(text) {
             "Math.PI"
         );
 
-    /*
-       Reject anything that isn't mathematical syntax.
-    */
-
-    const allowed =
+    const safe =
         /^[0-9+\-*/().\s]*$/.test(expression) ||
         /^Math\.(sqrt|PI)[0-9+\-*/().\s]*$/.test(expression);
 
-    if (!allowed) {
+    if (!safe) {
         return null;
     }
 
@@ -474,14 +637,9 @@ function solveMath(text) {
         const rounded =
             Number(result.toFixed(10));
 
-        return (
-            "The answer is " +
-            rounded +
-            "."
-        );
+        return "The answer is " + rounded + ".";
 
     } catch (error) {
-
         return null;
     }
 }
@@ -496,13 +654,13 @@ const knowledge = [
 {
     keys: ["black hole", "black holes"],
     answer:
-    "A black hole is a region of spacetime where gravity is so strong that, beyond its event horizon, nothing can escape to the outside, including light. Black holes can form from the collapse of massive stars, while supermassive black holes exist at the centers of galaxies."
+    "A black hole is a region of spacetime where gravity is so strong that beyond its event horizon, nothing can escape to the outside, including light. Black holes can form from the collapse of massive stars, while supermassive black holes exist at the centers of galaxies."
 },
 
 {
     keys: ["gravity"],
     answer:
-    "Gravity is the interaction that causes objects with mass or energy to attract one another. On Earth, gravity pulls objects toward the planet's center and helps keep the Moon in orbit."
+    "Gravity is the interaction that causes objects with mass or energy to attract one another. Earth's gravity pulls objects toward the planet's center and helps keep the Moon in orbit."
 },
 
 {
@@ -514,13 +672,37 @@ const knowledge = [
 {
     keys: ["dna"],
     answer:
-    "DNA is the molecule that stores genetic information in living organisms. The sequence of its chemical bases carries biological instructions used by cells."
+    "DNA is the molecule that stores genetic information in living organisms. Its sequence carries biological instructions used by cells."
 },
 
 {
     keys: ["photosynthesis"],
     answer:
     "Photosynthesis is the process by which plants, algae and some microorganisms convert light energy into chemical energy. Plants generally use carbon dioxide and water and release oxygen."
+},
+
+{
+    keys: ["evolution"],
+    answer:
+    "Biological evolution is the change in inherited characteristics of populations across generations. Natural selection is one mechanism that can produce evolutionary change."
+},
+
+{
+    keys: ["solar system"],
+    answer:
+    "The Solar System consists of the Sun and the objects gravitationally bound to it, including eight planets, dwarf planets, moons, asteroids and comets."
+},
+
+{
+    keys: ["speed of light"],
+    answer:
+    "Light travels through a vacuum at approximately 299,792 kilometers per second."
+},
+
+{
+    keys: ["relativity"],
+    answer:
+    "Einstein's theories of relativity describe relationships between space, time, motion, gravity and energy. Special relativity concerns high-speed motion, while general relativity describes gravity through curved spacetime."
 },
 
 {
@@ -590,30 +772,6 @@ const knowledge = [
 },
 
 {
-    keys: ["solar system"],
-    answer:
-    "The Solar System consists of the Sun and the objects gravitationally bound to it, including eight planets, dwarf planets, moons, asteroids and comets."
-},
-
-{
-    keys: ["speed of light"],
-    answer:
-    "Light travels through a vacuum at approximately 299,792 kilometers per second."
-},
-
-{
-    keys: ["relativity"],
-    answer:
-    "Einstein's theories of relativity describe relationships between space, time, motion, gravity and energy. Special relativity concerns high-speed motion, while general relativity describes gravity through curved spacetime."
-},
-
-{
-    keys: ["evolution"],
-    answer:
-    "Biological evolution is the change in inherited characteristics of populations across generations. Natural selection is one mechanism that can produce evolutionary change."
-},
-
-{
     keys: ["chemistry"],
     answer:
     "Chemistry is the study of matter, including its composition, properties, structure and the reactions through which substances change."
@@ -647,7 +805,7 @@ const knowledge = [
 
 
 /* =========================================================
-   BUILT-IN KNOWLEDGE MATCHING
+   LOCAL KNOWLEDGE
 ========================================================= */
 
 function builtInKnowledge(text) {
@@ -720,7 +878,7 @@ const jokes = [
 
 
 /* =========================================================
-   LOCAL CONVERSATION
+   CONVERSATION
 ========================================================= */
 
 function conversation(text) {
@@ -742,7 +900,8 @@ function conversation(text) {
 
     if (nameMatch) {
 
-        memory.name = nameMatch[1];
+        memory.name =
+            nameMatch[1];
 
         return (
             "Understood. I'll address you as " +
@@ -755,7 +914,6 @@ function conversation(text) {
         /\bwhat('?s| is) my name\b/.test(t) ||
         /\bdo you know my name\b/.test(t)
     ) {
-
         return memory.name
             ? "Your name is " + memory.name + "."
             : "You haven't given me your name yet.";
@@ -885,10 +1043,9 @@ function conversation(text) {
         /\b(tell me more|more about that|go on|continue|explain more)\b/.test(t)
     ) {
 
-        if (memory.lastAnswer) {
-
+        if (memory.lastTopic) {
             return (
-                "Certainly. The previous topic was " +
+                "Certainly. We were discussing " +
                 memory.lastTopic +
                 ". Tell me which part you'd like expanded."
             );
@@ -900,7 +1057,6 @@ function conversation(text) {
     if (
         /\b(what did i ask|what was my question|what did i just say)\b/.test(t)
     ) {
-
         return memory.lastQuestion
             ? "Your previous question was: " +
               memory.lastQuestion
@@ -912,7 +1068,7 @@ function conversation(text) {
 
 
 /* =========================================================
-   QUESTION DETECTION
+   KNOWLEDGE QUESTION CHECK
 ========================================================= */
 
 function isKnowledgeQuestion(text) {
@@ -924,96 +1080,103 @@ function isKnowledgeQuestion(text) {
     }
 
     if (
-        /\b(what is|what are|who is|who was|where is|where was|when did|when was|why is|why are|why does|why do|why did|how does|how do|how did|how can|explain|tell me about|describe)\b/
-        .test(t)
+        /\b(
+            what is|
+            what are|
+            who is|
+            who was|
+            where is|
+            where was|
+            when did|
+            when was|
+            why is|
+            why are|
+            why does|
+            why do|
+            why did|
+            how does|
+            how do|
+            how did|
+            how can|
+            explain|
+            tell me about|
+            describe
+        )\b/ix.test(t)
     ) {
         return true;
     }
 
-    if (t.endsWith("?")) {
-        return true;
-    }
-
-    return false;
+    return t.endsWith("?");
 }
 
 
 /* =========================================================
-   REMOVE QUESTION FILLER
+   SEARCH QUERY
 ========================================================= */
 
 function makeSearchQuery(question) {
 
-    let q = normalize(question);
+    let q =
+        normalize(question);
 
-    q = q
-        .replace(
+    q =
+        q.replace(
             /^(hey|hi|hello|jarvis|please|can you|could you|would you)\s+/,
             ""
-        )
-        .replace(
-            /^(tell me|tell me about|explain|describe)\s+/,
-            ""
-        )
-        .trim();
+        );
 
-    /*
-       Keep important question words.
-       We DON'T reduce everything to one keyword.
-       The complete subject + relationship matters.
-    */
-
-    return q;
+    return q.trim();
 }
 
 
 /* =========================================================
-   TOKENIZE
+   TOKENS
 ========================================================= */
 
 function tokens(text) {
 
-    const stopWords = new Set([
-        "what",
-        "what's",
-        "whats",
-        "is",
-        "are",
-        "was",
-        "were",
-        "the",
-        "a",
-        "an",
-        "of",
-        "to",
-        "in",
-        "on",
-        "for",
-        "and",
-        "or",
-        "do",
-        "does",
-        "did",
-        "how",
-        "why",
-        "who",
-        "where",
-        "when",
-        "can",
-        "could",
-        "would",
-        "tell",
-        "me",
-        "about",
-        "please",
-        "you",
-        "your",
-        "it",
-        "they",
-        "them",
-        "this",
-        "that"
-    ]);
+    const stopWords =
+        new Set([
+            "what",
+            "whats",
+            "what's",
+            "is",
+            "are",
+            "was",
+            "were",
+            "the",
+            "a",
+            "an",
+            "of",
+            "to",
+            "in",
+            "on",
+            "for",
+            "and",
+            "or",
+            "do",
+            "does",
+            "did",
+            "how",
+            "why",
+            "who",
+            "where",
+            "when",
+            "can",
+            "could",
+            "would",
+            "tell",
+            "me",
+            "about",
+            "please",
+            "you",
+            "your",
+            "it",
+            "they",
+            "them",
+            "this",
+            "that"
+        ]);
 
     return normalize(text)
         .replace(/[?!.:,;()]/g, " ")
@@ -1026,17 +1189,13 @@ function tokens(text) {
 
 
 /* =========================================================
-   RELEVANCE SCORING
+   SOURCE RELEVANCE
 ========================================================= */
 
 function relevanceScore(question, result) {
 
-    const questionTokens =
+    const qTokens =
         tokens(question);
-
-    if (questionTokens.length === 0) {
-        return 0;
-    }
 
     const title =
         normalize(result.title || "");
@@ -1052,47 +1211,34 @@ function relevanceScore(question, result) {
         );
 
     const combined =
-        title + " " +
-        description + " " +
+        title +
+        " " +
+        description +
+        " " +
         excerpt;
 
-    const words =
-        new Set(tokens(combined));
-
     let score = 0;
+    let matched = 0;
 
-    for (const token of questionTokens) {
+    for (const token of qTokens) {
 
-        if (words.has(token)) {
+        if (combined.includes(token)) {
             score += 1;
+            matched++;
         }
-
-        /*
-           Title matches are much more important.
-        */
 
         if (title.includes(token)) {
-            score += 3;
+            score += 4;
         }
-
-        /*
-           Description matches are stronger than
-           ordinary excerpt matches.
-        */
 
         if (description.includes(token)) {
             score += 2;
         }
+
+        if (excerpt.includes(token)) {
+            score += 1;
+        }
     }
-
-    /*
-       Reward multiple independent matches.
-    */
-
-    const matched =
-        questionTokens.filter(token =>
-            combined.includes(token)
-        ).length;
 
     if (matched >= 2) {
         score += 3;
@@ -1111,7 +1257,7 @@ function relevanceScore(question, result) {
 
 
 /* =========================================================
-   SEARCH WIKIPEDIA
+   WIKIPEDIA SOURCE SEARCH
 ========================================================= */
 
 async function searchWikipedia(question) {
@@ -1125,21 +1271,19 @@ async function searchWikipedia(question) {
 
     try {
 
-        /*
-           Wikimedia's REST search endpoint returns
-           multiple pages instead of us blindly taking
-           the first result.
-        */
-
-        const url =
-            "https://en.wikipedia.org/w/rest.php/v1/search/page?" +
+        const searchURL =
+            "https://en.wikipedia.org/w/api.php?" +
             new URLSearchParams({
-                q: query,
-                limit: "10"
+                action: "query",
+                list: "search",
+                srsearch: query,
+                srlimit: "10",
+                format: "json",
+                origin: "*"
             });
 
         const response =
-            await fetch(url);
+            await fetch(searchURL);
 
         if (!response.ok) {
             return null;
@@ -1148,35 +1292,36 @@ async function searchWikipedia(question) {
         const data =
             await response.json();
 
-        const pages =
-            Array.isArray(data.pages)
-                ? data.pages
+        const results =
+            data &&
+            data.query &&
+            Array.isArray(data.query.search)
+                ? data.query.search
                 : [];
 
-        if (pages.length === 0) {
+        if (results.length === 0) {
             return null;
         }
 
-        /*
-           Score EVERY result.
-        */
-
         const scored =
-            pages.map(page => ({
-                ...page,
+            results.map(result => ({
+                title: result.title || "",
+                description: "",
+                excerpt: result.snippet || "",
                 relevance:
-                    relevanceScore(question, page)
+                    relevanceScore(
+                        question,
+                        {
+                            title: result.title,
+                            excerpt: result.snippet
+                        }
+                    )
             }));
 
         scored.sort(
             (a, b) =>
                 b.relevance - a.relevance
         );
-
-        /*
-           The best result must actually have
-           meaningful overlap with the question.
-        */
 
         const best =
             scored[0];
@@ -1186,8 +1331,8 @@ async function searchWikipedia(question) {
         }
 
         /*
-           If the top result barely beats the
-           second result, require more confidence.
+           Require a meaningful lead over
+           an equally plausible result.
         */
 
         const second =
@@ -1195,128 +1340,70 @@ async function searchWikipedia(question) {
 
         if (
             second &&
-            best.relevance < 8 &&
+            best.relevance < 9 &&
             best.relevance - second.relevance < 2
         ) {
             return null;
         }
 
-        /*
-           Fetch the best article.
-        */
-
         const title =
             best.title;
 
-        if (!title) {
-            return null;
-        }
-
-        const pageURL =
-            "https://en.wikipedia.org/w/rest.php/v1/page/" +
+        const summaryURL =
+            "https://en.wikipedia.org/api/rest_v1/page/summary/" +
             encodeURIComponent(title);
 
-        const pageResponse =
-            await fetch(pageURL);
+        const summaryResponse =
+            await fetch(summaryURL);
 
-        if (!pageResponse.ok) {
+        if (!summaryResponse.ok) {
             return null;
         }
 
-        const pageData =
-            await pageResponse.json();
+        const summary =
+            await summaryResponse.json();
 
-        /*
-           Different versions of the API can expose
-           content differently, so check several fields.
-        */
+        let article =
+            summary.extract || "";
 
-        let articleText = "";
-
-        if (
-            typeof pageData.source === "string"
-        ) {
-            articleText =
-                pageData.source;
-        }
-
-        if (
-            !articleText &&
-            typeof pageData.extract === "string"
-        ) {
-            articleText =
-                pageData.extract;
-        }
-
-        /*
-           If full article content isn't available,
-           use the summary endpoint.
-        */
-
-        if (!articleText) {
-
-            const summaryURL =
-                "https://en.wikipedia.org/api/rest_v1/page/summary/" +
-                encodeURIComponent(title);
-
-            const summaryResponse =
-                await fetch(summaryURL);
-
-            if (summaryResponse.ok) {
-
-                const summary =
-                    await summaryResponse.json();
-
-                articleText =
-                    summary.extract || "";
-            }
-        }
-
-        if (!articleText) {
+        if (!article) {
             return null;
         }
 
         /*
-           Make sure the actual article still
-           contains relevant question terms.
+           Verify the returned article against
+           the question one more time.
         */
 
-        const articleScore =
+        const finalScore =
             relevanceScore(
                 question,
                 {
                     title: title,
-                    description:
-                        best.description || "",
-                    excerpt:
-                        articleText.substring(0, 3000)
+                    excerpt: article
                 }
             );
 
-        if (articleScore < 5) {
+        if (finalScore < 5) {
             return null;
         }
 
-        /*
-           Return only a useful amount.
-        */
-
-        articleText =
-            articleText
+        article =
+            article
                 .replace(/\s+/g, " ")
                 .trim();
 
-        if (articleText.length > 1800) {
+        if (article.length > 1800) {
 
-            articleText =
-                articleText.substring(0, 1800);
+            article =
+                article.substring(0, 1800);
 
             const lastSpace =
-                articleText.lastIndexOf(" ");
+                article.lastIndexOf(" ");
 
             if (lastSpace > 900) {
-                articleText =
-                    articleText.substring(
+                article =
+                    article.substring(
                         0,
                         lastSpace
                     ) + "...";
@@ -1325,8 +1412,8 @@ async function searchWikipedia(question) {
 
         return {
             title: title,
-            text: articleText,
-            score: articleScore
+            text: article,
+            score: finalScore
         };
 
     } catch (error) {
@@ -1337,7 +1424,7 @@ async function searchWikipedia(question) {
 
 
 /* =========================================================
-   SEARCH ANSWER
+   KNOWLEDGE ANSWER
 ========================================================= */
 
 async function knowledgeAnswer(question) {
@@ -1349,12 +1436,6 @@ async function knowledgeAnswer(question) {
         return null;
     }
 
-    /*
-       The answer explicitly identifies the
-       matching subject so JARVIS doesn't sound
-       like it is answering a different question.
-    */
-
     return (
         "Regarding " +
         result.title +
@@ -1365,56 +1446,43 @@ async function knowledgeAnswer(question) {
 
 
 /* =========================================================
-   MASTER ANSWER ENGINE
+   MASTER ANSWER
 ========================================================= */
 
 async function answer(question) {
 
     /*
-       PRIORITY ORDER
-
-       1. Math
-       2. Conversation
-       3. Built-in knowledge
-       4. Verified search
-       5. Honest fallback
-
-       This prevents ordinary conversation from
-       accidentally triggering search.
+       1. MATH
+       2. CONVERSATION
+       3. BUILT-IN KNOWLEDGE
+       4. VERIFIED SEARCH
+       5. HONEST FALLBACK
     */
 
-    const mathAnswer =
+    const math =
         solveMath(question);
 
-    if (mathAnswer) {
-        return mathAnswer;
+    if (math) {
+        return math;
     }
 
-
-    const localConversation =
+    const conversationAnswer =
         conversation(question);
 
-    if (localConversation) {
-        return localConversation;
+    if (conversationAnswer) {
+        return conversationAnswer;
     }
 
-
-    const localKnowledge =
+    const builtIn =
         builtInKnowledge(question);
 
-    if (localKnowledge) {
+    if (builtIn) {
 
         memory.lastTopic =
             makeSearchQuery(question);
 
-        return localKnowledge;
+        return builtIn;
     }
-
-
-    /*
-       Only actual knowledge questions reach
-       the search engine.
-    */
 
     if (isKnowledgeQuestion(question)) {
 
@@ -1430,11 +1498,6 @@ async function answer(question) {
         }
     }
 
-
-    /*
-       Don't invent an answer.
-    */
-
     return (
         "I don't have enough verified information " +
         "to answer that accurately yet. " +
@@ -1444,7 +1507,7 @@ async function answer(question) {
 
 
 /* =========================================================
-   SEND
+   SEND MESSAGE
 ========================================================= */
 
 async function sendMessage() {
