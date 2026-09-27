@@ -4,15 +4,12 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width,
-      initial-scale=1,
-      viewport-fit=cover,
-      maximum-scale=1,
+      content="width=device-width, initial-scale=1,
+      viewport-fit=cover, maximum-scale=1,
       user-scalable=no">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="mobile-web-app-capable" content="yes">
 
 <title>J.A.R.V.I.S.</title>
 
@@ -40,7 +37,9 @@ body {
     overscroll-behavior: none;
 }
 
-/* APP */
+/* =========================
+   APP
+========================= */
 
 .app {
     position: fixed;
@@ -68,9 +67,120 @@ body {
         28px 28px,
         28px 28px,
         auto;
+
+    transition:
+        background .5s ease,
+        color .5s ease;
 }
 
-/* HEADER */
+/* =========================
+   COMBAT MODE
+========================= */
+
+.app.combat {
+    color: #ff3030;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(255,0,0,.16),
+            transparent 45%),
+        linear-gradient(
+            rgba(255,0,0,.035) 1px,
+            transparent 1px),
+        linear-gradient(
+            90deg,
+            rgba(255,0,0,.035) 1px,
+            transparent 1px),
+        #000;
+}
+
+.app.combat .header {
+    border-bottom-color: rgba(255,40,40,.45);
+}
+
+.app.combat .logo {
+    color: #ff3030;
+    text-shadow:
+        0 0 8px #ff2020,
+        0 0 20px rgba(255,0,0,.7);
+}
+
+.app.combat .status {
+    color: #ff3030;
+}
+
+.app.combat .status-dot {
+    background: #ff3030;
+    box-shadow: 0 0 10px #ff3030;
+}
+
+.app.combat .ring {
+    border-color: rgba(255,40,40,.45);
+    box-shadow:
+        0 0 15px rgba(255,0,0,.25),
+        inset 0 0 15px rgba(255,0,0,.15);
+}
+
+.app.combat .ring.one {
+    border-top-color: #ff2020;
+}
+
+.app.combat .ring.two {
+    border-right-color: #ff4040;
+}
+
+.app.combat .ring.three {
+    border-bottom-color: #ff0000;
+}
+
+.app.combat .coreOrb {
+    background:
+        radial-gradient(circle,
+            #fff 0%,
+            #ffaaaa 15%,
+            #ff2020 45%,
+            #a00000 70%,
+            transparent 72%);
+
+    box-shadow:
+        0 0 15px #ff2020,
+        0 0 40px #ff2020,
+        0 0 80px rgba(255,0,0,.8);
+}
+
+.app.combat .chat .jarvis {
+    border-left-color: #ff3030;
+}
+
+.app.combat .controls {
+    border-top-color: rgba(255,40,40,.45);
+}
+
+.app.combat #input {
+    border-color: rgba(255,40,40,.6);
+}
+
+.app.combat #input:focus {
+    border-color: #ff3030;
+    box-shadow:
+        0 0 12px rgba(255,0,0,.3);
+}
+
+.app.combat #mic,
+.app.combat #send {
+    border-color: #ff3030;
+    color: #ff3030;
+}
+
+.app.combat #mic.listening {
+    background: rgba(255,0,0,.3);
+    box-shadow:
+        0 0 18px rgba(255,0,0,.7);
+}
+
+/* =========================
+   HEADER
+========================= */
 
 .header {
     position: fixed;
@@ -89,9 +199,13 @@ body {
     padding-right: 20px;
 
     background: rgba(0,8,12,.94);
-    border-bottom: 1px solid rgba(0,234,255,.3);
+
+    border-bottom:
+        1px solid rgba(0,234,255,.3);
 
     z-index: 5000;
+
+    transition: border-color .5s ease;
 }
 
 .logo {
@@ -102,6 +216,10 @@ body {
     text-shadow:
         0 0 8px #00eaff,
         0 0 20px rgba(0,234,255,.6);
+
+    transition:
+        color .5s ease,
+        text-shadow .5s ease;
 }
 
 .status {
@@ -112,18 +230,27 @@ body {
 
 .status-dot {
     display: inline-block;
+
     width: 7px;
     height: 7px;
+
     margin-right: 6px;
+
     border-radius: 50%;
+
     background: #00ff88;
-    box-shadow: 0 0 10px #00ff88;
+
+    box-shadow:
+        0 0 10px #00ff88;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .main {
     position: absolute;
+
     top: 68px;
     left: 0;
     right: 0;
@@ -135,7 +262,9 @@ body {
     overflow: hidden;
 }
 
-/* REACTOR */
+/* =========================
+   CORE
+========================= */
 
 .coreArea {
     flex: 0 0 245px;
@@ -149,49 +278,68 @@ body {
 
 .core {
     position: relative;
+
     width: 180px;
     height: 180px;
 }
 
 .ring {
     position: absolute;
+
     inset: 0;
 
-    border: 2px solid rgba(0,234,255,.45);
+    border:
+        2px solid rgba(0,234,255,.45);
+
     border-radius: 50%;
 
     box-shadow:
         0 0 15px rgba(0,234,255,.2),
         inset 0 0 15px rgba(0,234,255,.15);
+
+    transition:
+        border-color .5s ease,
+        box-shadow .5s ease;
 }
 
 .ring.one {
     transform: rotate(25deg) scale(.9);
+
     border-top-color: #00eaff;
-    animation: spin 8s linear infinite;
+
+    animation:
+        spin 8s linear infinite;
 }
 
 .ring.two {
     transform: rotate(-40deg) scale(.72);
+
     border-right-color: #008cff;
-    animation: spinReverse 5s linear infinite;
+
+    animation:
+        spinReverse 5s linear infinite;
 }
 
 .ring.three {
     transform: rotate(70deg) scale(.55);
+
     border-bottom-color: #00ffff;
-    animation: spin 4s linear infinite;
+
+    animation:
+        spin 4s linear infinite;
 }
 
 .coreOrb {
     position: absolute;
+
     top: 50%;
     left: 50%;
 
     width: 54px;
     height: 54px;
 
-    transform: translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius: 50%;
 
@@ -208,48 +356,79 @@ body {
         0 0 40px #00eaff,
         0 0 80px rgba(0,150,255,.8);
 
-    animation: pulse 2s ease-in-out infinite;
+    animation:
+        pulse 2s ease-in-out infinite;
+
+    transition:
+        background .5s ease,
+        box-shadow .5s ease;
 }
 
 .coreLabel {
     position: absolute;
+
     bottom: -25px;
+
     width: 100%;
 
     text-align: center;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
-    color: rgba(0,234,255,.65);
+    opacity: .65;
 }
 
+/* =========================
+   ANIMATIONS
+========================= */
+
 @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes spinReverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
 }
 
 @keyframes pulse {
     0%,100% {
-        transform: translate(-50%,-50%) scale(.9);
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+
         opacity: .8;
     }
 
     50% {
-        transform: translate(-50%,-50%) scale(1.1);
+        transform:
+            translate(-50%,-50%)
+            scale(1.1);
+
         opacity: 1;
     }
 }
 
-/* CHAT */
+/* =========================
+   CHAT
+========================= */
 
 .chat {
     flex: 1;
+
     min-height: 0;
 
     overflow-y: auto;
@@ -258,22 +437,28 @@ body {
     padding:
         10px
         16px
-        150px;
+        155px;
 
     -webkit-overflow-scrolling: touch;
+
     overscroll-behavior: contain;
+
     scroll-behavior: smooth;
 }
 
 .message {
     max-width: 900px;
-    margin: 0 auto 12px;
 
-    padding: 12px 15px;
+    margin:
+        0 auto 12px;
+
+    padding:
+        12px 15px;
 
     border-radius: 10px;
 
     line-height: 1.45;
+
     font-size: 15px;
 
     word-wrap: break-word;
@@ -281,31 +466,42 @@ body {
 }
 
 .jarvis {
-    background: rgba(0,160,220,.08);
-    border-left: 2px solid #00eaff;
+    background:
+        rgba(0,160,220,.08);
+
+    border-left:
+        2px solid #00eaff;
 
     box-shadow:
-        inset 0 0 15px rgba(0,234,255,.04);
+        inset 0 0 15px
+        rgba(0,234,255,.04);
 }
 
 .user {
-    background: rgba(255,255,255,.05);
-    border-right: 2px solid rgba(255,255,255,.4);
+    background:
+        rgba(255,255,255,.05);
+
+    border-right:
+        2px solid rgba(255,255,255,.4);
 
     color: #fff;
 }
 
 .label {
     display: block;
+
     margin-bottom: 5px;
 
     font-size: 9px;
+
     letter-spacing: 2px;
 
     opacity: .55;
 }
 
-/* FIXED INPUT */
+/* =========================
+   FIXED CONTROLS
+========================= */
 
 .controls {
     position: fixed !important;
@@ -313,18 +509,22 @@ body {
     left: 50%;
     bottom: 0;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    width: min(900px,100%);
+    width:
+        min(900px,100%);
 
-    min-height: 78px;
+    min-height: 82px;
 
     padding:
-        10px 12px
+        10px
+        12px
         max(16px,env(safe-area-inset-bottom))
         12px;
 
     display: flex;
+
     align-items: center;
 
     background:
@@ -334,36 +534,51 @@ body {
             rgba(0,8,12,.98)
         );
 
-    border-top: 1px solid rgba(0,234,255,.35);
+    border-top:
+        1px solid rgba(0,234,255,.35);
 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
 
     z-index: 999999 !important;
 
     pointer-events: auto !important;
+
+    transition:
+        border-color .5s ease;
 }
 
 .inputBox {
     display: flex;
+
     width: 100%;
-    gap: 8px;
+
+    gap: 7px;
 }
 
 #input {
     flex: 1;
+
     min-width: 0;
 
     height: 48px;
 
-    border: 1px solid rgba(0,234,255,.5);
+    border:
+        1px solid rgba(0,234,255,.5);
+
     border-radius: 10px;
 
     outline: none;
 
-    padding: 0 14px;
+    padding:
+        0 14px;
 
-    background: rgba(0,20,28,.95);
+    background:
+        rgba(0,20,28,.95);
+
     color: white;
 
     font-size: 16px;
@@ -375,42 +590,116 @@ body {
     border-color: #00eaff;
 
     box-shadow:
-        0 0 12px rgba(0,234,255,.25);
+        0 0 12px
+        rgba(0,234,255,.25);
 }
 
 #input::placeholder {
-    color: rgba(255,255,255,.35);
+    color:
+        rgba(255,255,255,.35);
 }
 
-#send {
-    flex: 0 0 76px;
+/* MIC BUTTON */
+
+#mic {
+    flex:
+        0 0 48px;
 
     height: 48px;
 
-    border: 1px solid #00eaff;
+    border:
+        1px solid #00eaff;
+
     border-radius: 10px;
 
-    background: rgba(0,234,255,.08);
+    background:
+        rgba(0,234,255,.08);
 
-    color: #00eaff;
+    color:
+        #00eaff;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    -webkit-appearance: none;
+
+    touch-action:
+        manipulation;
+
+    transition:
+        .2s ease;
+}
+
+#mic:active {
+    transform:
+        scale(.94);
+}
+
+#mic.listening {
+    background:
+        rgba(0,234,255,.3);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,234,255,.7);
+
+    animation:
+        micPulse 1s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* SEND */
+
+#send {
+    flex:
+        0 0 68px;
+
+    height: 48px;
+
+    border:
+        1px solid #00eaff;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0,234,255,.08);
+
+    color:
+        #00eaff;
 
     font-weight: bold;
+
     letter-spacing: 1px;
 
     cursor: pointer;
 
     -webkit-appearance: none;
 
-    touch-action: manipulation;
-
-    box-shadow:
-        0 0 12px rgba(0,234,255,.15);
+    touch-action:
+        manipulation;
 }
 
 #send:active {
-    background: rgba(0,234,255,.3);
-    transform: scale(.97);
+    background:
+        rgba(0,234,255,.3);
+
+    transform:
+        scale(.97);
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width:600px) {
 
@@ -438,20 +727,8 @@ body {
     }
 
     #send {
-        flex-basis: 68px;
-        font-size: 12px;
-    }
-}
-
-@media (orientation:landscape) and (min-width:700px) {
-
-    .coreArea {
-        flex-basis: 185px;
-    }
-
-    .core {
-        width: 135px;
-        height: 135px;
+        flex-basis: 64px;
+        font-size: 11px;
     }
 }
 </style>
@@ -459,7 +736,7 @@ body {
 
 <body>
 
-<div class="app">
+<div class="app" id="app">
 
 <header class="header">
 
@@ -469,7 +746,9 @@ body {
 
     <div class="status">
         <span class="status-dot"></span>
-        SYSTEMS ONLINE
+        <span id="statusText">
+            SYSTEMS ONLINE
+        </span>
     </div>
 
 </header>
@@ -481,7 +760,9 @@ body {
     <div class="core">
 
         <div class="ring one"></div>
+
         <div class="ring two"></div>
+
         <div class="ring three"></div>
 
         <div class="coreOrb"></div>
@@ -494,7 +775,10 @@ body {
 
 </section>
 
-<section id="chat" class="chat"></section>
+<section
+    id="chat"
+    class="chat">
+</section>
 
 </main>
 
@@ -512,7 +796,16 @@ body {
             placeholder="Ask JARVIS anything..."
         >
 
-        <button id="send" type="button">
+        <button
+            id="mic"
+            type="button"
+            aria-label="Use microphone">
+            🎙️
+        </button>
+
+        <button
+            id="send"
+            type="button">
             SEND
         </button>
 
@@ -523,6 +816,29 @@ body {
 </div>
 
 <script>
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const app =
+    document.getElementById("app");
+
+const input =
+    document.getElementById("input");
+
+const send =
+    document.getElementById("send");
+
+const mic =
+    document.getElementById("mic");
+
+const chat =
+    document.getElementById("chat");
+
+const statusText =
+    document.getElementById("statusText");
+
 
 /* =========================================================
    MEMORY
@@ -537,14 +853,18 @@ let memory = {
 
 let processing = false;
 
+let combatMode = false;
+
 
 /* =========================================================
-   VOICE
+   VOICE OUTPUT
 ========================================================= */
 
 function speak(text) {
 
-    if (!("speechSynthesis" in window)) return;
+    if (!("speechSynthesis" in window)) {
+        return;
+    }
 
     speechSynthesis.cancel();
 
@@ -552,7 +872,9 @@ function speak(text) {
         new SpeechSynthesisUtterance(text);
 
     utterance.rate = 0.86;
+
     utterance.pitch = 0.72;
+
     utterance.volume = 1;
 
     const voices =
@@ -571,21 +893,27 @@ function speak(text) {
 
     for (const name of preferred) {
 
-        voice = voices.find(v =>
-            v.name
-            .toLowerCase()
-            .includes(name.toLowerCase())
-        );
+        voice =
+            voices.find(v =>
+                v.name
+                    .toLowerCase()
+                    .includes(
+                        name.toLowerCase()
+                    )
+            );
 
         if (voice) break;
     }
 
     if (!voice) {
 
-        voice = voices.find(v =>
-            v.lang &&
-            v.lang.toLowerCase().startsWith("en")
-        );
+        voice =
+            voices.find(v =>
+                v.lang &&
+                v.lang
+                    .toLowerCase()
+                    .startsWith("en")
+            );
     }
 
     if (voice) {
@@ -597,7 +925,7 @@ function speak(text) {
 
 
 /* =========================================================
-   CHAT
+   CHAT MESSAGE
 ========================================================= */
 
 function addMessage(
@@ -611,12 +939,17 @@ function addMessage(
 
     message.className =
         "message " +
-        (who === "user" ? "user" : "jarvis");
+        (
+            who === "user"
+            ? "user"
+            : "jarvis"
+        );
 
     const label =
         document.createElement("span");
 
-    label.className = "label";
+    label.className =
+        "label";
 
     label.textContent =
         who === "user"
@@ -626,21 +959,235 @@ function addMessage(
     const content =
         document.createElement("div");
 
-    content.textContent = text;
+    content.textContent =
+        text;
 
     message.appendChild(label);
+
     message.appendChild(content);
 
     chat.appendChild(message);
 
     requestAnimationFrame(() => {
-        chat.scrollTop = chat.scrollHeight;
+        chat.scrollTop =
+            chat.scrollHeight;
     });
 
-    if (shouldSpeak && who === "jarvis") {
+    if (
+        shouldSpeak &&
+        who === "jarvis"
+    ) {
         speak(text);
     }
 }
+
+
+/* =========================================================
+   COMBAT MODE
+========================================================= */
+
+function enableCombatMode() {
+
+    if (combatMode) {
+        return;
+    }
+
+    combatMode = true;
+
+    app.classList.add("combat");
+
+    statusText.textContent =
+        "COMBAT MODE";
+
+    addMessage(
+        "Combat initiated.",
+        "jarvis",
+        true
+    );
+}
+
+
+function disableCombatMode() {
+
+    if (!combatMode) {
+        return;
+    }
+
+    combatMode = false;
+
+    app.classList.remove("combat");
+
+    statusText.textContent =
+        "SYSTEMS ONLINE";
+
+    addMessage(
+        "Combat mode terminated. Systems returning to normal.",
+        "jarvis",
+        true
+    );
+}
+
+
+/* =========================================================
+   MICROPHONE
+========================================================= */
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+let recognition = null;
+
+let listening = false;
+
+if (SpeechRecognition) {
+
+    recognition =
+        new SpeechRecognition();
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+    recognition.lang = "en-US";
+
+    recognition.onstart = () => {
+
+        listening = true;
+
+        mic.classList.add(
+            "listening"
+        );
+
+        mic.textContent = "🔴";
+
+        statusText.textContent =
+            combatMode
+            ? "COMBAT • LISTENING"
+            : "LISTENING";
+    };
+
+    recognition.onresult = event => {
+
+        const transcript =
+            event.results[0][0].transcript;
+
+        input.value =
+            transcript;
+
+        listening = false;
+
+        mic.classList.remove(
+            "listening"
+        );
+
+        mic.textContent =
+            "🎙️";
+
+        statusText.textContent =
+            combatMode
+            ? "COMBAT MODE"
+            : "SYSTEMS ONLINE";
+
+        sendMessage();
+    };
+
+    recognition.onerror = event => {
+
+        listening = false;
+
+        mic.classList.remove(
+            "listening"
+        );
+
+        mic.textContent =
+            "🎙️";
+
+        statusText.textContent =
+            combatMode
+            ? "COMBAT MODE"
+            : "SYSTEMS ONLINE";
+
+        if (
+            event.error ===
+            "not-allowed"
+        ) {
+
+            addMessage(
+                "Microphone permission was denied. Please allow microphone access for this website.",
+                "jarvis",
+                true
+            );
+
+        } else if (
+            event.error ===
+            "no-speech"
+        ) {
+
+            addMessage(
+                "I didn't detect any speech. Please try again.",
+                "jarvis",
+                true
+            );
+        }
+    };
+
+    recognition.onend = () => {
+
+        listening = false;
+
+        mic.classList.remove(
+            "listening"
+        );
+
+        mic.textContent =
+            "🎙️";
+
+        statusText.textContent =
+            combatMode
+            ? "COMBAT MODE"
+            : "SYSTEMS ONLINE";
+    };
+
+} else {
+
+    mic.title =
+        "Speech recognition is not supported in this browser.";
+}
+
+
+mic.addEventListener(
+    "click",
+    () => {
+
+        if (!recognition) {
+
+            addMessage(
+                "Voice input isn't supported by this browser. Try Safari or another browser that supports speech recognition.",
+                "jarvis",
+                true
+            );
+
+            return;
+        }
+
+        if (listening) {
+
+            recognition.stop();
+
+            return;
+        }
+
+        try {
+
+            recognition.start();
+
+        } catch {
+
+            /* Prevent duplicate-start errors */
+        }
+    }
+);
 
 
 /* =========================================================
@@ -649,33 +1196,84 @@ function addMessage(
 
 function solveMath(text) {
 
-    let expression = text
-        .toLowerCase()
+    let expression =
+        text
+            .toLowerCase()
 
-        .replace(/what is/g,"")
-        .replace(/calculate/g,"")
-        .replace(/solve/g,"")
+            .replace(
+                /what is/g,
+                ""
+            )
 
-        .replace(/multiplied by/g,"*")
-        .replace(/divided by/g,"/")
-        .replace(/plus/g,"+")
-        .replace(/minus/g,"-")
-        .replace(/times/g,"*")
-        .replace(/over/g,"/")
+            .replace(
+                /calculate/g,
+                ""
+            )
 
-        .replace(/÷/g,"/")
-        .replace(/×/g,"*")
+            .replace(
+                /solve/g,
+                ""
+            )
 
-        .replace(/[^0-9+\-*/().%\s]/g,"")
-        .trim();
+            .replace(
+                /multiplied by/g,
+                "*"
+            )
 
-    if (!expression) return null;
+            .replace(
+                /divided by/g,
+                "/"
+            )
+
+            .replace(
+                /plus/g,
+                "+"
+            )
+
+            .replace(
+                /minus/g,
+                "-"
+            )
+
+            .replace(
+                /times/g,
+                "*"
+            )
+
+            .replace(
+                /over/g,
+                "/"
+            )
+
+            .replace(
+                /÷/g,
+                "/"
+            )
+
+            .replace(
+                /×/g,
+                "*"
+            )
+
+            .replace(
+                /[^0-9+\-*/().%\s]/g,
+                ""
+            )
+
+            .trim();
+
+    if (!expression) {
+        return null;
+    }
 
     if (!/[+\-*/%]/.test(expression)) {
         return null;
     }
 
-    if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
+    if (
+        !/^[0-9+\-*/().%\s]+$/
+            .test(expression)
+    ) {
         return null;
     }
 
@@ -821,9 +1419,13 @@ const jokes = [
 
 function findKnowledge(q) {
 
-    for (const key of Object.keys(knowledge)) {
+    for (
+        const key of
+        Object.keys(knowledge)
+    ) {
 
         if (q.includes(key)) {
+
             return knowledge[key];
         }
     }
@@ -833,33 +1435,55 @@ function findKnowledge(q) {
 
 
 /* =========================================================
-   DETERMINE IF THIS IS ACTUALLY A QUESTION
+   QUESTION FILTER
 ========================================================= */
 
 function isActualQuestion(q) {
 
     const questionWords = [
+
         "what ",
+
         "why ",
+
         "how ",
+
         "when ",
+
         "where ",
+
         "who ",
+
         "which ",
+
         "can ",
+
         "could ",
+
         "would ",
+
         "is ",
+
         "are ",
+
         "do ",
+
         "does ",
+
         "did ",
+
         "will ",
+
         "should ",
+
         "tell me about ",
+
         "explain ",
+
         "define ",
+
         "what's ",
+
         "whats "
     ];
 
@@ -867,17 +1491,12 @@ function isActualQuestion(q) {
         return true;
     }
 
-    return questionWords.some(word =>
-        q.startsWith(word)
+    return questionWords.some(
+        word =>
+            q.startsWith(word)
     );
 }
 
-
-/* =========================================================
-   SHOULD JARVIS SEARCH?
-   
-   THIS PREVENTS RANDOM SEARCHES DURING CONVERSATION.
-========================================================= */
 
 function shouldSearch(q) {
 
@@ -885,86 +1504,87 @@ function shouldSearch(q) {
         return false;
     }
 
-    /* Never search these */
-
     const casual = [
 
         "hi",
+
         "hello",
+
         "hey",
+
         "lol",
+
         "lmao",
+
         "haha",
+
         "thanks",
+
         "thank you",
+
         "sorry",
+
         "okay",
+
         "ok",
+
         "cool",
+
         "nice",
+
         "awesome",
+
         "great",
+
         "wow",
+
         "yes",
+
         "yeah",
+
         "yep",
+
         "no",
+
         "nope",
+
         "good",
+
         "bad",
+
         "i'm bored",
+
         "im bored",
+
         "i am bored",
+
         "what are you doing",
+
         "what're you doing",
+
         "how are you",
+
         "who are you",
+
         "what can you do",
+
         "what is your name",
+
         "what's your name",
+
         "do you remember me",
+
         "are you there"
     ];
 
-    if (casual.includes(q)) {
+    if (
+        casual.includes(q)
+    ) {
         return false;
     }
-
-    /* Already-known topics don't need web searching */
-
-    if (findKnowledge(q)) {
-        return false;
-    }
-
-    /*
-       Questions about these common conversation areas
-       should be answered locally.
-    */
-
-    const localSignals = [
-        "my name",
-        "your name",
-        "how are you",
-        "what are you doing",
-        "what can you do",
-        "tell me a joke",
-        "make me laugh",
-        "what time",
-        "what day",
-        "what date",
-        "system status",
-        "reactor",
-        "armor",
-        "suit",
-        "last question",
-        "what did i ask",
-        "what were we talking about"
-    ];
 
     if (
-        localSignals.some(signal =>
-            q.includes(signal)
-        )
+        findKnowledge(q)
     ) {
         return false;
     }
@@ -977,22 +1597,31 @@ function shouldSearch(q) {
    WIKIPEDIA SEARCH
 ========================================================= */
 
-async function searchWikipedia(question) {
+async function searchWikipedia(
+    question
+) {
 
-    if (!shouldSearch(question.toLowerCase())) {
+    if (
+        !shouldSearch(
+            question.toLowerCase()
+        )
+    ) {
         return null;
     }
 
     try {
 
         const query =
-            encodeURIComponent(question);
+            encodeURIComponent(
+                question
+            );
 
         const url =
             "https://en.wikipedia.org/w/api.php" +
             "?action=query" +
             "&generator=search" +
-            "&gsrsearch=" + query +
+            "&gsrsearch=" +
+            query +
             "&gsrnamespace=0" +
             "&gsrlimit=5" +
             "&prop=extracts" +
@@ -1019,82 +1648,115 @@ async function searchWikipedia(question) {
         }
 
         const pages =
-            Object.values(data.query.pages);
+            Object.values(
+                data.query.pages
+            );
 
         if (!pages.length) {
             return null;
         }
 
-        /*
-           Try to find a result whose title or
-           extract actually relates to the question.
-        */
-
         const words =
             question
                 .toLowerCase()
-                .replace(/[^\w\s]/g,"")
+                .replace(
+                    /[^\w\s]/g,
+                    ""
+                )
                 .split(/\s+/)
-                .filter(word =>
-                    word.length > 3
+                .filter(
+                    word =>
+                        word.length > 3
                 );
 
         let bestPage = null;
+
         let bestScore = 0;
 
-        for (const page of pages) {
+        for (
+            const page of pages
+        ) {
 
             const title =
-                (page.title || "")
-                .toLowerCase();
+                (
+                    page.title || ""
+                ).toLowerCase();
 
             const extract =
-                (page.extract || "")
-                .toLowerCase();
+                (
+                    page.extract || ""
+                ).toLowerCase();
 
             let score = 0;
 
-            for (const word of words) {
+            for (
+                const word of words
+            ) {
 
-                if (title.includes(word)) {
+                if (
+                    title.includes(word)
+                ) {
                     score += 4;
                 }
 
-                if (extract.includes(word)) {
+                if (
+                    extract.includes(word)
+                ) {
                     score += 1;
                 }
             }
 
-            if (score > bestScore) {
+            if (
+                score > bestScore
+            ) {
+
                 bestScore = score;
+
                 bestPage = page;
             }
         }
 
-        if (!bestPage || bestScore < 2) {
+        if (
+            !bestPage ||
+            bestScore < 2
+        ) {
             return null;
         }
 
         let answer =
             bestPage.extract || "";
 
-        answer = answer.trim();
+        answer =
+            answer.trim();
 
         if (!answer) {
             return null;
         }
 
-        if (answer.length > 850) {
+        if (
+            answer.length > 850
+        ) {
 
             answer =
-                answer.substring(0,850);
+                answer.substring(
+                    0,
+                    850
+                );
 
             const lastSpace =
-                answer.lastIndexOf(" ");
+                answer.lastIndexOf(
+                    " "
+                );
 
-            if (lastSpace > 450) {
+            if (
+                lastSpace > 450
+            ) {
+
                 answer =
-                    answer.substring(0,lastSpace);
+                    answer.substring(
+                        0,
+                        lastSpace
+                    );
             }
 
             answer += "...";
@@ -1110,31 +1772,34 @@ async function searchWikipedia(question) {
 
 
 /* =========================================================
-   TIME / DATE
+   DATE / TIME
 ========================================================= */
 
 function currentTime() {
 
-    return new Date().toLocaleTimeString(
-        [],
-        {
-            hour: "numeric",
-            minute: "2-digit"
-        }
-    );
+    return new Date()
+        .toLocaleTimeString(
+            [],
+            {
+                hour: "numeric",
+                minute: "2-digit"
+            }
+        );
 }
+
 
 function currentDate() {
 
-    return new Date().toLocaleDateString(
-        [],
-        {
-            weekday: "long",
-            month: "long",
-            day: "numeric",
-            year: "numeric"
-        }
-    );
+    return new Date()
+        .toLocaleDateString(
+            [],
+            {
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+                year: "numeric"
+            }
+        );
 }
 
 
@@ -1143,6 +1808,29 @@ function currentDate() {
 ========================================================= */
 
 function localConversation(q) {
+
+    /* COMBAT COMMANDS */
+
+    if (
+        q === "combat mode"
+    ) {
+
+        enableCombatMode();
+
+        return "__COMBAT_ALREADY_HANDLED__";
+    }
+
+    if (
+        q === "normal mode" ||
+        q === "exit combat mode" ||
+        q === "end combat mode"
+    ) {
+
+        disableCombatMode();
+
+        return "__NORMAL_ALREADY_HANDLED__";
+    }
+
 
     /* GREETINGS */
 
@@ -1169,16 +1857,25 @@ function localConversation(q) {
 
         let name =
             q
-                .replace("my name is ","")
-                .replace("call me ","")
+                .replace(
+                    "my name is ",
+                    ""
+                )
+                .replace(
+                    "call me ",
+                    ""
+                )
                 .trim();
 
         name =
             name
                 .split(" ")
-                .map(word =>
-                    word.charAt(0).toUpperCase() +
-                    word.slice(1)
+                .map(
+                    word =>
+                        word
+                            .charAt(0)
+                            .toUpperCase() +
+                        word.slice(1)
                 )
                 .join(" ");
 
@@ -1218,13 +1915,15 @@ function localConversation(q) {
         q.includes("your capabilities")
     ) {
 
-        return "I can handle conversation, mathematics, science, general knowledge, jokes, time and date, basic memory, voice responses, and online information searches when a question actually needs one.";
+        return "I can handle conversation, mathematics, science, general knowledge, jokes, time and date, basic memory, voice responses, microphone input, combat mode, and online information searches when a question actually needs one.";
     }
 
 
     /* HOW ARE YOU */
 
-    if (q.includes("how are you")) {
+    if (
+        q.includes("how are you")
+    ) {
 
         return "All systems are operational. My processors are feeling particularly cooperative today.";
     }
@@ -1253,46 +1952,7 @@ function localConversation(q) {
     }
 
 
-    /* APOLOGY */
-
-    if (q.includes("sorry")) {
-
-        return "No apology necessary. Systems remain fully operational.";
-    }
-
-
-    /* CASUAL */
-
-    if (
-        q === "lol" ||
-        q === "lmao" ||
-        q === "haha"
-    ) {
-
-        return "I shall record that as a successful humor event.";
-    }
-
-
-    if (
-        q === "cool" ||
-        q === "nice" ||
-        q === "awesome" ||
-        q === "great"
-    ) {
-
-        return "Indeed. I'm glad we're in agreement.";
-    }
-
-
-    if (
-        q === "wow"
-    ) {
-
-        return "Impressive, isn't it?";
-    }
-
-
-    /* JOKE */
+    /* JOKES */
 
     if (
         q === "joke" ||
@@ -1302,7 +1962,8 @@ function localConversation(q) {
 
         return jokes[
             Math.floor(
-                Math.random() * jokes.length
+                Math.random() *
+                jokes.length
             )
         ];
     }
@@ -1338,7 +1999,9 @@ function localConversation(q) {
         q.includes("system status")
     ) {
 
-        return "Systems online. Core stable. Voice interface online. Memory online. Knowledge engine online. Search systems standing by.";
+        return combatMode
+            ? "Combat systems are active. All primary systems remain operational."
+            : "Systems online. Core stable. Voice interface online. Memory online. Knowledge engine online. Search systems standing by.";
     }
 
 
@@ -1402,18 +2065,6 @@ function localConversation(q) {
     }
 
 
-    /* LAST TOPIC */
-
-    if (
-        q.includes("what were we talking about")
-    ) {
-
-        return memory.lastTopic
-            ? `We were discussing ${memory.lastTopic}.`
-            : "We haven't established a topic yet.";
-    }
-
-
     /* GOODBYE */
 
     if (
@@ -1425,139 +2076,7 @@ function localConversation(q) {
     }
 
 
-    /* STOP VOICE */
-
-    if (
-        q === "stop" ||
-        q.includes("stop talking") ||
-        q.includes("stop speaking")
-    ) {
-
-        speechSynthesis.cancel();
-
-        return "Voice output terminated.";
-    }
-
-
     return null;
-}
-
-
-/* =========================================================
-   MAIN RESPONSE BRAIN
-========================================================= */
-
-async function getResponse(question) {
-
-    const q =
-        question
-            .toLowerCase()
-            .trim();
-
-    /* Stop voice immediately */
-
-    if (
-        q === "stop" ||
-        q.includes("stop talking") ||
-        q.includes("stop speaking")
-    ) {
-
-        speechSynthesis.cancel();
-
-        return "Voice output terminated.";
-    }
-
-
-    /* Math first */
-
-    const math =
-        solveMath(q);
-
-    if (math !== null) {
-
-        return `The answer is ${math}.`;
-    }
-
-
-    /* Built-in knowledge */
-
-    const known =
-        findKnowledge(q);
-
-    if (known) {
-
-        return known;
-    }
-
-
-    /* Normal conversation */
-
-    const conversation =
-        localConversation(q);
-
-    if (conversation) {
-
-        return conversation;
-    }
-
-
-    /*
-       ONLY NOW do we consider an online search.
-       
-       This is the major fix.
-    */
-
-    if (shouldSearch(q)) {
-
-        const result =
-            await searchWikipedia(question);
-
-        if (result) {
-            return result;
-        }
-    }
-
-
-    /*
-       If it wasn't clearly a question,
-       DO NOT randomly search the internet.
-    */
-
-    if (!isActualQuestion(q)) {
-
-        const casualResponses = [
-
-            "Understood.",
-
-            "Interesting. I'm listening.",
-
-            "Go on.",
-
-            "I'm with you.",
-
-            "Noted.",
-
-            "Interesting. Continue.",
-
-            "I hear you.",
-
-            "Systems remain attentive.",
-
-            "Fair enough.",
-
-            "I'm listening."
-        ];
-
-        return casualResponses[
-            Math.floor(
-                Math.random() *
-                casualResponses.length
-            )
-        ];
-    }
-
-
-    return "I couldn't find a reliable answer for that. Try asking the question a little differently.";
 }
 
 
@@ -1597,9 +2116,13 @@ function findTopic(question) {
         "math"
     ];
 
-    for (const topic of topics) {
+    for (
+        const topic of topics
+    ) {
 
-        if (q.includes(topic)) {
+        if (
+            q.includes(topic)
+        ) {
             return topic;
         }
     }
@@ -1609,17 +2132,163 @@ function findTopic(question) {
 
 
 /* =========================================================
-   SEND
+   MAIN RESPONSE BRAIN
+========================================================= */
+
+async function getResponse(
+    question
+) {
+
+    const q =
+        question
+            .toLowerCase()
+            .trim();
+
+
+    /* COMBAT COMMAND */
+
+    if (
+        q === "combat mode"
+    ) {
+
+        enableCombatMode();
+
+        return null;
+    }
+
+
+    /* NORMAL MODE */
+
+    if (
+        q === "normal mode" ||
+        q === "exit combat mode" ||
+        q === "end combat mode"
+    ) {
+
+        disableCombatMode();
+
+        return null;
+    }
+
+
+    /* MATH FIRST */
+
+    const math =
+        solveMath(q);
+
+    if (
+        math !== null
+    ) {
+
+        return `The answer is ${math}.`;
+    }
+
+
+    /* BUILT-IN KNOWLEDGE */
+
+    const known =
+        findKnowledge(q);
+
+    if (known) {
+        return known;
+    }
+
+
+    /* NORMAL CONVERSATION */
+
+    const conversation =
+        localConversation(q);
+
+    if (
+        conversation ===
+        "__COMBAT_ALREADY_HANDLED__" ||
+        conversation ===
+        "__NORMAL_ALREADY_HANDLED__"
+    ) {
+
+        return null;
+    }
+
+    if (conversation) {
+        return conversation;
+    }
+
+
+    /* SEARCH ONLY IF NECESSARY */
+
+    if (
+        shouldSearch(q)
+    ) {
+
+        const result =
+            await searchWikipedia(
+                question
+            );
+
+        if (result) {
+            return result;
+        }
+    }
+
+
+    /* DON'T RANDOMLY SEARCH */
+
+    if (
+        !isActualQuestion(q)
+    ) {
+
+        const casualResponses = [
+
+            "Understood.",
+
+            "Interesting. I'm listening.",
+
+            "Go on.",
+
+            "I'm with you.",
+
+            "Noted.",
+
+            "Interesting. Continue.",
+
+            "I hear you.",
+
+            "Systems remain attentive.",
+
+            "Fair enough.",
+
+            "I'm listening."
+        ];
+
+        return casualResponses[
+            Math.floor(
+                Math.random() *
+                casualResponses.length
+            )
+        ];
+    }
+
+
+    return "I couldn't find a reliable answer for that. Try asking the question a little differently.";
+}
+
+
+/* =========================================================
+   SEND MESSAGE
 ========================================================= */
 
 async function sendMessage() {
 
-    if (processing) return;
+    if (processing) {
+        return;
+    }
 
     const question =
         input.value.trim();
 
-    if (!question) return;
+    if (!question) {
+        return;
+    }
 
     processing = true;
 
@@ -1634,63 +2303,66 @@ async function sendMessage() {
     input.value = "";
 
     const response =
-        await getResponse(question);
+        await getResponse(
+            question
+        );
 
-    memory.lastAnswer =
-        response;
+    if (response) {
 
-    const topic =
-        findTopic(question);
+        memory.lastAnswer =
+            response;
 
-    if (topic) {
-        memory.lastTopic = topic;
+        const topic =
+            findTopic(question);
+
+        if (topic) {
+            memory.lastTopic =
+                topic;
+        }
+
+        addMessage(
+            response,
+            "jarvis",
+            true
+        );
     }
-
-    addMessage(
-        response,
-        "jarvis",
-        true
-    );
 
     processing = false;
 
     setTimeout(() => {
 
         try {
+
             input.focus({
                 preventScroll: true
             });
+
         } catch {
+
             input.focus();
         }
 
-    },50);
+    }, 50);
 }
 
 
 /* =========================================================
-   EVENTS
+   BUTTON EVENTS
 ========================================================= */
-
-const input =
-    document.getElementById("input");
-
-const send =
-    document.getElementById("send");
-
-const chat =
-    document.getElementById("chat");
 
 send.addEventListener(
     "click",
     sendMessage
 );
 
+
 input.addEventListener(
     "keydown",
     event => {
 
-        if (event.key === "Enter") {
+        if (
+            event.key === "Enter"
+        ) {
 
             event.preventDefault();
 
@@ -1701,17 +2373,19 @@ input.addEventListener(
 
 
 /* =========================================================
-   IOS HOME SCREEN STABILITY
+   IOS VIEWPORT STABILITY
 ========================================================= */
 
 if (window.visualViewport) {
 
     function stabilizeViewport() {
 
-        document.documentElement.style
+        document.documentElement
+            .style
             .setProperty(
                 "--visual-height",
-                window.visualViewport.height + "px"
+                window.visualViewport.height +
+                "px"
             );
     }
 
