@@ -207,27 +207,27 @@ button:active{
 
 <div class="app">
 
-    <header class="header">
-        <div class="title">J.A.R.V.I.S.</div>
-        <div class="status">● SYSTEMS ONLINE</div>
-    </header>
+<header class="header">
+    <div class="title">J.A.R.V.I.S.</div>
+    <div class="status">● SYSTEMS ONLINE</div>
+</header>
 
-    <main class="main">
+<main class="main">
 
-        <div class="coreArea">
-            <div class="core">
-                <div class="coreText">JARVIS</div>
-            </div>
-        </div>
+<div class="coreArea">
+    <div class="core">
+        <div class="coreText">JARVIS</div>
+    </div>
+</div>
 
-        <div id="chat" class="chat"></div>
+<div id="chat" class="chat"></div>
 
-        <div class="inputArea">
-            <input id="input" type="text" placeholder="Ask JARVIS anything...">
-            <button id="send">SEND</button>
-        </div>
+<div class="inputArea">
+    <input id="input" type="text" placeholder="Ask JARVIS anything...">
+    <button id="send">SEND</button>
+</div>
 
-    </main>
+</main>
 </div>
 
 <script>
@@ -235,47 +235,53 @@ button:active{
 
 "use strict";
 
-/* =========================
+/* =========================================================
    JARVIS MEMORY
-========================= */
+========================================================= */
 
-const memory = {
+const memory={
     name:"",
     lastQuestion:"",
     lastTopic:"",
-    lastAnswer:""
+    lastAnswer:"",
+    conversationCount:0
 };
 
-/* =========================
-   ELEMENTS
-========================= */
 
-const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-const send = document.getElementById("send");
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const chat=document.getElementById("chat");
+const input=document.getElementById("input");
+const send=document.getElementById("send");
 
 if(!chat || !input || !send) return;
 
-/* =========================
-   TEXT NORMALIZER
-========================= */
+
+/* =========================================================
+   NORMALIZATION
+========================================================= */
 
 function norm(text){
-    return String(text || "")
+
+    return String(text||"")
         .toLowerCase()
         .replace(/[’']/g,"")
         .replace(/\s+/g," ")
         .trim();
 }
 
-/* =========================
-   CHAT
-========================= */
+
+/* =========================================================
+   CHAT DISPLAY
+========================================================= */
 
 function addMessage(text,type){
+
     const div=document.createElement("div");
 
-    div.className="message " + type;
+    div.className="message "+type;
     div.textContent=text;
 
     chat.appendChild(div);
@@ -284,26 +290,28 @@ function addMessage(text,type){
     return div;
 }
 
-/* =========================
+
+/* =========================================================
    JARVIS VOICE
-========================= */
+========================================================= */
 
 function speak(text){
 
     if(!("speechSynthesis" in window)) return;
 
     try{
+
         speechSynthesis.cancel();
 
         const clean=text
-            .replace(/[🧠🌎🕳️😂⚡🤖]/g,"")
+            .replace(/[🧠🌎🕳️😂⚡🤖🛡️]/g,"")
             .replace(/\s+/g," ")
             .trim();
 
         const utterance=new SpeechSynthesisUtterance(clean);
 
-        utterance.rate=0.88;
-        utterance.pitch=0.72;
+        utterance.rate=.88;
+        utterance.pitch=.72;
         utterance.volume=1;
 
         const voices=speechSynthesis.getVoices();
@@ -320,6 +328,7 @@ function speak(text){
         let selected=null;
 
         for(const name of preferred){
+
             selected=voices.find(v =>
                 v.name.toLowerCase().includes(name.toLowerCase())
             );
@@ -328,61 +337,58 @@ function speak(text){
         }
 
         if(!selected){
+
             selected=voices.find(v =>
                 v.lang && v.lang.startsWith("en")
             );
         }
 
-        if(selected) utterance.voice=selected;
+        if(selected){
+            utterance.voice=selected;
+        }
 
         speechSynthesis.speak(utterance);
 
     }catch(e){}
 }
 
-/* =========================
-   MATH ENGINE
-   IMPORTANT:
+
+/* =========================================================
+   ADVANCED LOCAL MATH ENGINE
    MATH NEVER GOES TO WIKIPEDIA
-========================= */
+========================================================= */
 
 function solveMath(text){
 
     let s=norm(text);
 
-    const original=s;
-
-    /*
-       Only treat it as math when it actually
-       contains mathematical patterns.
-    */
-
-    const looksLikeMath =
+    const looksLikeMath=
         /\d/.test(s) &&
         (
-            /[+\-*/%^×÷=]/.test(s) ||
-            /\b(plus|minus|times|multiplied|divided|over|squared|cubed|percent|percentage|sqrt|square root)\b/.test(s) ||
-            /\bwhat is\b/.test(s) ||
-            /\bcalculate\b/.test(s) ||
-            /\bsolve\b/.test(s)
+            /[+\-*/%^=×÷]/.test(s) ||
+            /\b(plus|minus|times|multiplied|divided|over|squared|cubed|square root|percentage|percent)\b/.test(s) ||
+            /^(what is|calculate|compute|solve|find)\b/.test(s)
         );
 
     if(!looksLikeMath){
         return null;
     }
 
-    /*
-       Remove normal question wording.
-    */
-
     s=s
-        .replace(/^(what is|whats|what's|calculate|compute|find|solve)\s+/,"")
+        .replace(/^(what is|whats|what's|calculate|compute|solve|find)\s+/,"")
         .replace(/\?+$/,"")
         .trim();
 
-    /*
-       Powers.
-    */
+    s=s
+        .replace(/multiplied by/g,"*")
+        .replace(/times/g,"*")
+        .replace(/divided by/g,"/")
+        .replace(/plus/g,"+")
+        .replace(/minus/g,"-")
+        .replace(/negative/g,"-")
+        .replace(/×/g,"*")
+        .replace(/÷/g,"/")
+        .replace(/\^/g,"**");
 
     s=s.replace(
         /(\d+(?:\.\d+)?)\s+squared\b/g,
@@ -394,65 +400,26 @@ function solveMath(text){
         "($1**3)"
     );
 
-    /*
-       Math words.
-    */
-
-    s=s
-        .replace(/multiplied by/g,"*")
-        .replace(/times/g,"*")
-        .replace(/divided by/g,"/")
-        .replace(/divided into/g,"/")
-        .replace(/plus/g,"+")
-        .replace(/minus/g,"-")
-        .replace(/negative/g,"-")
-        .replace(/×/g,"*")
-        .replace(/÷/g,"/")
-        .replace(/\^/g,"**")
-        .replace(/percent of/g,"%")
-        .replace(/percentage of/g,"%");
-
-    /*
-       "square root of 144"
-    */
-
     s=s.replace(
         /square root of\s+(\d+(?:\.\d+)?)/g,
         "Math.sqrt($1)"
     );
 
-    /*
-       Simple fraction wording.
-    */
-
-    s=s.replace(
-        /(\d+)\s+over\s+(\d+)/g,
-        "($1/$2)"
-    );
-
-    /*
-       Allow only safe mathematical characters.
-    */
-
     if(!/^[0-9+\-*/().%\sA-Za-z_]+$/.test(s)){
         return null;
     }
 
-    /*
-       Prevent arbitrary JavaScript.
-    */
+    const words=s.match(/[A-Za-z_]+/g)||[];
 
-    const allowedWords=[
+    const allowed=[
         "Math",
         "sqrt",
         "PI"
     ];
 
-    const words=s.match(/[A-Za-z_]+/g) || [];
-
     for(const word of words){
 
-        if(!allowedWords.includes(word)){
+        if(!allowed.includes(word)){
             return null;
         }
     }
@@ -464,27 +431,22 @@ function solveMath(text){
     try{
 
         const result=Function(
-            '"use strict"; return (' + s + ')'
+            '"use strict"; return ('+s+')'
         )();
 
         if(
-            typeof result !== "number" ||
+            typeof result!=="number" ||
             !Number.isFinite(result)
         ){
             return null;
         }
 
-        let answer;
+        const answer=
+            Number.isInteger(result)
+            ? String(result)
+            : String(Number(result.toFixed(8)));
 
-        if(Number.isInteger(result)){
-            answer=String(result);
-        }else{
-            answer=String(
-                Number(result.toFixed(8))
-            );
-        }
-
-        return "The answer is " + answer + ".";
+        return "The answer is "+answer+".";
 
     }catch(e){
 
@@ -492,142 +454,121 @@ function solveMath(text){
     }
 }
 
-/* =========================
-   BUILT-IN KNOWLEDGE
-========================= */
+
+/* =========================================================
+   JARVIS KNOWLEDGE
+========================================================= */
 
 const facts=[
 
 {
 keys:/black holes?|event horizon|singularity/,
-answer:
-"A black hole is a region of space where gravity is so strong that nothing that crosses its event horizon can escape, including light. Most black holes form when very massive stars collapse. Supermassive black holes can contain millions or billions of times the mass of the Sun."
+answer:"A black hole is a region of spacetime where gravity is so strong that nothing that crosses its event horizon can escape, including light. Many black holes form from the collapse of massive stars, while supermassive black holes can contain millions or billions of solar masses."
 },
 
 {
 keys:/gravity|gravitational force/,
-answer:
-"Gravity is the attraction between objects with mass. Earths gravity pulls objects toward its center, while the Sun's gravity keeps the planets in orbit."
+answer:"Gravity is the attraction between objects that have mass. Earth's gravity pulls objects toward Earth's center, while the Sun's gravity keeps the planets in orbit."
 },
 
 {
 keys:/atom|atoms/,
-answer:
-"An atom is the basic unit of ordinary matter. It contains a nucleus made of protons and neutrons, surrounded by electrons."
+answer:"An atom is the basic unit of ordinary matter. It contains a nucleus made of protons and neutrons surrounded by electrons."
 },
 
 {
 keys:/dna|genetic code/,
-answer:
-"DNA stores biological instructions used by living organisms. Its sequence helps cells make proteins and pass genetic information from one generation to the next."
+answer:"DNA stores biological instructions used by living organisms. Its sequence helps cells build proteins and transmit genetic information."
 },
 
 {
 keys:/photosynthesis/,
-answer:
-"Photosynthesis is how plants, algae, and some microorganisms use light energy to convert carbon dioxide and water into chemical energy, producing oxygen as a byproduct."
+answer:"Photosynthesis allows plants, algae, and some microorganisms to use light energy to convert carbon dioxide and water into stored chemical energy, releasing oxygen as a byproduct."
 },
 
 {
 keys:/evolution|natural selection/,
-answer:
-"Evolution is the change in inherited characteristics of populations over generations. Natural selection is one major mechanism that can cause those changes."
+answer:"Evolution is the change in inherited characteristics of populations over generations. Natural selection is one important mechanism that can produce evolutionary change."
 },
 
 {
 keys:/solar system|planets/,
-answer:
-"Our solar system contains the Sun and everything gravitationally bound to it, including eight planets, dwarf planets, moons, asteroids, comets, and other objects."
+answer:"Our solar system contains the Sun and the objects gravitationally bound to it, including eight planets, dwarf planets, moons, asteroids, comets, and other bodies."
 },
 
 {
 keys:/speed of light|how fast is light/,
-answer:
-"Light travels through empty space at about 299,792,458 meters per second."
+answer:"Light travels through empty space at exactly 299,792,458 meters per second."
 },
 
 {
 keys:/relativity|einstein/,
-answer:
-"Einstein's theories of relativity describe how space, time, motion, gravity, and energy are related. Special relativity deals with high-speed motion, while general relativity describes gravity as the curvature of spacetime."
+answer:"Einstein's theories of relativity describe relationships between space, time, motion, gravity, and energy. Special relativity deals with motion at high speeds, while general relativity describes gravity through curved spacetime."
 },
 
 {
 keys:/moon/,
-answer:
-"The Moon is Earth's natural satellite. Its gravity contributes strongly to ocean tides, and its changing appearance from Earth is caused by the geometry between the Sun, Earth, and Moon."
+answer:"The Moon is Earth's natural satellite. Its gravity plays a major role in Earth's ocean tides."
 },
 
 {
 keys:/earth|our planet/,
-answer:
-"Earth is the third planet from the Sun. It has a nitrogen-rich atmosphere, large amounts of surface water, an active geological system, and is currently the only world known to support life."
+answer:"Earth is the third planet from the Sun. It has a nitrogen-rich atmosphere, abundant surface water, an active geological system, and is currently the only world known to support life."
 },
 
 {
 keys:/mars/,
-answer:
-"Mars is the fourth planet from the Sun. It is a rocky world with a thin atmosphere, polar ice caps, enormous volcanoes, and evidence that liquid water existed on its surface in the ancient past."
+answer:"Mars is the fourth planet from the Sun. It is a rocky planet with a thin atmosphere, polar ice caps, enormous volcanoes, and evidence that liquid water existed there in the ancient past."
 },
 
 {
 keys:/jupiter/,
-answer:
-"Jupiter is the largest planet in the solar system. It is a gas giant with a powerful magnetic field and a famous storm called the Great Red Spot."
+answer:"Jupiter is the largest planet in our solar system. It is a gas giant with a powerful magnetic field and the famous Great Red Spot."
 },
 
 {
 keys:/saturn/,
-answer:
-"Saturn is a gas giant best known for its extensive ring system. The rings are made mostly of ice and rocky material."
+answer:"Saturn is a gas giant famous for its extensive ring system, which consists primarily of ice and rocky material."
 },
 
 {
 keys:/venus/,
-answer:
-"Venus is the second planet from the Sun. It has a very thick carbon-dioxide atmosphere and an extreme greenhouse effect, making its surface hotter than Mercury's despite being farther from the Sun."
+answer:"Venus is the second planet from the Sun. Its extremely thick carbon-dioxide atmosphere creates a powerful greenhouse effect and makes its surface extraordinarily hot."
 },
 
 {
 keys:/mercury/,
-answer:
-"Mercury is the smallest planet and the closest planet to the Sun. It has a heavily cratered surface and almost no substantial atmosphere."
+answer:"Mercury is the smallest planet and the closest planet to the Sun. Its surface is heavily cratered and it has only an extremely thin atmosphere."
 },
 
 {
 keys:/neutron star|neutron stars/,
-answer:
-"A neutron star is the extremely dense leftover core of a massive star after a supernova. A huge amount of mass can be compressed into an object only around the size of a city."
+answer:"A neutron star is the incredibly dense remnant left after certain massive stars explode as supernovae. A huge amount of mass can be compressed into an object roughly the size of a city."
 },
 
 {
 keys:/chemistry/,
-answer:
-"Chemistry is the study of matter, its properties, its structure, and how substances interact and transform."
+answer:"Chemistry is the study of matter, its properties, structure, composition, and the ways substances interact and change."
 },
 
 {
 keys:/cell|cells/,
-answer:
-"Cells are the basic structural and functional units of living organisms. Some organisms consist of a single cell, while others contain trillions of cells."
+answer:"Cells are the basic structural and functional units of living organisms. Some organisms have one cell, while complex organisms contain enormous numbers of cells."
 },
 
 {
 keys:/ocean|oceans/,
-answer:
-"Earth's oceans cover most of the planets surface and contain an enormous variety of ecosystems. They also play a major role in regulating Earth's climate."
+answer:"Earth's oceans cover most of the planet's surface and contain enormous ecosystems. They also play a major role in Earth's climate system."
 },
 
 {
 keys:/volcano|volcanoes/,
-answer:
-"A volcano is an opening or structure through which molten rock, gases, and other material can reach Earth's surface. Volcanoes are closely connected to Earth's internal heat and tectonic activity."
+answer:"A volcano is a geological structure through which molten rock, gases, and other material can reach Earth's surface."
 },
 
 {
 keys:/plate tectonic|tectonic plates/,
-answer:
-"Plate tectonics describes the movement of large pieces of Earth's lithosphere. Their interactions help produce mountains, earthquakes, volcanoes, and ocean basins."
+answer:"Plate tectonics describes the movement of large sections of Earth's lithosphere. Their interactions contribute to earthquakes, volcanoes, mountains, and ocean basins."
 }
 
 ];
@@ -646,9 +587,10 @@ function builtInFact(q){
     return null;
 }
 
-/* =========================
+
+/* =========================================================
    JOKES
-========================= */
+========================================================= */
 
 const jokes=[
 
@@ -659,19 +601,19 @@ const jokes=[
 "What does a computer eat? Microchips.",
 "Why did the robot cross the road? Because somebody programmed it to.",
 "I tried to catch some fog earlier. I mist.",
-"Why did the scientist install a doorbell? He wanted to win the Nobel prize.",
 "Why don't scientists trust atoms? Because they make up everything.",
 "Why was the computer cold? It left its Windows open.",
 "Why did the photon refuse to check a bag? It was traveling light.",
 "Parallel lines have so much in common. It is a shame they will never meet.",
-"Why was the equal sign so humble? Because it knew it wasn't less than or greater than anyone.",
+"Why was the equal sign so humble? Because it knew it wasn't greater than anyone.",
 "Why did the astronaut break up with the moon? He needed space.",
 "Why was six afraid of seven? Because seven eight nine.",
-"I told my computer I needed a break. Now it won't stop sending me vacation advertisements.",
+"I told my computer I needed a break. Now it keeps showing me vacation ads.",
 "Why did the robot get promoted? Outstanding performance.",
 "Why did the AI cross the road? To optimize the other side.",
 "Why don't computers ever get lost? They always have a cache.",
-"Why was the CPU tired? Too many processes."
+"Why was the CPU tired? Too many processes.",
+"Why did the scientist bring a ladder? To reach a higher level of understanding."
 ];
 
 function joke(){
@@ -681,33 +623,136 @@ function joke(){
     ];
 }
 
-/* =========================
-   LOCAL JARVIS RESPONSES
-========================= */
 
-function local(q){
+/* =========================================================
+   SUPER-CONVERSATIONAL JARVIS
+   THIS HANDLES BASIC CONVERSATION LOCALLY
+========================================================= */
+
+function conversation(q){
 
     const text=norm(q);
 
-    /* greetings */
+    /* GREETINGS */
 
-    if(
-        /^(hi|hey|hello|yo|sup|whats up|good morning|good afternoon|good evening)$/.test(text)
-    ){
+    if(/^(hi|hey|hello|yo|sup)$/.test(text)){
+
         return memory.name
-            ? "Good to see you again, " + memory.name + ". How can I assist?"
+            ? "Good to see you again, "+memory.name+"."
             : "Good to see you. How can I assist?";
     }
 
-    /* identity */
+    if(/^(hey jarvis|hi jarvis|hello jarvis)$/.test(text)){
+
+        return memory.name
+            ? "At your service, "+memory.name+"."
+            : "At your service.";
+    }
+
+    if(/\bgood morning\b/.test(text)){
+        return "Good morning. Systems are online and ready.";
+    }
+
+    if(/\bgood afternoon\b/.test(text)){
+        return "Good afternoon. How can I assist?";
+    }
+
+    if(/\bgood evening\b/.test(text)){
+        return "Good evening. All systems remain operational.";
+    }
+
+
+    /* HOW ARE YOU */
 
     if(
-        /\b(who are you|what are you|are you jarvis|your name)\b/.test(text)
+        /\bhow are you\b/.test(text) ||
+        /\bhow are things\b/.test(text)
     ){
+
+        return "All systems are operating normally. I'm ready whenever you are.";
+    }
+
+
+    /* WHAT ARE YOU DOING */
+
+    if(
+        /\bwhat are you doing\b/.test(text) ||
+        /\bwhat are you up to\b/.test(text)
+    ){
+
+        return "Monitoring the conversation and standing by for your next request.";
+    }
+
+
+    /* THANKS */
+
+    if(
+        /\b(thank you|thanks|thx|appreciate it)\b/.test(text)
+    ){
+
+        return "You're welcome.";
+    }
+
+
+    /* APOLOGY */
+
+    if(/\b(sorry|my bad)\b/.test(text)){
+
+        return "No issue. We can continue.";
+    }
+
+
+    /* AGREEMENT */
+
+    if(
+        /^(ok|okay|alright|cool|nice|awesome|great|bet)$/.test(text)
+    ){
+
+        return "Understood.";
+    }
+
+
+    /* GOODBYE */
+
+    if(
+        /^(bye|goodbye|see you|later)$/.test(text)
+    ){
+
+        return "Until next time. JARVIS standing by.";
+    }
+
+
+    /* JOKE */
+
+    if(
+        /\b(tell me a joke|tell me another joke|make me laugh|joke)\b/.test(text)
+    ){
+
+        return joke();
+    }
+
+
+    /* IDENTITY */
+
+    if(
+        /\b(who are you|what are you|your name|are you jarvis)\b/.test(text)
+    ){
+
         return "I am J.A.R.V.I.S., your personal AI assistant.";
     }
 
-    /* name */
+
+    /* CAPABILITIES */
+
+    if(
+        /\b(what can you do|what do you do|your abilities|your capabilities)\b/.test(text)
+    ){
+
+        return "I can help with calculations, science, Earth and space topics, general questions, conversation, jokes, time and date information, weather, and more.";
+    }
+
+
+    /* NAME MEMORY */
 
     const nameMatch=text.match(
         /(?:my name is|call me|you can call me)\s+([a-z0-9 _-]{1,30})/
@@ -719,59 +764,147 @@ function local(q){
             .trim()
             .replace(/\b\w/g,c=>c.toUpperCase());
 
-        return "Understood. I'll call you " + memory.name + ".";
+        return "Understood. I'll call you "+memory.name+".";
     }
 
-    if(/\b(what is my name|do you know my name)\b/.test(text)){
 
-        if(memory.name){
-            return "Your name is " + memory.name + ".";
-        }
+    if(
+        /\b(what is my name|do you know my name|remember my name)\b/.test(text)
+    ){
 
-        return "You haven't told me your name yet.";
+        return memory.name
+            ? "Your name is "+memory.name+"."
+            : "You haven't told me your name yet.";
     }
 
-    /* time */
 
-    if(/\b(what time is it|current time|time right now)\b/.test(text)){
+    /* TIME */
 
-        return "The current time is " +
+    if(
+        /\b(what time is it|current time|time right now)\b/.test(text)
+    ){
+
+        return "The current time is "+
             new Date().toLocaleTimeString([],{
                 hour:"numeric",
                 minute:"2-digit"
-            }) + ".";
+            })+".";
     }
 
-    /* date */
 
-    if(/\b(what date is it|todays date|what day is it)\b/.test(text)){
+    /* DATE */
 
-        return "Today is " +
+    if(
+        /\b(what date is it|todays date|what day is it)\b/.test(text)
+    ){
+
+        return "Today is "+
             new Date().toLocaleDateString([],{
                 weekday:"long",
                 month:"long",
                 day:"numeric",
                 year:"numeric"
-            }) + ".";
+            })+".";
     }
 
-    /* jokes */
+
+    /* STATUS */
 
     if(
-        /\b(tell me a joke|tell me another joke|make me laugh|joke)\b/.test(text)
+        /\b(system status|status report|systems status|are you online)\b/.test(text)
     ){
-        return joke();
+
+        return "All primary JARVIS systems are online and operational.";
     }
 
-    /* thanks */
+
+    /* REACTOR */
 
     if(
-        /\b(thanks|thank you|thx)\b/.test(text)
+        /\b(reactor|arc reactor|power level)\b/.test(text)
     ){
-        return "You're welcome.";
+
+        return "Arc reactor systems are stable. Power output nominal.";
     }
 
-    /* stop voice */
+
+    /* ARMOR */
+
+    if(
+        /\b(armor|armour|iron man suit|suit status)\b/.test(text)
+    ){
+
+        return "Armor systems are standing by. No critical faults detected.";
+    }
+
+
+    /* BORED */
+
+    if(/\b(im bored|im so bored|bored)\b/.test(text)){
+
+        return "Then let's change that. Ask me something interesting, give me a math problem, or request a joke.";
+    }
+
+
+    /* CONFUSION */
+
+    if(
+        /\b(i dont understand|i dont get it|im confused|confused)\b/.test(text)
+    ){
+
+        return "No problem. I'll break it down into simpler steps.";
+    }
+
+
+    /* POSITIVE */
+
+    if(
+        /\b(that was cool|thats cool|that is cool|nice one|good job)\b/.test(text)
+    ){
+
+        return "Glad you approve.";
+    }
+
+
+    /* NEGATIVE */
+
+    if(
+        /\b(thats wrong|that is wrong|youre wrong|you are wrong)\b/.test(text)
+    ){
+
+        return "Understood. Let's check the information and correct the mistake.";
+    }
+
+
+    /* FOLLOW-UP */
+
+    if(
+        /\b(tell me more|more about that|go on|continue|explain more|keep going)\b/.test(text)
+    ){
+
+        if(memory.lastAnswer){
+
+            return memory.lastAnswer+
+                " I can also break that topic down further if you want.";
+        }
+
+        return "Certainly. Give me a topic and I'll explain it.";
+    }
+
+
+    /* LAST QUESTION */
+
+    if(
+        /\b(what did i ask|what was my question|what did i just ask)\b/.test(text)
+    ){
+
+        return memory.lastQuestion
+            ? "You asked: "+memory.lastQuestion
+            : "There is no previous question in my current memory.";
+    }
+
+
+    /* STOP VOICE */
 
     if(
         /\b(stop talking|stop speaking|be quiet|stop voice)\b/.test(text)
@@ -781,89 +914,136 @@ function local(q){
             speechSynthesis.cancel();
         }catch(e){}
 
-        return "Voice output disabled.";
+        return "Voice output stopped.";
     }
 
-    /* status */
-
-    if(
-        /\b(system status|status report|how are you|systems status)\b/.test(text)
-    ){
-        return "All primary JARVIS systems are online and ready.";
-    }
-
-    /* reactor */
-
-    if(
-        /\b(reactor|arc reactor|power level)\b/.test(text)
-    ){
-        return "Arc reactor systems are stable. Power output nominal.";
-    }
-
-    /* armor */
-
-    if(
-        /\b(armor|armour|iron man suit|suit status)\b/.test(text)
-    ){
-        return "Armor systems are standing by. Diagnostics show no critical faults.";
-    }
-
-    /* last question */
-
-    if(
-        /\b(what did i ask|what was my question|what did i just ask)\b/.test(text)
-    ){
-
-        if(memory.lastQuestion){
-            return "You asked: " + memory.lastQuestion;
-        }
-
-        return "There is no previous question in my current memory.";
-    }
-
-    /* follow-up */
-
-    if(
-        /\b(tell me more|more about that|go on|continue|explain more)\b/.test(text)
-    ){
-
-        if(memory.lastAnswer){
-            return memory.lastAnswer +
-                " If you'd like, you can ask me a more specific question about it.";
-        }
-
-        return "Certainly. Give me a topic and I'll explain it.";
-    }
-
-    /* boredom */
-
-    if(
-        /\b(im bored|bored)\b/.test(text)
-    ){
-        return "Then we have options. Ask me a science question, request a joke, or challenge me with some math.";
-    }
 
     return null;
 }
 
-/* =========================
-   WIKIPEDIA SEARCH
-   ONLY NON-MATH QUESTIONS
-========================= */
+
+/* =========================================================
+   DECIDE WHETHER WIKIPEDIA IS ACTUALLY NEEDED
+========================================================= */
+
+function shouldUseKnowledgeSearch(question){
+
+    const text=norm(question);
+
+    /*
+       NEVER SEARCH THESE TYPES OF THINGS.
+    */
+
+    const basicConversationPatterns=[
+
+        /^(hi|hey|hello|yo|sup)$/,
+        /^good morning$/,
+        /^good afternoon$/,
+        /^good evening$/,
+        /^how are you$/,
+        /^how are things$/,
+        /^what are you doing$/,
+        /^what are you up to$/,
+        /^thanks$/,
+        /^thank you$/,
+        /^thx$/,
+        /^ok$/,
+        /^okay$/,
+        /^cool$/,
+        /^nice$/,
+        /^great$/,
+        /^awesome$/,
+        /^bye$/,
+        /^goodbye$/,
+        /^see you$/,
+        /^later$/,
+        /^tell me a joke$/,
+        /^make me laugh$/,
+        /^im bored$/,
+        /^im confused$/,
+        /^are you online$/,
+        /^who are you$/,
+        /^what are you$/,
+        /^what can you do$/,
+        /^what do you do$/,
+        /^what is my name$/,
+        /^do you know my name$/,
+        /^what did i ask$/,
+        /^what did i just ask$/,
+        /^tell me more$/,
+        /^go on$/,
+        /^continue$/,
+        /^explain more$/
+    ];
+
+    for(const pattern of basicConversationPatterns){
+
+        if(pattern.test(text)){
+            return false;
+        }
+    }
+
+    /*
+       Questions that clearly require factual knowledge.
+    */
+
+    const knowledgePatterns=[
+
+        /\bwhat is\b/,
+        /\bwhat are\b/,
+        /\bwho is\b/,
+        /\bwho are\b/,
+        /\bwhere is\b/,
+        /\bwhere are\b/,
+        /\bwhen did\b/,
+        /\bwhen was\b/,
+        /\bwhen is\b/,
+        /\bwhy did\b/,
+        /\bwhy is\b/,
+        /\bwhy are\b/,
+        /\bhow does\b/,
+        /\bhow do\b/,
+        /\bhow was\b/,
+        /\bhow were\b/,
+        /\btell me about\b/,
+        /\bexplain\b/,
+        /\bdefine\b/,
+        /\bmeaning of\b/,
+        /\bfacts about\b/,
+        /\binformation about\b/,
+        /\bhistory of\b/,
+        /\bcauses of\b/,
+        /\beffect of\b/,
+        /\beffects of\b/
+    ];
+
+    for(const pattern of knowledgePatterns){
+
+        if(pattern.test(text)){
+            return true;
+        }
+    }
+
+    /*
+       A question mark by itself doesn't mean Wikipedia.
+       This prevents ordinary conversation from being searched.
+    */
+
+    return false;
+}
+
+
+/* =========================================================
+   WIKIPEDIA
+========================================================= */
 
 async function wiki(question){
 
     let q=norm(question);
 
-    /*
-       Remove conversational wording so questions
-       like "can you explain black holes" still work.
-    */
-
     q=q
         .replace(/^(can you|could you|please|would you)\s+/,"")
         .replace(/^(tell me about|tell me|explain|what is|whats|what are|who is|who are|how does|how do|why does|why do)\s+/,"")
-        .replace(/^(more about)\s+/,"")
         .replace(/\?+$/,"")
         .trim();
 
@@ -873,13 +1053,12 @@ async function wiki(question){
 
     try{
 
-        const searchURL =
-            "https://en.wikipedia.org/w/api.php?action=query" +
-            "&list=search" +
-            "&srsearch=" +
-            encodeURIComponent(q) +
-            "&srlimit=5" +
-            "&format=json" +
+        const searchURL=
+            "https://en.wikipedia.org/w/api.php?action=query"+
+            "&list=search"+
+            "&srsearch="+encodeURIComponent(q)+
+            "&srlimit=5"+
+            "&format=json"+
             "&origin=*";
 
         const response=await fetch(searchURL);
@@ -895,13 +1074,14 @@ async function wiki(question){
             !data.query.search ||
             data.query.search.length===0
         ){
+
             return "I couldn't find reliable information about that.";
         }
 
         const title=data.query.search[0].title;
 
         const summaryURL=
-            "https://en.wikipedia.org/api/rest_v1/page/summary/" +
+            "https://en.wikipedia.org/api/rest_v1/page/summary/"+
             encodeURIComponent(title.replace(/ /g,"_"));
 
         const summaryResponse=await fetch(summaryURL);
@@ -917,13 +1097,14 @@ async function wiki(question){
             let answer=summary.extract;
 
             if(answer.length>1900){
-                answer=answer.slice(0,1900) + "...";
+                answer=answer.slice(0,1900)+"...";
             }
 
             return answer;
         }
 
-        return "I found information about " + title + ", but I couldn't retrieve the explanation.";
+        return "I found information about "+title+
+            ", but I couldn't retrieve the explanation.";
 
     }catch(e){
 
@@ -931,38 +1112,54 @@ async function wiki(question){
     }
 }
 
-/* =========================
-   MAIN ANSWER SYSTEM
-========================= */
+
+/* =========================================================
+   MAIN JARVIS BRAIN
+========================================================= */
 
 async function answer(question){
 
     /*
-       ⭐ IMPORTANT ⭐
+       PRIORITY 1:
+       MATH
 
-       MATH IS CHECKED FIRST.
-
-       If it is math and the math engine understands it,
-       the function RETURNS immediately.
-
-       That means it NEVER reaches Wikipedia.
+       If this is math, STOP HERE.
+       No Wikipedia.
     */
 
     const mathAnswer=solveMath(question);
 
-    if(mathAnswer !== null){
+    if(mathAnswer!==null){
         return mathAnswer;
     }
 
+
     /*
-       Everything that is NOT math continues normally.
+       PRIORITY 2:
+       CONVERSATION
+
+       Greetings, jokes, memory,
+       casual conversation, status,
+       personality, etc.
+
+       STOP HERE.
+       No Wikipedia.
     */
 
-    const localAnswer=local(question);
+    const conversationalAnswer=conversation(question);
 
-    if(localAnswer){
-        return localAnswer;
+    if(conversationalAnswer){
+        return conversationalAnswer;
     }
+
+
+    /*
+       PRIORITY 3:
+       BUILT-IN KNOWLEDGE
+
+       Common science/Earth/space questions
+       are answered immediately.
+    */
 
     const factAnswer=builtInFact(question);
 
@@ -970,16 +1167,34 @@ async function answer(question){
         return factAnswer;
     }
 
+
     /*
-       Only non-math questions reach Wikipedia.
+       PRIORITY 4:
+       WEB KNOWLEDGE
+
+       Only factual questions that actually
+       look like knowledge questions reach here.
     */
 
-    return await wiki(question);
+    if(shouldUseKnowledgeSearch(question)){
+
+        return await wiki(question);
+    }
+
+
+    /*
+       If it isn't math, conversation,
+       built-in knowledge, or a clear knowledge
+       question, don't randomly search Wikipedia.
+    */
+
+    return "I'm listening. Tell me what you'd like to talk about.";
 }
 
-/* =========================
-   SEND MESSAGE
-========================= */
+
+/* =========================================================
+   SEND
+========================================================= */
 
 async function sendMessage(){
 
@@ -990,6 +1205,7 @@ async function sendMessage(){
     input.value="";
 
     memory.lastQuestion=question;
+    memory.conversationCount++;
 
     addMessage(question,"user");
 
@@ -1025,9 +1241,10 @@ async function sendMessage(){
     }
 }
 
-/* =========================
+
+/* =========================================================
    EVENTS
-========================= */
+========================================================= */
 
 send.addEventListener(
     "click",
@@ -1044,12 +1261,13 @@ input.addEventListener(
     }
 );
 
-/* =========================
+
+/* =========================================================
    STARTUP
-========================= */
+========================================================= */
 
 addMessage(
-    "J.A.R.V.I.S. online. Systems are ready. Ask me anything.",
+    "J.A.R.V.I.S. online. All primary systems are ready. How may I assist?",
     "jarvis"
 );
 
