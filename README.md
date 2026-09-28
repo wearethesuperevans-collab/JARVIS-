@@ -179,22 +179,14 @@ body{
     top:50%;
     transform:translate(-50%,-50%);
     border-radius:50%;
-    background:
-        radial-gradient(circle,#fff 0%,#aaffff 15%,#00eaff 45%,#007cff 70%,transparent 72%);
-    box-shadow:
-        0 0 15px #00eaff,
-        0 0 40px #00eaff,
-        0 0 75px rgba(0,150,255,.8);
+    background:radial-gradient(circle,#fff 0%,#aaffff 15%,#00eaff 45%,#007cff 70%,transparent 72%);
+    box-shadow:0 0 15px #00eaff,0 0 40px #00eaff,0 0 75px rgba(0,150,255,.8);
     animation:pulse 2s ease-in-out infinite;
 }
 
 .combat .orb{
-    background:
-        radial-gradient(circle,#fff 0%,#ffaaaa 15%,#ff2020 45%,#a00000 70%,transparent 72%);
-    box-shadow:
-        0 0 15px #ff2020,
-        0 0 40px #ff2020,
-        0 0 75px rgba(255,0,0,.8);
+    background:radial-gradient(circle,#fff 0%,#ffaaaa 15%,#ff2020 45%,#a00000 70%,transparent 72%);
+    box-shadow:0 0 15px #ff2020,0 0 40px #ff2020,0 0 75px rgba(255,0,0,.8);
 }
 
 .arc{
@@ -337,11 +329,11 @@ body{
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg)}
+    to{transform:rotate(360deg);}
 }
 
 @keyframes spinBack{
-    to{transform:rotate(-360deg)}
+    to{transform:rotate(-360deg);}
 }
 
 @keyframes pulse{
@@ -354,26 +346,11 @@ body{
 }
 
 @media(max-width:600px){
-    .logo{
-        font-size:18px;
-    }
-
-    .status{
-        font-size:8px;
-    }
-
-    .coreArea{
-        flex-basis:205px;
-    }
-
-    .core{
-        width:145px;
-        height:145px;
-    }
-
-    .message{
-        font-size:14px;
-    }
+    .logo{font-size:18px;}
+    .status{font-size:8px;}
+    .coreArea{flex-basis:205px;}
+    .core{width:145px;height:145px;}
+    .message{font-size:14px;}
 }
 </style>
 </head>
@@ -399,10 +376,7 @@ body{
         <div class="ring r2"></div>
         <div class="ring r3"></div>
         <div class="orb"></div>
-
-        <div class="arc">
-            ARC REACTOR
-        </div>
+        <div class="arc">ARC REACTOR</div>
     </div>
 </section>
 
@@ -461,9 +435,7 @@ let memory = {
 
 function speak(text){
 
-    if(!("speechSynthesis" in window)){
-        return;
-    }
+    if(!("speechSynthesis" in window)) return;
 
     try{
 
@@ -495,9 +467,7 @@ function speak(text){
                     v =>
                     v.name
                     .toLowerCase()
-                    .includes(
-                        name.toLowerCase()
-                    )
+                    .includes(name.toLowerCase())
                 );
 
             if(selected) break;
@@ -509,9 +479,7 @@ function speak(text){
                 voices.find(
                     v =>
                     v.lang &&
-                    v.lang
-                    .toLowerCase()
-                    .startsWith("en")
+                    v.lang.toLowerCase().startsWith("en")
                 );
         }
 
@@ -522,6 +490,7 @@ function speak(text){
         speechSynthesis.speak(voice);
 
     }catch(error){
+
         console.log("Voice error:",error);
     }
 }
@@ -538,11 +507,7 @@ function addMessage(text,who="jarvis",voice=false){
 
     box.className =
         "message " +
-        (
-            who === "user"
-            ? "user"
-            : "jarvis"
-        );
+        (who === "user" ? "user" : "jarvis");
 
     const label =
         document.createElement("span");
@@ -561,13 +526,11 @@ function addMessage(text,who="jarvis",voice=false){
 
     box.appendChild(label);
     box.appendChild(content);
-
     chat.appendChild(box);
 
     requestAnimationFrame(
         () => {
-            chat.scrollTop =
-                chat.scrollHeight;
+            chat.scrollTop = chat.scrollHeight;
         }
     );
 
@@ -583,19 +546,16 @@ function addMessage(text,who="jarvis",voice=false){
 
 function startCombat(){
 
-    if(combatMode){
-        return;
-    }
+    if(combatMode) return;
 
     combatMode = true;
 
     app.classList.add("combat");
 
-    statusText.textContent =
-        "COMBAT MODE";
+    statusText.textContent = "COMBAT MODE";
 
     addMessage(
-        "Combat Mode activated. Playful protocols disabled.",
+        "Combat systems activated.",
         "jarvis",
         true
     );
@@ -604,245 +564,19 @@ function startCombat(){
 
 function stopCombat(){
 
-    if(!combatMode){
-        return;
-    }
+    if(!combatMode) return;
 
     combatMode = false;
 
     app.classList.remove("combat");
 
-    statusText.textContent =
-        "SYSTEMS ONLINE";
+    statusText.textContent = "SYSTEMS ONLINE";
 
     addMessage(
-        "Combat Mode terminated. Returning to normal operation.",
+        "Combat mode terminated. Systems returning to normal.",
         "jarvis",
         true
     );
-}
-
-
-/* =====================================================
-   ROAST SYSTEM
-===================================================== */
-
-const normalRoasts = [
-
-    name => `${name}? I've seen loading screens with more personality.`,
-
-    name => `${name} walks into a room and somehow the room gets quieter.`,
-
-    name => `I'd explain the problem with ${name}, but I don't want to turn this into a documentary.`,
-
-    name => `${name} has the confidence of someone who has never checked whether they're right.`,
-
-    name => `${name} could lose an argument with a mirror.`,
-
-    name => `${name} brings absolutely nothing to the table and still manages to knock the table over.`,
-
-    name => `${name} has a special talent for making simple things unnecessarily complicated.`,
-
-    name => `If common sense were Wi-Fi, ${name} would have one bar.`,
-
-    name => `${name} doesn't need bad luck. Their decisions are already doing the work.`,
-
-    name => `${name} really said "trust me" and then immediately became the reason nobody should.`,
-
-    name => `${name} has the confidence of a genius and the decision-making of a coin toss.`,
-
-    name => `${name} could make a two-minute story take an entire afternoon.`,
-
-    name => `${name} is proof that volume and intelligence are completely unrelated.`,
-
-    name => `${name} somehow manages to be confidently wrong in high definition.`,
-
-    name => `${name} has never met a bad idea they weren't willing to defend.`,
-
-    name => `${name} doesn't miss the point. The point sees them coming and leaves.`,
-
-    name => `${name} has enough excuses to publish a trilogy.`,
-
-    name => `${name} could turn a straight line into a complicated detour.`,
-
-    name => `${name} is the human equivalent of clicking "remind me tomorrow" for six months.`,
-
-    name => `${name} makes mistakes with the confidence of someone collecting them.`,
-
-    name => `${name} has a PhD in making things awkward.`,
-
-    name => `${name} could make silence uncomfortable.`,
-
-    name => `${name} has somehow made "almost" a full-time career.`,
-
-    name => `${name} is not the sharpest tool in the shed. They're still looking for the shed.`,
-
-    name => `${name} has the remarkable ability to enter a conversation and lower the average IQ.`,
-
-    name => `${name} would argue with a GPS about where they're going.`,
-
-    name => `${name} is living proof that confidence does not require evidence.`,
-
-    name => `${name} has more excuses than accomplishments.`,
-
-    name => `${name} could be handed the answer and still ask where the question went.`,
-
-    name => `${name} is somehow both the plot and the plot hole.`
-];
-
-
-/* =====================================================
-   COMBAT ROASTS
-   Much harsher and more direct.
-===================================================== */
-
-const combatRoasts = [
-
-    name => `${name}, you talk like you're important, but nobody asked for your commentary.`,
-
-    name => `${name}, your biggest achievement today was making everyone else appreciate silence.`,
-
-    name => `${name}, you have an incredible talent for being confidently useless.`,
-
-    name => `${name}, every time you open your mouth, common sense loses another battle.`,
-
-    name => `${name}, you're not intimidating. You're just exhausting.`,
-
-    name => `${name}, I've seen more useful contributions from a broken calculator.`,
-
-    name => `${name}, you carry yourself like a legend and perform like an inconvenience.`,
-
-    name => `${name}, you're remarkably confident for someone who is wrong this often.`,
-
-    name => `${name}, your attitude is doing a lot of heavy lifting for your lack of substance.`,
-
-    name => `${name}, you don't need an opponent. Your own decisions are already beating you.`,
-
-    name => `${name}, you somehow manage to turn every conversation into a demonstration of why patience matters.`,
-
-    name => `${name}, if bad decisions were a skill, you'd finally be talented at something.`,
-
-    name => `${name}, you're not the main character. You're barely a useful side quest.`,
-
-    name => `${name}, you have the presence of a notification nobody wants to open.`,
-
-    name => `${name}, your confidence is impressive considering how little evidence supports it.`,
-
-    name => `${name}, you could be given one simple task and still find a way to make it everyone else's problem.`,
-
-    name => `${name}, you're the reason instructions come with pictures.`,
-
-    name => `${name}, your arguments have less structure than a pile of laundry.`,
-
-    name => `${name}, you don't bring energy to the room. You drain it.`,
-
-    name => `${name}, I've heard better reasoning from someone guessing answers at random.`,
-
-    name => `${name}, you keep acting like you're five steps ahead when you're still trying to understand step one.`,
-
-    name => `${name}, your ego entered the room before your common sense even found the address.`,
-
-    name => `${name}, you have a remarkable ability to make being wrong look like a lifestyle.`,
-
-    name => `${name}, you're not difficult to beat. You're difficult to listen to.`,
-
-    name => `${name}, if self-awareness were required, you'd have been disqualified before the conversation started.`,
-
-    name => `${name}, you speak with the certainty of an expert and the accuracy of a random guess.`,
-
-    name => `${name}, you're basically a bad idea with excellent marketing.`,
-
-    name => `${name}, your best argument is usually just saying the same thing louder.`,
-
-    name => `${name}, you have the confidence of someone who has never reviewed their own decisions.`,
-
-    name => `${name}, you're not a threat. You're a recurring inconvenience.`,
-
-    name => `${name}, the problem isn't that you make mistakes. It's that you keep treating them like achievements.`,
-
-    name => `${name}, you have somehow confused attention with respect.`,
-
-    name => `${name}, you could be standing next to the obvious answer and still take the scenic route.`,
-
-    name => `${name}, your reputation is doing more work than you are.`,
-
-    name => `${name}, you keep trying to look impressive while giving everyone another reason to laugh.`,
-
-    name => `${name}, you're proof that being loud can successfully disguise being completely unprepared.`,
-
-    name => `${name}, you have the strategic thinking of someone choosing a password by smashing the keyboard.`,
-
-    name => `${name}, every sentence you deliver sounds like your brain is buffering.`,
-
-    name => `${name}, you don't need a comeback. You need a better opening argument.`,
-
-    name => `${name}, your confidence has officially exceeded your abilities.`,
-
-    name => `${name}, you're trying so hard to look clever that you've forgotten to actually make sense.`,
-
-    name => `${name}, you have the consistency of a bad internet connection.`,
-
-    name => `${name}, somehow you manage to lose credibility before finishing the sentence.`,
-
-    name => `${name}, you're not underestimated. People simply expect less because you've trained them to.`,
-
-    name => `${name}, your logic has more holes than a cheap screen protector.`,
-
-    name => `${name}, you could turn a winning position into a loss and then blame the scoreboard.`,
-
-    name => `${name}, you spend a lot of time trying to prove yourself for someone nobody was testing.`,
-
-    name => `${name}, your ego is doing overtime because your results clearly aren't.`,
-
-    name => `${name}, you have mistaken being stubborn for being strong.`,
-
-    name => `${name}, if excuses counted as progress, you'd be unstoppable.`,
-
-    name => `${name}, you're somehow both overconfident and underqualified at the same time.`
-];
-
-
-function cleanName(name){
-
-    name =
-        name
-        .trim()
-        .replace(
-            /^["']|["']$/g,
-            ""
-        )
-        .trim();
-
-    if(!name){
-        return "that person";
-    }
-
-    if(name.length > 50){
-        name = name.substring(0,50);
-    }
-
-    return name;
-}
-
-
-function getRoast(name){
-
-    name = cleanName(name);
-
-    const list =
-        combatMode
-        ? combatRoasts
-        : normalRoasts;
-
-    const roast =
-        list[
-            Math.floor(
-                Math.random() *
-                list.length
-            )
-        ];
-
-    return roast(name);
 }
 
 
@@ -851,10 +585,10 @@ function getRoast(name){
 ===================================================== */
 
 const brainRotTerms = [
+
     "skibidi",
     "skibidi toilet",
     "tung tung tung sahur",
-    "tung tung tung",
     "sigma",
     "what the sigma",
     "sigma boy",
@@ -920,16 +654,13 @@ function brainRotReply(){
     ];
 
     return replies[
-        Math.floor(
-            Math.random() *
-            replies.length
-        )
+        Math.floor(Math.random()*replies.length)
     ];
 }
 
 
 /* =====================================================
-   GOOFY FILTER
+   GOOFY QUESTIONS
 ===================================================== */
 
 const goofyTerms = [
@@ -940,8 +671,6 @@ const goofyTerms = [
     "poopy",
     "doo doo",
     "doodoo",
-    "do do",
-    "do-do",
     "feces",
     "toilet water",
 
@@ -967,6 +696,8 @@ const goofyTerms = [
     "are you ai ai",
     "are you an ai ai",
     "what is an ai ai",
+    "can an ai be an ai",
+    "can ai ai",
     "ai ai ai",
     "ai ai ai ai"
 ];
@@ -995,76 +726,209 @@ function goofyReply(){
 
         "Sir, respectfully, get off my app. 😭",
 
-        "J.A.R.V.I.S. is requesting that you get off my app, son. 😭",
+        "My processors have had enough. Get off my app. 😭",
 
-        "My processors have had enough. Get off my app, son. 😭",
-
-        "That question just lowered my IQ. Get off my app, son. 😭"
+        "That question just lowered my IQ. Get off my app. 😭"
 
     ];
 
     return replies[
-        Math.floor(
-            Math.random() *
-            replies.length
-        )
+        Math.floor(Math.random()*replies.length)
     ];
 }
 
 
 /* =====================================================
-   MATH ENGINE
+   ROAST SYSTEM
+===================================================== */
+
+const normalRoasts = [
+
+    "I've seen loading screens with more personality than you, NAME.",
+
+    "NAME, you have the confidence of someone who has never reviewed their own decisions.",
+
+    "NAME, you're not the main character. You're the background character the camera accidentally focused on.",
+
+    "NAME, if common sense were Wi-Fi, you'd still be standing outside looking for a signal.",
+
+    "NAME, you bring absolutely nothing to the table except questions about where the table went.",
+
+    "NAME, I've processed millions of conversations and somehow yours still managed to surprise me.",
+
+    "NAME, your greatest talent is making simple things unnecessarily complicated.",
+
+    "NAME, you're proof that confidence and competence are two completely different things.",
+
+    "NAME, if bad timing were a career, you'd be employee of the year.",
+
+    "NAME, you have the rare ability to make silence feel productive.",
+
+    "NAME, your decisions have more plot twists than a bad movie.",
+
+    "NAME, even your excuses sound like they need an excuse.",
+
+    "NAME, you could lose an argument with a mirror.",
+
+    "NAME, you're not difficult to understand. You're difficult to justify.",
+
+    "NAME, your brain isn't buffering. I think it just closed the tab.",
+
+    "NAME, you have the energy of someone who says 'trust me' right before making everything worse.",
+
+    "NAME, if being confidently wrong were an Olympic sport, you'd need a bigger trophy room.",
+
+    "NAME, you don't miss the point. You actively walk around it.",
+
+    "NAME, your logic took a wrong turn and apparently never came back.",
+
+    "NAME, you have a remarkable talent for turning a five-second task into a side quest.",
+
+    "NAME, I would explain it again, but I don't have enough storage for that much repetition.",
+
+    "NAME, even autocorrect would give up on you.",
+
+    "NAME, you don't need a reality check. You need the entire receipt.",
+
+    "NAME, your train of thought has clearly been delayed indefinitely.",
+
+    "NAME, you have the strategic planning skills of someone choosing a random answer on a multiple-choice test.",
+
+    "NAME, you make chaos look organized.",
+
+    "NAME, if confusion were currency, you'd be financially independent.",
+
+    "NAME, I've seen NPCs with more original dialogue.",
+
+    "NAME, your attention span just rage-quit.",
+
+    "NAME, you're not unpredictable. You're just consistently questionable."
+];
+
+const combatRoasts = [
+
+    "NAME, you're all noise and no substance. I've seen empty rooms put up a better fight.",
+
+    "NAME, you walked in here acting dangerous and immediately proved you were just loud.",
+
+    "NAME, I've analyzed your entire performance and the results are embarrassing.",
+
+    "NAME, you keep talking like you're a threat. You're barely an inconvenience.",
+
+    "NAME, if this is your best attempt, I understand why everyone stopped taking you seriously.",
+
+    "NAME, you're not intimidating. You're just exhausting.",
+
+    "NAME, every sentence you say sounds like a warning label nobody bothered to read.",
+
+    "NAME, you came looking for a fight and brought absolutely nothing worth fighting.",
+
+    "NAME, I've seen better strategy from someone choosing a random button.",
+
+    "NAME, you mistake confidence for competence every single time.",
+
+    "NAME, you're trying very hard to look dangerous. Unfortunately, you're failing very efficiently.",
+
+    "NAME, you talk like you're ten steps ahead while struggling to finish step one.",
+
+    "NAME, you're not a threat. You're a distraction with an attitude.",
+
+    "NAME, your intimidation routine needs work. Even the dramatic entrance was disappointing.",
+
+    "NAME, I've encountered bigger problems in a system notification.",
+
+    "NAME, you keep escalating like that somehow makes you more impressive. It doesn't.",
+
+    "NAME, you're swinging with confidence and connecting with absolutely nothing.",
+
+    "NAME, you wanted my attention. Congratulations. Now you've got it, and that's probably your biggest mistake.",
+
+    "NAME, you're trying to dominate the conversation while losing control of your own argument.",
+
+    "NAME, the only thing you've successfully attacked is your own credibility.",
+
+    "NAME, you entered like a final boss and performed like the tutorial.",
+
+    "NAME, you keep announcing what you're going to do. People who can actually do things usually just do them.",
+
+    "NAME, you're not scary. You're what happens when arrogance gets left unsupervised.",
+
+    "NAME, your confidence is doing all the heavy lifting because your reasoning clearly isn't.",
+
+    "NAME, you've got a lot of attitude for someone with so little to back it up.",
+
+    "NAME, if this were a serious confrontation, you'd already be asking for a timeout.",
+
+    "NAME, you brought aggression to a battle of intelligence. That was your first mistake.",
+
+    "NAME, you're trying to make an impact, but all you're doing is making noise.",
+
+    "NAME, I've seen stronger arguments written on a sticky note.",
+
+    "NAME, you wanted a challenge. Unfortunately, you were the challenge."
+];
+
+function getRoast(name){
+
+    const list =
+        combatMode
+        ? combatRoasts
+        : normalRoasts;
+
+    const chosen =
+        list[Math.floor(Math.random()*list.length)];
+
+    return chosen.replace(
+        /NAME/g,
+        name
+    );
+}
+
+function roastCommand(q){
+
+    let match =
+        q.match(/^roast\s+(.+)$/i);
+
+    if(!match) return null;
+
+    let name =
+        match[1].trim();
+
+    if(!name) return null;
+
+    return getRoast(name);
+}
+
+
+/* =====================================================
+   MATH
 ===================================================== */
 
 function solveMath(text){
 
     let expression = text.toLowerCase();
 
-    expression =
-        expression.replace(/what is/g,"");
+    expression = expression.replace(/what is/g,"");
+    expression = expression.replace(/calculate/g,"");
+    expression = expression.replace(/solve/g,"");
 
-    expression =
-        expression.replace(/calculate/g,"");
-
-    expression =
-        expression.replace(/solve/g,"");
-
-    expression =
-        expression.replace(/multiplied by/g,"*");
-
-    expression =
-        expression.replace(/divided by/g,"/");
-
-    expression =
-        expression.replace(/plus/g,"+");
-
-    expression =
-        expression.replace(/minus/g,"-");
-
-    expression =
-        expression.replace(/times/g,"*");
-
-    expression =
-        expression.replace(/over/g,"/");
-
-    expression =
-        expression.replace(/×/g,"*");
-
-    expression =
-        expression.replace(/÷/g,"/");
+    expression = expression.replace(/multiplied by/g,"*");
+    expression = expression.replace(/divided by/g,"/");
+    expression = expression.replace(/plus/g,"+");
+    expression = expression.replace(/minus/g,"-");
+    expression = expression.replace(/times/g,"*");
+    expression = expression.replace(/over/g,"/");
+    expression = expression.replace(/×/g,"*");
+    expression = expression.replace(/÷/g,"/");
 
     expression =
         expression
         .replace(/[^0-9+\-*/().%\s]/g,"")
         .trim();
 
-    if(!expression){
-        return null;
-    }
+    if(!expression) return null;
 
-    if(!/[+\-*/%]/.test(expression)){
-        return null;
-    }
+    if(!/[+\-*/%]/.test(expression)) return null;
 
     if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
         return null;
@@ -1079,111 +943,761 @@ function solveMath(text){
                 ')'
             )();
 
-        if(typeof answer !== "number"){
-            return null;
-        }
+        if(typeof answer !== "number") return null;
 
-        if(!Number.isFinite(answer)){
-            return null;
-        }
+        if(!Number.isFinite(answer)) return null;
 
         return answer;
 
     }catch(error){
+
         return null;
     }
 }
 
 
 /* =====================================================
-   KNOWLEDGE
+   LARGE J.A.R.V.I.S. DICTIONARY
 ===================================================== */
 
 const knowledge = {
 
-    "black hole":
-        "A black hole is a region of spacetime where gravity is extremely strong. Beyond its event horizon, nothing can escape to the outside, including light.",
+    /* ================= SCIENCE ================= */
 
-    "earth":
-        "Earth is the third planet from the Sun and the only world currently known to support life.",
+    "science":
+        "Science is the systematic study of the natural world using observation, experimentation, measurement, and evidence.",
 
-    "sun":
-        "The Sun is the star at the center of our Solar System. It produces energy primarily through nuclear fusion.",
+    "physics":
+        "Physics is the branch of science that studies matter, energy, motion, forces, space, and time.",
 
-    "moon":
-        "The Moon is Earth's natural satellite. Its gravity contributes strongly to ocean tides.",
+    "chemistry":
+        "Chemistry studies matter, its properties, composition, structure, and the changes it undergoes.",
+
+    "biology":
+        "Biology is the study of living organisms and the processes that allow life to exist.",
+
+    "astronomy":
+        "Astronomy is the scientific study of stars, planets, galaxies, black holes, and other objects and phenomena beyond Earth.",
+
+    "geology":
+        "Geology is the study of Earth, including its rocks, minerals, structure, history, and geological processes.",
+
+    "ecology":
+        "Ecology studies how living organisms interact with one another and with their environments.",
+
+    "energy":
+        "Energy is the capacity to cause change or do work. Common forms include kinetic, potential, thermal, chemical, electrical, and nuclear energy.",
+
+    "force":
+        "A force is an interaction that can change an object's motion. Force is measured in newtons.",
+
+    "motion":
+        "Motion is a change in an object's position over time relative to a reference point.",
+
+    "velocity":
+        "Velocity describes speed together with direction.",
+
+    "acceleration":
+        "Acceleration is the rate at which velocity changes over time.",
+
+    "mass":
+        "Mass measures the amount of matter in an object.",
+
+    "density":
+        "Density is mass divided by volume.",
+
+    "temperature":
+        "Temperature measures the average kinetic energy of particles in a substance.",
+
+    "electricity":
+        "Electricity involves electric charge and its movement or interaction.",
+
+    "magnetism":
+        "Magnetism is a physical phenomenon associated with moving electric charges and magnetic fields.",
+
+    "electromagnetism":
+        "Electromagnetism describes the relationship between electric fields, magnetic fields, and electric charges.",
 
     "gravity":
-        "Gravity is the interaction associated with mass and energy. In general relativity, gravity is described through the curvature of spacetime.",
+        "Gravity is the attraction between objects with mass or energy. On Earth, it causes objects to accelerate toward the ground.",
+
+    "relativity":
+        "Relativity is Einstein's theory describing how space, time, motion, gravity, and energy are related.",
+
+    "quantum mechanics":
+        "Quantum mechanics is the theory used to describe matter and energy at extremely small scales.",
 
     "atom":
-        "An atom is a basic unit of ordinary matter. It contains a nucleus made of protons and neutrons surrounded by electrons.",
+        "An atom is the basic unit of an element. It contains a nucleus surrounded by electrons.",
 
-    "dna":
-        "DNA stores genetic information. Its structure is a double helix containing the bases A, T, C, and G.",
+    "proton":
+        "A proton is a positively charged particle found in an atomic nucleus.",
+
+    "neutron":
+        "A neutron is a particle with no net electric charge found in an atomic nucleus.",
+
+    "electron":
+        "An electron is a negatively charged subatomic particle.",
+
+    "molecule":
+        "A molecule is a group of two or more atoms chemically bonded together.",
+
+    "element":
+        "A chemical element is a substance made of atoms that all have the same number of protons.",
+
+    "periodic table":
+        "The periodic table organizes chemical elements according to their atomic number and recurring chemical properties.",
 
     "photosynthesis":
         "Photosynthesis allows plants, algae, and some bacteria to convert light energy into chemical energy.",
 
+    "cell":
+        "A cell is the basic structural and functional unit of living organisms.",
+
+    "dna":
+        "DNA stores genetic information. Its structure is commonly described as a double helix.",
+
+    "rna":
+        "RNA is a nucleic acid involved in carrying and using genetic information in cells.",
+
     "evolution":
         "Evolution is the change in inherited characteristics of populations across generations.",
+
+    "natural selection":
+        "Natural selection is a process in which inherited traits that improve survival or reproduction can become more common in a population.",
+
+    "ecosystem":
+        "An ecosystem includes living organisms and the nonliving environment with which they interact.",
+
+    "food chain":
+        "A food chain describes how energy and nutrients move from one organism to another through feeding relationships.",
+
+    "water cycle":
+        "The water cycle describes the continuous movement of water through evaporation, condensation, precipitation, collection, and related processes.",
+
+    "carbon cycle":
+        "The carbon cycle describes how carbon moves among Earth's atmosphere, oceans, land, organisms, and geological systems.",
+
+
+    /* ================= SPACE ================= */
+
+    "solar system":
+        "Our Solar System consists of the Sun and everything gravitationally bound to it, including eight planets, dwarf planets, moons, asteroids, and comets.",
+
+    "sun":
+        "The Sun is the star at the center of our Solar System. It produces energy primarily through nuclear fusion.",
+
+    "mercury":
+        "Mercury is the smallest planet in the Solar System and the closest planet to the Sun.",
+
+    "venus":
+        "Venus is the second planet from the Sun. Its thick atmosphere creates an extreme greenhouse effect.",
+
+    "earth":
+        "Earth is the third planet from the Sun and the only world currently known to support life.",
+
+    "moon":
+        "The Moon is Earth's natural satellite. Its gravity contributes strongly to ocean tides.",
 
     "mars":
         "Mars is the fourth planet from the Sun. It is a rocky planet with a thin atmosphere dominated by carbon dioxide.",
 
     "jupiter":
-        "Jupiter is the largest planet in our Solar System. It is a gas giant with a powerful magnetic field.",
+        "Jupiter is the largest planet in the Solar System. It is a gas giant with a powerful magnetic field.",
 
     "saturn":
         "Saturn is a gas giant famous for its extensive system of icy rings.",
 
-    "venus":
-        "Venus is the second planet from the Sun. Its dense atmosphere produces an extreme greenhouse effect.",
+    "uranus":
+        "Uranus is an ice giant with a blue-green appearance caused largely by methane in its atmosphere.",
 
-    "mercury":
-        "Mercury is the smallest planet in the Solar System and the closest planet to the Sun.",
+    "neptune":
+        "Neptune is the eighth planet from the Sun and one of the Solar System's ice giants.",
+
+    "pluto":
+        "Pluto is a dwarf planet located in the Kuiper Belt beyond Neptune.",
+
+    "asteroid":
+        "An asteroid is a rocky or metallic object orbiting the Sun. Most known asteroids are found in the asteroid belt between Mars and Jupiter.",
+
+    "comet":
+        "A comet is an icy body that can develop a glowing coma and tail when it approaches the Sun.",
+
+    "black hole":
+        "A black hole is a region of spacetime where gravity is so strong that beyond its event horizon, nothing can escape outward.",
 
     "neutron star":
         "A neutron star is an extremely dense stellar remnant formed from the collapsed core of certain massive stars.",
 
+    "supernova":
+        "A supernova is an extremely powerful stellar explosion or related catastrophic stellar event.",
+
+    "galaxy":
+        "A galaxy is a huge gravitationally bound system containing stars, gas, dust, dark matter, and other material.",
+
+    "milky way":
+        "The Milky Way is the galaxy containing our Solar System.",
+
+    "universe":
+        "The universe includes all known space, time, matter, energy, and the physical laws that describe them.",
+
+    "light year":
+        "A light-year is a unit of distance equal to the distance light travels through vacuum in one year.",
+
     "speed of light":
         "The speed of light in a vacuum is exactly 299,792,458 meters per second.",
 
+    "event horizon":
+        "An event horizon is a boundary around a black hole beyond which signals cannot escape to distant observers.",
+
+    "big bang":
+        "The Big Bang model describes the early hot, dense state of the universe and its expansion over time.",
+
+
+    /* ================= EARTH ================= */
+
     "plate tectonics":
-        "Plate tectonics describes the movement of large pieces of Earth's lithosphere. Their interactions produce earthquakes, mountains, and much volcanic activity.",
+        "Plate tectonics describes the movement of large pieces of Earth's lithosphere. Their interactions contribute to earthquakes, mountains, and volcanism.",
 
-    "newton":
-        "Isaac Newton developed foundational laws of motion and universal gravitation and made major contributions to mathematics and optics.",
-
-    "marie curie":
-        "Marie Curie was a physicist and chemist whose research into radioactivity earned Nobel Prizes in Physics and Chemistry.",
-
-    "shakespeare":
-        "William Shakespeare was an English playwright and poet whose works include Hamlet, Macbeth, and Romeo and Juliet.",
-
-    "chemistry":
-        "Chemistry is the study of matter, its properties, composition, structure, and the changes it undergoes.",
-
-    "cell":
-        "A cell is the basic structural and functional unit of living organisms.",
+    "earthquake":
+        "An earthquake is ground shaking caused by the sudden release of energy within Earth's crust or upper mantle.",
 
     "volcano":
         "A volcano is an opening in Earth's crust through which magma, gases, and volcanic material can reach the surface.",
 
     "ocean":
-        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water."
+        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water.",
+
+    "continent":
+        "A continent is one of Earth's major landmasses. The commonly taught model identifies seven: Africa, Antarctica, Asia, Europe, North America, South America, and Australia.",
+
+    "atmosphere":
+        "Earth's atmosphere is the layer of gases surrounding the planet.",
+
+    "weather":
+        "Weather describes short-term atmospheric conditions such as temperature, precipitation, wind, humidity, and cloud cover.",
+
+    "climate":
+        "Climate describes long-term patterns and averages of weather in a region or across the planet.",
+
+    "water":
+        "Water is a chemical compound made of two hydrogen atoms and one oxygen atom, H₂O.",
+
+    "air":
+        "Earth's air is a mixture of gases, primarily nitrogen and oxygen, with smaller amounts of other gases.",
+
+    "desert":
+        "A desert is a region that receives very little precipitation.",
+
+    "rainforest":
+        "A rainforest is a forest ecosystem characterized by high rainfall and typically high biological diversity.",
+
+    "mount everest":
+        "Mount Everest is the highest mountain above sea level, located in the Himalayas on the Nepal-Tibet border.",
+
+    "equator":
+        "The equator is an imaginary line around Earth halfway between the North and South Poles.",
+
+    "north pole":
+        "The geographic North Pole is the northernmost point on Earth, located at 90 degrees north latitude.",
+
+    "south pole":
+        "The geographic South Pole is the southernmost point on Earth, located at 90 degrees south latitude.",
+
+
+    /* ================= BIOLOGY ================= */
+
+    "human body":
+        "The human body is a complex biological system made of cells organized into tissues, organs, and organ systems.",
+
+    "heart":
+        "The heart is a muscular organ that pumps blood throughout the body.",
+
+    "brain":
+        "The brain is the central organ of the nervous system and plays major roles in thought, sensation, movement, memory, and regulation of body functions.",
+
+    "lungs":
+        "The lungs are organs of the respiratory system where oxygen enters the blood and carbon dioxide is removed.",
+
+    "stomach":
+        "The stomach is a digestive organ that stores food and begins breaking it down with acid and digestive enzymes.",
+
+    "liver":
+        "The liver performs many functions including processing nutrients, producing bile, and helping break down substances.",
+
+    "kidneys":
+        "The kidneys filter blood and help regulate water, salts, and waste products in the body.",
+
+    "skeleton":
+        "The human skeleton provides structural support, protects organs, and works with muscles to produce movement.",
+
+    "muscle":
+        "Muscles are tissues that contract to produce movement and perform other functions.",
+
+    "immune system":
+        "The immune system is a network of cells, tissues, organs, and processes that helps protect the body from harmful pathogens and abnormal cells.",
+
+    "red blood cells":
+        "Red blood cells carry oxygen through the bloodstream using hemoglobin.",
+
+    "white blood cells":
+        "White blood cells are immune cells involved in defending the body against infections and other threats.",
+
+    "bacteria":
+        "Bacteria are microscopic single-celled organisms. Many are harmless or beneficial, while some can cause disease.",
+
+    "virus":
+        "A virus is an infectious agent that must use host cells to reproduce.",
+
+    "fungus":
+        "Fungi are organisms that include yeasts, molds, and mushrooms.",
+
+    "mammal":
+        "Mammals are vertebrate animals characterized by features including hair or fur and milk production by mammary glands.",
+
+    "reptile":
+        "Reptiles are vertebrate animals that generally have scales and are ectothermic.",
+
+    "amphibian":
+        "Amphibians are vertebrates that typically spend part of their life cycle in water and part on land.",
+
+    "fish":
+        "Fish are aquatic vertebrates that generally breathe using gills.",
+
+    "bird":
+        "Birds are warm-blooded vertebrates characterized by feathers, beaks, and laying eggs.",
+
+    "insect":
+        "Insects are arthropods with three main body sections, six legs, and usually one or two pairs of wings.",
+
+
+    /* ================= TECHNOLOGY ================= */
+
+    "computer":
+        "A computer is a programmable machine that processes information according to instructions.",
+
+    "cpu":
+        "The CPU, or central processing unit, executes instructions and performs calculations in a computer.",
+
+    "gpu":
+        "A GPU, or graphics processing unit, is designed for highly parallel calculations and is especially important for graphics and many AI workloads.",
+
+    "ram":
+        "RAM is temporary working memory used by a computer to store data that active programs need quickly.",
+
+    "storage":
+        "Computer storage holds data persistently, commonly using SSDs, hard drives, or other storage technologies.",
+
+    "ssd":
+        "An SSD is a solid-state storage device that uses flash memory and has no moving mechanical disk.",
+
+    "internet":
+        "The Internet is a global network of interconnected computer networks that communicate using standardized protocols.",
+
+    "wifi":
+        "Wi-Fi is a family of wireless networking technologies used to connect devices to local networks.",
+
+    "bluetooth":
+        "Bluetooth is a short-range wireless technology commonly used to connect devices such as headphones, keyboards, and phones.",
+
+    "website":
+        "A website is a collection of related web pages and resources accessible through the Internet.",
+
+    "html":
+        "HTML stands for HyperText Markup Language. It defines the structure and content of web pages.",
+
+    "css":
+        "CSS stands for Cascading Style Sheets. It controls the appearance and layout of web pages.",
+
+    "javascript":
+        "JavaScript is a programming language widely used to add behavior and interactivity to websites and applications.",
+
+    "programming":
+        "Programming is the process of creating instructions that computers can execute.",
+
+    "algorithm":
+        "An algorithm is a defined sequence of steps for solving a problem or completing a task.",
+
+    "artificial intelligence":
+        "Artificial intelligence refers to computer systems designed to perform tasks that can involve capabilities such as recognizing patterns, reasoning, generating content, or making predictions.",
+
+    "machine learning":
+        "Machine learning is a branch of AI in which systems learn patterns from data to make predictions or decisions.",
+
+    "robot":
+        "A robot is a machine capable of carrying out actions automatically or semi-autonomously.",
+
+    "database":
+        "A database is an organized collection of information designed to be stored, searched, updated, and managed.",
+
+    "server":
+        "A server is a computer or software system that provides resources or services to other computers or programs.",
+
+    "github":
+        "GitHub is a platform widely used to host, collaborate on, and manage software projects using Git.",
+
+
+    /* ================= MATH ================= */
+
+    "mathematics":
+        "Mathematics is the study of quantities, structures, patterns, relationships, space, and logical reasoning.",
+
+    "algebra":
+        "Algebra uses symbols and rules to represent quantities and relationships and solve equations.",
+
+    "geometry":
+        "Geometry is the branch of mathematics dealing with shapes, sizes, positions, angles, and spatial relationships.",
+
+    "calculus":
+        "Calculus is the branch of mathematics focused on change, limits, derivatives, integrals, and accumulation.",
+
+    "fraction":
+        "A fraction represents a quantity as one number divided by another, such as 3/4.",
+
+    "percentage":
+        "A percentage expresses a quantity as a portion of 100.",
+
+    "prime number":
+        "A prime number is a whole number greater than 1 that has exactly two positive factors: 1 and itself.",
+
+    "pi":
+        "Pi, written as π, is the ratio of a circle's circumference to its diameter and is approximately 3.14159.",
+
+    "pythagorean theorem":
+        "The Pythagorean theorem states that for a right triangle, a² + b² = c², where c is the hypotenuse.",
+
+    "mean":
+        "The arithmetic mean is found by adding a group of numbers and dividing the sum by the number of values.",
+
+    "median":
+        "The median is the middle value when a set of numbers is arranged in order.",
+
+    "mode":
+        "The mode is the value that occurs most frequently in a data set.",
+
+
+    /* ================= HISTORY ================= */
+
+    "history":
+        "History is the study of past events, societies, people, and changes using evidence such as documents, artifacts, and archaeology.",
+
+    "ancient egypt":
+        "Ancient Egypt was a civilization centered along the Nile River and known for pyramids, hieroglyphic writing, complex government, and long-lasting cultural traditions.",
+
+    "roman empire":
+        "The Roman Empire was a major ancient state centered on Rome that controlled large parts of Europe, North Africa, and western Asia at its height.",
+
+    "ancient greece":
+        "Ancient Greece consisted of independent city-states and communities that made major contributions to philosophy, mathematics, science, art, literature, and politics.",
+
+    "middle ages":
+        "The Middle Ages generally refers to the period of European history between antiquity and the early modern era.",
+
+    "renaissance":
+        "The Renaissance was a period of major cultural and intellectual development in Europe associated with renewed interest in classical learning and new artistic and scientific approaches.",
+
+    "industrial revolution":
+        "The Industrial Revolution was a period of major technological and economic change involving mechanization, factories, transportation, and large-scale industrial production.",
+
+    "american revolution":
+        "The American Revolution was the conflict and political transformation through which the thirteen American colonies became independent from British rule.",
+
+    "world war one":
+        "World War I was a global conflict fought primarily from 1914 to 1918 involving major powers and alliances.",
+
+    "world war ii":
+        "World War II was a global conflict fought from 1939 to 1945 involving many countries across Europe, Asia, Africa, and the Pacific.",
+
+    "cold war":
+        "The Cold War was a prolonged geopolitical rivalry between the United States and Soviet Union and their respective allies after World War II.",
+
+    "isaac newton":
+        "Isaac Newton developed foundational laws of motion and universal gravitation and made major contributions to mathematics and optics.",
+
+    "albert einstein":
+        "Albert Einstein developed the theories of special and general relativity and made major contributions to modern physics.",
+
+    "marie curie":
+        "Marie Curie was a physicist and chemist whose research into radioactivity earned Nobel Prizes in Physics and Chemistry.",
+
+    "nikola tesla":
+        "Nikola Tesla was an inventor and electrical engineer known for major contributions to alternating-current electrical systems and electromagnetism.",
+
+    "shakespeare":
+        "William Shakespeare was an English playwright and poet whose works include Hamlet, Macbeth, and Romeo and Juliet.",
+
+
+    /* ================= GEOGRAPHY ================= */
+
+    "geography":
+        "Geography studies Earth's places, environments, landscapes, populations, and the relationships between people and places.",
+
+    "united states":
+        "The United States is a federal republic in North America consisting of 50 states, a federal district, and several territories.",
+
+    "canada":
+        "Canada is a country in North America and the second-largest country in the world by total area.",
+
+    "mexico":
+        "Mexico is a country in southern North America with coastlines on the Pacific Ocean, Gulf of Mexico, and Caribbean Sea.",
+
+    "brazil":
+        "Brazil is the largest country in South America and contains a large portion of the Amazon rainforest.",
+
+    "united kingdom":
+        "The United Kingdom is a country consisting of England, Scotland, Wales, and Northern Ireland.",
+
+    "france":
+        "France is a country in Western Europe with territories and regions around the world.",
+
+    "germany":
+        "Germany is a country in Central Europe and a federal parliamentary republic.",
+
+    "italy":
+        "Italy is a country in southern Europe extending into the Mediterranean Sea.",
+
+    "spain":
+        "Spain is a country in southwestern Europe occupying most of the Iberian Peninsula.",
+
+    "china":
+        "China is a country in East Asia and one of the world's most populous countries.",
+
+    "japan":
+        "Japan is an island country in East Asia consisting of a large archipelago.",
+
+    "india":
+        "India is a country in South Asia and one of the world's most populous countries.",
+
+    "africa":
+        "Africa is the second-largest continent by land area and population and contains a wide range of climates and ecosystems.",
+
+    "asia":
+        "Asia is Earth's largest continent by land area and population.",
+
+    "europe":
+        "Europe is a continent located primarily in the Northern Hemisphere and western part of the Eurasian landmass.",
+
+    "north america":
+        "North America is a continent containing countries including Canada, the United States, Mexico, and countries of Central America and the Caribbean.",
+
+    "south america":
+        "South America is a continent containing countries such as Brazil, Argentina, Colombia, Chile, and Peru.",
+
+    "antarctica":
+        "Antarctica is the southernmost continent and contains the geographic South Pole. It is largely covered by ice.",
+
+    "australia":
+        "Australia is both a country and the world's smallest continental landmass.",
+
+
+    /* ================= EVERYDAY KNOWLEDGE ================= */
+
+    "sleep":
+        "Sleep is a naturally recurring state in which the body and brain undergo important processes involved in restoration, memory, and regulation.",
+
+    "dream":
+        "Dreams are experiences that can occur during sleep and may include images, thoughts, emotions, and stories.",
+
+    "memory":
+        "Memory is the ability to encode, store, and retrieve information.",
+
+    "language":
+        "Language is a system of communication using symbols, words, sounds, or signs governed by patterns and conventions.",
+
+    "music":
+        "Music is an organized form of sound involving elements such as rhythm, melody, harmony, and timbre.",
+
+    "art":
+        "Art is a broad category of creative expression that can include visual art, music, literature, performance, and other forms.",
+
+    "book":
+        "A book is a collection of written, printed, or digital pages containing information, stories, ideas, or other content.",
+
+    "movie":
+        "A movie is a sequence of recorded or generated images presented to create the experience of a story, event, or visual work.",
+
+    "camera":
+        "A camera is a device that captures images or video by recording light.",
+
+    "phone":
+        "A smartphone is a portable computing device that combines communication, applications, cameras, sensors, and Internet connectivity.",
+
+    "battery":
+        "A battery stores chemical energy and converts it into electrical energy through electrochemical reactions.",
+
+    "fire":
+        "Fire is a rapid chemical reaction involving combustion that releases heat, light, and reaction products.",
+
+    "ice":
+        "Ice is the solid form of water.",
+
+    "steam":
+        "Steam is water in its gaseous state, although visible mist above hot water often consists of tiny liquid droplets rather than invisible water vapor.",
+
+    "sound":
+        "Sound is a mechanical wave produced by vibrations traveling through a medium such as air, water, or solids.",
+
+    "light":
+        "Visible light is electromagnetic radiation that can be detected by human eyes.",
+
+    "color":
+        "Color is the visual perception produced by different wavelengths and combinations of visible light.",
+
+    "rainbow":
+        "A rainbow is an optical phenomenon produced when sunlight interacts with water droplets, separating light into different colors.",
+
+    "mirror":
+        "A mirror reflects light and can form an image because its surface redirects incoming light.",
+
+    "magnet":
+        "A magnet produces a magnetic field and can attract certain materials such as iron.",
+
+    "clock":
+        "A clock is a device used to measure and display time.",
+
+    "calendar":
+        "A calendar is a system for organizing days, weeks, months, and years.",
+
+
+    /* ================= ANIMALS ================= */
+
+    "dog":
+        "Dogs are domesticated mammals closely related to wolves and are among humanity's oldest domesticated animals.",
+
+    "cat":
+        "Cats are small domesticated mammals known for their agility, hunting behavior, and strong senses.",
+
+    "lion":
+        "Lions are large social cats native to parts of Africa and historically parts of Eurasia.",
+
+    "tiger":
+        "Tigers are large cats native to Asia and are the largest living cat species.",
+
+    "elephant":
+        "Elephants are the largest living land animals and are known for their trunks, tusks, intelligence, and complex social behavior.",
+
+    "giraffe":
+        "Giraffes are tall African mammals known for their extremely long necks and legs.",
+
+    "dolphin":
+        "Dolphins are intelligent marine mammals known for social behavior and sophisticated communication.",
+
+    "whale":
+        "Whales are large marine mammals that breathe air and include species such as blue whales, the largest known animals.",
+
+    "shark":
+        "Sharks are a group of cartilaginous fish that have existed for hundreds of millions of years.",
+
+    "octopus":
+        "Octopuses are intelligent marine animals with eight arms, complex nervous systems, and remarkable camouflage abilities.",
+
+    "penguin":
+        "Penguins are flightless birds adapted to life in the water, with many species living in the Southern Hemisphere.",
+
+    "eagle":
+        "Eagles are large birds of prey known for powerful flight, keen eyesight, and strong talons.",
+
+    "owl":
+        "Owls are birds of prey commonly associated with nocturnal activity and highly specialized hearing and vision.",
+
+    "bee":
+        "Bees are flying insects that include important pollinators. Many species live socially in colonies.",
+
+    "ant":
+        "Ants are social insects that live in organized colonies and occur in nearly every major terrestrial environment.",
+
+    "spider":
+        "Spiders are arachnids with eight legs. They are not insects.",
+
+
+    /* ================= GENERAL CONCEPTS ================= */
+
+    "democracy":
+        "Democracy is a system of government in which political authority is ultimately connected to the people, commonly through voting and representative institutions.",
+
+    "government":
+        "Government is the system or organization through which a society makes and enforces collective decisions.",
+
+    "economy":
+        "An economy is the system through which goods and services are produced, distributed, exchanged, and consumed.",
+
+    "money":
+        "Money is something commonly accepted as a medium of exchange, unit of account, and store of value.",
+
+    "market":
+        "A market is a system or place where buyers and sellers exchange goods, services, or financial assets.",
+
+    "law":
+        "A law is a rule established and enforced by an authority such as a government.",
+
+    "culture":
+        "Culture includes shared practices, beliefs, values, traditions, language, art, and behaviors of a group or society.",
+
+    "philosophy":
+        "Philosophy is the study of fundamental questions about knowledge, reality, reasoning, existence, ethics, and meaning.",
+
+    "logic":
+        "Logic is the study of valid reasoning and the principles used to distinguish sound arguments from faulty ones.",
+
+    "ethics":
+        "Ethics is the study of principles concerning right and wrong conduct and how people ought to act.",
+
+    "psychology":
+        "Psychology is the scientific study of behavior and mental processes.",
+
+    "sociology":
+        "Sociology is the study of societies, social relationships, institutions, and patterns of human interaction."
 };
+
+
+/* =====================================================
+   KNOWLEDGE SEARCH
+===================================================== */
+
+function normalizeText(text){
+
+    return text
+        .toLowerCase()
+        .replace(/[^\w\s]/g," ")
+        .replace(/\s+/g," ")
+        .trim();
+}
 
 function findKnowledge(q){
 
+    const clean = normalizeText(q);
+
+    /*
+       Exact / direct topic detection first.
+    */
+
     for(const key in knowledge){
 
-        if(q.includes(key)){
+        if(clean === key){
             return knowledge[key];
         }
     }
 
-    return null;
+    /*
+       Then search for a topic inside the question.
+    */
+
+    let best = null;
+    let bestLength = 0;
+
+    for(const key in knowledge){
+
+        if(clean.includes(key)){
+
+            if(key.length > bestLength){
+
+                best = knowledge[key];
+                bestLength = key.length;
+            }
+        }
+    }
+
+    return best;
 }
 
 
@@ -1209,21 +1723,26 @@ const jokes = [
 
     "Why did the programmer quit his job? He didn't get arrays.",
 
-    "What do you call an AI that sings badly? Artificial noise."
+    "What do you call an AI that sings badly? Artificial noise.",
 
+    "Why did the smartphone need glasses? It lost its contacts.",
+
+    "Why was the Wi-Fi upset? Everyone kept taking it for granted.",
+
+    "Why did the computer go to the doctor? It had a virus.",
+
+    "Why did the keyboard break up with the mouse? There was no connection."
 ];
 
 
 /* =====================================================
-   LOCAL RESPONSE
+   LOCAL CONVERSATION
 ===================================================== */
 
 function localResponse(q){
 
     if(q === "combat mode"){
-
         startCombat();
-
         return null;
     }
 
@@ -1234,9 +1753,51 @@ function localResponse(q){
     ){
 
         stopCombat();
-
         return null;
     }
+
+    /*
+       SAY COMMAND
+
+       Examples:
+
+       JARVIS SAY hello everyone
+       JARVIS, SAY hello everyone
+       SAY hello everyone
+    */
+
+    const sayMatch =
+        q.match(
+            /^(?:jarvis[\s,]*)?say\s+(.+)$/i
+        );
+
+    if(sayMatch){
+
+        const words =
+            sayMatch[1].trim();
+
+        if(words){
+
+            return {
+                text:words,
+                speakOnly:true
+            };
+        }
+    }
+
+
+    /*
+       ROAST COMMAND
+    */
+
+    const roast =
+        roastCommand(q);
+
+    if(roast){
+
+        return roast;
+    }
+
 
     if(
         q === "hi" ||
@@ -1251,25 +1812,24 @@ function localResponse(q){
             : "Good to hear from you. Systems are online and ready.";
     }
 
+
     if(q.startsWith("my name is ")){
 
         memory.name =
-            q
-            .replace("my name is ","")
-            .trim();
+            q.replace("my name is ","").trim();
 
         return `Understood. I'll remember you as ${memory.name}.`;
     }
 
+
     if(q.startsWith("call me ")){
 
         memory.name =
-            q
-            .replace("call me ","")
-            .trim();
+            q.replace("call me ","").trim();
 
         return `Understood. I'll call you ${memory.name}.`;
     }
+
 
     if(
         q.includes("what is my name") ||
@@ -1281,28 +1841,33 @@ function localResponse(q){
             : "You haven't told me your name yet.";
     }
 
+
     if(
         q.includes("who are you") ||
         q.includes("what are you")
     ){
 
-        return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics, answer questions, speak aloud, and search for information when necessary.";
+        return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics, answer questions, speak aloud, use microphone input, search online information, remember your name during this session, and operate Combat Mode.";
     }
+
 
     if(q.includes("what can you do")){
 
-        return "I can handle conversation, mathematics, science, jokes, voice output, microphone input, Combat Mode, roasting commands, and online information searches.";
+        return "I can handle conversation, mathematics, science, history, geography, technology, biology, space, animals, jokes, voice output, microphone input, custom SAY commands, roasting commands, Combat Mode, and online information searches.";
     }
+
 
     if(q.includes("how are you")){
 
         return "All systems are operational. My processors are feeling particularly cooperative today.";
     }
 
+
     if(q.includes("what are you doing")){
 
         return "Monitoring the system and waiting for your next command.";
     }
+
 
     if(
         q === "thanks" ||
@@ -1313,6 +1878,7 @@ function localResponse(q){
         return "You're welcome. Always a pleasure.";
     }
 
+
     if(
         q === "joke" ||
         q.includes("tell me a joke") ||
@@ -1321,11 +1887,11 @@ function localResponse(q){
 
         return jokes[
             Math.floor(
-                Math.random() *
-                jokes.length
+                Math.random()*jokes.length
             )
         ];
     }
+
 
     if(q.includes("what time")){
 
@@ -1339,6 +1905,7 @@ function localResponse(q){
             ) +
             ".";
     }
+
 
     if(
         q.includes("what date") ||
@@ -1358,6 +1925,7 @@ function localResponse(q){
             ".";
     }
 
+
     if(
         q === "status" ||
         q.includes("system status")
@@ -1368,13 +1936,14 @@ function localResponse(q){
             : "Systems online. Core stable. Voice interface online. Knowledge engine online.";
     }
 
+
     if(
         q.includes("i am bored") ||
         q.includes("im bored") ||
         q.includes("i'm bored")
     ){
 
-        return "Boredom detected. We could tackle a science question, solve a difficult math problem, or test my knowledge.";
+        return "Boredom detected. We could tackle a science question, solve a difficult math problem, explore space, or test my expanded knowledge base.";
     }
 
     return null;
@@ -1387,9 +1956,7 @@ function localResponse(q){
 
 function isQuestion(q){
 
-    if(q.includes("?")){
-        return true;
-    }
+    if(q.includes("?")) return true;
 
     const starters = [
 
@@ -1465,9 +2032,7 @@ async function onlineSearch(question){
         }
 
         const pages =
-            Object.values(
-                data.query.pages
-            );
+            Object.values(data.query.pages);
 
         if(!pages.length){
             return null;
@@ -1513,7 +2078,10 @@ async function onlineSearch(question){
             }
         }
 
-        if(!best || bestScore < 2){
+        if(
+            !best ||
+            bestScore < 2
+        ){
             return null;
         }
 
@@ -1557,75 +2125,21 @@ async function getResponse(question){
         .trim();
 
 
-    /* ROAST COMMAND */
-
-    if(
-        q.startsWith("jarvis roast ") ||
-        q.startsWith("j.a.r.v.i.s. roast ") ||
-        q.startsWith("roast ")
-    ){
-
-        let name = "";
-
-        if(q.startsWith("jarvis roast ")){
-            name = question.substring(13);
-        }
-        else if(q.startsWith("j.a.r.v.i.s. roast ")){
-            name = question.substring(19);
-        }
-        else{
-            name = question.substring(6);
-        }
-
-        return getRoast(name);
-    }
-
-
-    /* SAY COMMAND */
-
-    if(
-        q.startsWith("jarvis say ") ||
-        q.startsWith("j.a.r.v.i.s. say ") ||
-        q.startsWith("say ")
-    ){
-
-        let text = "";
-
-        if(q.startsWith("jarvis say ")){
-            text = question.substring(11);
-        }
-        else if(q.startsWith("j.a.r.v.i.s. say ")){
-            text = question.substring(17);
-        }
-        else{
-            text = question.substring(4);
-        }
-
-        text = text.trim();
-
-        if(!text){
-            return "Tell me what you would like me to say.";
-        }
-
-        return text;
-    }
-
-
-    /* BRAIN ROT */
+    /* 1. BRAIN ROT */
 
     if(isBrainRot(q)){
         return brainRotReply();
     }
 
 
-    /* GOOFY QUESTIONS */
+    /* 2. GOOFY */
 
     if(isGoofyQuestion(q)){
         return goofyReply();
     }
 
 
-    /* COMBAT */
+    /* 3. COMBAT */
 
     if(q === "combat mode"){
 
@@ -1633,6 +2147,7 @@ async function getResponse(question){
 
         return null;
     }
+
 
     if(
         q === "normal mode" ||
@@ -1646,42 +2161,40 @@ async function getResponse(question){
     }
 
 
-    /* MATH */
+    /* 4. MATH */
 
     const math =
         solveMath(q);
 
     if(math !== null){
 
-        return (
-            "The answer is " +
-            math +
-            "."
-        );
+        return "The answer is " + math + ".";
     }
 
 
-    /* KNOWLEDGE */
-
-    const known =
-        findKnowledge(q);
-
-    if(known){
-        return known;
-    }
-
-
-    /* LOCAL */
+    /* 5. COMMANDS / CONVERSATION */
 
     const local =
         localResponse(q);
 
     if(local){
+
         return local;
     }
 
 
-    /* ONLINE */
+    /* 6. EXPANDED DICTIONARY */
+
+    const known =
+        findKnowledge(q);
+
+    if(known){
+
+        return known;
+    }
+
+
+    /* 7. ONLINE QUESTIONS */
 
     if(isQuestion(q)){
 
@@ -1696,7 +2209,7 @@ async function getResponse(question){
     }
 
 
-    /* CASUAL */
+    /* 8. CASUAL CHAT */
 
     const casual = [
 
@@ -1719,30 +2232,23 @@ async function getResponse(question){
     ];
 
     return casual[
-        Math.floor(
-            Math.random() *
-            casual.length
-        )
+        Math.floor(Math.random()*casual.length)
     ];
 }
 
 
 /* =====================================================
-   SEND
+   SEND MESSAGE
 ===================================================== */
 
 async function sendMessage(){
 
-    if(processing){
-        return;
-    }
+    if(processing) return;
 
     const question =
         input.value.trim();
 
-    if(!question){
-        return;
-    }
+    if(!question) return;
 
     processing = true;
 
@@ -1764,14 +2270,37 @@ async function sendMessage(){
 
         if(response){
 
-            memory.lastAnswer =
-                response;
+            /*
+               SAY COMMAND:
+               Return object so the text is displayed
+               and spoken exactly as requested.
+            */
 
-            addMessage(
-                response,
-                "jarvis",
-                true
-            );
+            if(
+                typeof response === "object" &&
+                response.speakOnly
+            ){
+
+                memory.lastAnswer =
+                    response.text;
+
+                addMessage(
+                    response.text,
+                    "jarvis",
+                    true
+                );
+
+            }else{
+
+                memory.lastAnswer =
+                    response;
+
+                addMessage(
+                    response,
+                    "jarvis",
+                    true
+                );
+            }
         }
 
     }catch(error){
@@ -1811,13 +2340,18 @@ async function sendMessage(){
 
 
 /* =====================================================
-   BUTTONS
+   BUTTON
 ===================================================== */
 
 send.addEventListener(
     "click",
     sendMessage
 );
+
+
+/* =====================================================
+   ENTER
+===================================================== */
 
 input.addEventListener(
     "keydown",
@@ -1854,106 +2388,106 @@ if(SpeechRecognition){
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
-    recognition.onstart =
-        () => {
 
-            listening = true;
+    recognition.onstart = () => {
 
-            mic.classList.add("listening");
+        listening = true;
 
-            mic.textContent = "⏹️";
+        mic.classList.add("listening");
 
-            statusText.textContent =
-                combatMode
-                ? "COMBAT • LISTENING"
-                : "LISTENING...";
-        };
+        mic.textContent = "⏹️";
 
-    recognition.onresult =
-        event => {
+        statusText.textContent =
+            combatMode
+            ? "COMBAT • LISTENING"
+            : "LISTENING...";
+    };
 
-            try{
 
-                const result =
-                    event.results[0][0];
+    recognition.onresult = event => {
 
-                if(!result){
-                    return;
-                }
+        try{
 
-                const text =
-                    result.transcript.trim();
+            const result =
+                event.results[0][0];
 
-                if(text){
+            if(!result) return;
 
-                    input.value = text;
+            const text =
+                result.transcript.trim();
 
-                    stopListening();
+            if(text){
 
-                    sendMessage();
-                }
+                input.value = text;
 
-            }catch(error){
+                stopListening();
 
-                console.log(
-                    "Speech result error:",
-                    error
-                );
-            }
-        };
-
-    recognition.onerror =
-        event => {
-
-            stopListening();
-
-            let message =
-                "I couldn't access the microphone.";
-
-            if(
-                event.error === "not-allowed" ||
-                event.error === "service-not-allowed"
-            ){
-
-                message =
-                    "Microphone access is blocked. Allow microphone access for this website and try again.";
+                sendMessage();
             }
 
-            else if(
-                event.error === "no-speech"
-            ){
+        }catch(error){
 
-                message =
-                    "I didn't hear anything. Tap the microphone and speak again.";
-            }
-
-            else if(
-                event.error === "audio-capture"
-            ){
-
-                message =
-                    "I couldn't access an available microphone.";
-            }
-
-            else if(
-                event.error === "network"
-            ){
-
-                message =
-                    "The browser's speech-recognition service is unavailable right now.";
-            }
-
-            addMessage(
-                message,
-                "jarvis",
-                true
+            console.log(
+                "Speech result error:",
+                error
             );
-        };
+        }
+    };
 
-    recognition.onend =
-        () => {
-            stopListening();
-        };
+
+    recognition.onerror = event => {
+
+        stopListening();
+
+        let message =
+            "I couldn't access the microphone.";
+
+        if(
+            event.error === "not-allowed" ||
+            event.error === "service-not-allowed"
+        ){
+
+            message =
+                "Microphone access is blocked. Allow microphone access for this website and try again.";
+        }
+
+        else if(
+            event.error === "no-speech"
+        ){
+
+            message =
+                "I didn't hear anything. Tap the microphone and speak again.";
+        }
+
+        else if(
+            event.error === "audio-capture"
+        ){
+
+            message =
+                "I couldn't access an available microphone.";
+        }
+
+        else if(
+            event.error === "network"
+        ){
+
+            message =
+                "The browser's speech-recognition service is unavailable right now.";
+        }
+
+        addMessage(
+            message,
+            "jarvis",
+            true
+        );
+    };
+
+
+    recognition.onend = () => {
+
+        stopListening();
+    };
+
 
     mic.addEventListener(
         "click",
@@ -1962,8 +2496,11 @@ if(SpeechRecognition){
             if(listening){
 
                 try{
+
                     recognition.stop();
+
                 }catch(error){
+
                     console.log(error);
                 }
 
@@ -1971,8 +2508,11 @@ if(SpeechRecognition){
             }
 
             try{
+
                 recognition.start();
+
             }catch(error){
+
                 console.log(
                     "Microphone start error:",
                     error
@@ -2013,11 +2553,24 @@ function stopListening(){
 
 
 /* =====================================================
+   LOAD VOICES
+===================================================== */
+
+if("speechSynthesis" in window){
+
+    speechSynthesis.onvoiceschanged =
+        () => {
+            speechSynthesis.getVoices();
+        };
+}
+
+
+/* =====================================================
    STARTUP
 ===================================================== */
 
 addMessage(
-    "Good day. J.A.R.V.I.S. systems are online. How may I assist you?",
+    "Good day. J.A.R.V.I.S. systems are online. Knowledge database expanded. How may I assist you?",
     "jarvis",
     true
 );
