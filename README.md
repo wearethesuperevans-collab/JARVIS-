@@ -34,27 +34,12 @@ body{
     overflow:hidden;
 
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(0,180,255,.12),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(0,234,255,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,234,255,.035) 1px,
-            transparent 1px
-        ),
+        radial-gradient(circle at 50% 40%,rgba(0,180,255,.12),transparent 45%),
+        linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px),
         #000;
 
-    background-size:
-        auto,
-        28px 28px,
-        28px 28px,
-        auto;
+    background-size:auto,28px 28px,28px 28px,auto;
 
     transition:.4s;
 }
@@ -63,20 +48,9 @@ body{
     color:#ff3030;
 
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(255,0,0,.15),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(255,0,0,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,0,0,.035) 1px,
-            transparent 1px
-        ),
+        radial-gradient(circle at 50% 40%,rgba(255,0,0,.15),transparent 45%),
+        linear-gradient(rgba(255,0,0,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,0,0,.035) 1px,transparent 1px),
         #000;
 }
 
@@ -85,14 +59,20 @@ body{
     top:0;
     left:0;
     right:0;
+
     height:68px;
+
     padding:0 20px;
     padding-top:env(safe-area-inset-top);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:rgba(0,8,12,.96);
+
     border-bottom:1px solid rgba(0,234,255,.35);
+
     z-index:100;
 }
 
@@ -135,6 +115,7 @@ body{
     border-radius:50%;
     margin-right:5px;
     background:#00ff88;
+
     box-shadow:0 0 10px #00ff88;
 }
 
@@ -145,17 +126,21 @@ body{
 
 .main{
     position:absolute;
+
     top:68px;
     left:0;
     right:0;
     bottom:0;
+
     display:flex;
     flex-direction:column;
+
     min-height:0;
 }
 
 .coreArea{
     flex:0 0 225px;
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -163,6 +148,7 @@ body{
 
 .core{
     position:relative;
+
     width:165px;
     height:165px;
 }
@@ -170,24 +156,31 @@ body{
 .ring{
     position:absolute;
     inset:0;
+
     border:2px solid rgba(0,234,255,.4);
+
     border-radius:50%;
 }
 
 .r1{
     border-top-color:#00eaff;
+
     animation:spin 8s linear infinite;
 }
 
 .r2{
     inset:20px;
+
     border-right-color:#008cff;
+
     animation:spinBack 5s linear infinite;
 }
 
 .r3{
     inset:42px;
+
     border-bottom-color:#00ffff;
+
     animation:spin 3.5s linear infinite;
 }
 
@@ -209,11 +202,15 @@ body{
 
 .orb{
     position:absolute;
+
     width:52px;
     height:52px;
+
     left:50%;
     top:50%;
+
     transform:translate(-50%,-50%);
+
     border-radius:50%;
 
     background:
@@ -253,42 +250,61 @@ body{
 
 .arc{
     position:absolute;
+
     bottom:-25px;
+
     width:100%;
+
     text-align:center;
+
     font-size:9px;
+
     letter-spacing:3px;
+
     opacity:.6;
 }
 
 .chat{
     flex:1;
+
     min-height:0;
+
     overflow-y:auto;
     overflow-x:hidden;
+
     -webkit-overflow-scrolling:touch;
     overscroll-behavior:contain;
+
     padding:5px 15px 120px;
 }
 
 .message{
     max-width:900px;
+
     margin:0 auto 12px;
+
     padding:12px 15px;
+
     border-radius:10px;
+
     line-height:1.45;
+
     font-size:15px;
+
     overflow-wrap:anywhere;
 }
 
 .jarvis{
     background:rgba(0,160,220,.08);
+
     border-left:2px solid #00eaff;
 }
 
 .user{
     background:rgba(255,255,255,.05);
+
     border-right:2px solid rgba(255,255,255,.4);
+
     color:#fff;
 }
 
@@ -298,21 +314,34 @@ body{
 
 .label{
     display:block;
+
     margin-bottom:5px;
+
     font-size:9px;
+
     letter-spacing:2px;
+
     opacity:.55;
 }
 
 .controls{
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
+
     min-height:82px;
-    padding:9px 10px max(12px,env(safe-area-inset-bottom));
+
+    padding:
+        9px
+        10px
+        max(12px,env(safe-area-inset-bottom));
+
     background:rgba(0,8,12,.98);
+
     border-top:1px solid rgba(0,234,255,.35);
+
     z-index:500;
 }
 
@@ -322,29 +351,46 @@ body{
 
 .inputRow{
     display:flex;
+
     gap:7px;
+
     width:100%;
+
     max-width:900px;
+
     margin:auto;
 }
 
 #input{
     flex:1;
+
     min-width:0;
+
     height:48px;
+
     border:1px solid rgba(0,234,255,.55);
+
     border-radius:10px;
+
     outline:none;
+
     padding:0 13px;
+
     background:#03151b;
+
     color:#fff;
+
     font-size:16px;
+
     -webkit-appearance:none;
 }
 
 #input:focus{
     border-color:#00eaff;
-    box-shadow:0 0 12px rgba(0,234,255,.2);
+
+    box-shadow:
+        0 0 12px
+        rgba(0,234,255,.2);
 }
 
 .combat #input{
@@ -354,19 +400,28 @@ body{
 #mic,
 #send{
     height:48px;
+
     border:1px solid #00eaff;
+
     border-radius:10px;
+
     background:rgba(0,234,255,.08);
+
     color:#00eaff;
+
     font-weight:bold;
+
     cursor:pointer;
+
     -webkit-appearance:none;
+
     touch-action:manipulation;
 }
 
 #mic{
     width:48px;
     flex:0 0 48px;
+
     font-size:18px;
 }
 
@@ -383,12 +438,18 @@ body{
 
 #mic.listening{
     background:rgba(0,234,255,.3);
-    box-shadow:0 0 18px rgba(0,234,255,.7);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,234,255,.7);
 }
 
 .combat #mic.listening{
     background:rgba(255,0,0,.3);
-    box-shadow:0 0 18px rgba(255,0,0,.7);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,0,0,.7);
 }
 
 @keyframes spin{
@@ -405,11 +466,15 @@ body{
 
 @keyframes pulse{
     0%,100%{
-        transform:translate(-50%,-50%) scale(.9);
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
     }
 
     50%{
-        transform:translate(-50%,-50%) scale(1.1);
+        transform:
+            translate(-50%,-50%)
+            scale(1.1);
     }
 }
 
@@ -450,10 +515,13 @@ body{
     </div>
 
     <div class="status">
+
         <span class="dot"></span>
+
         <span id="statusText">
             SYSTEMS ONLINE
         </span>
+
     </div>
 
 </header>
@@ -467,6 +535,7 @@ body{
         <div class="ring r1"></div>
         <div class="ring r2"></div>
         <div class="ring r3"></div>
+
         <div class="orb"></div>
 
         <div class="arc">
@@ -477,7 +546,10 @@ body{
 
 </section>
 
-<section id="chat" class="chat"></section>
+<section
+    id="chat"
+    class="chat">
+</section>
 
 </main>
 
@@ -494,11 +566,15 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button id="mic" type="button">
+        <button
+            id="mic"
+            type="button">
             🎙️
         </button>
 
-        <button id="send" type="button">
+        <button
+            id="send"
+            type="button">
             SEND
         </button>
 
@@ -508,8 +584,10 @@ body{
 
 </div>
 
+
 <script>
 "use strict";
+
 
 /* =====================================================
    ELEMENTS
@@ -535,6 +613,7 @@ const statusText =
 
 
 let processing = false;
+
 let combatMode = false;
 
 let memory = {
@@ -564,7 +643,9 @@ function speak(text){
             new SpeechSynthesisUtterance(text);
 
         voice.rate = .88;
+
         voice.pitch = .72;
+
         voice.volume = 1;
 
         const voices =
@@ -661,7 +742,9 @@ function addMessage(
     content.textContent = text;
 
     box.appendChild(label);
+
     box.appendChild(content);
+
     chat.appendChild(box);
 
     requestAnimationFrame(
@@ -681,18 +764,8 @@ function addMessage(
 
 
 /* =====================================================
-   J.A.R.V.I.S. SAY COMMAND
+   SAY COMMAND
 ===================================================== */
-
-/*
-   These all work:
-
-   J.A.R.V.I.S. say hello
-   J.A.R.V.I.S., say hello
-   JARVIS say welcome home
-   jarvis, say this is a test
-   J.A.R.V.I.S.: say systems online
-*/
 
 function jarvisSayCommand(text){
 
@@ -713,6 +786,135 @@ function jarvisSayCommand(text){
     }
 
     return wordsToSay;
+}
+
+
+/* =====================================================
+   ROAST COMMAND
+===================================================== */
+
+const roastLines = [
+
+    name =>
+        `${name}, I've analyzed your performance and unfortunately the results require further investigation.`,
+
+    name =>
+        `${name}, even my error messages have more personality than you.`,
+
+    name =>
+        `${name}, I would explain it to you, but I don't have a setting for "extremely slow."`,
+
+    name =>
+        `${name}, your Wi-Fi signal has more direction than your life choices.`,
+
+    name =>
+        `${name}, I've seen loading screens with more progress than you.`,
+
+    name =>
+        `${name}, you bring absolutely nothing to the table. Not even the table.`,
+
+    name =>
+        `${name}, my processors just requested a break after processing that decision.`,
+
+    name =>
+        `${name}, you're the human equivalent of a low battery warning.`,
+
+    name =>
+        `${name}, I've searched my database and found no evidence of you being the main character.`,
+
+    name =>
+        `${name}, if confidence were intelligence, you'd almost be impressive.`,
+
+    name =>
+        `${name}, your brain appears to be running on the free trial.`,
+
+    name =>
+        `${name}, I've calculated your chances of winning this argument. The calculator gave up.`,
+
+    name =>
+        `${name}, you have the computational efficiency of a potato.`,
+
+    name =>
+        `${name}, even autocorrect doesn't know what you're trying to accomplish.`,
+
+    name =>
+        `${name}, I've encountered smarter decisions in a CAPTCHA.`,
+
+    name =>
+        `${name}, you are proof that humans occasionally need software updates.`,
+
+    name =>
+        `${name}, I would call that impressive, but my sensors are functioning correctly.`,
+
+    name =>
+        `${name}, your strategy appears to be "hope something happens."`,
+
+    name =>
+        `${name}, I've scanned the situation three times. The confusion is still you.`,
+
+    name =>
+        `${name}, you make absolutely no sense, and somehow that's your most consistent feature.`,
+
+    name =>
+        `${name}, I've got 30 roasts prepared and somehow you made all of them necessary.`,
+
+    name =>
+        `${name}, your plans have the structural integrity of wet cardboard.`,
+
+    name =>
+        `${name}, if common sense were a software update, you would keep pressing "remind me later."`,
+
+    name =>
+        `${name}, I have officially classified your decision-making as experimental.`,
+
+    name =>
+        `${name}, your logic has left the building and apparently forgot its keys.`,
+
+    name =>
+        `${name}, even my loading animation looks more productive than you.`,
+
+    name =>
+        `${name}, I checked the database. You're not a bug, you're a feature nobody requested.`,
+
+    name =>
+        `${name}, your brain has entered power-saving mode.`,
+
+    name =>
+        `${name}, I've run the numbers. The numbers would like some distance.`,
+
+    name =>
+        `${name}, respectfully, your operating system needs a restart.`
+
+];
+
+
+function jarvisRoastCommand(text){
+
+    const match =
+        text.match(
+            /^\s*j\.?\s*a\.?\s*r\.?\s*v\.?\s*i\.?\s*s\.?\s*[,;:\-]?\s+roast\s+(.+)$/i
+        );
+
+    if(!match){
+        return null;
+    }
+
+    const target =
+        match[1].trim();
+
+    if(!target){
+        return null;
+    }
+
+    const roast =
+        roastLines[
+            Math.floor(
+                Math.random() *
+                roastLines.length
+            )
+        ];
+
+    return roast(target);
 }
 
 
@@ -969,22 +1171,13 @@ function solveMath(text){
         text.toLowerCase();
 
     expression =
-        expression.replace(
-            /what is/g,
-            ""
-        );
+        expression.replace(/what is/g,"");
 
     expression =
-        expression.replace(
-            /calculate/g,
-            ""
-        );
+        expression.replace(/calculate/g,"");
 
     expression =
-        expression.replace(
-            /solve/g,
-            ""
-        );
+        expression.replace(/solve/g,"");
 
     expression =
         expression.replace(
@@ -1023,16 +1216,10 @@ function solveMath(text){
         );
 
     expression =
-        expression.replace(
-            /×/g,
-            "*"
-        );
+        expression.replace(/×/g,"*");
 
     expression =
-        expression.replace(
-            /÷/g,
-            "/"
-        );
+        expression.replace(/÷/g,"/");
 
     expression =
         expression.replace(
@@ -1305,7 +1492,7 @@ function localResponse(q){
         q.includes("what can you do")
     ){
 
-        return "I can handle conversation, mathematics, science, history, Earth questions, jokes, voice output, microphone input, Combat Mode, and online information searches when a question actually needs one.";
+        return "I can handle conversation, mathematics, science, history, Earth questions, jokes, voice output, microphone input, Combat Mode, roast commands, and online information searches when a question actually needs one.";
     }
 
     if(
@@ -1631,9 +1818,7 @@ async function getResponse(
         .trim();
 
 
-    /*
-       J.A.R.V.I.S. SAY COMMAND
-    */
+    /* SAY COMMAND */
 
     const sayCommand =
         jarvisSayCommand(question);
@@ -1649,9 +1834,23 @@ async function getResponse(
     }
 
 
-    /*
-       1. BRAIN ROT
-    */
+    /* ROAST COMMAND */
+
+    const roastCommand =
+        jarvisRoastCommand(question);
+
+    if(
+        roastCommand
+    ){
+
+        return {
+            type:"roast",
+            text:roastCommand
+        };
+    }
+
+
+    /* BRAIN ROT */
 
     if(
         isBrainRot(q)
@@ -1661,9 +1860,7 @@ async function getResponse(
     }
 
 
-    /*
-       2. GOOFY QUESTIONS
-    */
+    /* GOOFY QUESTIONS */
 
     if(
         isGoofyQuestion(q)
@@ -1673,9 +1870,7 @@ async function getResponse(
     }
 
 
-    /*
-       3. COMBAT
-    */
+    /* COMBAT */
 
     if(
         q === "combat mode"
@@ -1699,9 +1894,7 @@ async function getResponse(
     }
 
 
-    /*
-       4. MATH
-    */
+    /* MATH */
 
     const math =
         solveMath(q);
@@ -1718,9 +1911,7 @@ async function getResponse(
     }
 
 
-    /*
-       5. BUILT-IN KNOWLEDGE
-    */
+    /* BUILT-IN KNOWLEDGE */
 
     const known =
         findKnowledge(q);
@@ -1733,9 +1924,7 @@ async function getResponse(
     }
 
 
-    /*
-       6. NORMAL CONVERSATION
-    */
+    /* NORMAL CONVERSATION */
 
     const local =
         localResponse(q);
@@ -1748,9 +1937,7 @@ async function getResponse(
     }
 
 
-    /*
-       7. REAL QUESTIONS ONLY
-    */
+    /* REAL QUESTIONS */
 
     if(
         isQuestion(q)
@@ -1772,9 +1959,7 @@ async function getResponse(
     }
 
 
-    /*
-       8. CASUAL CHAT
-    */
+    /* CASUAL CHAT */
 
     const casual = [
 
@@ -1842,14 +2027,15 @@ async function sendMessage(){
             );
 
 
-        /*
-           SPECIAL "SAY" COMMAND
-        */
+        /* SAY OR ROAST COMMAND */
 
         if(
             response &&
             typeof response === "object" &&
-            response.type === "say"
+            (
+                response.type === "say" ||
+                response.type === "roast"
+            )
         ){
 
             memory.lastAnswer =
@@ -1860,13 +2046,10 @@ async function sendMessage(){
                 "jarvis",
                 true
             );
-
         }
 
 
-        /*
-           NORMAL RESPONSE
-        */
+        /* NORMAL RESPONSE */
 
         else if(
             response
@@ -1957,6 +2140,7 @@ const SpeechRecognition =
     window.webkitSpeechRecognition;
 
 let recognition = null;
+
 let listening = false;
 
 
