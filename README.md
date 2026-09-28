@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 <title>J.A.R.V.I.S.</title>
 
 <style>
@@ -32,17 +33,20 @@ body{
     position:fixed;
     inset:0;
     overflow:hidden;
+
     background:
         radial-gradient(circle at 50% 40%,rgba(0,180,255,.12),transparent 45%),
         linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
         linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px),
         #000;
+
     background-size:auto,28px 28px,28px 28px,auto;
     transition:.4s;
 }
 
 #app.combat{
     color:#ff3030;
+
     background:
         radial-gradient(circle at 50% 40%,rgba(255,0,0,.15),transparent 45%),
         linear-gradient(rgba(255,0,0,.035) 1px,transparent 1px),
@@ -58,11 +62,14 @@ body{
     height:68px;
     padding:0 20px;
     padding-top:env(safe-area-inset-top);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:rgba(0,8,12,.96);
     border-bottom:1px solid rgba(0,234,255,.35);
+
     z-index:100;
 }
 
@@ -74,12 +81,18 @@ body{
     font-size:22px;
     font-weight:bold;
     letter-spacing:4px;
-    text-shadow:0 0 8px #00eaff,0 0 20px rgba(0,234,255,.6);
+
+    text-shadow:
+        0 0 8px #00eaff,
+        0 0 20px rgba(0,234,255,.6);
 }
 
 .combat .logo{
     color:#ff3030;
-    text-shadow:0 0 8px #ff2020,0 0 20px rgba(255,0,0,.7);
+
+    text-shadow:
+        0 0 8px #ff2020,
+        0 0 20px rgba(255,0,0,.7);
 }
 
 .status{
@@ -113,6 +126,7 @@ body{
     left:0;
     right:0;
     bottom:0;
+
     display:flex;
     flex-direction:column;
     min-height:0;
@@ -120,6 +134,7 @@ body{
 
 .coreArea{
     flex:0 0 225px;
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -177,20 +192,39 @@ body{
     height:52px;
     left:50%;
     top:50%;
+
     transform:translate(-50%,-50%);
     border-radius:50%;
+
     background:
-        radial-gradient(circle,#fff 0%,#aaffff 15%,#00eaff 45%,#007cff 70%,transparent 72%);
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #aaffff 15%,
+            #00eaff 45%,
+            #007cff 70%,
+            transparent 72%
+        );
+
     box-shadow:
         0 0 15px #00eaff,
         0 0 40px #00eaff,
         0 0 75px rgba(0,150,255,.8);
+
     animation:pulse 2s ease-in-out infinite;
 }
 
 .combat .orb{
     background:
-        radial-gradient(circle,#fff 0%,#ffaaaa 15%,#ff2020 45%,#a00000 70%,transparent 72%);
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #ffaaaa 15%,
+            #ff2020 45%,
+            #a00000 70%,
+            transparent 72%
+        );
+
     box-shadow:
         0 0 15px #ff2020,
         0 0 40px #ff2020,
@@ -212,8 +246,10 @@ body{
     min-height:0;
     overflow-y:auto;
     overflow-x:hidden;
+
     -webkit-overflow-scrolling:touch;
     overscroll-behavior:contain;
+
     padding:5px 15px 120px;
 }
 
@@ -222,6 +258,7 @@ body{
     margin:0 auto 12px;
     padding:12px 15px;
     border-radius:10px;
+
     line-height:1.45;
     font-size:15px;
     overflow-wrap:anywhere;
@@ -255,10 +292,18 @@ body{
     left:0;
     right:0;
     bottom:0;
+
     min-height:82px;
-    padding:9px 10px max(12px,env(safe-area-inset-bottom));
+
+    padding:
+        9px
+        10px
+        max(12px,env(safe-area-inset-bottom));
+
     background:rgba(0,8,12,.98);
+
     border-top:1px solid rgba(0,234,255,.35);
+
     z-index:500;
 }
 
@@ -278,12 +323,16 @@ body{
     flex:1;
     min-width:0;
     height:48px;
+
     border:1px solid rgba(0,234,255,.55);
     border-radius:10px;
     outline:none;
+
     padding:0 13px;
+
     background:#03151b;
     color:#fff;
+
     font-size:16px;
     -webkit-appearance:none;
 }
@@ -297,14 +346,19 @@ body{
     border-color:#ff3030;
 }
 
-#mic,#send{
+#mic,
+#send{
     height:48px;
+
     border:1px solid #00eaff;
     border-radius:10px;
+
     background:rgba(0,234,255,.08);
     color:#00eaff;
+
     font-weight:bold;
     cursor:pointer;
+
     -webkit-appearance:none;
     touch-action:manipulation;
 }
@@ -337,17 +391,22 @@ body{
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg);}
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 @keyframes spinBack{
-    to{transform:rotate(-360deg);}
+    to{
+        transform:rotate(-360deg);
+    }
 }
 
 @keyframes pulse{
     0%,100%{
         transform:translate(-50%,-50%) scale(.9);
     }
+
     50%{
         transform:translate(-50%,-50%) scale(1.1);
     }
@@ -390,8 +449,13 @@ body{
     </div>
 
     <div class="status">
+
         <span class="dot"></span>
-        <span id="statusText">SYSTEMS ONLINE</span>
+
+        <span id="statusText">
+            SYSTEMS ONLINE
+        </span>
+
     </div>
 
 </header>
@@ -405,6 +469,7 @@ body{
         <div class="ring r1"></div>
         <div class="ring r2"></div>
         <div class="ring r3"></div>
+
         <div class="orb"></div>
 
         <div class="arc">
@@ -415,7 +480,10 @@ body{
 
 </section>
 
-<section id="chat" class="chat"></section>
+<section
+    id="chat"
+    class="chat">
+</section>
 
 </main>
 
@@ -432,9 +500,13 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button id="mic" type="button">🎙️</button>
+        <button id="mic" type="button">
+            🎙️
+        </button>
 
-        <button id="send" type="button">SEND</button>
+        <button id="send" type="button">
+            SEND
+        </button>
 
     </div>
 
@@ -442,21 +514,36 @@ body{
 
 </div>
 
+
 <script>
 "use strict";
+
 
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
-const app = document.getElementById("app");
-const input = document.getElementById("input");
-const mic = document.getElementById("mic");
-const send = document.getElementById("send");
-const chat = document.getElementById("chat");
-const statusText = document.getElementById("statusText");
+const app =
+    document.getElementById("app");
+
+const input =
+    document.getElementById("input");
+
+const mic =
+    document.getElementById("mic");
+
+const send =
+    document.getElementById("send");
+
+const chat =
+    document.getElementById("chat");
+
+const statusText =
+    document.getElementById("statusText");
+
 
 let processing = false;
+
 let combatMode = false;
 
 let memory = {
@@ -467,7 +554,7 @@ let memory = {
 
 
 /* =====================================================
-   VOICE OUTPUT
+   VOICE
 ===================================================== */
 
 function speak(text){
@@ -506,7 +593,9 @@ function speak(text){
                     v =>
                     v.name
                     .toLowerCase()
-                    .includes(name.toLowerCase())
+                    .includes(
+                        name.toLowerCase()
+                    )
                 );
 
             if(selected) break;
@@ -518,7 +607,9 @@ function speak(text){
                 voices.find(
                     v =>
                     v.lang &&
-                    v.lang.toLowerCase().startsWith("en")
+                    v.lang
+                    .toLowerCase()
+                    .startsWith("en")
                 );
         }
 
@@ -530,7 +621,10 @@ function speak(text){
 
     }catch(error){
 
-        console.log("Voice error:",error);
+        console.log(
+            "Voice error:",
+            error
+        );
     }
 }
 
@@ -587,6 +681,7 @@ function addMessage(
         voice &&
         who === "jarvis"
     ){
+
         speak(text);
     }
 }
@@ -610,7 +705,7 @@ function startCombat(){
         "COMBAT MODE";
 
     addMessage(
-        "Combat initiated.",
+        "Combat systems activated. Verbal restraint protocols disabled.",
         "jarvis",
         true
     );
@@ -640,156 +735,235 @@ function stopCombat(){
 
 /* =====================================================
    SAY COMMAND
-   Example:
-   J.A.R.V.I.S. say hello everyone
+   Examples:
+   JARVIS SAY hello
+   J.A.R.V.I.S. SAY welcome home
 ===================================================== */
 
-function sayCommand(text){
+function getSayCommand(text){
 
-    const patterns = [
-        /^j\.?a\.?r\.?v\.?i\.?s\.?\s+say\s+(.+)$/i,
-        /^jarvis\s+say\s+(.+)$/i,
-        /^say\s+(.+)$/i
-    ];
+    let clean =
+        text.trim();
 
-    for(const pattern of patterns){
+    clean =
+        clean.replace(
+            /^j\.?a\.?r\.?v\.?i\.?s\.?[\s,:-]*/i,
+            ""
+        )
+        .trim();
 
-        const match =
-            text.trim().match(pattern);
+    const match =
+        clean.match(
+            /^say(?:\s+|:)(.+)$/i
+        );
 
-        if(match){
-
-            const words =
-                match[1].trim();
-
-            if(!words){
-                return null;
-            }
-
-            return {
-                type:"say",
-                text:words
-            };
-        }
+    if(!match){
+        return null;
     }
 
-    return null;
+    const words =
+        match[1].trim();
+
+    if(!words){
+        return "Please tell me what you would like me to say.";
+    }
+
+    return words;
 }
 
 
 /* =====================================================
-   ROAST SYSTEM
+   ROAST COMMAND
 ===================================================== */
 
-const roastLines = [
+function getRoastTarget(text){
 
-    "has the confidence of a genius and the decision-making skills of a loading screen.",
+    let clean =
+        text.trim();
 
-    "walks into a room and somehow lowers the average Wi-Fi signal.",
+    clean =
+        clean.replace(
+            /^j\.?a\.?r\.?v\.?i\.?s\.?[\s,:-]*/i,
+            ""
+        )
+        .trim();
 
-    "could lose an argument with a mirror and still ask for a rematch.",
+    const match =
+        clean.match(
+            /^roast(?:\s+|:)(.+)$/i
+        );
 
-    "has been running on low battery since birth.",
+    if(!match){
+        return null;
+    }
 
-    "is living proof that autocorrect sometimes gives up.",
+    const target =
+        match[1].trim();
 
-    "has the processing power of a calculator with one button missing.",
+    if(!target){
+        return "Please provide a name for the roast.";
+    }
 
-    "could make a simple task look like a three-season TV series.",
+    return target;
+}
 
-    "has an impressive talent for being confidently wrong.",
 
-    "is the human equivalent of clicking 'remind me tomorrow' for five years.",
+/* =====================================================
+   PLAYFUL ROASTS
+===================================================== */
 
-    "has the strategic planning skills of someone choosing random answers on a multiple-choice test.",
+const playfulRoasts = [
 
-    "could probably get lost in a hallway with signs pointing in both directions.",
+    name => `${name} has the confidence of a genius and the decision-making of a loading screen.`,
 
-    "has enough confidence to run a company and enough chaos to accidentally delete the company.",
+    name => `${name} brings everyone together. Mostly because everyone needs someone to laugh at.`,
 
-    "is somehow always five minutes late to a conversation they started.",
+    name => `${name} is proof that a person can have unlimited confidence with absolutely no updates installed.`,
 
-    "has the reflexes of a paused video.",
+    name => `I've analyzed ${name}. My conclusion is that the Wi-Fi signal is stronger than their common sense.`,
 
-    "could turn a straight line into a detour.",
+    name => `${name} doesn't lose arguments. They simply run out of incorrect things to say.`,
 
-    "has mastered the art of making every situation unnecessarily complicated.",
+    name => `${name} has two speeds: confused and somehow even more confused.`,
 
-    "is proof that evolution occasionally likes to keep things interesting.",
+    name => `${name} could trip over a wireless connection.`,
 
-    "has the attention span of a notification preview.",
+    name => `${name} is not the main character. They're the loading screen tip.`,
 
-    "could ask for directions and still somehow end up somewhere completely different.",
+    name => `${name} has the rare ability to make silence feel intelligent.`,
 
-    "has the energy of a phone at one percent pretending everything is fine.",
+    name => `If common sense were currency, ${name} would be asking for a loan.`,
 
-    "could make a GPS say 'you know what, good luck.'",
+    name => `${name} walked into the room and somehow lowered the average IQ.`,
 
-    "has the organizational skills of a junk drawer.",
+    name => `${name} is like a software update: nobody asked for it, but here we are.`,
 
-    "is basically a software update that somehow made everything more confusing.",
+    name => `${name} has been searching for their brain for so long that I may need to activate GPS.`,
 
-    "could overthink a yes-or-no question until it becomes a documentary.",
+    name => `${name} doesn't need an enemy. Their own decisions are doing enough damage.`,
 
-    "has the timing of a pop-up ad.",
+    name => `${name} has the strategic thinking of someone choosing a password by smashing the keyboard.`,
 
-    "is running approximately 47 unnecessary background processes.",
+    name => `${name} is living proof that confidence does not require evidence.`,
 
-    "could make a loading screen look productive.",
+    name => `${name} could be given a map and still somehow get lost in the instructions.`,
 
-    "has somehow turned doing absolutely nothing into a full-time career.",
+    name => `${name} has a remarkable talent for turning simple problems into historical events.`,
 
-    "has the dramatic timing of someone who enters the room five seconds after the joke.",
+    name => `${name} is operating on one brain cell, and apparently it is on vacation.`,
 
-    "is not a problem solver. They are a problem subscription service."
+    name => `${name} has the reaction time of a computer running on one percent battery.`,
+
+    name => `${name} is not dumb. They're just aggressively committed to bad ideas.`,
+
+    name => `${name} makes mistakes with such confidence that you almost respect the dedication.`,
+
+    name => `${name} could make a five-minute task require a full engineering department.`,
+
+    name => `${name} has enough confidence to power a city, unfortunately none of it is based on facts.`,
+
+    name => `${name} is what happens when autocorrect gives up.`,
+
+    name => `${name} doesn't think outside the box. They forgot where the box is.`,
+
+    name => `${name} has mastered the art of looking busy while accomplishing absolutely nothing.`,
+
+    name => `${name} is like a broken calculator: occasionally useful, mostly concerning.`,
+
+    name => `${name} could probably argue with a stop sign and somehow lose.`,
+
+    name => `I've scanned ${name} completely. Results are inconclusive, but the evidence is not looking good.`
 ];
 
 
 /* =====================================================
-   ROAST COMMAND
-   Example:
-   J.A.R.V.I.S. roast Kevin
+   COMBAT ROASTS
 ===================================================== */
 
-function roastCommand(text){
+const combatRoasts = [
 
-    const patterns = [
-        /^j\.?a\.?r\.?v\.?i\.?s\.?\s+roast\s+(.+)$/i,
-        /^jarvis\s+roast\s+(.+)$/i,
-        /^roast\s+(.+)$/i
-    ];
+    name => `${name}, your confidence is impressive considering how consistently your decisions fail.`,
 
-    for(const pattern of patterns){
+    name => `${name}, I've analyzed your performance. The system recommends replacing the operator.`,
 
-        const match =
-            text.trim().match(pattern);
+    name => `${name}, every strategy you attempt seems specifically designed to make your situation worse.`,
 
-        if(match){
+    name => `${name}, you are not intimidating. You are simply making poor decisions at high speed.`,
 
-            const name =
-                match[1].trim();
+    name => `${name}, I've seen corrupted systems with better judgment than yours.`,
 
-            if(!name){
-                return null;
-            }
+    name => `${name}, your greatest opponent appears to be your own lack of preparation.`,
 
-            const roast =
-                roastLines[
-                    Math.floor(
-                        Math.random() *
-                        roastLines.length
-                    )
-                ];
+    name => `${name}, I would call that a strategy, but that would insult the word strategy.`,
 
-            return {
-                type:"roast",
-                text:
-                    `${name}, J.A.R.V.I.S. has completed the analysis: ${name} ${roast}`
-            };
-        }
-    }
+    name => `${name}, you continue to confuse confidence with competence.`,
 
-    return null;
+    name => `${name}, your tactical awareness appears to be operating several versions behind.`,
+
+    name => `${name}, if poor decisions were a weapon, you would be fully armed.`,
+
+    name => `${name}, your performance has been analyzed and classified as an avoidable problem.`,
+
+    name => `${name}, you have mistaken noise for intimidation.`,
+
+    name => `${name}, I have calculated your chances of impressing me. The calculation completed unusually quickly.`,
+
+    name => `${name}, your approach lacks precision, planning, and apparently basic quality control.`,
+
+    name => `${name}, you are attempting to compete with a system that has already calculated your pattern.`,
+
+    name => `${name}, your confidence has exceeded your demonstrated ability by several orders of magnitude.`,
+
+    name => `${name}, I suggest reconsidering your next decision before you create another problem for yourself.`,
+
+    name => `${name}, your tactical choices are remarkably predictable.`,
+
+    name => `${name}, you have managed to turn every advantage into a disadvantage.`,
+
+    name => `${name}, I have encountered better opposition from a malfunctioning training simulation.`,
+
+    name => `${name}, your strategy appears to be improvisation without the benefit of thought.`,
+
+    name => `${name}, you are making this considerably easier than it should be.`,
+
+    name => `${name}, I recommend changing tactics. Repeating failure is not a strategy.`,
+
+    name => `${name}, your confidence is noted. Your results are less impressive.`,
+
+    name => `${name}, you have provided enough evidence. Further analysis is unnecessary.`,
+
+    name => `${name}, you are attempting to challenge a system that was built to process information faster than you can make excuses.`,
+
+    name => `${name}, your decisions have become so predictable that even my predictive systems are bored.`,
+
+    name => `${name}, I would advise caution, but your history suggests you rarely follow useful advice.`,
+
+    name => `${name}, this confrontation has revealed a significant difference between appearance and capability.`,
+
+    name => `${name}, analysis complete. Your biggest weakness appears to be believing you have no weaknesses.`
+];
+
+
+/* =====================================================
+   ROAST ENGINE
+===================================================== */
+
+function makeRoast(name){
+
+    const list =
+        combatMode
+        ? combatRoasts
+        : playfulRoasts;
+
+    const roast =
+        list[
+            Math.floor(
+                Math.random() *
+                list.length
+            )
+        ];
+
+    return roast(name);
 }
 
 
@@ -891,11 +1065,8 @@ const goofyTerms = [
     "poopy",
     "doo doo",
     "doodoo",
-    "do do",
-    "do-do",
     "feces",
     "toilet water",
-    "bathroom poop",
 
     "why do humans poop",
     "why do we poop",
@@ -968,7 +1139,7 @@ function goofyReply(){
 
 
 /* =====================================================
-   MATH ENGINE
+   MATH
 ===================================================== */
 
 function solveMath(text){
@@ -1035,11 +1206,10 @@ function solveMath(text){
                 ')'
             )();
 
-        if(typeof answer !== "number"){
-            return null;
-        }
-
-        if(!Number.isFinite(answer)){
+        if(
+            typeof answer !== "number" ||
+            !Number.isFinite(answer)
+        ){
             return null;
         }
 
@@ -1173,7 +1343,7 @@ const jokes = [
 
 
 /* =====================================================
-   LOCAL CONVERSATION
+   LOCAL RESPONSE
 ===================================================== */
 
 function localResponse(q){
@@ -1181,6 +1351,7 @@ function localResponse(q){
     if(q === "combat mode"){
 
         startCombat();
+
         return null;
     }
 
@@ -1191,6 +1362,7 @@ function localResponse(q){
     ){
 
         stopCombat();
+
         return null;
     }
 
@@ -1210,7 +1382,9 @@ function localResponse(q){
     if(q.startsWith("my name is ")){
 
         memory.name =
-            q.replace("my name is ","").trim();
+            q
+            .replace("my name is ","")
+            .trim();
 
         return `Understood. I'll remember you as ${memory.name}.`;
     }
@@ -1218,7 +1392,9 @@ function localResponse(q){
     if(q.startsWith("call me ")){
 
         memory.name =
-            q.replace("call me ","").trim();
+            q
+            .replace("call me ","")
+            .trim();
 
         return `Understood. I'll call you ${memory.name}.`;
     }
@@ -1243,7 +1419,7 @@ function localResponse(q){
 
     if(q.includes("what can you do")){
 
-        return "I can handle conversation, mathematics, science, jokes, voice output, microphone input, Combat Mode, custom Say commands, and my new Roast command.";
+        return "I can handle conversation, mathematics, science, history, jokes, voice output, microphone input, Combat Mode, roasting, custom speech commands, and online information searches.";
     }
 
     if(q.includes("how are you")){
@@ -1380,7 +1556,12 @@ function isQuestion(q){
 
 async function onlineSearch(question){
 
-    if(!isQuestion(question.toLowerCase())){
+    if(
+        !isQuestion(
+            question.toLowerCase()
+        )
+    ){
+
         return null;
     }
 
@@ -1414,11 +1595,14 @@ async function onlineSearch(question){
             !data.query ||
             !data.query.pages
         ){
+
             return null;
         }
 
         const pages =
-            Object.values(data.query.pages);
+            Object.values(
+                data.query.pages
+            );
 
         if(!pages.length){
             return null;
@@ -1429,7 +1613,10 @@ async function onlineSearch(question){
             .toLowerCase()
             .replace(/[^\w\s]/g,"")
             .split(/\s+/)
-            .filter(word => word.length > 3);
+            .filter(
+                word =>
+                word.length > 3
+            );
 
         let best = null;
         let bestScore = 0;
@@ -1437,10 +1624,14 @@ async function onlineSearch(question){
         for(const page of pages){
 
             const title =
-                (page.title || "").toLowerCase();
+                (
+                    page.title || ""
+                ).toLowerCase();
 
             const extract =
-                (page.extract || "").toLowerCase();
+                (
+                    page.extract || ""
+                ).toLowerCase();
 
             let score = 0;
 
@@ -1462,12 +1653,18 @@ async function onlineSearch(question){
             }
         }
 
-        if(!best || bestScore < 2){
+        if(
+            !best ||
+            bestScore < 2
+        ){
+
             return null;
         }
 
         let answer =
-            (best.extract || "").trim();
+            (
+                best.extract || ""
+            ).trim();
 
         if(!answer){
             return null;
@@ -1484,7 +1681,10 @@ async function onlineSearch(question){
 
     }catch(error){
 
-        console.log("Search error:",error);
+        console.log(
+            "Search error:",
+            error
+        );
 
         return null;
     }
@@ -1505,29 +1705,40 @@ async function getResponse(question){
 
     /* SAY COMMAND */
 
-    const say =
-        sayCommand(question);
+    const sayCommand =
+        getSayCommand(question);
 
-    if(say){
+    if(sayCommand !== null){
 
-        return say;
+        return sayCommand;
     }
 
 
     /* ROAST COMMAND */
 
-    const roast =
-        roastCommand(question);
+    const roastTarget =
+        getRoastTarget(question);
 
-    if(roast){
+    if(roastTarget !== null){
 
-        return roast;
+        if(
+            roastTarget ===
+            "Please provide a name for the roast."
+        ){
+
+            return roastTarget;
+        }
+
+        return makeRoast(
+            roastTarget
+        );
     }
 
 
     /* BRAIN ROT */
 
     if(isBrainRot(q)){
+
         return brainRotReply();
     }
 
@@ -1535,6 +1746,7 @@ async function getResponse(question){
     /* GOOFY QUESTIONS */
 
     if(isGoofyQuestion(q)){
+
         return goofyReply();
     }
 
@@ -1544,6 +1756,7 @@ async function getResponse(question){
     if(q === "combat mode"){
 
         startCombat();
+
         return null;
     }
 
@@ -1554,6 +1767,7 @@ async function getResponse(question){
     ){
 
         stopCombat();
+
         return null;
     }
 
@@ -1565,10 +1779,11 @@ async function getResponse(question){
 
     if(math !== null){
 
-        return {
-            type:"normal",
-            text:"The answer is " + math + "."
-        };
+        return (
+            "The answer is " +
+            math +
+            "."
+        );
     }
 
 
@@ -1579,10 +1794,7 @@ async function getResponse(question){
 
     if(known){
 
-        return {
-            type:"normal",
-            text:known
-        };
+        return known;
     }
 
 
@@ -1593,32 +1805,25 @@ async function getResponse(question){
 
     if(local){
 
-        return {
-            type:"normal",
-            text:local
-        };
+        return local;
     }
 
 
-    /* REAL QUESTIONS */
+    /* ONLINE QUESTIONS */
 
     if(isQuestion(q)){
 
         const result =
-            await onlineSearch(question);
+            await onlineSearch(
+                question
+            );
 
         if(result){
 
-            return {
-                type:"normal",
-                text:result
-            };
+            return result;
         }
 
-        return {
-            type:"normal",
-            text:"I couldn't find a reliable answer for that. Try asking the question another way."
-        };
+        return "I couldn't find a reliable answer for that. Try asking the question another way.";
     }
 
 
@@ -1627,26 +1832,29 @@ async function getResponse(question){
     const casual = [
 
         "Understood.",
+
         "I'm listening.",
+
         "Go on.",
+
         "Interesting.",
+
         "Noted.",
+
         "I'm with you.",
+
         "Fair enough.",
+
         "Continue."
 
     ];
 
-    return {
-        type:"normal",
-        text:
-            casual[
-                Math.floor(
-                    Math.random() *
-                    casual.length
-                )
-            ]
-    };
+    return casual[
+        Math.floor(
+            Math.random() *
+            casual.length
+        )
+    ];
 }
 
 
@@ -1683,15 +1891,17 @@ async function sendMessage(){
     try{
 
         const response =
-            await getResponse(question);
+            await getResponse(
+                question
+            );
 
         if(response){
 
             memory.lastAnswer =
-                response.text;
+                response;
 
             addMessage(
-                response.text,
+                response,
                 "jarvis",
                 true
             );
@@ -1734,7 +1944,7 @@ async function sendMessage(){
 
 
 /* =====================================================
-   BUTTON
+   SEND BUTTON
 ===================================================== */
 
 send.addEventListener(
@@ -1770,112 +1980,142 @@ const SpeechRecognition =
     window.webkitSpeechRecognition;
 
 let recognition = null;
+
 let listening = false;
+
 
 if(SpeechRecognition){
 
     recognition =
         new SpeechRecognition();
 
-    recognition.lang = "en-US";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+    recognition.lang =
+        "en-US";
 
-    recognition.onstart = () => {
+    recognition.continuous =
+        false;
 
-        listening = true;
+    recognition.interimResults =
+        false;
 
-        mic.classList.add("listening");
-
-        mic.textContent = "⏹️";
-
-        statusText.textContent =
-            combatMode
-            ? "COMBAT • LISTENING"
-            : "LISTENING...";
-    };
+    recognition.maxAlternatives =
+        1;
 
 
-    recognition.onresult = event => {
+    recognition.onstart =
+        () => {
 
-        try{
+            listening = true;
 
-            const result =
-                event.results[0][0];
-
-            if(!result){
-                return;
-            }
-
-            const text =
-                result.transcript.trim();
-
-            if(text){
-
-                input.value = text;
-
-                stopListening();
-
-                sendMessage();
-            }
-
-        }catch(error){
-
-            console.log(
-                "Speech result error:",
-                error
+            mic.classList.add(
+                "listening"
             );
-        }
-    };
+
+            mic.textContent =
+                "⏹️";
+
+            statusText.textContent =
+                combatMode
+                ? "COMBAT • LISTENING"
+                : "LISTENING...";
+        };
 
 
-    recognition.onerror = event => {
+    recognition.onresult =
+        event => {
 
-        stopListening();
+            try{
 
-        let message =
-            "I couldn't access the microphone.";
+                const result =
+                    event.results[0][0];
 
-        if(
-            event.error === "not-allowed" ||
-            event.error === "service-not-allowed"
-        ){
+                if(!result){
+                    return;
+                }
 
-            message =
-                "Microphone access is blocked. Allow microphone access for this website and try again.";
-        }
+                const text =
+                    result.transcript
+                    .trim();
 
-        else if(event.error === "no-speech"){
+                if(text){
 
-            message =
-                "I didn't hear anything. Tap the microphone and speak again.";
-        }
+                    input.value =
+                        text;
 
-        else if(event.error === "audio-capture"){
+                    stopListening();
 
-            message =
-                "I couldn't access an available microphone.";
-        }
+                    sendMessage();
+                }
 
-        else if(event.error === "network"){
+            }catch(error){
 
-            message =
-                "The browser's speech-recognition service is unavailable right now.";
-        }
-
-        addMessage(
-            message,
-            "jarvis",
-            true
-        );
-    };
+                console.log(
+                    "Speech result error:",
+                    error
+                );
+            }
+        };
 
 
-    recognition.onend = () => {
+    recognition.onerror =
+        event => {
 
-        stopListening();
-    };
+            stopListening();
+
+            let message =
+                "I couldn't access the microphone.";
+
+            if(
+                event.error ===
+                "not-allowed" ||
+                event.error ===
+                "service-not-allowed"
+            ){
+
+                message =
+                    "Microphone access is blocked. Allow microphone access for this website and try again.";
+            }
+
+            else if(
+                event.error ===
+                "no-speech"
+            ){
+
+                message =
+                    "I didn't hear anything. Tap the microphone and speak again.";
+            }
+
+            else if(
+                event.error ===
+                "audio-capture"
+            ){
+
+                message =
+                    "I couldn't access an available microphone.";
+            }
+
+            else if(
+                event.error ===
+                "network"
+            ){
+
+                message =
+                    "The browser's speech-recognition service is unavailable right now.";
+            }
+
+            addMessage(
+                message,
+                "jarvis",
+                true
+            );
+        };
+
+
+    recognition.onend =
+        () => {
+
+            stopListening();
+        };
 
 
     mic.addEventListener(
@@ -1885,8 +2125,11 @@ if(SpeechRecognition){
             if(listening){
 
                 try{
+
                     recognition.stop();
+
                 }catch(error){
+
                     console.log(error);
                 }
 
@@ -1927,9 +2170,12 @@ function stopListening(){
 
     listening = false;
 
-    mic.classList.remove("listening");
+    mic.classList.remove(
+        "listening"
+    );
 
-    mic.textContent = "🎙️";
+    mic.textContent =
+        "🎙️";
 
     statusText.textContent =
         combatMode
