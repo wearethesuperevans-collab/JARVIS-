@@ -59,10 +59,6 @@ body{
     transition:.4s;
 }
 
-/* =========================
-   COMBAT MODE
-========================= */
-
 #app.combat{
     color:#ff3030;
 
@@ -89,31 +85,19 @@ body{
     top:0;
     left:0;
     right:0;
-
     height:68px;
-
-    padding:
-        0 20px;
-
-    padding-top:
-        env(safe-area-inset-top);
-
+    padding:0 20px;
+    padding-top:env(safe-area-inset-top);
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    background:
-        rgba(0,8,12,.96);
-
-    border-bottom:
-        1px solid rgba(0,234,255,.35);
-
+    background:rgba(0,8,12,.96);
+    border-bottom:1px solid rgba(0,234,255,.35);
     z-index:100;
 }
 
 .combat .header{
-    border-bottom-color:
-        rgba(255,40,40,.5);
+    border-bottom-color:rgba(255,40,40,.5);
 }
 
 .logo{
@@ -146,52 +130,32 @@ body{
 
 .dot{
     display:inline-block;
-
     width:7px;
     height:7px;
-
     border-radius:50%;
-
     margin-right:5px;
-
     background:#00ff88;
-
-    box-shadow:
-        0 0 10px #00ff88;
+    box-shadow:0 0 10px #00ff88;
 }
 
 .combat .dot{
     background:#ff3030;
-
-    box-shadow:
-        0 0 10px #ff3030;
+    box-shadow:0 0 10px #ff3030;
 }
-
-/* =========================
-   MAIN
-========================= */
 
 .main{
     position:absolute;
-
     top:68px;
     left:0;
     right:0;
     bottom:0;
-
     display:flex;
     flex-direction:column;
-
     min-height:0;
 }
 
-/* =========================
-   ARC REACTOR
-========================= */
-
 .coreArea{
     flex:0 0 225px;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -199,51 +163,36 @@ body{
 
 .core{
     position:relative;
-
     width:165px;
     height:165px;
 }
 
 .ring{
     position:absolute;
-
     inset:0;
-
-    border:
-        2px solid
-        rgba(0,234,255,.4);
-
+    border:2px solid rgba(0,234,255,.4);
     border-radius:50%;
 }
 
 .r1{
     border-top-color:#00eaff;
-
-    animation:
-        spin 8s linear infinite;
+    animation:spin 8s linear infinite;
 }
 
 .r2{
     inset:20px;
-
     border-right-color:#008cff;
-
-    animation:
-        spinBack 5s linear infinite;
+    animation:spinBack 5s linear infinite;
 }
 
 .r3{
     inset:42px;
-
     border-bottom-color:#00ffff;
-
-    animation:
-        spin 3.5s linear infinite;
+    animation:spin 3.5s linear infinite;
 }
 
 .combat .ring{
-    border-color:
-        rgba(255,40,40,.4);
+    border-color:rgba(255,40,40,.4);
 }
 
 .combat .r1{
@@ -260,16 +209,11 @@ body{
 
 .orb{
     position:absolute;
-
     width:52px;
     height:52px;
-
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     border-radius:50%;
 
     background:
@@ -287,8 +231,7 @@ body{
         0 0 40px #00eaff,
         0 0 75px rgba(0,150,255,.8);
 
-    animation:
-        pulse 2s ease-in-out infinite;
+    animation:pulse 2s ease-in-out infinite;
 }
 
 .combat .orb{
@@ -310,76 +253,42 @@ body{
 
 .arc{
     position:absolute;
-
     bottom:-25px;
-
     width:100%;
-
     text-align:center;
-
     font-size:9px;
-
     letter-spacing:3px;
-
     opacity:.6;
 }
 
-/* =========================
-   CHAT
-========================= */
-
 .chat{
     flex:1;
-
     min-height:0;
-
     overflow-y:auto;
     overflow-x:hidden;
-
     -webkit-overflow-scrolling:touch;
-
     overscroll-behavior:contain;
-
-    padding:
-        5px
-        15px
-        120px;
+    padding:5px 15px 120px;
 }
 
 .message{
     max-width:900px;
-
-    margin:
-        0 auto 12px;
-
-    padding:
-        12px 15px;
-
+    margin:0 auto 12px;
+    padding:12px 15px;
     border-radius:10px;
-
     line-height:1.45;
-
     font-size:15px;
-
     overflow-wrap:anywhere;
 }
 
 .jarvis{
-    background:
-        rgba(0,160,220,.08);
-
-    border-left:
-        2px solid #00eaff;
+    background:rgba(0,160,220,.08);
+    border-left:2px solid #00eaff;
 }
 
 .user{
-    background:
-        rgba(255,255,255,.05);
-
-    border-right:
-        2px solid
-        rgba(255,255,255,.4);
-
+    background:rgba(255,255,255,.05);
+    border-right:2px solid rgba(255,255,255,.4);
     color:#fff;
 }
 
@@ -389,94 +298,53 @@ body{
 
 .label{
     display:block;
-
     margin-bottom:5px;
-
     font-size:9px;
-
     letter-spacing:2px;
-
     opacity:.55;
 }
 
-/* =========================
-   INPUT
-========================= */
-
 .controls{
     position:absolute;
-
     left:0;
     right:0;
     bottom:0;
-
     min-height:82px;
-
-    padding:
-        9px
-        10px
-        max(12px,env(safe-area-inset-bottom));
-
-    background:
-        rgba(0,8,12,.98);
-
-    border-top:
-        1px solid
-        rgba(0,234,255,.35);
-
+    padding:9px 10px max(12px,env(safe-area-inset-bottom));
+    background:rgba(0,8,12,.98);
+    border-top:1px solid rgba(0,234,255,.35);
     z-index:500;
 }
 
 .combat .controls{
-    border-top-color:
-        rgba(255,40,40,.5);
+    border-top-color:rgba(255,40,40,.5);
 }
 
 .inputRow{
     display:flex;
-
     gap:7px;
-
     width:100%;
-
     max-width:900px;
-
     margin:auto;
 }
 
 #input{
     flex:1;
-
     min-width:0;
-
     height:48px;
-
-    border:
-        1px solid
-        rgba(0,234,255,.55);
-
+    border:1px solid rgba(0,234,255,.55);
     border-radius:10px;
-
     outline:none;
-
-    padding:
-        0 13px;
-
+    padding:0 13px;
     background:#03151b;
-
     color:#fff;
-
     font-size:16px;
-
     -webkit-appearance:none;
 }
 
 #input:focus{
     border-color:#00eaff;
-
-    box-shadow:
-        0 0 12px
-        rgba(0,234,255,.2);
+    box-shadow:0 0 12px rgba(0,234,255,.2);
 }
 
 .combat #input{
@@ -486,30 +354,19 @@ body{
 #mic,
 #send{
     height:48px;
-
-    border:
-        1px solid #00eaff;
-
+    border:1px solid #00eaff;
     border-radius:10px;
-
-    background:
-        rgba(0,234,255,.08);
-
+    background:rgba(0,234,255,.08);
     color:#00eaff;
-
     font-weight:bold;
-
     cursor:pointer;
-
     -webkit-appearance:none;
-
     touch-action:manipulation;
 }
 
 #mic{
     width:48px;
     flex:0 0 48px;
-
     font-size:18px;
 }
 
@@ -525,26 +382,14 @@ body{
 }
 
 #mic.listening{
-    background:
-        rgba(0,234,255,.3);
-
-    box-shadow:
-        0 0 18px
-        rgba(0,234,255,.7);
+    background:rgba(0,234,255,.3);
+    box-shadow:0 0 18px rgba(0,234,255,.7);
 }
 
 .combat #mic.listening{
-    background:
-        rgba(255,0,0,.3);
-
-    box-shadow:
-        0 0 18px
-        rgba(255,0,0,.7);
+    background:rgba(255,0,0,.3);
+    box-shadow:0 0 18px rgba(255,0,0,.7);
 }
-
-/* =========================
-   ANIMATIONS
-========================= */
 
 @keyframes spin{
     to{
@@ -560,15 +405,11 @@ body{
 
 @keyframes pulse{
     0%,100%{
-        transform:
-            translate(-50%,-50%)
-            scale(.9);
+        transform:translate(-50%,-50%) scale(.9);
     }
 
     50%{
-        transform:
-            translate(-50%,-50%)
-            scale(1.1);
+        transform:translate(-50%,-50%) scale(1.1);
     }
 }
 
@@ -609,17 +450,13 @@ body{
     </div>
 
     <div class="status">
-
         <span class="dot"></span>
-
         <span id="statusText">
             SYSTEMS ONLINE
         </span>
-
     </div>
 
 </header>
-
 
 <main class="main">
 
@@ -628,11 +465,8 @@ body{
     <div class="core">
 
         <div class="ring r1"></div>
-
         <div class="ring r2"></div>
-
         <div class="ring r3"></div>
-
         <div class="orb"></div>
 
         <div class="arc">
@@ -643,14 +477,9 @@ body{
 
 </section>
 
-
-<section
-    id="chat"
-    class="chat">
-</section>
+<section id="chat" class="chat"></section>
 
 </main>
-
 
 <div class="controls">
 
@@ -665,15 +494,11 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button
-            id="mic"
-            type="button">
+        <button id="mic" type="button">
             🎙️
         </button>
 
-        <button
-            id="send"
-            type="button">
+        <button id="send" type="button">
             SEND
         </button>
 
@@ -683,10 +508,8 @@ body{
 
 </div>
 
-
 <script>
 "use strict";
-
 
 /* =====================================================
    ELEMENTS
@@ -712,7 +535,6 @@ const statusText =
 
 
 let processing = false;
-
 let combatMode = false;
 
 let memory = {
@@ -742,9 +564,7 @@ function speak(text){
             new SpeechSynthesisUtterance(text);
 
         voice.rate = .88;
-
         voice.pitch = .72;
-
         voice.volume = 1;
 
         const voices =
@@ -841,9 +661,7 @@ function addMessage(
     content.textContent = text;
 
     box.appendChild(label);
-
     box.appendChild(content);
-
     chat.appendChild(box);
 
     requestAnimationFrame(
@@ -859,6 +677,42 @@ function addMessage(
     ){
         speak(text);
     }
+}
+
+
+/* =====================================================
+   J.A.R.V.I.S. SAY COMMAND
+===================================================== */
+
+/*
+   These all work:
+
+   J.A.R.V.I.S. say hello
+   J.A.R.V.I.S., say hello
+   JARVIS say welcome home
+   jarvis, say this is a test
+   J.A.R.V.I.S.: say systems online
+*/
+
+function jarvisSayCommand(text){
+
+    const match =
+        text.match(
+            /^\s*j\.?\s*a\.?\s*r\.?\s*v\.?\s*i\.?\s*s\.?\s*[,;:\-]?\s+say\s+(.+)$/i
+        );
+
+    if(!match){
+        return null;
+    }
+
+    const wordsToSay =
+        match[1].trim();
+
+    if(!wordsToSay){
+        return null;
+    }
+
+    return wordsToSay;
 }
 
 
@@ -909,7 +763,7 @@ function stopCombat(){
 
 
 /* =====================================================
-   BRAIN ROT FILTER 😭
+   BRAIN ROT FILTER
 ===================================================== */
 
 const brainRotTerms = [
@@ -1001,12 +855,10 @@ function brainRotReply(){
 
 
 /* =====================================================
-   GOOFY QUESTION FILTER 😭
+   GOOFY QUESTION FILTER
 ===================================================== */
 
 const goofyTerms = [
-
-    /* Poop / toilet questions */
 
     "poop",
     "pooping",
@@ -1031,8 +883,6 @@ const goofyTerms = [
     "does ai poop",
     "does jarvis poop",
     "can jarvis poop",
-
-    /* Circular / intentionally silly AI questions */
 
     "if ai is ai",
     "if an ai is an ai",
@@ -1196,16 +1046,15 @@ function solveMath(text){
     }
 
     if(
-        !/[+\-*/%]/.test(
-            expression
-        )
+        !/[+\-*/%]/.test(expression)
     ){
         return null;
     }
 
     if(
-        !/^[0-9+\-*/().%\s]+$/
-        .test(expression)
+        !/^[0-9+\-*/().%\s]+$/.test(
+            expression
+        )
     ){
         return null;
     }
@@ -1220,8 +1069,7 @@ function solveMath(text){
             )();
 
         if(
-            typeof answer !==
-            "number"
+            typeof answer !== "number"
         ){
             return null;
         }
@@ -1406,9 +1254,7 @@ function localResponse(q){
     }
 
     if(
-        q.startsWith(
-            "my name is "
-        )
+        q.startsWith("my name is ")
     ){
 
         memory.name =
@@ -1423,9 +1269,7 @@ function localResponse(q){
     }
 
     if(
-        q.startsWith(
-            "call me "
-        )
+        q.startsWith("call me ")
     ){
 
         memory.name =
@@ -1440,12 +1284,8 @@ function localResponse(q){
     }
 
     if(
-        q.includes(
-            "what is my name"
-        ) ||
-        q.includes(
-            "what's my name"
-        )
+        q.includes("what is my name") ||
+        q.includes("what's my name")
     ){
 
         return memory.name
@@ -1685,7 +1525,6 @@ async function onlineSearch(
             );
 
         let best = null;
-
         let bestScore = 0;
 
         for(
@@ -1728,7 +1567,6 @@ async function onlineSearch(
             ){
 
                 bestScore = score;
-
                 best = page;
             }
         }
@@ -1794,6 +1632,24 @@ async function getResponse(
 
 
     /*
+       J.A.R.V.I.S. SAY COMMAND
+    */
+
+    const sayCommand =
+        jarvisSayCommand(question);
+
+    if(
+        sayCommand
+    ){
+
+        return {
+            type:"say",
+            text:sayCommand
+        };
+    }
+
+
+    /*
        1. BRAIN ROT
     */
 
@@ -1845,7 +1701,6 @@ async function getResponse(
 
     /*
        4. MATH
-       NEVER SEARCHES
     */
 
     const math =
@@ -1919,25 +1774,17 @@ async function getResponse(
 
     /*
        8. CASUAL CHAT
-       NO RANDOM SEARCH
     */
 
     const casual = [
 
         "Understood.",
-
         "I'm listening.",
-
         "Go on.",
-
         "Interesting.",
-
         "Noted.",
-
         "I'm with you.",
-
         "Fair enough.",
-
         "Continue."
 
     ];
@@ -1994,7 +1841,34 @@ async function sendMessage(){
                 question
             );
 
+
+        /*
+           SPECIAL "SAY" COMMAND
+        */
+
         if(
+            response &&
+            typeof response === "object" &&
+            response.type === "say"
+        ){
+
+            memory.lastAnswer =
+                response.text;
+
+            addMessage(
+                response.text,
+                "jarvis",
+                true
+            );
+
+        }
+
+
+        /*
+           NORMAL RESPONSE
+        */
+
+        else if(
             response
         ){
 
@@ -2083,7 +1957,6 @@ const SpeechRecognition =
     window.webkitSpeechRecognition;
 
 let recognition = null;
-
 let listening = false;
 
 
