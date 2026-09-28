@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+>
+
 <title>J.A.R.V.I.S.</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
     margin:0;
     width:100%;
     height:100%;
@@ -34,23 +51,53 @@ body{
     overflow:hidden;
 
     background:
-        radial-gradient(circle at 50% 40%,rgba(0,180,255,.12),transparent 45%),
-        linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(0,180,255,.12),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(0,234,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,234,255,.035) 1px,
+            transparent 1px
+        ),
         #000;
 
-    background-size:auto,28px 28px,28px 28px,auto;
+    background-size:
+        auto,
+        28px 28px,
+        28px 28px,
+        auto;
 
     transition:.4s;
 }
+
+/* =========================
+   COMBAT MODE
+========================= */
 
 #app.combat{
     color:#ff3030;
 
     background:
-        radial-gradient(circle at 50% 40%,rgba(255,0,0,.15),transparent 45%),
-        linear-gradient(rgba(255,0,0,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,0,0,.035) 1px,transparent 1px),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,0,0,.15),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(255,0,0,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,0,0,.035) 1px,
+            transparent 1px
+        ),
         #000;
 }
 
@@ -59,21 +106,31 @@ body{
     top:0;
     left:0;
     right:0;
+
     height:68px;
-    padding:0 20px;
-    padding-top:env(safe-area-inset-top);
+
+    padding:
+        0 20px;
+
+    padding-top:
+        env(safe-area-inset-top);
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    background:rgba(0,8,12,.96);
-    border-bottom:1px solid rgba(0,234,255,.35);
+    background:
+        rgba(0,8,12,.96);
+
+    border-bottom:
+        1px solid rgba(0,234,255,.35);
+
     z-index:100;
 }
 
 .combat .header{
-    border-bottom-color:rgba(255,40,40,.5);
+    border-bottom-color:
+        rgba(255,40,40,.5);
 }
 
 .logo{
@@ -106,21 +163,34 @@ body{
 
 .dot{
     display:inline-block;
+
     width:7px;
     height:7px;
+
     border-radius:50%;
+
     margin-right:5px;
+
     background:#00ff88;
-    box-shadow:0 0 10px #00ff88;
+
+    box-shadow:
+        0 0 10px #00ff88;
 }
 
 .combat .dot{
     background:#ff3030;
-    box-shadow:0 0 10px #ff3030;
+
+    box-shadow:
+        0 0 10px #ff3030;
 }
+
+/* =========================
+   MAIN
+========================= */
 
 .main{
     position:absolute;
+
     top:68px;
     left:0;
     right:0;
@@ -128,8 +198,13 @@ body{
 
     display:flex;
     flex-direction:column;
+
     min-height:0;
 }
+
+/* =========================
+   ARC REACTOR
+========================= */
 
 .coreArea{
     flex:0 0 225px;
@@ -141,36 +216,51 @@ body{
 
 .core{
     position:relative;
+
     width:165px;
     height:165px;
 }
 
 .ring{
     position:absolute;
+
     inset:0;
-    border:2px solid rgba(0,234,255,.4);
+
+    border:
+        2px solid
+        rgba(0,234,255,.4);
+
     border-radius:50%;
 }
 
 .r1{
     border-top-color:#00eaff;
-    animation:spin 8s linear infinite;
+
+    animation:
+        spin 8s linear infinite;
 }
 
 .r2{
     inset:20px;
+
     border-right-color:#008cff;
-    animation:spinBack 5s linear infinite;
+
+    animation:
+        spinBack 5s linear infinite;
 }
 
 .r3{
     inset:42px;
+
     border-bottom-color:#00ffff;
-    animation:spin 3.5s linear infinite;
+
+    animation:
+        spin 3.5s linear infinite;
 }
 
 .combat .ring{
-    border-color:rgba(255,40,40,.4);
+    border-color:
+        rgba(255,40,40,.4);
 }
 
 .combat .r1{
@@ -187,11 +277,16 @@ body{
 
 .orb{
     position:absolute;
+
     width:52px;
     height:52px;
+
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%);
+
+    transform:
+        translate(-50%,-50%);
+
     border-radius:50%;
 
     background:
@@ -209,7 +304,8 @@ body{
         0 0 40px #00eaff,
         0 0 75px rgba(0,150,255,.8);
 
-    animation:pulse 2s ease-in-out infinite;
+    animation:
+        pulse 2s ease-in-out infinite;
 }
 
 .combat .orb{
@@ -231,42 +327,76 @@ body{
 
 .arc{
     position:absolute;
+
     bottom:-25px;
+
     width:100%;
+
     text-align:center;
+
     font-size:9px;
+
     letter-spacing:3px;
+
     opacity:.6;
 }
 
+/* =========================
+   CHAT
+========================= */
+
 .chat{
     flex:1;
+
     min-height:0;
+
     overflow-y:auto;
     overflow-x:hidden;
+
     -webkit-overflow-scrolling:touch;
+
     overscroll-behavior:contain;
-    padding:5px 15px 120px;
+
+    padding:
+        5px
+        15px
+        120px;
 }
 
 .message{
     max-width:900px;
-    margin:0 auto 12px;
-    padding:12px 15px;
+
+    margin:
+        0 auto 12px;
+
+    padding:
+        12px 15px;
+
     border-radius:10px;
+
     line-height:1.45;
+
     font-size:15px;
+
     overflow-wrap:anywhere;
 }
 
 .jarvis{
-    background:rgba(0,160,220,.08);
-    border-left:2px solid #00eaff;
+    background:
+        rgba(0,160,220,.08);
+
+    border-left:
+        2px solid #00eaff;
 }
 
 .user{
-    background:rgba(255,255,255,.05);
-    border-right:2px solid rgba(255,255,255,.4);
+    background:
+        rgba(255,255,255,.05);
+
+    border-right:
+        2px solid
+        rgba(255,255,255,.4);
+
     color:#fff;
 }
 
@@ -276,17 +406,27 @@ body{
 
 .label{
     display:block;
+
     margin-bottom:5px;
+
     font-size:9px;
+
     letter-spacing:2px;
+
     opacity:.55;
 }
 
+/* =========================
+   INPUT
+========================= */
+
 .controls{
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
+
     min-height:82px;
 
     padding:
@@ -294,35 +434,55 @@ body{
         10px
         max(12px,env(safe-area-inset-bottom));
 
-    background:rgba(0,8,12,.98);
-    border-top:1px solid rgba(0,234,255,.35);
+    background:
+        rgba(0,8,12,.98);
+
+    border-top:
+        1px solid
+        rgba(0,234,255,.35);
+
     z-index:500;
 }
 
 .combat .controls{
-    border-top-color:rgba(255,40,40,.5);
+    border-top-color:
+        rgba(255,40,40,.5);
 }
 
 .inputRow{
     display:flex;
+
     gap:7px;
+
     width:100%;
+
     max-width:900px;
+
     margin:auto;
 }
 
 #input{
     flex:1;
+
     min-width:0;
+
     height:48px;
 
-    border:1px solid rgba(0,234,255,.55);
+    border:
+        1px solid
+        rgba(0,234,255,.55);
+
     border-radius:10px;
+
     outline:none;
 
-    padding:0 13px;
+    padding:
+        0 13px;
+
     background:#03151b;
+
     color:#fff;
+
     font-size:16px;
 
     -webkit-appearance:none;
@@ -330,7 +490,10 @@ body{
 
 #input:focus{
     border-color:#00eaff;
-    box-shadow:0 0 12px rgba(0,234,255,.2);
+
+    box-shadow:
+        0 0 12px
+        rgba(0,234,255,.2);
 }
 
 .combat #input{
@@ -340,22 +503,30 @@ body{
 #mic,
 #send{
     height:48px;
-    border:1px solid #00eaff;
+
+    border:
+        1px solid #00eaff;
+
     border-radius:10px;
 
-    background:rgba(0,234,255,.08);
+    background:
+        rgba(0,234,255,.08);
+
     color:#00eaff;
 
     font-weight:bold;
+
     cursor:pointer;
 
     -webkit-appearance:none;
+
     touch-action:manipulation;
 }
 
 #mic{
     width:48px;
     flex:0 0 48px;
+
     font-size:18px;
 }
 
@@ -371,30 +542,51 @@ body{
 }
 
 #mic.listening{
-    background:rgba(0,234,255,.3);
-    box-shadow:0 0 18px rgba(0,234,255,.7);
+    background:
+        rgba(0,234,255,.3);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,234,255,.7);
 }
 
 .combat #mic.listening{
-    background:rgba(255,0,0,.3);
-    box-shadow:0 0 18px rgba(255,0,0,.7);
+    background:
+        rgba(255,0,0,.3);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,0,0,.7);
 }
 
+/* =========================
+   ANIMATIONS
+========================= */
+
 @keyframes spin{
-    to{transform:rotate(360deg);}
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 @keyframes spinBack{
-    to{transform:rotate(-360deg);}
+    to{
+        transform:rotate(-360deg);
+    }
 }
 
 @keyframes pulse{
+
     0%,100%{
-        transform:translate(-50%,-50%) scale(.9);
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
     }
 
     50%{
-        transform:translate(-50%,-50%) scale(1.1);
+        transform:
+            translate(-50%,-50%)
+            scale(1.1);
     }
 }
 
@@ -421,7 +613,9 @@ body{
         font-size:14px;
     }
 }
+
 </style>
+
 </head>
 
 <body>
@@ -453,7 +647,9 @@ body{
     <div class="core">
 
         <div class="ring r1"></div>
+
         <div class="ring r2"></div>
+
         <div class="ring r3"></div>
 
         <div class="orb"></div>
@@ -466,7 +662,10 @@ body{
 
 </section>
 
-<section id="chat" class="chat"></section>
+<section
+    id="chat"
+    class="chat">
+</section>
 
 </main>
 
@@ -483,11 +682,15 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button id="mic" type="button">
+        <button
+            id="mic"
+            type="button">
             🎙️
         </button>
 
-        <button id="send" type="button">
+        <button
+            id="send"
+            type="button">
             SEND
         </button>
 
@@ -497,21 +700,37 @@ body{
 
 </div>
 
+
 <script>
+
 "use strict";
+
 
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
-const app = document.getElementById("app");
-const input = document.getElementById("input");
-const mic = document.getElementById("mic");
-const send = document.getElementById("send");
-const chat = document.getElementById("chat");
-const statusText = document.getElementById("statusText");
+const app =
+    document.getElementById("app");
+
+const input =
+    document.getElementById("input");
+
+const mic =
+    document.getElementById("mic");
+
+const send =
+    document.getElementById("send");
+
+const chat =
+    document.getElementById("chat");
+
+const statusText =
+    document.getElementById("statusText");
+
 
 let processing = false;
+
 let combatMode = false;
 
 let memory = {
@@ -522,12 +741,14 @@ let memory = {
 
 
 /* =====================================================
-   VOICE
+   VOICE OUTPUT
 ===================================================== */
 
 function speak(text){
 
-    if(!("speechSynthesis" in window)){
+    if(
+        !("speechSynthesis" in window)
+    ){
         return;
     }
 
@@ -539,7 +760,9 @@ function speak(text){
             new SpeechSynthesisUtterance(text);
 
         voice.rate = .88;
+
         voice.pitch = .72;
+
         voice.volume = 1;
 
         const voices =
@@ -554,14 +777,18 @@ function speak(text){
 
         let selected = null;
 
-        for(const name of preferred){
+        for(
+            const name of preferred
+        ){
 
             selected =
                 voices.find(
                     v =>
                     v.name
                     .toLowerCase()
-                    .includes(name.toLowerCase())
+                    .includes(
+                        name.toLowerCase()
+                    )
                 );
 
             if(selected) break;
@@ -573,19 +800,28 @@ function speak(text){
                 voices.find(
                     v =>
                     v.lang &&
-                    v.lang.toLowerCase().startsWith("en")
+                    v.lang
+                    .toLowerCase()
+                    .startsWith("en")
                 );
         }
 
         if(selected){
-            voice.voice = selected;
+
+            voice.voice =
+                selected;
         }
 
-        speechSynthesis.speak(voice);
+        speechSynthesis.speak(
+            voice
+        );
 
     }catch(error){
 
-        console.log("Voice error:",error);
+        console.log(
+            "Voice error:",
+            error
+        );
     }
 }
 
@@ -594,19 +830,28 @@ function speak(text){
    CHAT
 ===================================================== */
 
-function addMessage(text,who="jarvis",voice=false){
+function addMessage(
+    text,
+    who="jarvis",
+    voice=false
+){
 
     const box =
         document.createElement("div");
 
     box.className =
         "message " +
-        (who === "user" ? "user" : "jarvis");
+        (
+            who === "user"
+            ? "user"
+            : "jarvis"
+        );
 
     const label =
         document.createElement("span");
 
-    label.className = "label";
+    label.className =
+        "label";
 
     label.textContent =
         who === "user"
@@ -616,19 +861,31 @@ function addMessage(text,who="jarvis",voice=false){
     const content =
         document.createElement("div");
 
-    content.textContent = text;
+    content.textContent =
+        text;
 
     box.appendChild(label);
+
     box.appendChild(content);
 
     chat.appendChild(box);
 
-    requestAnimationFrame(() => {
-        chat.scrollTop = chat.scrollHeight;
-    });
+    requestAnimationFrame(
+        () => {
 
-    if(voice && who === "jarvis"){
+            chat.scrollTop =
+                chat.scrollHeight;
+
+        }
+    );
+
+    if(
+        voice &&
+        who === "jarvis"
+    ){
+
         speak(text);
+
     }
 }
 
@@ -640,18 +897,22 @@ function addMessage(text,who="jarvis",voice=false){
 function startCombat(){
 
     if(combatMode){
+
         return;
+
     }
 
     combatMode = true;
 
-    app.classList.add("combat");
+    app.classList.add(
+        "combat"
+    );
 
     statusText.textContent =
         "COMBAT MODE";
 
     addMessage(
-        "Combat initiated. Playful restrictions disabled.",
+        "Combat mode activated.",
         "jarvis",
         true
     );
@@ -661,18 +922,22 @@ function startCombat(){
 function stopCombat(){
 
     if(!combatMode){
+
         return;
+
     }
 
     combatMode = false;
 
-    app.classList.remove("combat");
+    app.classList.remove(
+        "combat"
+    );
 
     statusText.textContent =
         "SYSTEMS ONLINE";
 
     addMessage(
-        "Combat mode terminated. Returning to normal systems.",
+        "Combat mode terminated. Systems returning to normal.",
         "jarvis",
         true
     );
@@ -680,42 +945,26 @@ function stopCombat(){
 
 
 /* =====================================================
-   "J.A.R.V.I.S. SAY"
+   SAY COMMAND
 ===================================================== */
 
-function handleSayCommand(text){
+function sayCommand(command){
 
-    const lower =
-        text.toLowerCase().trim();
+    let text =
+        command
+        .replace(
+            /^say\s*/i,
+            ""
+        )
+        .trim();
 
-    const patterns = [
-        /^j\.?a\.?r\.?v\.?i\.?s\.?\s+say\s+(.+)$/i,
-        /^jarvis\s+say\s+(.+)$/i,
-        /^j\s*a\s*r\s*v\s*i\s*s\s+say\s+(.+)$/i
-    ];
+    if(!text){
 
-    for(const pattern of patterns){
+        return "What would you like me to say?";
 
-        const match =
-            text.match(pattern);
-
-        if(match && match[1]){
-
-            const words =
-                match[1].trim();
-
-            if(!words){
-                return null;
-            }
-
-            return {
-                type:"say",
-                text:words
-            };
-        }
     }
 
-    return null;
+    return text;
 }
 
 
@@ -723,177 +972,140 @@ function handleSayCommand(text){
    ROAST SYSTEM
 ===================================================== */
 
-/*
-   Use:
-   "J.A.R.V.I.S. roast John"
-
-   or:
-   "Jarvis roast John"
-
-   Normal Mode = funny / personal trash-talk
-   Combat Mode = much harsher competitive trash-talk
-*/
-
 const normalRoasts = [
 
-    name => `${name} walks into a room and somehow the IQ drops immediately.`,
+    "Bro, {name}, I've seen loading screens with more personality than you.",
 
-    name => `${name} has the confidence of a genius and the decision-making of a loading screen.`,
+    "{name}, you talk a lot for someone whose best idea was apparently showing up.",
 
-    name => `${name} really woke up today and chose to be everybody's problem.`,
+    "I've met autocorrect mistakes with better decision-making than you, {name}.",
 
-    name => `${name} could lose an argument with a search bar.`,
+    "{name}, if confidence was intelligence, you'd still be struggling.",
 
-    name => `${name} talks a lot for someone whose best idea was probably somebody else's.`,
+    "You have the incredible ability to walk into a room and make everyone miss the silence, {name}.",
 
-    name => `${name} has main-character confidence with background-character results.`,
+    "{name}, your comebacks have the same problem as your Wi-Fi: they never connect.",
 
-    name => `${name} brings absolutely nothing to the table except confusion.`,
+    "I've heard better arguments from two toddlers fighting over a toy, {name}.",
 
-    name => `${name} is living proof that confidence and competence are two completely different things.`,
+    "{name}, you're not the main character. You're barely background scenery.",
 
-    name => `${name} could make a simple task look like a final boss.`,
+    "You somehow manage to make doing absolutely nothing look exhausting, {name}.",
 
-    name => `${name} has been buffering since birth.`,
+    "{name}, your personality has the same energy as a phone at one percent.",
 
-    name => `${name} is the human version of clicking "remind me tomorrow."`,
+    "If common sense were money, {name}, you'd be permanently broke.",
 
-    name => `${name} has the strategic thinking of someone choosing random answers on a test.`,
+    "{name}, you bring absolutely nothing to the table except reasons to leave it.",
 
-    name => `${name} somehow manages to be wrong with incredible confidence.`,
+    "I've seen NPCs with more interesting dialogue than you, {name}.",
 
-    name => `${name} has two speeds: confused and extremely confident while confused.`,
+    "{name}, you're proof that confidence can survive without evidence.",
 
-    name => `${name} could turn a five-minute job into a three-day side quest.`,
+    "You could have an entire day to think of something smart and still come back empty-handed, {name}.",
 
-    name => `${name} is not the sharpest tool in the shed. Honestly, they're somewhere outside the shed.`,
+    "{name}, your brain really said 'I'll load later' and never did.",
 
-    name => `${name} has the energy of a phone at one percent pretending everything is fine.`,
+    "You're not difficult to understand, {name}. You're just difficult to take seriously.",
 
-    name => `${name} could get lost using a GPS.`,
+    "{name}, even your excuses sound embarrassed to be associated with you.",
 
-    name => `${name} has never met a bad idea they didn't immediately want to try.`,
+    "If being annoying were an Olympic sport, {name}, you'd have a whole shelf of medals.",
 
-    name => `${name} is the reason instructions have pictures.`,
+    "{name}, you have the rare talent of making a simple conversation feel like technical support.",
 
-    name => `${name} makes "common sense" sound like an advanced subject.`,
+    "You don't need a reality check, {name}. You need the entire receipt.",
 
-    name => `${name} could argue with a mirror and somehow lose.`,
+    "{name}, I've seen people lose arguments to themselves and somehow still look more convincing than you.",
 
-    name => `${name} has mastered the art of being confidently incorrect.`,
+    "Your biggest achievement today was probably opening this app, {name}.",
 
-    name => `${name} is basically a plot twist nobody asked for.`,
+    "{name}, you're like a group project where everybody else did the work.",
 
-    name => `${name} has the reaction time of a frozen computer.`,
+    "You have unlimited confidence and absolutely no supporting evidence, {name}.",
 
-    name => `${name} could make a calculator question its career.`,
+    "{name}, your personality needs a software update.",
 
-    name => `${name} is proof that autocorrect can't fix everything.`,
+    "I've searched through an impressive amount of information, and somehow you're still one of the least interesting things I've encountered.",
 
-    name => `${name} has more excuses than actual plans.`,
+    "{name}, you're not intimidating. You're just loud.",
 
-    name => `${name} could somehow make silence awkward.`,
+    "If bad decisions were a career, {name}, you'd be employee of the month.",
 
-    name => `${name} is built different. Unfortunately, the difference is concerning.`
+    "{name}, you somehow make silence sound like a better conversation."
 
 ];
 
 
 const combatRoasts = [
 
-    name => `${name}, stop talking. Every sentence you make is another point for my side.`,
+    "{name}, you're finished talking. Every word you say makes your situation worse.",
 
-    name => `${name} walked into this fight with confidence and absolutely no plan.`,
+    "{name}, you walked in acting important and somehow left the room looking completely irrelevant.",
 
-    name => `${name} talks like they're dangerous. The only dangerous thing here is their decision-making.`,
+    "You wanted my attention, {name}. Now you have it. That was your first mistake.",
 
-    name => `${name} came looking for a battle and brought absolutely nothing to fight with.`,
+    "{name}, confidence won't save you when there's nothing behind it.",
 
-    name => `${name} is trying so hard to look intimidating that it's becoming embarrassing.`,
+    "Keep talking, {name}. You're doing more damage to your own reputation than anyone else could.",
 
-    name => `${name}, you're not intimidating. You're just loud.`,
+    "{name}, I've heard enough. Your entire argument fell apart before you finished saying it.",
 
-    name => `${name} has been losing this argument since before it started.`,
+    "You came looking for a fight, {name}. The problem is you brought absolutely nothing to it.",
 
-    name => `${name} really thought showing up was the same thing as being a threat.`,
+    "{name}, you're trying to sound dangerous, but all you've demonstrated is poor judgment.",
 
-    name => `${name} has the confidence of a champion and the performance of someone who forgot the rules.`,
+    "Every sentence you say, {name}, makes it easier to understand why nobody takes you seriously.",
 
-    name => `${name}, I've seen stronger arguments in a comment section.`,
+    "{name}, you mistook attention for respect. They're not the same thing.",
 
-    name => `${name} is making this way too easy.`,
+    "You keep acting like you're in control, {name}. Nothing you've said supports that.",
 
-    name => `${name} keeps talking like the next sentence is going to save them. It isn't.`,
+    "{name}, you're making a lot of noise for someone with nothing worth hearing.",
 
-    name => `${name} brought attitude to a situation that required actual skill.`,
+    "You had one job, {name}: make a convincing point. You couldn't even manage that.",
 
-    name => `${name}, you're not winning. You're just taking longer to realize it.`,
+    "{name}, you're not intimidating. You're just committed to embarrassing yourself.",
 
-    name => `${name} has officially confused confidence with competence.`,
+    "I've seen stronger arguments made with a single sentence, {name}.",
 
-    name => `${name} came in swinging and somehow still missed the point.`,
+    "{name}, you keep pushing your luck like you haven't noticed how badly this is going for you.",
 
-    name => `${name} is doing an impressive job of defeating themselves without any help.`,
+    "Your confidence is impressive, {name}. Unfortunately, your actual performance isn't.",
 
-    name => `${name}, the bravado is impressive. The results are not.`,
+    "{name}, you entered this conversation like a threat and turned yourself into a punchline.",
 
-    name => `${name} talks a big game for somebody getting dismantled this easily.`,
+    "Keep pretending you're winning, {name}. Reality clearly hasn't informed you yet.",
 
-    name => `${name}, if confidence could win fights, you'd be unstoppable. Unfortunately for you, it can't.`,
+    "{name}, there's nothing impressive about being loud when you have nothing to say.",
 
-    name => `${name} has plenty of attitude and absolutely nothing to back it up.`,
+    "You wanted a serious response, {name}. Here's one: you're not nearly as important as you think you are.",
 
-    name => `${name}, you're making a lot of noise for someone with no winning argument.`,
+    "{name}, stop confusing arrogance with strength.",
 
-    name => `${name thought this was going to be their moment. That's unfortunate.`,
+    "You keep reaching for a comeback, {name}, but you're coming up empty every time.",
 
-    name => `${name} is currently losing so badly that even the excuses are running out.`,
+    "{name}, you're trying very hard to look dangerous. It's not working.",
 
-    name => `${name} came prepared to talk, not prepared to actually compete.`,
+    "You walked in with an ego and forgot to bring anything to justify it, {name}.",
 
-    name => `${name}, you're not the final boss. You're the tutorial.`,
+    "{name}, your biggest opponent right now is your own terrible judgment.",
 
-    name => `${name} has somehow turned getting roasted into a full-time occupation.`,
+    "You keep talking like you've already won, {name}. That's usually what people do right before reality catches up.",
 
-    name => `${name}, keep talking. You're making my job easier.`,
+    "{name}, I've heard enough. Step back before you make yourself look even worse.",
 
-    name => `${name} entered combat mode and immediately became background noise.`,
+    "You're trying to dominate the conversation, {name}. You're actually just proving you can't control it.",
 
-    name => `${name}, that was supposed to intimidate me? Try again.`
+    "{name}, you wanted the spotlight. Unfortunately, all it revealed was you."
 
 ];
 
 
-function extractRoastTarget(text){
+function getRandomRoast(name){
 
-    const patterns = [
-        /^j\.?a\.?r\.?v\.?i\.?s\.?\s+roast\s+(.+)$/i,
-        /^jarvis\s+roast\s+(.+)$/i,
-        /^roast\s+(.+)$/i
-    ];
-
-    for(const pattern of patterns){
-
-        const match =
-            text.trim().match(pattern);
-
-        if(match && match[1]){
-
-            return match[1]
-                .trim()
-                .replace(/[.!?]+$/,"");
-        }
-    }
-
-    return null;
-}
-
-
-function roastPerson(name){
-
-    if(!name){
-        return "Give me a name and I'll handle the rest.";
-    }
+    const target =
+        name.trim() || "you";
 
     const list =
         combatMode
@@ -903,11 +1115,37 @@ function roastPerson(name){
     const roast =
         list[
             Math.floor(
-                Math.random() * list.length
+                Math.random() *
+                list.length
             )
         ];
 
-    return roast(name);
+    return roast.replace(
+        /\{name\}/g,
+        target
+    );
+}
+
+
+function roastPerson(command){
+
+    let target =
+        command
+        .replace(
+            /^roast\s*/i,
+            ""
+        )
+        .trim();
+
+    if(!target){
+
+        target = "you";
+
+    }
+
+    return getRandomRoast(
+        target
+    );
 }
 
 
@@ -920,6 +1158,7 @@ const brainRotTerms = [
     "skibidi",
     "skibidi toilet",
     "tung tung tung sahur",
+    "tung tung tung",
     "sigma",
     "what the sigma",
     "sigma boy",
@@ -960,12 +1199,19 @@ function isBrainRot(text){
     const clean =
         text
         .toLowerCase()
-        .replace(/[^\w\s]/g," ")
-        .replace(/\s+/g," ")
+        .replace(
+            /[^\w\s]/g,
+            " "
+        )
+        .replace(
+            /\s+/g,
+            " "
+        )
         .trim();
 
     return brainRotTerms.some(
-        term => clean.includes(term)
+        term =>
+        clean.includes(term)
     );
 }
 
@@ -988,14 +1234,15 @@ function brainRotReply(){
 
     return replies[
         Math.floor(
-            Math.random() * replies.length
+            Math.random() *
+            replies.length
         )
     ];
 }
 
 
 /* =====================================================
-   GOOFY FILTER
+   GOOFY QUESTIONS
 ===================================================== */
 
 const goofyTerms = [
@@ -1006,6 +1253,8 @@ const goofyTerms = [
     "poopy",
     "doo doo",
     "doodoo",
+    "do do",
+    "do-do",
     "feces",
     "toilet water",
 
@@ -1029,6 +1278,7 @@ const goofyTerms = [
     "is ai an ai",
     "is an ai ai",
     "are you ai ai",
+    "are you an ai ai",
     "what is an ai ai",
     "ai ai ai",
     "ai ai ai ai"
@@ -1040,12 +1290,19 @@ function isGoofyQuestion(text){
     const clean =
         text
         .toLowerCase()
-        .replace(/[^\w\s?-]/g," ")
-        .replace(/\s+/g," ")
+        .replace(
+            /[^\w\s?-]/g,
+            " "
+        )
+        .replace(
+            /\s+/g,
+            " "
+        )
         .trim();
 
     return goofyTerms.some(
-        term => clean.includes(term)
+        term =>
+        clean.includes(term)
     );
 }
 
@@ -1070,14 +1327,15 @@ function goofyReply(){
 
     return replies[
         Math.floor(
-            Math.random() * replies.length
+            Math.random() *
+            replies.length
         )
     ];
 }
 
 
 /* =====================================================
-   MATH
+   MATH ENGINE
 ===================================================== */
 
 function solveMath(text){
@@ -1086,33 +1344,101 @@ function solveMath(text){
         text.toLowerCase();
 
     expression =
-        expression.replace(/what is/g,"")
-        .replace(/calculate/g,"")
-        .replace(/solve/g,"")
-        .replace(/multiplied by/g,"*")
-        .replace(/divided by/g,"/")
-        .replace(/plus/g,"+")
-        .replace(/minus/g,"-")
-        .replace(/times/g,"*")
-        .replace(/over/g,"/")
-        .replace(/×/g,"*")
-        .replace(/÷/g,"/");
+        expression.replace(
+            /what is/g,
+            ""
+        );
 
     expression =
-        expression
-        .replace(/[^0-9+\-*/().%\s]/g,"")
+        expression.replace(
+            /calculate/g,
+            ""
+        );
+
+    expression =
+        expression.replace(
+            /solve/g,
+            ""
+        );
+
+    expression =
+        expression.replace(
+            /multiplied by/g,
+            "*"
+        );
+
+    expression =
+        expression.replace(
+            /divided by/g,
+            "/"
+        );
+
+    expression =
+        expression.replace(
+            /plus/g,
+            "+"
+        );
+
+    expression =
+        expression.replace(
+            /minus/g,
+            "-"
+        );
+
+    expression =
+        expression.replace(
+            /times/g,
+            "*"
+        );
+
+    expression =
+        expression.replace(
+            /over/g,
+            "/"
+        );
+
+    expression =
+        expression.replace(
+            /×/g,
+            "*"
+        );
+
+    expression =
+        expression.replace(
+            /÷/g,
+            "/"
+        );
+
+    expression =
+        expression.replace(
+            /[^0-9+\-*/().%\s]/g,
+            ""
+        )
         .trim();
 
     if(!expression){
+
         return null;
+
     }
 
-    if(!/[+\-*/%]/.test(expression)){
+    if(
+        !/[+\-*/%]/.test(
+            expression
+        )
+    ){
+
         return null;
+
     }
 
-    if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
+    if(
+        !/^[0-9+\-*/().%\s]+$/
+        .test(expression)
+    ){
+
         return null;
+
     }
 
     try{
@@ -1125,10 +1451,20 @@ function solveMath(text){
             )();
 
         if(
-            typeof answer !== "number" ||
+            typeof answer !==
+            "number"
+        ){
+
+            return null;
+
+        }
+
+        if(
             !Number.isFinite(answer)
         ){
+
             return null;
+
         }
 
         return answer;
@@ -1136,12 +1472,13 @@ function solveMath(text){
     }catch(error){
 
         return null;
+
     }
 }
 
 
 /* =====================================================
-   KNOWLEDGE
+   BUILT-IN KNOWLEDGE
 ===================================================== */
 
 const knowledge = {
@@ -1222,10 +1559,16 @@ const knowledge = {
 
 function findKnowledge(q){
 
-    for(const key in knowledge){
+    for(
+        const key in knowledge
+    ){
 
-        if(q.includes(key)){
+        if(
+            q.includes(key)
+        ){
+
             return knowledge[key];
+
         }
     }
 
@@ -1261,12 +1604,14 @@ const jokes = [
 
 
 /* =====================================================
-   LOCAL RESPONSES
+   LOCAL CONVERSATION
 ===================================================== */
 
 function localResponse(q){
 
-    if(q === "combat mode"){
+    if(
+        q === "combat mode"
+    ){
 
         startCombat();
 
@@ -1297,29 +1642,47 @@ function localResponse(q){
             : "Good to hear from you. Systems are online and ready.";
     }
 
-    if(q.startsWith("my name is ")){
+    if(
+        q.startsWith(
+            "my name is "
+        )
+    ){
 
         memory.name =
             q
-            .replace("my name is ","")
+            .replace(
+                "my name is ",
+                ""
+            )
             .trim();
 
         return `Understood. I'll remember you as ${memory.name}.`;
     }
 
-    if(q.startsWith("call me ")){
+    if(
+        q.startsWith(
+            "call me "
+        )
+    ){
 
         memory.name =
             q
-            .replace("call me ","")
+            .replace(
+                "call me ",
+                ""
+            )
             .trim();
 
         return `Understood. I'll call you ${memory.name}.`;
     }
 
     if(
-        q.includes("what is my name") ||
-        q.includes("what's my name")
+        q.includes(
+            "what is my name"
+        ) ||
+        q.includes(
+            "what's my name"
+        )
     ){
 
         return memory.name
@@ -1335,17 +1698,23 @@ function localResponse(q){
         return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics, answer questions, speak aloud, and search for information when necessary.";
     }
 
-    if(q.includes("what can you do")){
+    if(
+        q.includes("what can you do")
+    ){
 
-        return "I can handle conversation, mathematics, science, jokes, voice output, microphone input, roasting, Combat Mode, and online information searches.";
+        return "I can handle conversation, mathematics, science, history, Earth questions, jokes, voice output, microphone input, Combat Mode, roasting, and online information searches when a question actually needs one.";
     }
 
-    if(q.includes("how are you")){
+    if(
+        q.includes("how are you")
+    ){
 
         return "All systems are operational. My processors are feeling particularly cooperative today.";
     }
 
-    if(q.includes("what are you doing")){
+    if(
+        q.includes("what are you doing")
+    ){
 
         return "Monitoring the system and waiting for your next command.";
     }
@@ -1367,12 +1736,15 @@ function localResponse(q){
 
         return jokes[
             Math.floor(
-                Math.random() * jokes.length
+                Math.random() *
+                jokes.length
             )
         ];
     }
 
-    if(q.includes("what time")){
+    if(
+        q.includes("what time")
+    ){
 
         return "The current time is " +
             new Date().toLocaleTimeString(
@@ -1432,8 +1804,12 @@ function localResponse(q){
 
 function isQuestion(q){
 
-    if(q.includes("?")){
+    if(
+        q.includes("?")
+    ){
+
         return true;
+
     }
 
     const starters = [
@@ -1458,10 +1834,12 @@ function isQuestion(q){
         "explain ",
         "define ",
         "tell me about "
+
     ];
 
     return starters.some(
-        word => q.startsWith(word)
+        word =>
+        q.startsWith(word)
     );
 }
 
@@ -1470,9 +1848,16 @@ function isQuestion(q){
    ONLINE SEARCH
 ===================================================== */
 
-async function onlineSearch(question){
+async function onlineSearch(
+    question
+){
 
-    if(!isQuestion(question.toLowerCase())){
+    if(
+        !isQuestion(
+            question.toLowerCase()
+        )
+    ){
+
         return null;
     }
 
@@ -1483,7 +1868,9 @@ async function onlineSearch(question){
             "?action=query" +
             "&generator=search" +
             "&gsrsearch=" +
-            encodeURIComponent(question) +
+            encodeURIComponent(
+                question
+            ) +
             "&gsrnamespace=0" +
             "&gsrlimit=5" +
             "&prop=extracts" +
@@ -1495,8 +1882,12 @@ async function onlineSearch(question){
         const response =
             await fetch(url);
 
-        if(!response.ok){
+        if(
+            !response.ok
+        ){
+
             return null;
+
         }
 
         const data =
@@ -1506,82 +1897,137 @@ async function onlineSearch(question){
             !data.query ||
             !data.query.pages
         ){
+
             return null;
+
         }
 
         const pages =
-            Object.values(data.query.pages);
+            Object.values(
+                data.query.pages
+            );
 
-        if(!pages.length){
+        if(
+            !pages.length
+        ){
+
             return null;
+
         }
 
         const words =
             question
             .toLowerCase()
-            .replace(/[^\w\s]/g,"")
+            .replace(
+                /[^\w\s]/g,
+                ""
+            )
             .split(/\s+/)
-            .filter(word => word.length > 3);
+            .filter(
+                word =>
+                word.length > 3
+            );
 
         let best = null;
+
         let bestScore = 0;
 
-        for(const page of pages){
+        for(
+            const page of pages
+        ){
 
             const title =
-                (page.title || "").toLowerCase();
+                (
+                    page.title || ""
+                ).toLowerCase();
 
             const extract =
-                (page.extract || "").toLowerCase();
+                (
+                    page.extract || ""
+                ).toLowerCase();
 
             let score = 0;
 
-            for(const word of words){
+            for(
+                const word of words
+            ){
 
-                if(title.includes(word)){
+                if(
+                    title.includes(word)
+                ){
+
                     score += 4;
+
                 }
 
-                if(extract.includes(word)){
+                if(
+                    extract.includes(word)
+                ){
+
                     score += 1;
+
                 }
+
             }
 
-            if(score > bestScore){
+            if(
+                score > bestScore
+            ){
 
                 bestScore = score;
+
                 best = page;
+
             }
+
         }
 
         if(
             !best ||
             bestScore < 2
         ){
+
             return null;
+
         }
 
         let answer =
-            (best.extract || "").trim();
+            (
+                best.extract || ""
+            ).trim();
 
-        if(!answer){
+        if(
+            !answer
+        ){
+
             return null;
+
         }
 
-        if(answer.length > 900){
+        if(
+            answer.length > 900
+        ){
 
             answer =
-                answer.substring(0,900) +
+                answer.substring(
+                    0,
+                    900
+                ) +
                 "...";
+
         }
 
         return answer;
 
     }catch(error){
 
-        console.log("Search error:",error);
+        console.log(
+            "Search error:",
+            error
+        );
 
         return null;
+
     }
 }
 
@@ -1590,68 +2036,86 @@ async function onlineSearch(question){
    MAIN BRAIN
 ===================================================== */
 
-async function getResponse(question){
+async function getResponse(
+    question
+){
 
     const q =
-        question.toLowerCase().trim();
+        question
+        .toLowerCase()
+        .trim();
 
 
-    /* J.A.R.V.I.S. SAY */
+    /* =========================
+       SAY COMMAND
+    ========================= */
 
-    const sayCommand =
-        handleSayCommand(question);
+    if(
+        q === "say" ||
+        q.startsWith("say ")
+    ){
 
-    if(sayCommand){
-
-        return {
-            type:"say",
-            text:sayCommand.text
-        };
+        return sayCommand(
+            question
+        );
     }
 
 
-    /* ROAST */
+    /* =========================
+       ROAST COMMAND
+    ========================= */
 
-    const roastTarget =
-        extractRoastTarget(question);
+    if(
+        q === "roast" ||
+        q.startsWith("roast ")
+    ){
 
-    if(roastTarget){
-
-        return {
-            type:"roast",
-            text:roastPerson(roastTarget)
-        };
+        return roastPerson(
+            question
+        );
     }
 
 
-    /* BRAIN ROT */
+    /* =========================
+       BRAIN ROT
+    ========================= */
 
-    if(isBrainRot(q)){
-        return {
-            type:"normal",
-            text:brainRotReply()
-        };
+    if(
+        isBrainRot(q)
+    ){
+
+        return brainRotReply();
+
     }
 
 
-    /* GOOFY QUESTIONS */
+    /* =========================
+       GOOFY QUESTIONS
+    ========================= */
 
-    if(isGoofyQuestion(q)){
-        return {
-            type:"normal",
-            text:goofyReply()
-        };
+    if(
+        isGoofyQuestion(q)
+    ){
+
+        return goofyReply();
+
     }
 
 
-    /* COMBAT */
+    /* =========================
+       COMBAT
+    ========================= */
 
-    if(q === "combat mode"){
+    if(
+        q === "combat mode"
+    ){
 
         startCombat();
 
         return null;
+
     }
+
 
     if(
         q === "normal mode" ||
@@ -1662,115 +2126,144 @@ async function getResponse(question){
         stopCombat();
 
         return null;
+
     }
 
 
-    /* MATH */
+    /* =========================
+       MATH
+    ========================= */
 
     const math =
         solveMath(q);
 
-    if(math !== null){
+    if(
+        math !== null
+    ){
 
-        return {
-            type:"normal",
-            text:"The answer is " + math + "."
-        };
+        return (
+            "The answer is " +
+            math +
+            "."
+        );
+
     }
 
 
-    /* KNOWLEDGE */
+    /* =========================
+       KNOWLEDGE
+    ========================= */
 
     const known =
         findKnowledge(q);
 
-    if(known){
+    if(
+        known
+    ){
 
-        return {
-            type:"normal",
-            text:known
-        };
+        return known;
+
     }
 
 
-    /* LOCAL */
+    /* =========================
+       LOCAL
+    ========================= */
 
     const local =
         localResponse(q);
 
-    if(local){
+    if(
+        local
+    ){
 
-        return {
-            type:"normal",
-            text:local
-        };
+        return local;
+
     }
 
 
-    /* ONLINE QUESTIONS */
+    /* =========================
+       ONLINE QUESTIONS
+    ========================= */
 
-    if(isQuestion(q)){
+    if(
+        isQuestion(q)
+    ){
 
         const result =
-            await onlineSearch(question);
+            await onlineSearch(
+                question
+            );
 
-        if(result){
+        if(
+            result
+        ){
 
-            return {
-                type:"normal",
-                text:result
-            };
+            return result;
+
         }
 
-        return {
-            type:"normal",
-            text:"I couldn't find a reliable answer for that. Try asking the question another way."
-        };
+        return "I couldn't find a reliable answer for that. Try asking the question another way.";
+
     }
 
 
-    /* CASUAL CHAT */
+    /* =========================
+       CASUAL CHAT
+    ========================= */
 
     const casual = [
 
         "Understood.",
+
         "I'm listening.",
+
         "Go on.",
+
         "Interesting.",
+
         "Noted.",
+
         "I'm with you.",
+
         "Fair enough.",
+
         "Continue."
 
     ];
 
-    return {
-        type:"normal",
-        text:
-            casual[
-                Math.floor(
-                    Math.random() * casual.length
-                )
-            ]
-    };
+    return casual[
+        Math.floor(
+            Math.random() *
+            casual.length
+        )
+    ];
 }
 
 
 /* =====================================================
-   SEND
+   SEND MESSAGE
 ===================================================== */
 
 async function sendMessage(){
 
-    if(processing){
+    if(
+        processing
+    ){
+
         return;
+
     }
 
     const question =
         input.value.trim();
 
-    if(!question){
+    if(
+        !question
+    ){
+
         return;
+
     }
 
     processing = true;
@@ -1789,18 +2282,23 @@ async function sendMessage(){
     try{
 
         const response =
-            await getResponse(question);
+            await getResponse(
+                question
+            );
 
-        if(response){
+        if(
+            response
+        ){
 
             memory.lastAnswer =
-                response.text;
+                response;
 
             addMessage(
-                response.text,
+                response,
                 "jarvis",
                 true
             );
+
         }
 
     }catch(error){
@@ -1815,29 +2313,34 @@ async function sendMessage(){
             "jarvis",
             true
         );
+
     }
 
     processing = false;
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        try{
+            try{
 
-            input.focus({
-                preventScroll:true
-            });
+                input.focus({
+                    preventScroll:true
+                });
 
-        }catch{
+            }catch{
 
-            input.focus();
-        }
+                input.focus();
 
-    },50);
+            }
+
+        },
+        50
+    );
 }
 
 
 /* =====================================================
-   BUTTON
+   SEND BUTTON
 ===================================================== */
 
 send.addEventListener(
@@ -1854,12 +2357,16 @@ input.addEventListener(
     "keydown",
     event => {
 
-        if(event.key === "Enter"){
+        if(
+            event.key === "Enter"
+        ){
 
             event.preventDefault();
 
             sendMessage();
+
         }
+
     }
 );
 
@@ -1873,128 +2380,182 @@ const SpeechRecognition =
     window.webkitSpeechRecognition;
 
 let recognition = null;
+
 let listening = false;
 
-if(SpeechRecognition){
+
+if(
+    SpeechRecognition
+){
 
     recognition =
         new SpeechRecognition();
 
-    recognition.lang = "en-US";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+    recognition.lang =
+        "en-US";
+
+    recognition.continuous =
+        false;
+
+    recognition.interimResults =
+        false;
+
+    recognition.maxAlternatives =
+        1;
 
 
-    recognition.onstart = () => {
+    recognition.onstart =
+        () => {
 
-        listening = true;
+            listening = true;
 
-        mic.classList.add("listening");
-
-        mic.textContent = "⏹️";
-
-        statusText.textContent =
-            combatMode
-            ? "COMBAT • LISTENING"
-            : "LISTENING...";
-    };
-
-
-    recognition.onresult = event => {
-
-        try{
-
-            const result =
-                event.results[0][0];
-
-            if(!result){
-                return;
-            }
-
-            const text =
-                result.transcript.trim();
-
-            if(text){
-
-                input.value = text;
-
-                stopListening();
-
-                sendMessage();
-            }
-
-        }catch(error){
-
-            console.log(
-                "Speech result error:",
-                error
+            mic.classList.add(
+                "listening"
             );
-        }
-    };
+
+            mic.textContent =
+                "⏹️";
+
+            statusText.textContent =
+                combatMode
+                ? "COMBAT • LISTENING"
+                : "LISTENING...";
+
+        };
 
 
-    recognition.onerror = event => {
+    recognition.onresult =
+        event => {
 
-        stopListening();
+            try{
 
-        let message =
-            "I couldn't access the microphone.";
+                const result =
+                    event.results[0][0];
 
-        if(
-            event.error === "not-allowed" ||
-            event.error === "service-not-allowed"
-        ){
+                if(
+                    !result
+                ){
 
-            message =
-                "Microphone access is blocked. Allow microphone access for this website and try again.";
-        }
+                    return;
 
-        else if(event.error === "no-speech"){
+                }
 
-            message =
-                "I didn't hear anything. Tap the microphone and speak again.";
-        }
+                const text =
+                    result.transcript
+                    .trim();
 
-        else if(event.error === "audio-capture"){
+                if(
+                    text
+                ){
 
-            message =
-                "I couldn't access an available microphone.";
-        }
+                    input.value =
+                        text;
 
-        else if(event.error === "network"){
+                    stopListening();
 
-            message =
-                "The browser's speech-recognition service is unavailable right now.";
-        }
+                    sendMessage();
 
-        addMessage(
-            message,
-            "jarvis",
-            true
-        );
-    };
+                }
+
+            }catch(error){
+
+                console.log(
+                    "Speech result error:",
+                    error
+                );
+
+            }
+
+        };
 
 
-    recognition.onend = () => {
+    recognition.onerror =
+        event => {
 
-        stopListening();
-    };
+            stopListening();
+
+            let message =
+                "I couldn't access the microphone.";
+
+            if(
+                event.error ===
+                "not-allowed" ||
+                event.error ===
+                "service-not-allowed"
+            ){
+
+                message =
+                    "Microphone access is blocked. Allow microphone access for this website and try again.";
+
+            }
+
+            else if(
+                event.error ===
+                "no-speech"
+            ){
+
+                message =
+                    "I didn't hear anything. Tap the microphone and speak again.";
+
+            }
+
+            else if(
+                event.error ===
+                "audio-capture"
+            ){
+
+                message =
+                    "I couldn't access an available microphone.";
+
+            }
+
+            else if(
+                event.error ===
+                "network"
+            ){
+
+                message =
+                    "The browser's speech-recognition service is unavailable right now.";
+
+            }
+
+            addMessage(
+                message,
+                "jarvis",
+                true
+            );
+
+        };
+
+
+    recognition.onend =
+        () => {
+
+            stopListening();
+
+        };
 
 
     mic.addEventListener(
         "click",
         () => {
 
-            if(listening){
+            if(
+                listening
+            ){
 
                 try{
+
                     recognition.stop();
+
                 }catch(error){
+
                     console.log(error);
+
                 }
 
                 return;
+
             }
 
             try{
@@ -2007,7 +2568,9 @@ if(SpeechRecognition){
                     "Microphone start error:",
                     error
                 );
+
             }
+
         }
     );
 
@@ -2022,8 +2585,10 @@ if(SpeechRecognition){
                 "jarvis",
                 true
             );
+
         }
     );
+
 }
 
 
@@ -2031,9 +2596,12 @@ function stopListening(){
 
     listening = false;
 
-    mic.classList.remove("listening");
+    mic.classList.remove(
+        "listening"
+    );
 
-    mic.textContent = "🎙️";
+    mic.textContent =
+        "🎙️";
 
     statusText.textContent =
         combatMode
@@ -2055,4 +2623,5 @@ addMessage(
 </script>
 
 </body>
+
 </html>
