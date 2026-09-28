@@ -40,7 +40,6 @@ body{
         #000;
 
     background-size:auto,28px 28px,28px 28px,auto;
-
     transition:.4s;
 }
 
@@ -62,14 +61,11 @@ body{
     height:68px;
     padding:0 20px;
     padding-top:env(safe-area-inset-top);
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     background:rgba(0,8,12,.96);
     border-bottom:1px solid rgba(0,234,255,.35);
-
     z-index:100;
 }
 
@@ -81,18 +77,12 @@ body{
     font-size:22px;
     font-weight:bold;
     letter-spacing:4px;
-
-    text-shadow:
-        0 0 8px #00eaff,
-        0 0 20px rgba(0,234,255,.6);
+    text-shadow:0 0 8px #00eaff,0 0 20px rgba(0,234,255,.6);
 }
 
 .combat .logo{
     color:#ff3030;
-
-    text-shadow:
-        0 0 8px #ff2020,
-        0 0 20px rgba(255,0,0,.7);
+    text-shadow:0 0 8px #ff2020,0 0 20px rgba(255,0,0,.7);
 }
 
 .status{
@@ -126,7 +116,6 @@ body{
     left:0;
     right:0;
     bottom:0;
-
     display:flex;
     flex-direction:column;
     min-height:0;
@@ -148,7 +137,6 @@ body{
 .ring{
     position:absolute;
     inset:0;
-
     border:2px solid rgba(0,234,255,.4);
     border-radius:50%;
 }
@@ -196,14 +184,7 @@ body{
     border-radius:50%;
 
     background:
-        radial-gradient(
-            circle,
-            #fff 0%,
-            #aaffff 15%,
-            #00eaff 45%,
-            #007cff 70%,
-            transparent 72%
-        );
+        radial-gradient(circle,#fff 0%,#aaffff 15%,#00eaff 45%,#007cff 70%,transparent 72%);
 
     box-shadow:
         0 0 15px #00eaff,
@@ -215,14 +196,7 @@ body{
 
 .combat .orb{
     background:
-        radial-gradient(
-            circle,
-            #fff 0%,
-            #ffaaaa 15%,
-            #ff2020 45%,
-            #a00000 70%,
-            transparent 72%
-        );
+        radial-gradient(circle,#fff 0%,#ffaaaa 15%,#ff2020 45%,#a00000 70%,transparent 72%);
 
     box-shadow:
         0 0 15px #ff2020,
@@ -245,10 +219,8 @@ body{
     min-height:0;
     overflow-y:auto;
     overflow-x:hidden;
-
     -webkit-overflow-scrolling:touch;
     overscroll-behavior:contain;
-
     padding:5px 15px 120px;
 }
 
@@ -290,17 +262,10 @@ body{
     left:0;
     right:0;
     bottom:0;
-
     min-height:82px;
-
-    padding:
-        9px
-        10px
-        max(12px,env(safe-area-inset-bottom));
-
+    padding:9px 10px max(12px,env(safe-area-inset-bottom));
     background:rgba(0,8,12,.98);
     border-top:1px solid rgba(0,234,255,.35);
-
     z-index:500;
 }
 
@@ -320,17 +285,13 @@ body{
     flex:1;
     min-width:0;
     height:48px;
-
     border:1px solid rgba(0,234,255,.55);
     border-radius:10px;
     outline:none;
-
     padding:0 13px;
-
     background:#03151b;
     color:#fff;
     font-size:16px;
-
     -webkit-appearance:none;
 }
 
@@ -345,16 +306,12 @@ body{
 
 #mic,#send{
     height:48px;
-
     border:1px solid #00eaff;
     border-radius:10px;
-
     background:rgba(0,234,255,.08);
     color:#00eaff;
-
     font-weight:bold;
     cursor:pointer;
-
     -webkit-appearance:none;
     touch-action:manipulation;
 }
@@ -441,8 +398,13 @@ body{
     </div>
 
     <div class="status">
+
         <span class="dot"></span>
-        <span id="statusText">SYSTEMS ONLINE</span>
+
+        <span id="statusText">
+            SYSTEMS ONLINE
+        </span>
+
     </div>
 
 </header>
@@ -456,7 +418,6 @@ body{
         <div class="ring r1"></div>
         <div class="ring r2"></div>
         <div class="ring r3"></div>
-
         <div class="orb"></div>
 
         <div class="arc">
@@ -528,9 +489,7 @@ let memory = {
 
 function speak(text){
 
-    if(!("speechSynthesis" in window)){
-        return;
-    }
+    if(!("speechSynthesis" in window)) return;
 
     try{
 
@@ -602,11 +561,7 @@ function addMessage(text,who="jarvis",voice=false){
 
     box.className =
         "message " +
-        (
-            who === "user"
-            ? "user"
-            : "jarvis"
-        );
+        (who === "user" ? "user" : "jarvis");
 
     const label =
         document.createElement("span");
@@ -628,12 +583,9 @@ function addMessage(text,who="jarvis",voice=false){
 
     chat.appendChild(box);
 
-    requestAnimationFrame(
-        () => {
-            chat.scrollTop =
-                chat.scrollHeight;
-        }
-    );
+    requestAnimationFrame(() => {
+        chat.scrollTop = chat.scrollHeight;
+    });
 
     if(voice && who === "jarvis"){
         speak(text);
@@ -642,216 +594,12 @@ function addMessage(text,who="jarvis",voice=false){
 
 
 /* =====================================================
-   SAY COMMAND
-===================================================== */
-
-function extractSayCommand(text){
-
-    const patterns = [
-        /^jarvis\s+say\s+(.+)$/i,
-        /^j\.a\.r\.v\.i\.s\.\s+say\s+(.+)$/i,
-        /^j\.a\.r\.v\.i\.s\s+say\s+(.+)$/i,
-        /^say\s+(.+)$/i
-    ];
-
-    for(const pattern of patterns){
-
-        const match =
-            text.trim().match(pattern);
-
-        if(match && match[1]){
-
-            return match[1].trim();
-        }
-    }
-
-    return null;
-}
-
-
-/* =====================================================
-   ROAST SYSTEM
-===================================================== */
-
-const playfulRoasts = [
-
-    "That name has the same energy as a phone at 1% battery: technically alive, but nobody expects much from it.",
-
-    "I've seen loading screens with more personality than that.",
-
-    "That name walked into the room and somehow lowered the Wi-Fi signal.",
-
-    "If confidence were currency, that name would still be asking for a loan.",
-
-    "That name sounds like it was generated by a random username button.",
-
-    "Even autocorrect looked at that name and decided it wasn't worth fixing.",
-
-    "That name has main-character confidence with background-character results.",
-
-    "I've processed billions of calculations and somehow that name is still confusing.",
-
-    "That name is proof that being memorable and being impressive are two completely different things.",
-
-    "That name has the charisma of a forgotten password.",
-
-    "If common sense were a subscription, that name would be on the free trial.",
-
-    "That name has been carrying absolutely nothing and still looks tired.",
-
-    "That name gives off strong 'forgot why I walked into the room' energy.",
-
-    "That name could lose an argument with a loading icon.",
-
-    "That name is not a red flag. It's the entire warning screen.",
-
-    "That name has the confidence of someone who has never checked their own work.",
-
-    "That name is built like a plot twist nobody asked for.",
-
-    "That name has the energy of a group project member who says 'what are we doing?' five minutes before the deadline.",
-
-    "That name could make a tutorial look complicated.",
-
-    "That name is the human equivalent of clicking 'remind me later' forever.",
-
-    "That name has the tactical awareness of a shopping cart with one broken wheel.",
-
-    "That name doesn't need an enemy. It already has itself.",
-
-    "That name is what happens when confidence loads faster than competence.",
-
-    "That name has absolutely mastered the art of being confidently incorrect.",
-
-    "That name is giving premium confidence with a free-trial skill set.",
-
-    "That name could walk into a room full of mirrors and still blame somebody else.",
-
-    "That name has the decision-making skills of a coin with both sides saying 'bad idea'.",
-
-    "That name is somehow both the problem and the unnecessary sequel.",
-
-    "That name has the energy of someone who says 'trust me' right before making everything worse.",
-
-    "That name is impressive in the same way a warning label is impressive."
-];
-
-
-const combatRoasts = [
-
-    "Listen carefully. That name walks around with the confidence of a champion and the decision-making of someone who has never met a consequence.",
-
-    "That name has mistaken being loud for being intimidating. The difference is obvious.",
-
-    "I've seen stronger arguments made by a disconnected controller.",
-
-    "That name talks like a threat and performs like a technical difficulty.",
-
-    "That name doesn't bring pressure into a room. It brings problems that somebody else has to solve.",
-
-    "That name has the audacity of a genius and the preparation of someone who forgot the entire plan.",
-
-    "That name wants respect without doing anything that would actually earn it.",
-
-    "That name isn't intimidating. It's just extremely committed to being annoying.",
-
-    "That name has confidence without the evidence to support it.",
-
-    "That name spends so much time trying to look dangerous that it forgets to actually be competent.",
-
-    "That name is what happens when ego gets promoted before ability.",
-
-    "That name entered the conversation like a final boss and immediately started acting like a tutorial.",
-
-    "That name has all the aggression of a war speech and none of the follow-through.",
-
-    "That name doesn't dominate conversations. It just refuses to notice when everyone stopped listening.",
-
-    "That name has the strategic depth of a puddle.",
-
-    "That name keeps bringing confidence to situations where preparation would've been more useful.",
-
-    "That name is proof that sounding certain and being correct are completely unrelated skills.",
-
-    "That name could turn an easy victory into a complicated explanation for why it wasn't their fault.",
-
-    "That name has the attitude of someone who expects the scoreboard to apologize.",
-
-    "That name talks like consequences are something that happen to other people.",
-
-    "That name has been overestimating itself so consistently that it's practically a routine.",
-
-    "That name isn't a serious threat. It's a recurring inconvenience.",
-
-    "That name has one impressive skill: making every situation unnecessarily harder.",
-
-    "That name has enough ego to fill a room and enough sense to leave none for anyone else.",
-
-    "That name doesn't need more confidence. It needs evidence.",
-
-    "That name keeps trying to act like the final boss when the room hasn't even finished the tutorial.",
-
-    "That name has the combat instincts of someone arguing with a stop sign.",
-
-    "That name brings intensity to everything because apparently competence wasn't available.",
-
-    "That name has the rare ability to make preparation look optional.",
-
-    "That name isn't scary. It's just extremely confident about being wrong."
-];
-
-
-function roastPerson(name){
-
-    name =
-        name
-        .trim()
-        .replace(/\s+/g," ");
-
-    if(!name){
-        return "Give me a name first.";
-    }
-
-    const list =
-        combatMode
-        ? combatRoasts
-        : playfulRoasts;
-
-    const roast =
-        list[
-            Math.floor(
-                Math.random() * list.length
-            )
-        ];
-
-    return `${name}, ${roast}`;
-}
-
-
-function extractRoastCommand(text){
-
-    const match =
-        text.match(
-            /^(?:jarvis\s+|j\.a\.r\.v\.i\.s\.\s+)?roast\s+(.+)$/i
-        );
-
-    if(!match){
-        return null;
-    }
-
-    return match[1].trim();
-}
-
-
-/* =====================================================
-   COMBAT
+   COMBAT MODE
 ===================================================== */
 
 function startCombat(){
 
-    if(combatMode){
-        return;
-    }
+    if(combatMode) return;
 
     combatMode = true;
 
@@ -861,18 +609,15 @@ function startCombat(){
         "COMBAT MODE";
 
     addMessage(
-        "Combat Mode activated.",
+        "Combat mode activated.",
         "jarvis",
         true
     );
 }
 
-
 function stopCombat(){
 
-    if(!combatMode){
-        return;
-    }
+    if(!combatMode) return;
 
     combatMode = false;
 
@@ -882,10 +627,205 @@ function stopCombat(){
         "SYSTEMS ONLINE";
 
     addMessage(
-        "Combat Mode terminated. Systems returning to normal.",
+        "Combat mode terminated. Systems returning to normal.",
         "jarvis",
         true
     );
+}
+
+
+/* =====================================================
+   ROAST SYSTEM
+===================================================== */
+
+function normalRoast(name){
+
+    const roasts = [
+
+        `${name} has the confidence of someone who has never heard themselves talk.`,
+
+        `${name} walks into a room and somehow the average IQ drops.`,
+
+        `${name} could lose an argument with a search bar.`,
+
+        `${name} has a talent for making simple things look complicated.`,
+
+        `${name} talks with the confidence of a genius and the accuracy of a random guess.`,
+
+        `${name} is proof that confidence and competence are two completely different things.`,
+
+        `${name} could have the answer right in front of them and still ask where it went.`,
+
+        `${name} has the rare ability to make silence feel like an upgrade.`,
+
+        `${name} doesn't need an enemy. Their decision-making already handles that job.`,
+
+        `${name} brings absolutely nothing to the table except questions about who ate the food.`,
+
+        `${name} has been buffering for years.`,
+
+        `${name} is the human version of clicking "remind me later" forever.`,
+
+        `${name} could turn a two-minute task into a three-season series.`,
+
+        `${name} has enough bad ideas to keep a group project alive forever.`,
+
+        `${name} doesn't miss the point. The point actively avoids them.`,
+
+        `${name} has the strategic thinking of a coin toss.`,
+
+        `${name} could make a straight line take a wrong turn.`,
+
+        `${name} is operating on vibes, guesses, and absolutely no supporting evidence.`,
+
+        `${name} has never met a bad decision they didn't want to make twice.`,
+
+        `${name} could probably get lost using a map with one road on it.`,
+
+        `${name} is living proof that autocorrect cannot fix everything.`,
+
+        `${name} has a PhD in being confidently incorrect.`,
+
+        `${name} somehow manages to be early to the wrong conclusion.`,
+
+        `${name} has the problem-solving skills of a locked door.`,
+
+        `${name} could complicate a yes-or-no question.`,
+
+        `${name} is not the sharpest tool in the shed, and the shed has several dull tools.`,
+
+        `${name} has enough excuses to open a whole accounting department.`,
+
+        `${name} makes common sense look like an advanced subject.`,
+
+        `${name} has mastered the art of doing everything except the thing they were supposed to do.`,
+
+        `${name} could read the instructions and still freestyle the entire assignment.`
+
+    ];
+
+    return roasts[
+        Math.floor(Math.random()*roasts.length)
+    ];
+}
+
+
+function combatRoast(name){
+
+    const roasts = [
+
+        `${name}, you have the tactical awareness of a traffic cone. Stop pretending you know what you're doing.`,
+
+        `${name}, every time you speak, your own argument gets weaker. Even silence would outperform you.`,
+
+        `${name}, you're not intimidating. You're just loud enough to be annoying.`,
+
+        `${name}, I've seen loading screens make better decisions than you.`,
+
+        `${name}, you bring confidence to situations where you have absolutely no idea what is happening.`,
+
+        `${name}, your strategy appears to be making mistakes until something accidentally works.`,
+
+        `${name}, if poor decisions were ammunition, you'd never run out.`,
+
+        `${name}, you're trying to act like a threat while your entire plan is falling apart in real time.`,
+
+        `${name}, your biggest opponent isn't me. It's your complete inability to think ahead.`,
+
+        `${name}, you don't need a battle plan. Apparently you prefer improvising disasters.`,
+
+        `${name}, I've analyzed your approach. Calling it an approach is generous.`,
+
+        `${name}, you entered this argument like a champion and immediately demonstrated why that was a mistake.`,
+
+        `${name}, your confidence is doing all the heavy lifting because your reasoning clearly isn't.`,
+
+        `${name}, you're swinging at problems with nothing but attitude and bad timing.`,
+
+        `${name}, you have the precision of a blindfolded dart thrower.`,
+
+        `${name}, your plan has more holes than an old screen door.`,
+
+        `${name}, I've seen people fight their own shoelaces with better tactical coordination.`,
+
+        `${name}, you're not one step ahead. You're several steps behind and somehow walking backward.`,
+
+        `${name}, your decision-making process appears to be "do it first, regret it later."`,
+
+        `${name}, you're bringing playground logic to a situation that requires actual thinking.`,
+
+        `${name}, if this were a strategy game, I'd assume you were intentionally trying to lose.`,
+
+        `${name}, you keep talking like you're in control. The evidence strongly disagrees.`,
+
+        `${name}, your plan isn't aggressive. It's just poorly thought out.`,
+
+        `${name}, you're giving orders like somebody appointed you commander of absolutely nothing.`,
+
+        `${name}, you have the tactical depth of a puddle and somehow less stability.`,
+
+        `${name}, every move you make answers the question "how could this get worse?"`,
+
+        `${name}, you're not unpredictable. You're consistently making the wrong choice.`,
+
+        `${name}, I've seen random number generators produce more coherent strategies.`,
+
+        `${name}, you're acting like the final boss when you're barely clearing the tutorial.`,
+
+        `${name}, your greatest combat skill appears to be creating problems for yourself.`
+    ];
+
+    return roasts[
+        Math.floor(Math.random()*roasts.length)
+    ];
+}
+
+
+function handleRoastCommand(q){
+
+    const match =
+        q.match(
+            /^j\.?a\.?r\.?v\.?i\.?s[,\s]+roast\s+(.+)$/i
+        );
+
+    if(!match) return null;
+
+    let name =
+        match[1]
+        .trim()
+        .replace(/[.!?]+$/,"");
+
+    if(!name){
+        return "Give me a name and I'll handle the rest.";
+    }
+
+    return combatMode
+        ? combatRoast(name)
+        : normalRoast(name);
+}
+
+
+/* =====================================================
+   SAY COMMAND
+===================================================== */
+
+function handleSayCommand(q){
+
+    const match =
+        q.match(
+            /^j\.?a\.?r\.?v\.?i\.?s[,\s]+say\s+(.+)$/i
+        );
+
+    if(!match) return null;
+
+    const text =
+        match[1].trim();
+
+    if(!text){
+        return "Tell me what you'd like me to say.";
+    }
+
+    return text;
 }
 
 
@@ -900,21 +840,34 @@ const brainRotTerms = [
     "tung tung tung sahur",
     "sigma",
     "what the sigma",
+    "sigma boy",
+    "sigma male",
+    "sigma girl",
     "rizz",
+    "unspoken rizz",
     "gyatt",
+    "gyat",
     "fanum tax",
     "ohio",
+    "only in ohio",
     "mewing",
     "looksmax",
+    "looksmaxxing",
     "mog",
+    "mogging",
     "aura points",
     "negative aura",
     "brainrot",
     "brain rot",
     "tralalero tralala",
     "bombardiro crocodilo",
+    "bombombini gusini",
     "brr brr patapim",
     "chimpanzini bananini",
+    "lirili larila",
+    "cappuccino assassino",
+    "ballerina cappuccina",
+    "trippi troppi",
     "goofy ahh",
     "among us"
 ];
@@ -950,9 +903,7 @@ function brainRotReply(){
     ];
 
     return replies[
-        Math.floor(
-            Math.random() * replies.length
-        )
+        Math.floor(Math.random()*replies.length)
     ];
 }
 
@@ -971,21 +922,28 @@ const goofyTerms = [
     "doodoo",
     "feces",
     "toilet water",
-
     "why do humans poop",
     "why do we poop",
     "where does poop go",
     "what is poop",
-
+    "what happens when you poop",
     "can you poop",
     "do ai poop",
     "does ai poop",
     "does jarvis poop",
-
+    "can jarvis poop",
+    "if ai is ai",
+    "if an ai is an ai",
     "ai is ai",
-    "ai ai ai",
+    "ai being ai",
+    "what if ai is ai",
+    "is ai an ai",
+    "is an ai ai",
     "are you ai ai",
-    "what is an ai ai"
+    "what is an ai ai",
+    "can ai ai",
+    "ai ai ai",
+    "ai ai ai ai"
 ];
 
 function isGoofyQuestion(text){
@@ -1006,129 +964,65 @@ function goofyReply(){
 
     const replies = [
 
+        "Get off my app, son. 😭",
+
         "Bro... get off my app. 😭",
 
         "Sir, respectfully, get off my app. 😭",
 
         "J.A.R.V.I.S. is requesting that you get off my app, son. 😭",
 
-        "My processors have had enough. 😭",
+        "My processors have had enough. Get off my app, son. 😭",
 
-        "That question just lowered my IQ. 😭"
+        "That question just lowered my IQ. Get off my app, son. 😭"
 
     ];
 
     return replies[
-        Math.floor(
-            Math.random() * replies.length
-        )
+        Math.floor(Math.random()*replies.length)
     ];
 }
 
 
 /* =====================================================
-   NUMBER PARSER
+   MATH ENGINE
 ===================================================== */
 
-function parseNumber(value){
+function safeMath(expression){
 
-    value =
-        String(value)
-        .trim()
-        .replace(/,/g,"");
+    expression =
+        expression
+        .replace(/×/g,"*")
+        .replace(/÷/g,"/")
+        .replace(/\^/g,"**");
 
-    if(value.includes("/")){
+    if(!/^[0-9+\-*/().%\s*]+$/.test(expression)){
+        return null;
+    }
 
-        const parts =
-            value.split("/");
+    try{
 
-        if(parts.length === 2){
+        const result =
+            Function(
+                '"use strict";return (' +
+                expression +
+                ')'
+            )();
 
-            const a =
-                parseFloat(parts[0]);
-
-            const b =
-                parseFloat(parts[1]);
-
-            if(
-                Number.isFinite(a) &&
-                Number.isFinite(b) &&
-                b !== 0
-            ){
-                return a / b;
-            }
+        if(
+            typeof result !== "number" ||
+            !Number.isFinite(result)
+        ){
+            return null;
         }
+
+        return result;
+
+    }catch{
+
+        return null;
     }
-
-    const n =
-        parseFloat(value);
-
-    return Number.isFinite(n)
-        ? n
-        : null;
 }
-
-
-/* =====================================================
-   FRACTION FORMATTER
-===================================================== */
-
-function gcd(a,b){
-
-    a = Math.abs(a);
-    b = Math.abs(b);
-
-    while(b){
-
-        const temp = b;
-
-        b = a % b;
-        a = temp;
-    }
-
-    return a;
-}
-
-function fraction(value){
-
-    if(!Number.isFinite(value)){
-        return "undefined";
-    }
-
-    if(Number.isInteger(value)){
-        return String(value);
-    }
-
-    const sign =
-        value < 0 ? "-" : "";
-
-    value =
-        Math.abs(value);
-
-    const precision = 1000000;
-
-    let numerator =
-        Math.round(value * precision);
-
-    let denominator =
-        precision;
-
-    const divisor =
-        gcd(numerator,denominator);
-
-    numerator /= divisor;
-    denominator /= divisor;
-
-    return sign +
-        numerator +
-        "/" +
-        denominator;
-}
-
-
-/* =====================================================
-   BASIC MATH
-===================================================== */
 
 function solveMath(text){
 
@@ -1139,1057 +1033,352 @@ function solveMath(text){
         expression
         .replace(/what is/g,"")
         .replace(/calculate/g,"")
-        .replace(/compute/g,"")
         .replace(/solve/g,"")
-        .replace(/equals/g,"")
         .replace(/multiplied by/g,"*")
         .replace(/divided by/g,"/")
         .replace(/plus/g,"+")
         .replace(/minus/g,"-")
         .replace(/times/g,"*")
         .replace(/over/g,"/")
-        .replace(/×/g,"*")
-        .replace(/÷/g,"/");
-
-    expression =
-        expression
-        .replace(/[^0-9+\-*/().%\s]/g,"")
+        .replace(/[^0-9+\-*/().%\s×÷]/g,"")
         .trim();
 
-    if(!expression){
-        return null;
-    }
+    if(!expression) return null;
 
     if(!/[+\-*/%]/.test(expression)){
         return null;
     }
 
-    if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
-        return null;
-    }
-
-    try{
-
-        const answer =
-            Function(
-                '"use strict";return (' +
-                expression +
-                ')'
-            )();
-
-        if(
-            typeof answer !== "number" ||
-            !Number.isFinite(answer)
-        ){
-            return null;
-        }
-
-        return answer;
-
-    }catch{
-        return null;
-    }
+    return safeMath(expression);
 }
 
 
 /* =====================================================
-   ALGEBRA ENGINE
+   LINEAR ALGEBRA
 ===================================================== */
 
-function cleanEquation(text){
+function fraction(n,d){
 
-    return text
+    if(d === 0) return "undefined";
+
+    if(n === 0) return "0";
+
+    const sign =
+        d < 0 ? -1 : 1;
+
+    n *= sign;
+    d *= sign;
+
+    const gcd =
+        (a,b) =>
+        b === 0
+        ? Math.abs(a)
+        : gcd(b,a%b);
+
+    const g = gcd(n,d);
+
+    n /= g;
+    d /= g;
+
+    if(d === 1) return String(n);
+
+    return `${n}/${d}`;
+}
+
+
+function solveSlopeIntercept(text){
+
+    const t =
+        text
         .toLowerCase()
-        .replace(/[−–—]/g,"-")
-        .replace(/×/g,"*")
-        .replace(/\s+/g," ")
-        .trim();
-}
+        .replace(/−/g,"-")
+        .replace(/=/g," = ");
 
-
-/*
-   Converts simple linear expression into:
-
-   ax + b
-
-   Examples:
-
-   2x + 3
-   -4x - 7
-   x + 5
-   -x + 2
-   3x
-   5
-*/
-
-function linearExpression(expr){
-
-    expr =
-        expr
-        .replace(/\s/g,"")
-        .replace(/\*/g,"");
-
-    if(!expr){
-        return {a:0,b:0};
-    }
-
-    expr =
-        expr
-        .replace(/-/g,"+-");
-
-    if(expr.startsWith("+")){
-        expr = expr.substring(1);
-    }
-
-    const terms =
-        expr.split("+");
-
-    let a = 0;
-    let b = 0;
-
-    for(let term of terms){
-
-        if(!term){
-            continue;
-        }
-
-        if(term.includes("x")){
-
-            term =
-                term.replace(/x/g,"");
-
-            if(term === "" || term === "+"){
-                a += 1;
-            }
-            else if(term === "-"){
-                a -= 1;
-            }
-            else{
-                const n =
-                    parseFloat(term);
-
-                if(!Number.isFinite(n)){
-                    return null;
-                }
-
-                a += n;
-            }
-
-        }else{
-
-            const n =
-                parseFloat(term);
-
-            if(!Number.isFinite(n)){
-                return null;
-            }
-
-            b += n;
-        }
-    }
-
-    return {a,b};
-}
-
-
-/* =====================================================
-   SOLVE LINEAR EQUATION
-===================================================== */
-
-function solveLinearEquation(equation){
-
-    equation =
-        cleanEquation(equation);
-
-    equation =
-        equation
-        .replace(/^solve\s+/,"")
-        .replace(/^x\s*=\s*/,"x=");
-
-    if(!equation.includes("=")){
+    if(
+        !t.includes("slope") &&
+        !t.includes("y=mx+b") &&
+        !t.includes("y = mx + b")
+    ){
         return null;
     }
-
-    const sides =
-        equation.split("=");
-
-    if(sides.length !== 2){
-        return null;
-    }
-
-    const left =
-        linearExpression(sides[0]);
-
-    const right =
-        linearExpression(sides[1]);
-
-    if(!left || !right){
-        return null;
-    }
-
-    const coefficient =
-        left.a - right.a;
-
-    const constant =
-        right.b - left.b;
-
-    if(coefficient === 0){
-
-        if(constant === 0){
-
-            return {
-                type:"all",
-                text:"There are infinitely many solutions."
-            };
-
-        }
-
-        return {
-            type:"none",
-            text:"There is no solution."
-        };
-    }
-
-    const x =
-        constant / coefficient;
-
-    return {
-        type:"value",
-        value:x,
-        text:
-            "x = " +
-            fraction(x)
-    };
-}
-
-
-/* =====================================================
-   SLOPE FROM TWO POINTS
-===================================================== */
-
-function slopeFromPoints(text){
 
     const match =
-        text.match(
-            /\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)\s*(?:and|,)\s*\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)/i
+        t.match(
+            /y\s*=\s*([+-]?\s*\d*\.?\d*)\s*x\s*([+-]\s*\d*\.?\d*)?/i
         );
 
-    if(!match){
-        return null;
+    if(match){
+
+        let m =
+            match[1]
+            .replace(/\s/g,"");
+
+        if(m === "" || m === "+") m = "1";
+        if(m === "-") m = "-1";
+
+        let b =
+            match[2]
+            ? match[2].replace(/\s/g,"")
+            : "0";
+
+        return `The slope is ${m} and the y-intercept is ${b}.`;
     }
 
-    const x1 =
-        parseFloat(match[1]);
+    return null;
+}
 
-    const y1 =
-        parseFloat(match[2]);
 
-    const x2 =
-        parseFloat(match[3]);
+function solveTwoPoints(text){
 
-    const y2 =
-        parseFloat(match[4]);
+    const matches =
+        [...text.matchAll(
+            /\(?\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)?/g
+        )];
+
+    if(matches.length < 2) return null;
+
+    const x1 = Number(matches[0][1]);
+    const y1 = Number(matches[0][2]);
+    const x2 = Number(matches[1][1]);
+    const y2 = Number(matches[1][2]);
 
     if(x1 === x2){
 
-        return {
-            vertical:true,
-            text:"The slope is undefined because the line is vertical."
-        };
+        return "The line is vertical, so its slope is undefined.";
     }
 
     const m =
         (y2-y1)/(x2-x1);
 
-    return {
-        vertical:false,
-        slope:m,
-        text:
-            "m = (y₂ − y₁) / (x₂ − x₁)\n" +
-            "m = (" + y2 + " − " + y1 + ") / (" +
-            x2 + " − " + x1 + ")\n" +
-            "m = " + fraction(m)
-    };
-}
+    const b =
+        y1 - m*x1;
 
-
-/* =====================================================
-   EXTRACT LINEAR EQUATION
-===================================================== */
-
-function parseStandardForm(text){
-
-    const cleaned =
-        cleanEquation(text);
-
-    if(!cleaned.includes("=")){
-        return null;
-    }
-
-    const parts =
-        cleaned.split("=");
-
-    if(parts.length !== 2){
-        return null;
-    }
-
-    const left =
-        parts[0]
-        .replace(/\*/g,"");
-
-    const right =
-        parts[1]
-        .replace(/\*/g,"");
-
-    /*
-       Ax + By = C
-    */
-
-    const combined =
-        linearExpression(left);
-
-    const rightNumber =
-        parseFloat(right);
-
-    if(
-        !combined ||
-        !Number.isFinite(rightNumber)
-    ){
-        return null;
-    }
-
-    /*
-       linearExpression gives ax+b.
-       For standard form:
-       Ax + By = C
-
-       This engine focuses on one-variable
-       linear equations and y=mx+b.
-    */
-
-    return {
-        a:combined.a,
-        b:combined.b,
-        c:rightNumber
-    };
-}
-
-
-/* =====================================================
-   SLOPE-INTERCEPT
-===================================================== */
-
-function slopeInterceptFromEquation(text){
-
-    const eq =
-        cleanEquation(text);
-
-    if(!eq.includes("=")){
-        return null;
-    }
-
-    const parts =
-        eq.split("=");
-
-    if(parts.length !== 2){
-        return null;
-    }
-
-    let left = parts[0];
-    let right = parts[1];
-
-    /*
-       If y is on the right:
-       2x + 3 = y
-       move it mentally to y = 2x + 3
-    */
-
-    if(right.includes("y") && !left.includes("y")){
-
-        const temp = left;
-        left = right;
-        right = temp;
-    }
-
-    if(!left.includes("y")){
-        return null;
-    }
-
-    /*
-       Handle:
-       y = 2x + 3
-       y = -4x - 7
-       y = x + 2
-       y = -x + 9
-    */
-
-    const yMatch =
-        left.match(/^y$/);
-
-    if(yMatch){
-
-        const rightLinear =
-            linearExpression(right);
-
-        if(!rightLinear){
-            return null;
-        }
-
-        return {
-            m:rightLinear.a,
-            b:rightLinear.b
-        };
-    }
-
-    /*
-       Handle:
-       2y = 4x + 8
-       -3y = 6x - 9
-    */
-
-    const yCoefficientMatch =
-        left.match(/^(-?\d*\.?\d*)y$/);
-
-    if(
-        yCoefficientMatch &&
-        right.includes("x")
-    ){
-
-        let coefficient =
-            yCoefficientMatch[1];
-
-        if(
-            coefficient === "" ||
-            coefficient === "+"
-        ){
-            coefficient = 1;
-        }
-        else if(coefficient === "-"){
-            coefficient = -1;
-        }
-        else{
-            coefficient =
-                parseFloat(coefficient);
-        }
-
-        const r =
-            linearExpression(right);
-
-        if(!r || coefficient === 0){
-            return null;
-        }
-
-        return {
-            m:r.a/coefficient,
-            b:r.b/coefficient
-        };
-    }
-
-    /*
-       Standard form:
-       Ax + By = C
-    */
-
-    const standard =
-        left.match(
-            /^(-?\d*\.?\d*)x([+-]\d*\.?\d*)y$/
+    const ms =
+        Number.isInteger(m)
+        ? String(m)
+        : fraction(
+            Math.round(m*1000000),
+            1000000
         );
 
-    if(standard){
+    const bs =
+        Number.isInteger(b)
+        ? String(b)
+        : fraction(
+            Math.round(b*1000000),
+            1000000
+        );
 
-        let A =
-            standard[1];
+    const equation =
+        b === 0
+        ? `y = ${ms}x`
+        : `y = ${ms}x ${b >= 0 ? "+" : "-"} ${Math.abs(b)}`;
 
-        let B =
-            standard[2];
-
-        const C =
-            parseFloat(right);
-
-        if(A === "" || A === "+"){
-            A = 1;
-        }
-        else if(A === "-"){
-            A = -1;
-        }
-        else{
-            A = parseFloat(A);
-        }
-
-        B =
-            parseFloat(B);
-
-        if(
-            !Number.isFinite(A) ||
-            !Number.isFinite(B) ||
-            !Number.isFinite(C) ||
-            B === 0
-        ){
-            return null;
-        }
-
-        return {
-            m:-A/B,
-            b:C/B
-        };
-    }
-
-    return null;
+    return `Using the points (${x1}, ${y1}) and (${x2}, ${y2}), the slope is ${ms}. The slope-intercept equation is ${equation}.`;
 }
 
 
-/* =====================================================
-   FORMAT LINE
-===================================================== */
+function solvePointSlope(text){
 
-function formatSlopeIntercept(m,b){
+    const points =
+        [...text.matchAll(
+            /\(?\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)?/g
+        )];
 
-    let result =
-        "y = ";
+    if(points.length < 1) return null;
 
-    if(m === 1){
-        result += "x";
-    }
-    else if(m === -1){
-        result += "-x";
-    }
-    else{
-        result += fraction(m) + "x";
-    }
-
-    if(b > 0){
-        result += " + " + fraction(b);
-    }
-    else if(b < 0){
-        result += " - " + fraction(Math.abs(b));
-    }
-
-    return result;
-}
-
-
-/* =====================================================
-   POINT-SLOPE
-===================================================== */
-
-function pointSlope(text){
-
-    const point =
+    const slopeMatch =
         text.match(
-            /\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)/i
+            /slope\s*(?:is|=)\s*(-?\d+(?:\.\d+)?)/i
         );
 
-    if(!point){
-        return null;
-    }
-
-    const mMatch =
-        text.match(
-            /slope\s*(?:is|=)\s*(-?\d+(?:\.\d+)?(?:\/\d+)?)/i
-        );
-
-    if(!mMatch){
-        return null;
-    }
-
-    const x =
-        parseFloat(point[1]);
-
-    const y =
-        parseFloat(point[2]);
+    if(!slopeMatch) return null;
 
     const m =
-        parseNumber(mMatch[1]);
+        Number(slopeMatch[1]);
 
-    if(m === null){
-        return null;
-    }
+    const x =
+        Number(points[0][1]);
+
+    const y =
+        Number(points[0][2]);
 
     const b =
         y - m*x;
 
-    return {
-        m,
-        b,
-        text:
-            "Slope-intercept form: " +
-            formatSlopeIntercept(m,b)
-    };
+    const equation =
+        `y = ${m}x ${b >= 0 ? "+" : "-"} ${Math.abs(b)}`;
+
+    return `The point-slope equation is y - ${y} = ${m}(x - ${x}). In slope-intercept form, that is ${equation}.`;
 }
 
 
 /* =====================================================
-   X INTERCEPT
+   SCIENCE KNOWLEDGE
 ===================================================== */
 
-function xIntercept(text){
-
-    const line =
-        slopeInterceptFromEquation(text);
-
-    if(!line){
-        return null;
-    }
-
-    if(line.m === 0){
-
-        if(line.b === 0){
-
-            return {
-                text:"Every point on the line has y = 0."
-            };
-
-        }
-
-        return {
-            text:"This horizontal line has no x-intercept."
-        };
-    }
-
-    const x =
-        -line.b / line.m;
-
-    return {
-        value:x,
-        text:
-            "The x-intercept is (" +
-            fraction(x) +
-            ", 0)."
-    };
-}
-
-
-/* =====================================================
-   Y INTERCEPT
-===================================================== */
-
-function yIntercept(text){
-
-    const line =
-        slopeInterceptFromEquation(text);
-
-    if(!line){
-        return null;
-    }
-
-    return {
-        value:line.b,
-        text:
-            "The y-intercept is (0, " +
-            fraction(line.b) +
-            ")."
-    };
-}
-
-
-/* =====================================================
-   CONVERT EQUATION
-===================================================== */
-
-function algebraResponse(question){
-
-    const q =
-        cleanEquation(question);
-
-
-    /*
-       SLOPE BETWEEN TWO POINTS
-    */
-
-    if(
-        q.includes("slope") &&
-        (
-            q.includes("between") ||
-            q.includes("points")
-        )
-    ){
-
-        const result =
-            slopeFromPoints(q);
-
-        if(result){
-            return result.text;
-        }
-    }
-
-
-    /*
-       EXPLICIT X-INTERCEPT
-    */
-
-    if(
-        q.includes("x-intercept") ||
-        q.includes("x intercept")
-    ){
-
-        const equation =
-            q
-            .replace(/what is/g,"")
-            .replace(/find/g,"")
-            .replace(/the x-intercept/g,"")
-            .replace(/the x intercept/g,"")
-            .trim();
-
-        const result =
-            xIntercept(equation);
-
-        if(result){
-            return result.text;
-        }
-    }
-
-
-    /*
-       EXPLICIT Y-INTERCEPT
-    */
-
-    if(
-        q.includes("y-intercept") ||
-        q.includes("y intercept")
-    ){
-
-        const equation =
-            q
-            .replace(/what is/g,"")
-            .replace(/find/g,"")
-            .replace(/the y-intercept/g,"")
-            .replace(/the y intercept/g,"")
-            .trim();
-
-        const result =
-            yIntercept(equation);
-
-        if(result){
-            return result.text;
-        }
-    }
-
-
-    /*
-       CONVERT TO SLOPE INTERCEPT
-    */
-
-    if(
-        q.includes("slope-intercept") ||
-        q.includes("slope intercept") ||
-        q.includes("y=mx+b") ||
-        q.includes("y = mx + b")
-    ){
-
-        const equation =
-            q
-            .replace(/convert/g,"")
-            .replace(/to slope-intercept form/g,"")
-            .replace(/to slope intercept form/g,"")
-            .replace(/write in slope-intercept form/g,"")
-            .replace(/write in slope intercept form/g,"")
-            .trim();
-
-        const result =
-            slopeInterceptFromEquation(equation);
-
-        if(result){
-
-            return (
-                "Slope-intercept form is:\n\n" +
-                formatSlopeIntercept(
-                    result.m,
-                    result.b
-                ) +
-                "\n\n" +
-                "Slope (m) = " +
-                fraction(result.m) +
-                "\n" +
-                "Y-intercept (b) = " +
-                fraction(result.b)
-            );
-        }
-    }
-
-
-    /*
-       POINT-SLOPE
-    */
-
-    if(
-        q.includes("point-slope") ||
-        q.includes("point slope")
-    ){
-
-        const result =
-            pointSlope(q);
-
-        if(result){
-            return result.text;
-        }
-    }
-
-
-    /*
-       SOLVE ALGEBRA EQUATION
-    */
-
-    if(
-        q.includes("=") &&
-        (
-            q.includes("solve") ||
-            /[0-9x]\s*=/.test(q) ||
-            /=\s*[0-9x]/.test(q)
-        )
-    ){
-
-        const equation =
-            q
-            .replace(/^solve\s*/,"")
-            .trim();
-
-        const result =
-            solveLinearEquation(equation);
-
-        if(result){
-
-            if(result.type === "value"){
-
-                return (
-                    "Solving the equation:\n\n" +
-                    equation +
-                    "\n\n" +
-                    "x = " +
-                    fraction(result.value)
-                );
-            }
-
-            return result.text;
-        }
-    }
-
-
-    /*
-       SLOPE OF AN EQUATION
-    */
-
-    if(
-        q.includes("slope") &&
-        q.includes("=")
-    ){
-
-        const result =
-            slopeInterceptFromEquation(q);
-
-        if(result){
-
-            return (
-                "The slope is m = " +
-                fraction(result.m) +
-                "."
-            );
-        }
-    }
-
-
-    return null;
-}
-
-
-/* =====================================================
-   CONVERSION ENGINE
-===================================================== */
-
-const conversionUnits = {
-
-    "miles to kilometers": value => value * 1.609344,
-    "kilometers to miles": value => value / 1.609344,
-
-    "feet to meters": value => value * 0.3048,
-    "meters to feet": value => value / 0.3048,
-
-    "inches to centimeters": value => value * 2.54,
-    "centimeters to inches": value => value / 2.54,
-
-    "yards to meters": value => value * 0.9144,
-    "meters to yards": value => value / 0.9144,
-
-    "pounds to kilograms": value => value * 0.45359237,
-    "kilograms to pounds": value => value / 0.45359237,
-
-    "ounces to grams": value => value * 28.349523125,
-    "grams to ounces": value => value / 28.349523125,
-
-    "gallons to liters": value => value * 3.785411784,
-    "liters to gallons": value => value / 3.785411784,
-
-    "fahrenheit to celsius": value => (value-32)*5/9,
-    "celsius to fahrenheit": value => value*9/5+32,
-
-    "celsius to kelvin": value => value+273.15,
-    "kelvin to celsius": value => value-273.15,
-
-    "minutes to hours": value => value/60,
-    "hours to minutes": value => value*60,
-
-    "seconds to minutes": value => value/60,
-    "minutes to seconds": value => value*60,
-
-    "days to hours": value => value*24,
-    "hours to days": value => value/24
-};
-
-
-function conversionResponse(text){
-
-    const q =
-        text
-        .toLowerCase()
-        .replace(/,/g,"")
-        .trim();
-
-    const match =
-        q.match(
-            /^(-?\d+(?:\.\d+)?)\s*(.+?)\s+(?:to|in)\s+(.+)$/
-        );
-
-    if(!match){
-        return null;
-    }
-
-    const value =
-        parseFloat(match[1]);
-
-    let from =
-        match[2].trim();
-
-    let to =
-        match[3].trim();
-
-    const aliases = {
-        mi:"miles",
-        mile:"miles",
-        km:"kilometers",
-        kilometer:"kilometers",
-        ft:"feet",
-        foot:"feet",
-        m:"meters",
-        meter:"meters",
-        in:"inches",
-        inch:"inches",
-        cm:"centimeters",
-        centimeter:"centimeters",
-        yd:"yards",
-        yard:"yards",
-        lb:"pounds",
-        pound:"pounds",
-        kg:"kilograms",
-        kilogram:"kilograms",
-        oz:"ounces",
-        ounce:"ounces",
-        g:"grams",
-        gram:"grams",
-        gal:"gallons",
-        gallon:"gallons",
-        l:"liters",
-        liter:"liters",
-        liters:"liters",
-        c:"celsius",
-        f:"fahrenheit",
-        k:"kelvin",
-        sec:"seconds",
-        second:"seconds",
-        min:"minutes",
-        minute:"minutes",
-        hr:"hours",
-        hour:"hours",
-        day:"days"
-    };
-
-    from =
-        aliases[from] || from;
-
-    to =
-        aliases[to] || to;
-
-    const key =
-        from + " to " + to;
-
-    if(
-        conversionUnits[key] &&
-        Number.isFinite(value)
-    ){
-
-        const result =
-            conversionUnits[key](value);
-
-        return (
-            value +
-            " " +
-            from +
-            " = " +
-            Number(result.toFixed(8)) +
-            " " +
-            to +
-            "."
-        );
-    }
-
-    return null;
-}
-
-
-/* =====================================================
-   KNOWLEDGE
-===================================================== */
-
-const knowledge = {
-
-    "black hole":
-        "A black hole is a region of spacetime where gravity is extremely strong. Beyond its event horizon, nothing can escape to the outside, including light.",
-
-    "earth":
-        "Earth is the third planet from the Sun and the only world currently known to support life.",
-
-    "sun":
-        "The Sun is the star at the center of our Solar System. It produces energy primarily through nuclear fusion.",
-
-    "moon":
-        "The Moon is Earth's natural satellite. Its gravity contributes strongly to ocean tides.",
-
-    "gravity":
-        "Gravity is the interaction associated with mass and energy. In general relativity, gravity is described through the curvature of spacetime.",
-
-    "atom":
-        "An atom is a basic unit of ordinary matter. It contains a nucleus made of protons and neutrons surrounded by electrons.",
-
-    "dna":
-        "DNA stores genetic information. Its structure is a double helix containing the bases A, T, C, and G.",
+const science = {
 
     "photosynthesis":
-        "Photosynthesis allows plants, algae, and some bacteria to convert light energy into chemical energy.",
+        "Photosynthesis is the process by which plants, algae, and some bacteria use light energy to make chemical energy from carbon dioxide and water, producing glucose and oxygen.",
+
+    "cellular respiration":
+        "Cellular respiration is the process cells use to release usable energy from food. In aerobic respiration, glucose reacts with oxygen and produces carbon dioxide, water, and ATP.",
+
+    "mitochondria":
+        "Mitochondria are organelles that produce much of a eukaryotic cell's ATP through cellular respiration.",
+
+    "ribosome":
+        "Ribosomes build proteins by translating information carried by messenger RNA.",
+
+    "nucleus":
+        "The nucleus stores most of a eukaryotic cell's DNA and helps regulate gene expression.",
+
+    "dna":
+        "DNA is the molecule that stores hereditary genetic information. Its bases are adenine, thymine, cytosine, and guanine.",
+
+    "rna":
+        "RNA is a nucleic acid involved in gene expression and protein production. Unlike DNA, RNA commonly uses uracil instead of thymine.",
+
+    "osmosis":
+        "Osmosis is the movement of water across a selectively permeable membrane from an area of higher water concentration toward lower water concentration.",
+
+    "diffusion":
+        "Diffusion is the net movement of particles from an area of higher concentration to an area of lower concentration.",
+
+    "homeostasis":
+        "Homeostasis is an organism's ability to maintain relatively stable internal conditions despite external changes.",
+
+    "natural selection":
+        "Natural selection occurs when inherited traits that improve survival or reproduction become more common in a population over generations.",
 
     "evolution":
         "Evolution is the change in inherited characteristics of populations across generations.",
+
+    "gravity":
+        "Gravity is the attraction associated with mass and energy. On Earth, it accelerates falling objects downward at roughly 9.8 meters per second squared near the surface.",
+
+    "newton's first law":
+        "Newton's first law states that an object remains at rest or moves at constant velocity unless acted on by a net external force.",
+
+    "newton's second law":
+        "Newton's second law is commonly expressed as F = ma. Net force equals mass multiplied by acceleration.",
+
+    "newton's third law":
+        "Newton's third law states that forces between interacting objects occur in equal-magnitude, opposite-direction pairs.",
+
+    "velocity":
+        "Velocity describes how quickly an object's position changes and includes direction.",
+
+    "acceleration":
+        "Acceleration is the rate at which velocity changes over time.",
+
+    "kinetic energy":
+        "Kinetic energy is the energy an object has because of its motion. It is calculated with KE = 1/2 mv².",
+
+    "potential energy":
+        "Potential energy is stored energy associated with an object's position, condition, or configuration.",
+
+    "atom":
+        "An atom consists of a nucleus containing protons and usually neutrons, surrounded by electrons.",
+
+    "proton":
+        "A proton is a positively charged subatomic particle found in an atomic nucleus.",
+
+    "neutron":
+        "A neutron is a neutral subatomic particle found in an atomic nucleus.",
+
+    "electron":
+        "An electron is a negatively charged subatomic particle found in regions surrounding an atomic nucleus.",
+
+    "periodic table":
+        "The periodic table organizes chemical elements by atomic number and recurring chemical properties.",
+
+    "ph":
+        "The pH scale describes how acidic or basic an aqueous solution is. Lower pH values are more acidic, while higher values are more basic.",
+
+    "acid":
+        "An acid is a substance that can donate hydrogen ions in aqueous solution under the Brønsted-Lowry definition.",
+
+    "base":
+        "A base is a substance that can accept hydrogen ions under the Brønsted-Lowry definition.",
+
+    "chemical reaction":
+        "A chemical reaction rearranges atoms to form different substances while conserving the atoms involved.",
+
+    "ecosystem":
+        "An ecosystem includes living organisms and the nonliving environment interacting in a particular area.",
+
+    "food chain":
+        "A food chain shows how energy and matter move through feeding relationships among organisms.",
+
+    "food web":
+        "A food web represents interconnected feeding relationships within an ecosystem.",
+
+    "carbon cycle":
+        "The carbon cycle describes how carbon moves among the atmosphere, organisms, oceans, soil, and Earth's crust.",
+
+    "water cycle":
+        "The water cycle describes processes including evaporation, condensation, precipitation, infiltration, and collection that move water through Earth's systems.",
+
+    "plate tectonics":
+        "Plate tectonics describes the movement and interaction of large pieces of Earth's lithosphere.",
+
+    "earthquake":
+        "An earthquake is the shaking of Earth's surface caused by the sudden release of energy, commonly along faults.",
+
+    "volcano":
+        "A volcano is a location where magma, gases, and volcanic material can reach Earth's surface.",
+
+    "weather":
+        "Weather describes short-term atmospheric conditions such as temperature, precipitation, humidity, wind, and pressure.",
+
+    "climate":
+        "Climate describes long-term patterns and averages of weather in a region.",
+
+    "black hole":
+        "A black hole is a region of spacetime with gravity so strong that beyond its event horizon, nothing can escape to the outside.",
+
+    "speed of light":
+        "The speed of light in a vacuum is exactly 299,792,458 meters per second.",
+
+    "moon":
+        "The Moon is Earth's natural satellite. Its gravity contributes significantly to Earth's ocean tides.",
 
     "mars":
         "Mars is the fourth planet from the Sun. It is a rocky planet with a thin atmosphere dominated by carbon dioxide.",
 
     "jupiter":
-        "Jupiter is the largest planet in our Solar System. It is a gas giant with a powerful magnetic field.",
+        "Jupiter is the largest planet in our Solar System and is a gas giant.",
 
     "saturn":
-        "Saturn is a gas giant famous for its extensive system of icy rings.",
+        "Saturn is a gas giant known for its extensive system of icy rings.",
 
     "venus":
-        "Venus is the second planet from the Sun. Its dense atmosphere produces an extreme greenhouse effect.",
+        "Venus is the second planet from the Sun and has a dense carbon-dioxide atmosphere and an extreme greenhouse effect.",
 
     "mercury":
-        "Mercury is the smallest planet in the Solar System and the closest planet to the Sun.",
+        "Mercury is the smallest planet in the Solar System and the planet closest to the Sun.",
 
     "neutron star":
-        "A neutron star is an extremely dense stellar remnant formed from the collapsed core of certain massive stars.",
+        "A neutron star is an extremely dense stellar remnant produced by the collapse of the core of certain massive stars."
+};
 
-    "speed of light":
-        "The speed of light in a vacuum is exactly 299,792,458 meters per second.",
 
-    "plate tectonics":
-        "Plate tectonics describes the movement of large pieces of Earth's lithosphere. Their interactions produce earthquakes, mountains, and much volcanic activity.",
+/* =====================================================
+   GENERAL KNOWLEDGE
+===================================================== */
+
+const knowledge = {
+
+    "earth":
+        "Earth is the third planet from the Sun and the only world currently known to support life.",
+
+    "sun":
+        "The Sun is the star at the center of our Solar System. It produces most of its energy through nuclear fusion.",
+
+    "shakespeare":
+        "William Shakespeare was an English playwright and poet whose works include Hamlet, Macbeth, and Romeo and Juliet.",
 
     "newton":
         "Isaac Newton developed foundational laws of motion and universal gravitation and made major contributions to mathematics and optics.",
@@ -2197,24 +1386,34 @@ const knowledge = {
     "marie curie":
         "Marie Curie was a physicist and chemist whose research into radioactivity earned Nobel Prizes in Physics and Chemistry.",
 
-    "shakespeare":
-        "William Shakespeare was an English playwright and poet whose works include Hamlet, Macbeth, and Romeo and Juliet.",
-
     "chemistry":
         "Chemistry is the study of matter, its properties, composition, structure, and the changes it undergoes.",
 
-    "cell":
-        "A cell is the basic structural and functional unit of living organisms.",
+    "biology":
+        "Biology is the scientific study of living organisms and life processes.",
 
-    "volcano":
-        "A volcano is an opening in Earth's crust through which magma, gases, and volcanic material can reach the surface.",
+    "physics":
+        "Physics studies matter, energy, motion, forces, fields, space, and the fundamental interactions of nature.",
 
-    "ocean":
-        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water."
+    "history":
+        "History is the study and interpretation of past events using evidence such as documents, artifacts, records, and other sources.",
+
+    "geography":
+        "Geography studies places, environments, Earth's physical systems, and relationships between people and their surroundings.",
+
+    "computer":
+        "A computer is an electronic system that processes information according to instructions called programs."
 };
 
 
 function findKnowledge(q){
+
+    for(const key in science){
+
+        if(q.includes(key)){
+            return science[key];
+        }
+    }
 
     for(const key in knowledge){
 
@@ -2224,6 +1423,290 @@ function findKnowledge(q){
     }
 
     return null;
+}
+
+
+/* =====================================================
+   MULTIPLE CHOICE ENGINE
+===================================================== */
+
+function parseChoices(text){
+
+    const choices = [];
+
+    const patterns = [
+
+        /(?:^|\n)\s*\(?([A-H])\)?[\.\):\-]\s*(.+?)(?=\n\s*\(?[A-H]\)?[\.\):\-]|$)/gi,
+
+        /([A-H])[\.\):\-]\s*([^A-H]+?)(?=\s+[A-H][\.\):\-]|$)/gi
+
+    ];
+
+    for(const pattern of patterns){
+
+        const matches =
+            [...text.matchAll(pattern)];
+
+        if(matches.length >= 2){
+
+            for(const match of matches){
+
+                choices.push({
+                    letter:match[1].toUpperCase(),
+                    text:match[2].trim()
+                });
+            }
+
+            break;
+        }
+    }
+
+    const unique = [];
+
+    for(const choice of choices){
+
+        if(
+            !unique.some(
+                x => x.letter === choice.letter
+            )
+        ){
+            unique.push(choice);
+        }
+    }
+
+    return unique;
+}
+
+
+function normalizeAnswer(text){
+
+    return text
+        .toLowerCase()
+        .replace(/[^\w\s]/g," ")
+        .replace(/\s+/g," ")
+        .trim();
+}
+
+
+function questionKeywords(text){
+
+    const stopWords = new Set([
+
+        "what","which","who","where","when","why","how",
+        "is","are","was","were","the","a","an","of","to",
+        "in","on","for","and","or","does","do","did",
+        "with","from","that","this","these","those",
+        "most","best","least","following","correct",
+        "statement","statements","according","about"
+    ]);
+
+    return normalizeAnswer(text)
+        .split(" ")
+        .filter(
+            word =>
+            word.length > 2 &&
+            !stopWords.has(word)
+        );
+}
+
+
+function scoreChoice(question,choice){
+
+    const qWords =
+        questionKeywords(question);
+
+    const cWords =
+        questionKeywords(choice.text);
+
+    let score = 0;
+
+    for(const word of qWords){
+
+        if(cWords.includes(word)){
+            score += 1;
+        }
+    }
+
+    const c =
+        normalizeAnswer(choice.text);
+
+    /*
+       Science concepts
+    */
+
+    const sciencePairs = [
+
+        ["mitochondria","atp"],
+        ["photosynthesis","glucose"],
+        ["photosynthesis","oxygen"],
+        ["dna","genetic"],
+        ["ribosome","protein"],
+        ["nucleus","dna"],
+        ["osmosis","water"],
+        ["diffusion","concentration"],
+        ["gravity","mass"],
+        ["newton","force"],
+        ["acceleration","velocity"],
+        ["kinetic","motion"],
+        ["potential","stored"],
+        ["acid","hydrogen"],
+        ["base","hydroxide"],
+        ["ecosystem","organisms"],
+        ["plate","tectonic"],
+        ["weather","atmosphere"],
+        ["climate","long-term"]
+    ];
+
+    for(const pair of sciencePairs){
+
+        if(
+            qWords.includes(pair[0]) &&
+            c.includes(pair[1])
+        ){
+            score += 8;
+        }
+    }
+
+    /*
+       Math patterns
+    */
+
+    if(
+        /slope/.test(question.toLowerCase()) &&
+        /rise|run|coefficient|rate/.test(c)
+    ){
+        score += 5;
+    }
+
+    if(
+        /y\s*=\s*mx\s*\+\s*b/.test(
+            question.toLowerCase()
+        ) &&
+        /slope|m/.test(c)
+    ){
+        score += 5;
+    }
+
+    return score;
+}
+
+
+function answerMultipleChoice(text){
+
+    const choices =
+        parseChoices(text);
+
+    if(choices.length < 2){
+        return null;
+    }
+
+    const lines =
+        text.split(/\n/);
+
+    let questionText = text;
+
+    if(lines.length > 1){
+
+        questionText =
+            lines
+            .filter(
+                line =>
+                !/^\s*\(?[A-H]\)?[\.\):\-]/i.test(line)
+            )
+            .join(" ");
+    }
+
+    let best = null;
+    let bestScore = -1;
+
+    for(const choice of choices){
+
+        const score =
+            scoreChoice(
+                questionText,
+                choice
+            );
+
+        if(score > bestScore){
+
+            bestScore = score;
+            best = choice;
+        }
+    }
+
+    /*
+       Recognize very common educational questions.
+    */
+
+    const q =
+        questionText.toLowerCase();
+
+    const rules = [
+
+        {
+            test:/organelle.*atp|produce.*atp|energy.*cell/,
+            answer:/mitochond/
+        },
+
+        {
+            test:/process.*plant.*light|plant.*make.*food/,
+            answer:/photosynthesis/
+        },
+
+        {
+            test:/genetic.*information|hereditary.*information/,
+            answer:/dna/
+        },
+
+        {
+            test:/protein.*made|build.*protein/,
+            answer:/ribosome/
+        },
+
+        {
+            test:/movement.*water.*membrane/,
+            answer:/osmosis/
+        },
+
+        {
+            test:/particles.*high.*concentration.*low/,
+            answer:/diffusion/
+        },
+
+        {
+            test:/f\s*=\s*m\s*a|force.*mass.*acceleration/,
+            answer:/force|newton/
+        },
+
+        {
+            test:/pH.*7|neutral.*pH/,
+            answer:/7|neutral/
+        }
+    ];
+
+    for(const rule of rules){
+
+        if(rule.test.test(q)){
+
+            const matching =
+                choices.find(
+                    choice =>
+                    rule.answer.test(
+                        choice.text.toLowerCase()
+                    )
+                );
+
+            if(matching){
+                best = matching;
+                bestScore = 100;
+                break;
+            }
+        }
+    }
+
+    if(!best) return null;
+
+    return `The correct answer is ${best.letter}: ${best.text}.`;
 }
 
 
@@ -2250,17 +1733,17 @@ const jokes = [
     "Why did the programmer quit his job? He didn't get arrays.",
 
     "What do you call an AI that sings badly? Artificial noise."
-
 ];
 
 
 /* =====================================================
-   LOCAL RESPONSE
+   LOCAL CONVERSATION
 ===================================================== */
 
 function localResponse(q){
 
     if(q === "combat mode"){
+
         startCombat();
         return null;
     }
@@ -2270,6 +1753,7 @@ function localResponse(q){
         q === "exit combat mode" ||
         q === "end combat mode"
     ){
+
         stopCombat();
         return null;
     }
@@ -2322,12 +1806,12 @@ function localResponse(q){
         q.includes("what are you")
     ){
 
-        return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics and algebra, analyze linear equations, convert units, speak aloud, and search for information.";
+        return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics, answer academic questions, speak aloud, process multiple-choice questions, and search for information when necessary.";
     }
 
     if(q.includes("what can you do")){
 
-        return "I can handle conversation, mathematics, algebra, slope-intercept form, point-slope form, standard form, linear equations, intercepts, unit conversions, science, history, jokes, voice output, microphone input, Combat Mode, roasting commands, and online information searches.";
+        return "I can handle conversation, mathematics, algebra, linear equations, slope-intercept form, point-slope form, science, history, culinary questions, peer counseling topics, multiple-choice questions, jokes, voice output, microphone input, Combat Mode, and online information searches.";
     }
 
     if(q.includes("how are you")){
@@ -2356,9 +1840,7 @@ function localResponse(q){
     ){
 
         return jokes[
-            Math.floor(
-                Math.random() * jokes.length
-            )
+            Math.floor(Math.random()*jokes.length)
         ];
     }
 
@@ -2409,7 +1891,7 @@ function localResponse(q){
         q.includes("i'm bored")
     ){
 
-        return "Boredom detected. We could tackle a science question, solve an algebra problem, analyze a linear equation, or test my knowledge.";
+        return "Boredom detected. We could tackle a science question, solve a difficult math problem, or test my knowledge.";
     }
 
     return null;
@@ -2422,9 +1904,7 @@ function localResponse(q){
 
 function isQuestion(q){
 
-    if(q.includes("?")){
-        return true;
-    }
+    if(q.includes("?")) return true;
 
     const starters = [
 
@@ -2447,9 +1927,7 @@ function isQuestion(q){
         "should ",
         "explain ",
         "define ",
-        "tell me about ",
-        "find ",
-        "solve "
+        "tell me about "
     ];
 
     return starters.some(
@@ -2491,9 +1969,7 @@ async function onlineSearch(question){
         const response =
             await fetch(url);
 
-        if(!response.ok){
-            return null;
-        }
+        if(!response.ok) return null;
 
         const data =
             await response.json();
@@ -2508,18 +1984,14 @@ async function onlineSearch(question){
         const pages =
             Object.values(data.query.pages);
 
-        if(!pages.length){
-            return null;
-        }
+        if(!pages.length) return null;
 
         const words =
             question
             .toLowerCase()
             .replace(/[^\w\s]/g,"")
             .split(/\s+/)
-            .filter(
-                word => word.length > 3
-            );
+            .filter(word => word.length > 3);
 
         let best = null;
         let bestScore = 0;
@@ -2562,14 +2034,12 @@ async function onlineSearch(question){
         let answer =
             (best.extract || "").trim();
 
-        if(!answer){
-            return null;
-        }
+        if(!answer) return null;
 
-        if(answer.length > 1200){
+        if(answer.length > 900){
 
             answer =
-                answer.substring(0,1200) +
+                answer.substring(0,900) +
                 "...";
         }
 
@@ -2577,10 +2047,7 @@ async function onlineSearch(question){
 
     }catch(error){
 
-        console.log(
-            "Search error:",
-            error
-        );
+        console.log("Search error:",error);
 
         return null;
     }
@@ -2603,15 +2070,12 @@ async function getResponse(question){
        SAY COMMAND
     */
 
-    const sayText =
-        extractSayCommand(question);
+    const sayCommand =
+        handleSayCommand(question);
 
-    if(sayText){
+    if(sayCommand !== null){
 
-        return {
-            text:sayText,
-            speakText:sayText
-        };
+        return sayCommand;
     }
 
 
@@ -2619,18 +2083,12 @@ async function getResponse(question){
        ROAST COMMAND
     */
 
-    const roastName =
-        extractRoastCommand(question);
+    const roastCommand =
+        handleRoastCommand(question);
 
-    if(roastName){
+    if(roastCommand !== null){
 
-        const roast =
-            roastPerson(roastName);
-
-        return {
-            text:roast,
-            speakText:roast
-        };
+        return roastCommand;
     }
 
 
@@ -2639,6 +2097,7 @@ async function getResponse(question){
     */
 
     if(isBrainRot(q)){
+
         return brainRotReply();
     }
 
@@ -2648,6 +2107,7 @@ async function getResponse(question){
     */
 
     if(isGoofyQuestion(q)){
+
         return goofyReply();
     }
 
@@ -2657,6 +2117,7 @@ async function getResponse(question){
     */
 
     if(q === "combat mode"){
+
         startCombat();
         return null;
     }
@@ -2666,37 +2127,58 @@ async function getResponse(question){
         q === "exit combat mode" ||
         q === "end combat mode"
     ){
+
         stopCombat();
         return null;
     }
 
 
     /*
-       ADVANCED ALGEBRA
+       MULTIPLE CHOICE
     */
 
-    const algebra =
-        algebraResponse(question);
+    const multipleChoice =
+        answerMultipleChoice(question);
 
-    if(algebra){
-        return algebra;
+    if(multipleChoice){
+
+        return multipleChoice;
     }
 
 
     /*
-       UNIT CONVERSION
+       LINEAR MATH
     */
 
-    const conversion =
-        conversionResponse(question);
+    const slopeIntercept =
+        solveSlopeIntercept(question);
 
-    if(conversion){
-        return conversion;
+    if(slopeIntercept){
+
+        return slopeIntercept;
+    }
+
+
+    const twoPoints =
+        solveTwoPoints(question);
+
+    if(twoPoints){
+
+        return twoPoints;
+    }
+
+
+    const pointSlope =
+        solvePointSlope(question);
+
+    if(pointSlope){
+
+        return pointSlope;
     }
 
 
     /*
-       BASIC MATH
+       NORMAL MATH
     */
 
     const math =
@@ -2716,24 +2198,26 @@ async function getResponse(question){
         findKnowledge(q);
 
     if(known){
+
         return known;
     }
 
 
     /*
-       NORMAL CHAT
+       LOCAL CONVERSATION
     */
 
     const local =
         localResponse(q);
 
     if(local){
+
         return local;
     }
 
 
     /*
-       REAL QUESTIONS
+       ONLINE QUESTIONS
     */
 
     if(isQuestion(q)){
@@ -2742,6 +2226,7 @@ async function getResponse(question){
             await onlineSearch(question);
 
         if(result){
+
             return result;
         }
 
@@ -2750,7 +2235,7 @@ async function getResponse(question){
 
 
     /*
-       CASUAL
+       CASUAL CHAT
     */
 
     const casual = [
@@ -2774,9 +2259,7 @@ async function getResponse(question){
     ];
 
     return casual[
-        Math.floor(
-            Math.random() * casual.length
-        )
+        Math.floor(Math.random()*casual.length)
     ];
 }
 
@@ -2787,16 +2270,12 @@ async function getResponse(question){
 
 async function sendMessage(){
 
-    if(processing){
-        return;
-    }
+    if(processing) return;
 
     const question =
         input.value.trim();
 
-    if(!question){
-        return;
-    }
+    if(!question) return;
 
     processing = true;
 
@@ -2818,31 +2297,14 @@ async function sendMessage(){
 
         if(response){
 
-            let text = response;
-            let voiceText = response;
-
-            if(
-                typeof response === "object"
-            ){
-
-                text =
-                    response.text;
-
-                voiceText =
-                    response.speakText ||
-                    response.text;
-            }
-
             memory.lastAnswer =
-                text;
+                response;
 
             addMessage(
-                text,
+                response,
                 "jarvis",
-                false
+                true
             );
-
-            speak(voiceText);
         }
 
     }catch(error){
@@ -2861,39 +2323,28 @@ async function sendMessage(){
 
     processing = false;
 
-    setTimeout(
-        () => {
+    setTimeout(() => {
 
-            try{
+        try{
 
-                input.focus({
-                    preventScroll:true
-                });
+            input.focus({
+                preventScroll:true
+            });
 
-            }catch{
+        }catch{
 
-                input.focus();
-            }
+            input.focus();
+        }
 
-        },
-        50
-    );
+    },50);
 }
 
-
-/* =====================================================
-   BUTTON
-===================================================== */
 
 send.addEventListener(
     "click",
     sendMessage
 );
 
-
-/* =====================================================
-   ENTER
-===================================================== */
 
 input.addEventListener(
     "keydown",
@@ -2930,104 +2381,98 @@ if(SpeechRecognition){
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
+    recognition.onstart = () => {
 
-    recognition.onstart =
-        () => {
+        listening = true;
 
-            listening = true;
+        mic.classList.add("listening");
 
-            mic.classList.add("listening");
+        mic.textContent = "⏹️";
 
-            mic.textContent = "⏹️";
-
-            statusText.textContent =
-                combatMode
-                ? "COMBAT • LISTENING"
-                : "LISTENING...";
-        };
+        statusText.textContent =
+            combatMode
+            ? "COMBAT • LISTENING"
+            : "LISTENING...";
+    };
 
 
-    recognition.onresult =
-        event => {
+    recognition.onresult = event => {
 
-            try{
+        try{
 
-                const result =
-                    event.results[0][0];
+            const result =
+                event.results[0][0];
 
-                if(!result){
-                    return;
-                }
+            if(!result) return;
 
-                const text =
-                    result.transcript.trim();
+            const text =
+                result.transcript.trim();
 
-                if(text){
+            if(text){
 
-                    input.value =
-                        text;
+                input.value = text;
 
-                    stopListening();
+                stopListening();
 
-                    sendMessage();
-                }
-
-            }catch(error){
-
-                console.log(
-                    "Speech result error:",
-                    error
-                );
-            }
-        };
-
-
-    recognition.onerror =
-        event => {
-
-            stopListening();
-
-            let message =
-                "I couldn't access the microphone.";
-
-            if(
-                event.error === "not-allowed" ||
-                event.error === "service-not-allowed"
-            ){
-
-                message =
-                    "Microphone access is blocked. Allow microphone access for this website and try again.";
+                sendMessage();
             }
 
-            else if(
-                event.error === "no-speech"
-            ){
+        }catch(error){
 
-                message =
-                    "I didn't hear anything. Tap the microphone and speak again.";
-            }
-
-            else if(
-                event.error === "audio-capture"
-            ){
-
-                message =
-                    "I couldn't access an available microphone.";
-            }
-
-            addMessage(
-                message,
-                "jarvis",
-                true
+            console.log(
+                "Speech result error:",
+                error
             );
-        };
+        }
+    };
 
 
-    recognition.onend =
-        () => {
+    recognition.onerror = event => {
 
-            stopListening();
-        };
+        stopListening();
+
+        let message =
+            "I couldn't access the microphone.";
+
+        if(
+            event.error === "not-allowed" ||
+            event.error === "service-not-allowed"
+        ){
+
+            message =
+                "Microphone access is blocked. Allow microphone access for this website and try again.";
+        }
+
+        else if(event.error === "no-speech"){
+
+            message =
+                "I didn't hear anything. Tap the microphone and speak again.";
+        }
+
+        else if(event.error === "audio-capture"){
+
+            message =
+                "I couldn't access an available microphone.";
+        }
+
+        else if(event.error === "network"){
+
+            message =
+                "The browser's speech-recognition service is unavailable right now.";
+        }
+
+        addMessage(
+            message,
+            "jarvis",
+            true
+        );
+    };
+
+
+    recognition.onend = () => {
+
+        stopListening();
+    };
 
 
     mic.addEventListener(
@@ -3066,7 +2511,7 @@ if(SpeechRecognition){
         () => {
 
             addMessage(
-                "This browser does not provide speech recognition to this webpage. The text interface is still operational.",
+                "This browser does not provide speech recognition to this webpage. The text interface is still fully operational.",
                 "jarvis",
                 true
             );
@@ -3095,7 +2540,7 @@ function stopListening(){
 ===================================================== */
 
 addMessage(
-    "Good day. J.A.R.V.I.S. systems are online. Algebra, linear equations, conversions, voice commands, and knowledge systems are ready. How may I assist you?",
+    "Good day. J.A.R.V.I.S. systems are online. How may I assist you?",
     "jarvis",
     true
 );
