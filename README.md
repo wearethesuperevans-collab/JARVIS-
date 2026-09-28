@@ -8,6 +8,7 @@
 <title>J.A.R.V.I.S.</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
@@ -32,22 +33,203 @@ body{
     position:fixed;
     inset:0;
     overflow:hidden;
+
     background:
-        radial-gradient(circle at 50% 40%,rgba(0,180,255,.12),transparent 45%),
-        linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(0,180,255,.12),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(0,234,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,234,255,.035) 1px,
+            transparent 1px
+        ),
         #000;
-    background-size:auto,28px 28px,28px 28px,auto;
+
+    background-size:
+        auto,
+        28px 28px,
+        28px 28px,
+        auto;
+
     transition:.4s;
 }
 
+/* =========================
+   COMBAT MODE
+========================= */
+
 #app.combat{
     color:#ff3030;
+
     background:
-        radial-gradient(circle at 50% 40%,rgba(255,0,0,.15),transparent 45%),
-        linear-gradient(rgba(255,0,0,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,0,0,.035) 1px,transparent 1px),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,0,0,.15),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(255,0,0,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,0,0,.035) 1px,
+            transparent 1px
+        ),
         #000;
+}
+
+/* =========================
+   COOL MODE
+========================= */
+
+#app.cool{
+    color:#ff9d00;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,145,0,.16),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(255,157,0,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,157,0,.035) 1px,
+            transparent 1px
+        ),
+        #000;
+}
+
+#app.cool .header{
+    border-bottom-color:
+        rgba(255,157,0,.5);
+}
+
+#app.cool .logo{
+    color:#ff9d00;
+
+    text-shadow:
+        0 0 8px #ff9d00,
+        0 0 20px rgba(255,157,0,.7);
+}
+
+#app.cool .jarvis{
+    border-left-color:#ff9d00;
+
+    background:
+        rgba(255,145,0,.08);
+}
+
+#app.cool .ring{
+    border-color:
+        rgba(255,157,0,.4);
+}
+
+#app.cool .r1{
+    border-top-color:#ff9d00;
+}
+
+#app.cool .r2{
+    border-right-color:#ff7300;
+}
+
+#app.cool .r3{
+    border-bottom-color:#ffc400;
+}
+
+#app.cool .orb{
+    background:
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #ffe0aa 15%,
+            #ff9d00 45%,
+            #ff5e00 70%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 15px #ff9d00,
+        0 0 40px #ff9d00,
+        0 0 75px rgba(255,120,0,.8);
+}
+
+#app.cool .controls{
+    border-top-color:
+        rgba(255,157,0,.5);
+}
+
+#app.cool #input{
+    border-color:#ff9d00;
+}
+
+#app.cool #input:focus{
+    border-color:#ffb300;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,157,0,.3);
+}
+
+#app.cool #mic,
+#app.cool #send{
+    border-color:#ff9d00;
+    color:#ff9d00;
+}
+
+#app.cool #mic.listening{
+    background:
+        rgba(255,145,0,.3);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,145,0,.7);
+}
+
+/* Combat takes priority over Cool Mode */
+
+#app.combat.cool{
+    color:#ff3030;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,0,0,.15),
+            transparent 45%
+        ),
+        linear-gradient(
+            rgba(255,0,0,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,0,0,.035) 1px,
+            transparent 1px
+        ),
+        #000;
+}
+
+#app.combat.cool .header{
+    border-bottom-color:
+        rgba(255,40,40,.5);
+}
+
+#app.combat.cool .logo{
+    color:#ff3030;
+
+    text-shadow:
+        0 0 8px #ff2020,
+        0 0 20px rgba(255,0,0,.7);
 }
 
 .header{
@@ -55,121 +237,131 @@ body{
     top:0;
     left:0;
     right:0;
+
     height:68px;
-    padding:0 12px;
-    padding-top:env(safe-area-inset-top);
+
+    padding:
+        0 20px;
+
+    padding-top:
+        env(safe-area-inset-top);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:rgba(0,8,12,.96);
-    border-bottom:1px solid rgba(0,234,255,.35);
+
+    background:
+        rgba(0,8,12,.96);
+
+    border-bottom:
+        1px solid rgba(0,234,255,.35);
+
     z-index:100;
+}
+
+.combat .header{
+    border-bottom-color:
+        rgba(255,40,40,.5);
 }
 
 .logo{
     font-size:22px;
     font-weight:bold;
     letter-spacing:4px;
-    text-shadow:0 0 8px #00eaff,0 0 20px rgba(0,234,255,.6);
+
+    text-shadow:
+        0 0 8px #00eaff,
+        0 0 20px rgba(0,234,255,.6);
 }
 
 .combat .logo{
     color:#ff3030;
-    text-shadow:0 0 8px #ff2020,0 0 20px rgba(255,0,0,.7);
+
+    text-shadow:
+        0 0 8px #ff2020,
+        0 0 20px rgba(255,0,0,.7);
 }
 
 .status{
     font-size:10px;
     letter-spacing:2px;
     color:#00ff88;
-    display:flex;
-    align-items:center;
-    gap:5px;
 }
 
 .combat .status{
     color:#ff3030;
 }
 
+.cool .status{
+    color:#ff9d00;
+}
+
+.combat.cool .status{
+    color:#ff3030;
+}
+
 .dot{
+    display:inline-block;
+
     width:7px;
     height:7px;
+
     border-radius:50%;
+
+    margin-right:5px;
+
     background:#00ff88;
-    box-shadow:0 0 10px #00ff88;
+
+    box-shadow:
+        0 0 10px #00ff88;
 }
 
 .combat .dot{
     background:#ff3030;
-    box-shadow:0 0 10px #ff3030;
+
+    box-shadow:
+        0 0 10px #ff3030;
 }
 
-#commandsButton{
-    margin-left:auto;
-    margin-right:12px;
-    height:34px;
-    padding:0 10px;
-    border:1px solid #00eaff;
-    border-radius:8px;
-    background:rgba(0,234,255,.08);
-    color:#00eaff;
-    font-size:10px;
-    font-weight:bold;
-    letter-spacing:1px;
+.cool .dot{
+    background:#ff9d00;
+
+    box-shadow:
+        0 0 10px #ff9d00;
 }
 
-.combat #commandsButton{
-    border-color:#ff3030;
-    color:#ff3030;
+.combat.cool .dot{
+    background:#ff3030;
+
+    box-shadow:
+        0 0 10px #ff3030;
 }
 
-#commandPanel{
-    position:absolute;
-    top:68px;
-    right:10px;
-    width:min(340px,calc(100% - 20px));
-    max-height:70vh;
-    overflow:auto;
-    padding:15px;
-    background:rgba(0,10,15,.98);
-    border:1px solid rgba(0,234,255,.55);
-    border-radius:12px;
-    z-index:1000;
-    display:none;
-    box-shadow:0 0 30px rgba(0,234,255,.15);
-}
-
-#commandPanel.show{
-    display:block;
-}
-
-.commandTitle{
-    font-weight:bold;
-    letter-spacing:2px;
-    margin-bottom:12px;
-}
-
-.commandItem{
-    padding:8px 0;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    color:#ddd;
-    font-size:13px;
-    line-height:1.4;
-}
+/* =========================
+   MAIN
+========================= */
 
 .main{
     position:absolute;
+
     top:68px;
     left:0;
     right:0;
     bottom:0;
+
     display:flex;
     flex-direction:column;
+
     min-height:0;
 }
 
+/* =========================
+   ARC REACTOR
+========================= */
+
 .coreArea{
     flex:0 0 225px;
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -177,97 +369,187 @@ body{
 
 .core{
     position:relative;
+
     width:165px;
     height:165px;
 }
 
 .ring{
     position:absolute;
+
     inset:0;
-    border:2px solid rgba(0,234,255,.4);
+
+    border:
+        2px solid
+        rgba(0,234,255,.4);
+
     border-radius:50%;
 }
 
 .r1{
     border-top-color:#00eaff;
-    animation:spin 8s linear infinite;
+
+    animation:
+        spin 8s linear infinite;
 }
 
 .r2{
     inset:20px;
+
     border-right-color:#008cff;
-    animation:spinBack 5s linear infinite;
+
+    animation:
+        spinBack 5s linear infinite;
 }
 
 .r3{
     inset:42px;
+
     border-bottom-color:#00ffff;
-    animation:spin 3.5s linear infinite;
+
+    animation:
+        spin 3.5s linear infinite;
 }
 
 .combat .ring{
-    border-color:rgba(255,40,40,.4);
+    border-color:
+        rgba(255,40,40,.4);
 }
 
-.combat .r1{border-top-color:#ff2020}
-.combat .r2{border-right-color:#ff4040}
-.combat .r3{border-bottom-color:#ff0000}
+.combat .r1{
+    border-top-color:#ff2020;
+}
+
+.combat .r2{
+    border-right-color:#ff4040;
+}
+
+.combat .r3{
+    border-bottom-color:#ff0000;
+}
 
 .orb{
     position:absolute;
+
     width:52px;
     height:52px;
+
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%);
+
+    transform:
+        translate(-50%,-50%);
+
     border-radius:50%;
-    background:radial-gradient(circle,#fff 0%,#aaffff 15%,#00eaff 45%,#007cff 70%,transparent 72%);
-    box-shadow:0 0 15px #00eaff,0 0 40px #00eaff,0 0 75px rgba(0,150,255,.8);
-    animation:pulse 2s ease-in-out infinite;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #aaffff 15%,
+            #00eaff 45%,
+            #007cff 70%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 15px #00eaff,
+        0 0 40px #00eaff,
+        0 0 75px rgba(0,150,255,.8);
+
+    animation:
+        pulse 2s ease-in-out infinite;
 }
 
 .combat .orb{
-    background:radial-gradient(circle,#fff 0%,#ffaaaa 15%,#ff2020 45%,#a00000 70%,transparent 72%);
-    box-shadow:0 0 15px #ff2020,0 0 40px #ff2020,0 0 75px rgba(255,0,0,.8);
+    background:
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #ffaaaa 15%,
+            #ff2020 45%,
+            #a00000 70%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 15px #ff2020,
+        0 0 40px #ff2020,
+        0 0 75px rgba(255,0,0,.8);
 }
 
 .arc{
     position:absolute;
+
     bottom:-25px;
+
     width:100%;
+
     text-align:center;
+
     font-size:9px;
+
     letter-spacing:3px;
+
     opacity:.6;
 }
 
+/* =========================
+   CHAT
+========================= */
+
 .chat{
     flex:1;
+
     min-height:0;
+
     overflow-y:auto;
     overflow-x:hidden;
+
     -webkit-overflow-scrolling:touch;
-    padding:5px 15px 120px;
+
+    overscroll-behavior:contain;
+
+    padding:
+        5px
+        15px
+        120px;
 }
 
 .message{
     max-width:900px;
-    margin:0 auto 12px;
-    padding:12px 15px;
+
+    margin:
+        0 auto 12px;
+
+    padding:
+        12px 15px;
+
     border-radius:10px;
+
     line-height:1.45;
+
     font-size:15px;
+
     overflow-wrap:anywhere;
 }
 
 .jarvis{
-    background:rgba(0,160,220,.08);
-    border-left:2px solid #00eaff;
+    background:
+        rgba(0,160,220,.08);
+
+    border-left:
+        2px solid #00eaff;
 }
 
 .user{
-    background:rgba(255,255,255,.05);
-    border-right:2px solid rgba(255,255,255,.4);
+    background:
+        rgba(255,255,255,.05);
+
+    border-right:
+        2px solid
+        rgba(255,255,255,.4);
+
     color:#fff;
 }
 
@@ -277,59 +559,127 @@ body{
 
 .label{
     display:block;
+
     margin-bottom:5px;
+
     font-size:9px;
+
     letter-spacing:2px;
+
     opacity:.55;
 }
 
+/* =========================
+   INPUT
+========================= */
+
 .controls{
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
+
     min-height:82px;
-    padding:9px 10px max(12px,env(safe-area-inset-bottom));
-    background:rgba(0,8,12,.98);
-    border-top:1px solid rgba(0,234,255,.35);
+
+    padding:
+        9px
+        10px
+        max(12px,env(safe-area-inset-bottom));
+
+    background:
+        rgba(0,8,12,.98);
+
+    border-top:
+        1px solid
+        rgba(0,234,255,.35);
+
     z-index:500;
+}
+
+.combat .controls{
+    border-top-color:
+        rgba(255,40,40,.5);
 }
 
 .inputRow{
     display:flex;
+
     gap:7px;
+
     width:100%;
+
     max-width:900px;
+
     margin:auto;
 }
 
 #input{
     flex:1;
+
     min-width:0;
+
     height:48px;
-    border:1px solid rgba(0,234,255,.55);
+
+    border:
+        1px solid
+        rgba(0,234,255,.55);
+
     border-radius:10px;
+
     outline:none;
-    padding:0 13px;
+
+    padding:
+        0 13px;
+
     background:#03151b;
+
     color:#fff;
+
     font-size:16px;
+
+    -webkit-appearance:none;
 }
 
-#mic,#send{
+#input:focus{
+    border-color:#00eaff;
+
+    box-shadow:
+        0 0 12px
+        rgba(0,234,255,.2);
+}
+
+.combat #input{
+    border-color:#ff3030;
+}
+
+#mic,
+#send{
     height:48px;
-    border:1px solid #00eaff;
+
+    border:
+        1px solid #00eaff;
+
     border-radius:10px;
-    background:rgba(0,234,255,.08);
+
+    background:
+        rgba(0,234,255,.08);
+
     color:#00eaff;
+
     font-weight:bold;
+
     cursor:pointer;
+
+    -webkit-appearance:none;
+
     touch-action:manipulation;
 }
 
 #mic{
     width:48px;
     flex:0 0 48px;
+
     font-size:18px;
 }
 
@@ -345,30 +695,77 @@ body{
 }
 
 #mic.listening{
-    background:rgba(0,234,255,.3);
-    box-shadow:0 0 18px rgba(0,234,255,.7);
+    background:
+        rgba(0,234,255,.3);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,234,255,.7);
 }
 
+.combat #mic.listening{
+    background:
+        rgba(255,0,0,.3);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,0,0,.7);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
 @keyframes spin{
-    to{transform:rotate(360deg)}
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 @keyframes spinBack{
-    to{transform:rotate(-360deg)}
+    to{
+        transform:rotate(-360deg);
+    }
 }
 
 @keyframes pulse{
-    0%,100%{transform:translate(-50%,-50%) scale(.9)}
-    50%{transform:translate(-50%,-50%) scale(1.1)}
+    0%,100%{
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.1);
+    }
 }
 
 @media(max-width:600px){
-    .logo{font-size:17px}
-    .status{font-size:8px}
-    .coreArea{flex-basis:205px}
-    .core{width:145px;height:145px}
-    .message{font-size:14px}
+
+    .logo{
+        font-size:18px;
+    }
+
+    .status{
+        font-size:8px;
+    }
+
+    .coreArea{
+        flex-basis:205px;
+    }
+
+    .core{
+        width:145px;
+        height:145px;
+    }
+
+    .message{
+        font-size:14px;
+    }
 }
+
 </style>
 </head>
 
@@ -378,51 +775,48 @@ body{
 
 <header class="header">
 
-    <div class="logo">J.A.R.V.I.S.</div>
-
-    <button id="commandsButton">COMMANDS</button>
+    <div class="logo">
+        J.A.R.V.I.S.
+    </div>
 
     <div class="status">
+
         <span class="dot"></span>
-        <span id="statusText">SYSTEMS ONLINE</span>
+
+        <span id="statusText">
+            SYSTEMS ONLINE
+        </span>
+
     </div>
 
 </header>
-
-<div id="commandPanel">
-
-    <div class="commandTitle">J.A.R.V.I.S. COMMANDS</div>
-
-    <div class="commandItem">“Combat mode” — activates Combat Mode.</div>
-    <div class="commandItem">“Normal mode” — returns to normal.</div>
-    <div class="commandItem">“J.A.R.V.I.S. say [text]” — makes J.A.R.V.I.S. say exactly what you requested.</div>
-    <div class="commandItem">“Roast [name]” — gives a roast for the person.</div>
-    <div class="commandItem">“Simple: [topic]” or “[topic] simple” — explains the topic simply.</div>
-    <div class="commandItem">“My name is [name]” — remembers your name during the session.</div>
-    <div class="commandItem">“Tell me a joke” — tells a joke.</div>
-    <div class="commandItem">Ask math questions — algebra, equations, slope, percentages and calculations.</div>
-    <div class="commandItem">Ask science questions — biology, chemistry, physics, Earth science and space.</div>
-    <div class="commandItem">Ask Bible questions — verses, people, stories, meanings, context and Christian concepts.</div>
-    <div class="commandItem">Ask history questions — historical events, people and civilizations.</div>
-    <div class="commandItem">Ask normal questions — J.A.R.V.I.S. decides whether online research is useful.</div>
-
-</div>
 
 <main class="main">
 
 <section class="coreArea">
 
     <div class="core">
+
         <div class="ring r1"></div>
+
         <div class="ring r2"></div>
+
         <div class="ring r3"></div>
+
         <div class="orb"></div>
-        <div class="arc">ARC REACTOR</div>
+
+        <div class="arc">
+            ARC REACTOR
+        </div>
+
     </div>
 
 </section>
 
-<section id="chat" class="chat"></section>
+<section
+    id="chat"
+    class="chat">
+</section>
 
 </main>
 
@@ -439,9 +833,17 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button id="mic" type="button">🎙️</button>
+        <button
+            id="mic"
+            type="button">
+            🎙️
+        </button>
 
-        <button id="send" type="button">SEND</button>
+        <button
+            id="send"
+            type="button">
+            SEND
+        </button>
 
     </div>
 
@@ -456,17 +858,30 @@ body{
    ELEMENTS
 ===================================================== */
 
-const app = document.getElementById("app");
-const input = document.getElementById("input");
-const mic = document.getElementById("mic");
-const send = document.getElementById("send");
-const chat = document.getElementById("chat");
-const statusText = document.getElementById("statusText");
-const commandsButton = document.getElementById("commandsButton");
-const commandPanel = document.getElementById("commandPanel");
+const app =
+    document.getElementById("app");
+
+const input =
+    document.getElementById("input");
+
+const mic =
+    document.getElementById("mic");
+
+const send =
+    document.getElementById("send");
+
+const chat =
+    document.getElementById("chat");
+
+const statusText =
+    document.getElementById("statusText");
+
 
 let processing = false;
+
 let combatMode = false;
+
+let coolMode = false;
 
 let memory = {
     name:"",
@@ -476,21 +891,16 @@ let memory = {
 
 
 /* =====================================================
-   COMMAND PANEL
-===================================================== */
-
-commandsButton.addEventListener("click",()=>{
-    commandPanel.classList.toggle("show");
-});
-
-
-/* =====================================================
-   VOICE
+   VOICE OUTPUT
 ===================================================== */
 
 function speak(text){
 
-    if(!("speechSynthesis" in window)) return;
+    if(
+        !("speechSynthesis" in window)
+    ){
+        return;
+    }
 
     try{
 
@@ -499,8 +909,21 @@ function speak(text){
         const voice =
             new SpeechSynthesisUtterance(text);
 
-        voice.rate = .88;
-        voice.pitch = .72;
+        /*
+           Cool Mode sounds slightly more relaxed.
+        */
+
+        if(coolMode && !combatMode){
+
+            voice.rate = .96;
+            voice.pitch = .82;
+
+        }else{
+
+            voice.rate = .88;
+            voice.pitch = .72;
+        }
+
         voice.volume = 1;
 
         const voices =
@@ -515,32 +938,47 @@ function speak(text){
 
         let selected = null;
 
-        for(const name of preferred){
+        for(
+            const name of preferred
+        ){
 
-            selected = voices.find(
-                v =>
-                v.name.toLowerCase()
-                .includes(name.toLowerCase())
-            );
+            selected =
+                voices.find(
+                    v =>
+                    v.name
+                    .toLowerCase()
+                    .includes(
+                        name.toLowerCase()
+                    )
+                );
 
             if(selected) break;
         }
 
         if(!selected){
 
-            selected = voices.find(
-                v =>
-                v.lang &&
-                v.lang.toLowerCase().startsWith("en")
-            );
+            selected =
+                voices.find(
+                    v =>
+                    v.lang &&
+                    v.lang
+                    .toLowerCase()
+                    .startsWith("en")
+                );
         }
 
-        if(selected) voice.voice = selected;
+        if(selected){
+            voice.voice = selected;
+        }
 
         speechSynthesis.speak(voice);
 
     }catch(error){
-        console.log("Voice error:",error);
+
+        console.log(
+            "Voice error:",
+            error
+        );
     }
 }
 
@@ -549,15 +987,25 @@ function speak(text){
    CHAT
 ===================================================== */
 
-function addMessage(text,who="jarvis",voice=false){
+function addMessage(
+    text,
+    who="jarvis",
+    voice=false
+){
 
-    const box = document.createElement("div");
+    const box =
+        document.createElement("div");
 
     box.className =
         "message " +
-        (who === "user" ? "user" : "jarvis");
+        (
+            who === "user"
+            ? "user"
+            : "jarvis"
+        );
 
-    const label = document.createElement("span");
+    const label =
+        document.createElement("span");
 
     label.className = "label";
 
@@ -566,38 +1014,211 @@ function addMessage(text,who="jarvis",voice=false){
         ? "YOU"
         : "J.A.R.V.I.S.";
 
-    const content = document.createElement("div");
+    const content =
+        document.createElement("div");
 
     content.textContent = text;
 
     box.appendChild(label);
+
     box.appendChild(content);
 
     chat.appendChild(box);
 
-    requestAnimationFrame(()=>{
-        chat.scrollTop = chat.scrollHeight;
-    });
+    requestAnimationFrame(
+        () => {
+            chat.scrollTop =
+                chat.scrollHeight;
+        }
+    );
 
-    if(voice && who === "jarvis"){
+    if(
+        voice &&
+        who === "jarvis"
+    ){
         speak(text);
     }
 }
 
 
 /* =====================================================
-   COMBAT
+   MODE STATUS
+===================================================== */
+
+function updateStatus(){
+
+    if(combatMode){
+
+        statusText.textContent =
+            coolMode
+            ? "COMBAT • COOL"
+            : "COMBAT MODE";
+
+        return;
+    }
+
+    if(coolMode){
+
+        statusText.textContent =
+            "COOL MODE";
+
+        return;
+    }
+
+    statusText.textContent =
+        "SYSTEMS ONLINE";
+}
+
+
+/* =====================================================
+   COOL MODE
+===================================================== */
+
+function startCoolMode(){
+
+    if(coolMode){
+
+        addMessage(
+            "Cool Mode is already on, bro. 😎",
+            "jarvis",
+            true
+        );
+
+        return;
+    }
+
+    coolMode = true;
+
+    app.classList.add("cool");
+
+    updateStatus();
+
+    addMessage(
+        "Aight, Cool Mode activated. We chillin' now. 😎",
+        "jarvis",
+        true
+    );
+}
+
+
+function stopCoolMode(){
+
+    if(!coolMode){
+
+        addMessage(
+            "Cool Mode is already off.",
+            "jarvis",
+            true
+        );
+
+        return;
+    }
+
+    coolMode = false;
+
+    app.classList.remove("cool");
+
+    updateStatus();
+
+    addMessage(
+        "Back to normal. Systems are locked in.",
+        "jarvis",
+        true
+    );
+}
+
+
+/* =====================================================
+   COOL MODE RESPONSES
+===================================================== */
+
+const coolReplies = [
+
+    "Yeah bro, I'm listening.",
+
+    "Bet. What's up?",
+
+    "Say less.",
+
+    "I'm locked in. Go ahead.",
+
+    "Aight, let's see what we're working with.",
+
+    "Yeah, I got you.",
+
+    "For sure.",
+
+    "We're good. Keep going.",
+
+    "I hear you, bro.",
+
+    "Alright, I'm with you.",
+
+    "Bet, let's figure it out.",
+
+    "Yeah, that's easy. Lemme handle it."
+
+];
+
+
+const coolQuestionReplies = [
+
+    "Bro, I honestly don't know that one. Lemme find out.",
+
+    "Yeahhh... I don't got that one off the top. We gotta find out.",
+
+    "Not gonna lie, I don't know. Let's look into it.",
+
+    "I could guess, but that'd be cap. Let's find the actual answer.",
+
+    "Idk bro 😭. We need to check that one.",
+
+    "That's one of those 'lemme find out real quick' questions.",
+
+    "I'm not about to make something up. Let's find the real answer.",
+
+    "Yeah, I'm drawing a blank on that one. Let's figure it out."
+
+];
+
+
+function coolCasualReply(){
+
+    return coolReplies[
+        Math.floor(
+            Math.random() *
+            coolReplies.length
+        )
+    ];
+}
+
+
+function coolUnknownReply(){
+
+    return coolQuestionReplies[
+        Math.floor(
+            Math.random() *
+            coolQuestionReplies.length
+        )
+    ];
+}
+
+
+/* =====================================================
+   COMBAT MODE
 ===================================================== */
 
 function startCombat(){
 
-    if(combatMode) return;
+    if(combatMode){
+        return;
+    }
 
     combatMode = true;
 
     app.classList.add("combat");
 
-    statusText.textContent = "COMBAT MODE";
+    updateStatus();
 
     addMessage(
         "Combat initiated.",
@@ -609,13 +1230,15 @@ function startCombat(){
 
 function stopCombat(){
 
-    if(!combatMode) return;
+    if(!combatMode){
+        return;
+    }
 
     combatMode = false;
 
     app.classList.remove("combat");
 
-    statusText.textContent = "SYSTEMS ONLINE";
+    updateStatus();
 
     addMessage(
         "Combat mode terminated. Systems returning to normal.",
@@ -626,264 +1249,199 @@ function stopCombat(){
 
 
 /* =====================================================
-   BRAIN ROT
+   BRAIN ROT FILTER
 ===================================================== */
 
 const brainRotTerms = [
+
     "skibidi",
     "skibidi toilet",
     "tung tung tung sahur",
+    "tung tung tung",
     "sigma",
     "what the sigma",
+    "sigma boy",
+    "sigma male",
+    "sigma girl",
     "rizz",
+    "unspoken rizz",
     "gyatt",
+    "gyat",
     "fanum tax",
     "ohio",
+    "only in ohio",
     "mewing",
     "looksmax",
+    "looksmaxxing",
+    "mog",
     "mogging",
     "aura points",
     "negative aura",
     "brainrot",
+    "brain rot",
     "tralalero tralala",
     "bombardiro crocodilo",
+    "bombombini gusini",
     "brr brr patapim",
     "chimpanzini bananini",
+    "lirili larila",
+    "cappuccino assassino",
+    "ballerina cappuccina",
+    "trippi troppi",
     "goofy ahh",
     "among us"
 ];
 
+
 function isBrainRot(text){
 
     const clean =
-        text.toLowerCase()
-        .replace(/[^\w\s]/g," ")
-        .replace(/\s+/g," ")
+        text
+        .toLowerCase()
+        .replace(
+            /[^\w\s]/g,
+            " "
+        )
+        .replace(
+            /\s+/g,
+            " "
+        )
         .trim();
 
     return brainRotTerms.some(
-        term => clean.includes(term)
+        term =>
+        clean.includes(term)
     );
 }
+
 
 function brainRotReply(){
 
     const replies = [
+
         "Wash your brain, son. 😭",
+
         "J.A.R.V.I.S. detects dangerous levels of brain rot. Wash your brain, son. 😭",
+
         "Sir... please step away from the brain rot. 😭",
+
         "My processors were not designed for this level of brain rot. 😭",
+
         "Brain-rot levels are exceeding safe operating limits. 😭"
+
     ];
 
     return replies[
-        Math.floor(Math.random()*replies.length)
+        Math.floor(
+            Math.random() *
+            replies.length
+        )
     ];
 }
 
 
 /* =====================================================
-   GOOFY FILTER
+   GOOFY QUESTIONS
 ===================================================== */
 
 const goofyTerms = [
+
     "poop",
     "pooping",
     "pooped",
     "poopy",
     "doo doo",
     "doodoo",
+    "do do",
+    "do-do",
     "feces",
     "toilet water",
+    "bathroom poop",
+
     "why do humans poop",
     "why do we poop",
     "where does poop go",
     "what is poop",
+    "what happens when you poop",
+
     "can you poop",
     "do ai poop",
     "does ai poop",
     "does jarvis poop",
     "can jarvis poop",
+
+    "if ai is ai",
+    "if an ai is an ai",
     "ai is ai",
-    "ai ai ai"
+    "ai being ai",
+    "what if ai is ai",
+    "is ai an ai",
+    "is an ai ai",
+    "are you ai ai",
+    "are you an ai ai",
+    "what is an ai ai",
+    "what is ai if ai is ai",
+    "if you are ai are you ai",
+    "if ai is artificial intelligence",
+    "is artificial intelligence intelligence",
+    "is ai intelligent because ai is ai",
+    "are you actually ai",
+    "are you really really ai",
+    "are you ai or ai",
+    "can an ai be an ai",
+    "can ai ai",
+    "ai ai ai",
+    "ai ai ai ai",
+    "what does ai mean if ai is ai"
 ];
+
 
 function isGoofyQuestion(text){
 
     const clean =
-        text.toLowerCase()
-        .replace(/[^\w\s?-]/g," ")
-        .replace(/\s+/g," ")
+        text
+        .toLowerCase()
+        .replace(
+            /[^\w\s?-]/g,
+            " "
+        )
+        .replace(
+            /\s+/g,
+            " "
+        )
         .trim();
 
     return goofyTerms.some(
-        term => clean.includes(term)
+        term =>
+        clean.includes(term)
     );
 }
+
 
 function goofyReply(){
 
     const replies = [
+
         "Get off my app, son. 😭",
+
         "Bro... get off my app. 😭",
+
         "Sir, respectfully, get off my app. 😭",
-        "My processors have had enough. Get off my app, son. 😭"
+
+        "J.A.R.V.I.S. is requesting that you get off my app, son. 😭",
+
+        "My processors have had enough. Get off my app, son. 😭",
+
+        "That question just lowered my IQ. Get off my app, son. 😭"
+
     ];
 
     return replies[
-        Math.floor(Math.random()*replies.length)
+        Math.floor(
+            Math.random() *
+            replies.length
+        )
     ];
-}
-
-
-/* =====================================================
-   ROAST ENGINE
-===================================================== */
-
-const normalRoasts = [
-    "{name} walks into a room and somehow the IQ drops.",
-    "{name} has the confidence of a genius and the decision-making of a loading screen.",
-    "{name} could lose an argument with a search bar.",
-    "{name} brings absolutely nothing to the table except confusion.",
-    "{name} is proof that confidence and competence are two completely different things.",
-    "{name} has a special talent for making simple things unnecessarily complicated.",
-    "{name} talks like they have the answers, then immediately proves they don't.",
-    "{name} is the human version of a typo.",
-    "{name} could make a GPS question their own directions.",
-    "{name} has enough bad ideas to keep everyone entertained for years.",
-    "{name} doesn't need an enemy. Their own decisions are doing enough damage.",
-    "{name} has mastered the art of being confidently wrong.",
-    "{name} could turn a five-minute task into a three-hour disaster.",
-    "{name} is somehow always involved and somehow never useful.",
-    "{name} has the timing of an alarm clock nobody asked for.",
-    "{name} has the rare ability to make silence feel productive.",
-    "{name} is what happens when a bad idea refuses to stay an idea.",
-    "{name} could probably get lost in a straight hallway.",
-    "{name} has been buffering since birth.",
-    "{name} makes common sense look uncommon.",
-    "{name} is the reason instructions have pictures.",
-    "{name} could overthink a yes-or-no question.",
-    "{name} has never met a bad decision they didn't want to make.",
-    "{name} is running on confidence and absolutely no evidence.",
-    "{name} could trip over a wireless connection.",
-    "{name} has main-character confidence with background-character decisions.",
-    "{name} is somehow both the problem and the plot twist.",
-    "{name} makes chaos look organized.",
-    "{name} could make a calculator ask for help."
-];
-
-const combatRoasts = [
-    "{name} is not intimidating. They're just loud with bad decisions.",
-    "{name} has absolutely nothing behind that attitude.",
-    "{name} talks like a threat and performs like a warning label.",
-    "{name} walked in looking for a fight and forgot to bring a reason.",
-    "{name} has the confidence of someone who has never been corrected.",
-    "{name} is all attitude and no follow-through.",
-    "{name} tries to intimidate people and somehow ends up embarrassing themselves instead.",
-    "{name} doesn't command respect. They demand attention and hope nobody notices the difference.",
-    "{name} has a mouth full of confidence and a brain full of excuses.",
-    "{name} keeps acting dangerous like somebody forgot to tell them they're not.",
-    "{name} is what happens when ego gets promoted without earning it.",
-    "{name} wants everyone to think they're tough. That's adorable.",
-    "{name} talks like a final boss and behaves like an optional tutorial.",
-    "{name} has more attitude than ability.",
-    "{name} came looking for dominance and found a reality check.",
-    "{name} is not a threat. They're a distraction.",
-    "{name} keeps confusing aggression with strength.",
-    "{name} has the personality of an argument nobody wanted.",
-    "{name} thinks being disrespectful makes them powerful. It doesn't.",
-    "{name} is trying way too hard to look dangerous.",
-    "{name} brings hostility where personality should be.",
-    "{name} has mistaken volume for authority.",
-    "{name} is not built for the energy they're trying to give off.",
-    "{name} keeps talking like they're untouchable. Reality disagrees.",
-    "{name} is the kind of person who starts problems and then acts surprised when nobody respects them.",
-    "{name} has an ego doing all the heavy lifting.",
-    "{name} wants to be feared so badly that it's almost embarrassing.",
-    "{name} has the intimidation factor of an angry house cat.",
-    "{name} keeps escalating because they have nothing intelligent left to say.",
-    "{name} should probably stop trying to prove something they clearly can't."
-];
-
-function roastPerson(name){
-
-    name = name.trim();
-
-    if(!name){
-        return "You need to give me a name first.";
-    }
-
-    const list =
-        combatMode
-        ? combatRoasts
-        : normalRoasts;
-
-    const template =
-        list[Math.floor(Math.random()*list.length)];
-
-    return template.replace(
-        /\{name\}/g,
-        name
-    );
-}
-
-
-/* =====================================================
-   "JARVIS SAY"
-===================================================== */
-
-function isSayCommand(q){
-
-    return (
-        q.startsWith("jarvis say ") ||
-        q.startsWith("j.a.r.v.i.s. say ") ||
-        q.startsWith("jarvis, say ") ||
-        q.startsWith("j.a.r.v.i.s., say ")
-    );
-}
-
-function getSayText(q){
-
-    const prefixes = [
-        "j.a.r.v.i.s. say ",
-        "j.a.r.v.i.s., say ",
-        "jarvis say ",
-        "jarvis, say "
-    ];
-
-    for(const prefix of prefixes){
-
-        if(q.startsWith(prefix)){
-            return q.slice(prefix.length).trim();
-        }
-    }
-
-    return "";
-}
-
-
-/* =====================================================
-   SIMPLE EXPLANATION
-===================================================== */
-
-function wantsSimple(q){
-
-    return (
-        q.endsWith(" simple") ||
-        q.startsWith("simple ") ||
-        q.includes(" explain simply") ||
-        q.includes("in simple terms")
-    );
-}
-
-function removeSimpleRequest(q){
-
-    return q
-        .replace(/^simple\s+/i,"")
-        .replace(/\s+simple$/i,"")
-        .replace(/\s+in simple terms$/i,"")
-        .replace(/\s+explain simply$/i,"")
-        .trim();
 }
 
 
@@ -893,32 +1451,98 @@ function removeSimpleRequest(q){
 
 function solveMath(text){
 
-    let expression = text.toLowerCase();
-
-    expression = expression.replace(/what is/g,"");
-    expression = expression.replace(/calculate/g,"");
-    expression = expression.replace(/solve/g,"");
-
-    expression = expression.replace(/multiplied by/g,"*");
-    expression = expression.replace(/divided by/g,"/");
-    expression = expression.replace(/plus/g,"+");
-    expression = expression.replace(/minus/g,"-");
-    expression = expression.replace(/times/g,"*");
-    expression = expression.replace(/over/g,"/");
-
-    expression = expression.replace(/×/g,"*");
-    expression = expression.replace(/÷/g,"/");
+    let expression =
+        text.toLowerCase();
 
     expression =
-        expression
-        .replace(/[^0-9+\-*/().%\s]/g,"")
+        expression.replace(
+            /what is/g,
+            ""
+        );
+
+    expression =
+        expression.replace(
+            /calculate/g,
+            ""
+        );
+
+    expression =
+        expression.replace(
+            /solve/g,
+            ""
+        );
+
+    expression =
+        expression.replace(
+            /multiplied by/g,
+            "*"
+        );
+
+    expression =
+        expression.replace(
+            /divided by/g,
+            "/"
+        );
+
+    expression =
+        expression.replace(
+            /plus/g,
+            "+"
+        );
+
+    expression =
+        expression.replace(
+            /minus/g,
+            "-"
+        );
+
+    expression =
+        expression.replace(
+            /times/g,
+            "*"
+        );
+
+    expression =
+        expression.replace(
+            /over/g,
+            "/"
+        );
+
+    expression =
+        expression.replace(
+            /×/g,
+            "*"
+        );
+
+    expression =
+        expression.replace(
+            /÷/g,
+            "/"
+        );
+
+    expression =
+        expression.replace(
+            /[^0-9+\-*/().%\s]/g,
+            ""
+        )
         .trim();
 
-    if(!expression) return null;
+    if(!expression){
+        return null;
+    }
 
-    if(!/[+\-*/%]/.test(expression)) return null;
+    if(
+        !/[+\-*/%]/.test(
+            expression
+        )
+    ){
+        return null;
+    }
 
-    if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
+    if(
+        !/^[0-9+\-*/().%\s]+$/
+        .test(expression)
+    ){
         return null;
     }
 
@@ -926,13 +1550,19 @@ function solveMath(text){
 
         const answer =
             Function(
-                '"use strict";return ('+
-                expression+
+                '"use strict";return (' +
+                expression +
                 ')'
             )();
 
         if(
-            typeof answer !== "number" ||
+            typeof answer !==
+            "number"
+        ){
+            return null;
+        }
+
+        if(
             !Number.isFinite(answer)
         ){
             return null;
@@ -940,375 +1570,103 @@ function solveMath(text){
 
         return answer;
 
-    }catch{
+    }catch(error){
+
         return null;
     }
 }
 
 
 /* =====================================================
-   ALGEBRA / LINE EQUATIONS
-===================================================== */
-
-function algebraResponse(q){
-
-    let m;
-
-    m = q.match(
-        /slope\s*(?:of|=)?\s*(-?\d+(?:\.\d+)?)/
-    );
-
-    if(m){
-        return `The slope is ${m[1]}.`;
-    }
-
-    m = q.match(
-        /y\s*=\s*(-?\d+(?:\.\d+)?)\s*x\s*([+-]\s*\d+(?:\.\d+)?)?/
-    );
-
-    if(m && q.includes("slope")){
-
-        const slope = m[1];
-
-        const intercept =
-            m[2]
-            ? m[2].replace(/\s/g,"")
-            : "0";
-
-        return `In y = mx + b, the slope m is ${slope} and the y-intercept b is ${intercept}.`;
-    }
-
-    const points =
-        q.match(
-            /(?:points?|through)\s*\(?\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)?\s*(?:and|to)\s*\(?\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)?/
-        );
-
-    if(points){
-
-        const x1 = Number(points[1]);
-        const y1 = Number(points[2]);
-        const x2 = Number(points[3]);
-        const y2 = Number(points[4]);
-
-        if(x2 === x1){
-            return "The line is vertical, so its slope is undefined.";
-        }
-
-        const slope =
-            (y2-y1)/(x2-x1);
-
-        const b =
-            y1-slope*x1;
-
-        return `Using the two points, the slope is ${slope} and the slope-intercept equation is y = ${slope}x ${b >= 0 ? "+" : "-"} ${Math.abs(b)}.`;
-    }
-
-    return null;
-}
-
-
-/* =====================================================
-   SCIENCE KNOWLEDGE
-===================================================== */
-
-const scienceKnowledge = {
-
-    photosynthesis:
-        "Photosynthesis is the process plants and other organisms use to convert light energy into chemical energy. In basic terms, carbon dioxide and water are used to produce glucose, while oxygen is released.",
-
-    "cellular respiration":
-        "Cellular respiration is how cells release usable energy from food. In aerobic respiration, glucose is broken down using oxygen and produces ATP, carbon dioxide, and water.",
-
-    dna:
-        "DNA is the molecule that stores hereditary genetic information. Its four main bases are adenine, thymine, cytosine, and guanine.",
-
-    atom:
-        "An atom is a basic unit of matter. It contains a nucleus with protons and usually neutrons, with electrons occupying regions around the nucleus.",
-
-    gravity:
-        "Gravity is an interaction associated with mass and energy. Near Earth's surface, it causes objects to accelerate downward at about 9.8 meters per second squared.",
-
-    evolution:
-        "Evolution is the change in inherited characteristics of populations across generations. Natural selection is one important mechanism that can produce evolutionary change.",
-
-    "speed of light":
-        "The speed of light in a vacuum is exactly 299,792,458 meters per second.",
-
-    "newton's first law":
-        "Newton's first law says an object remains at rest or continues moving at constant velocity unless acted on by a net external force.",
-
-    "newton's second law":
-        "Newton's second law relates force, mass, and acceleration: F = ma.",
-
-    "newton's third law":
-        "Newton's third law says forces between interacting objects occur in equal-magnitude and opposite-direction pairs.",
-
-    "periodic table":
-        "The periodic table organizes chemical elements by atomic number and groups elements with related properties.",
-
-    ecosystem:
-        "An ecosystem includes living organisms and the nonliving environment they interact with.",
-
-    "food chain":
-        "A food chain shows how energy and matter move between organisms through feeding relationships.",
-
-    volcano:
-        "A volcano is a geological opening through which magma, gases, and volcanic material can reach Earth's surface.",
-
-    "plate tectonics":
-        "Plate tectonics describes the movement and interaction of large sections of Earth's lithosphere. Their interactions can produce earthquakes, mountains, and volcanoes.",
-
-    "black hole":
-        "A black hole is a region of spacetime where gravity is extremely strong. Its event horizon marks a boundary beyond which escape to the outside is not possible."
-};
-
-
-/* =====================================================
-   GENERAL KNOWLEDGE
+   KNOWLEDGE
 ===================================================== */
 
 const knowledge = {
 
-    earth:
+    "black hole":
+        "A black hole is a region of spacetime where gravity is extremely strong. Beyond its event horizon, nothing can escape to the outside, including light.",
+
+    "earth":
         "Earth is the third planet from the Sun and the only world currently known to support life.",
 
-    sun:
-        "The Sun is the star at the center of our Solar System. It produces energy mainly through nuclear fusion.",
+    "sun":
+        "The Sun is the star at the center of our Solar System. It produces energy primarily through nuclear fusion.",
 
-    moon:
-        "The Moon is Earth's natural satellite. Its gravitational interaction with Earth contributes strongly to ocean tides.",
+    "moon":
+        "The Moon is Earth's natural satellite. Its gravity contributes strongly to ocean tides.",
 
-    mars:
+    "gravity":
+        "Gravity is the interaction associated with mass and energy. In general relativity, gravity is described through the curvature of spacetime.",
+
+    "atom":
+        "An atom is a basic unit of ordinary matter. It contains a nucleus made of protons and neutrons surrounded by electrons.",
+
+    "dna":
+        "DNA stores genetic information. Its structure is a double helix containing the bases A, T, C, and G.",
+
+    "photosynthesis":
+        "Photosynthesis allows plants, algae, and some bacteria to convert light energy into chemical energy.",
+
+    "evolution":
+        "Evolution is the change in inherited characteristics of populations across generations.",
+
+    "mars":
         "Mars is the fourth planet from the Sun. It is a rocky planet with a thin atmosphere dominated by carbon dioxide.",
 
-    jupiter:
-        "Jupiter is the largest planet in our Solar System and is a gas giant.",
+    "jupiter":
+        "Jupiter is the largest planet in our Solar System. It is a gas giant with a powerful magnetic field.",
 
-    saturn:
+    "saturn":
         "Saturn is a gas giant famous for its extensive system of icy rings.",
 
-    venus:
-        "Venus is the second planet from the Sun. Its dense atmosphere creates an extreme greenhouse effect.",
+    "venus":
+        "Venus is the second planet from the Sun. Its dense atmosphere produces an extreme greenhouse effect.",
 
-    mercury:
+    "mercury":
         "Mercury is the smallest planet in the Solar System and the closest planet to the Sun.",
 
     "neutron star":
         "A neutron star is an extremely dense stellar remnant formed from the collapsed core of certain massive stars.",
 
-    chemistry:
-        "Chemistry is the study of matter, its composition, properties, structure, and the changes it undergoes.",
+    "speed of light":
+        "The speed of light in a vacuum is exactly 299,792,458 meters per second.",
 
-    cell:
+    "plate tectonics":
+        "Plate tectonics describes the movement of large pieces of Earth's lithosphere. Their interactions produce earthquakes, mountains, and much volcanic activity.",
+
+    "newton":
+        "Isaac Newton developed foundational laws of motion and universal gravitation and made major contributions to mathematics and optics.",
+
+    "marie curie":
+        "Marie Curie was a physicist and chemist whose research into radioactivity earned Nobel Prizes in Physics and Chemistry.",
+
+    "shakespeare":
+        "William Shakespeare was an English playwright and poet whose works include Hamlet, Macbeth, and Romeo and Juliet.",
+
+    "chemistry":
+        "Chemistry is the study of matter, its properties, composition, structure, and the changes it undergoes.",
+
+    "cell":
         "A cell is the basic structural and functional unit of living organisms.",
 
-    ocean:
-        "Earth's oceans cover roughly 71 percent of the planet's surface."
+    "volcano":
+        "A volcano is an opening in Earth's crust through which magma, gases, and volcanic material can reach the surface.",
+
+    "ocean":
+        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water."
 };
 
-
-/* =====================================================
-   BIBLE KNOWLEDGE
-===================================================== */
-
-const bibleKnowledge = {
-
-    bible:
-        "The Bible is a collection of writings that form the central sacred scriptures of Christianity. It contains the Old Testament and New Testament.",
-
-    "old testament":
-        "The Old Testament contains writings that form the first major section of the Christian Bible. It includes historical narratives, poetry, wisdom literature, and prophetic writings.",
-
-    "new testament":
-        "The New Testament contains the four Gospels, Acts, letters, and Revelation. It focuses especially on Jesus, the early Christian movement, and Christian teaching.",
-
-    genesis:
-        "Genesis is the first book of the Bible. It contains creation accounts, the fall of humanity, the flood, and stories involving figures such as Abraham, Isaac, Jacob, and Joseph.",
-
-    exodus:
-        "Exodus tells the story of Israel's deliverance from Egypt, Moses, the covenant at Sinai, and the construction of the tabernacle.",
-
-    psalms:
-        "Psalms is a collection of songs, prayers, and poems that express praise, grief, thanksgiving, trust, repentance, and hope.",
-
-    proverbs:
-        "Proverbs contains wisdom sayings dealing with subjects such as wisdom, discipline, speech, relationships, work, justice, and the fear of the Lord.",
-
-    "john 3:16":
-        "John 3:16 is a famous Christian verse about God's love for the world and the promise of eternal life through belief in His Son. In simple terms, it emphasizes God's love and salvation through Jesus.",
-
-    "romans 8:28":
-        "Romans 8:28 teaches that God works through circumstances for the good of those who love Him and are called according to His purpose. It is commonly understood as an encouragement to trust God's purpose even during difficult circumstances.",
-
-    "psalm 23":
-        "Psalm 23 presents God as a shepherd who guides, protects, provides for, and stays with His people. The central idea is trust in God's care.",
-
-    "matthew 5":
-        "Matthew 5 begins Jesus' Sermon on the Mount. It includes the Beatitudes and teachings about righteousness, anger, love, prayer, and how followers of God should live.",
-
-    "1 corinthians 13":
-        "1 Corinthians 13 is a famous passage about love. It emphasizes that genuine love is patient, kind, humble, and enduring, and places love above spiritual gifts.",
-
-    "galatians 5":
-        "Galatians 5 discusses Christian freedom and contrasts the works of the flesh with the fruit of the Spirit, including love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control.",
-
-    "ephesians 6":
-        "Ephesians 6 includes teaching about the armor of God. It uses the imagery of armor to describe spiritual qualities such as truth, righteousness, faith, salvation, and God's word.",
-
-    "ten commandments":
-        "The Ten Commandments are a set of foundational commands associated with Moses and the covenant at Sinai. They address worship, relationships, honesty, respect, and conduct.",
-
-    trinity:
-        "In mainstream Christianity, the Trinity describes one God understood as Father, Son, and Holy Spirit. Christians use the term to describe God's unity while distinguishing the three persons.",
-
-    salvation:
-        "In Christianity, salvation generally refers to being rescued from sin and restored to relationship with God. Christian traditions differ somewhat in how they explain the details of salvation.",
-
-    repentance:
-        "Repentance generally means turning away from sin and turning toward God. It involves a change in direction rather than merely feeling sorry.",
-
-    forgiveness:
-        "Christian teaching strongly emphasizes forgiveness. It involves releasing personal vengeance and extending mercy, while forgiveness does not necessarily mean ignoring wrongdoing or removing appropriate boundaries.",
-
-    "holy spirit":
-        "The Holy Spirit is the third person of the Trinity in mainstream Christian theology. Christian teaching describes the Spirit as God's presence and as active in guidance, transformation, comfort, and spiritual life.",
-
-    jesus:
-        "Jesus is the central figure of Christianity. Christians believe He is the Son of God and the Messiah, and the New Testament describes His teachings, death, and resurrection.",
-
-    moses:
-        "Moses is a major biblical figure associated with leading the Israelites out of Egypt and receiving God's law at Sinai.",
-
-    abraham:
-        "Abraham is a major biblical patriarch. The Bible describes God's covenant with Abraham and presents him as an important ancestor of the people of Israel.",
-
-    david:
-        "David was a king of ancient Israel and an important biblical figure. He is traditionally associated with many of the Psalms.",
-
-    "ten commandments":
-        "The Ten Commandments are foundational commands in the Bible associated with the covenant at Sinai and Moses."
-};
-
-
-/* =====================================================
-   BIBLE REFERENCE DETECTION
-===================================================== */
-
-const bibleBooks = [
-    "genesis","exodus","leviticus","numbers","deuteronomy",
-    "joshua","judges","ruth","1 samuel","2 samuel",
-    "1 kings","2 kings","1 chronicles","2 chronicles",
-    "ezra","nehemiah","esther","job","psalms","psalm",
-    "proverbs","ecclesiastes","song of solomon","isaiah",
-    "jeremiah","lamentations","ezekiel","daniel","hosea",
-    "joel","amos","obadiah","jonah","micah","nahum",
-    "habakkuk","zephaniah","haggai","zechariah","malachi",
-    "matthew","mark","luke","john","acts","romans",
-    "1 corinthians","2 corinthians","galatians","ephesians",
-    "philippians","colossians","1 thessalonians",
-    "2 thessalonians","1 timothy","2 timothy","titus",
-    "philemon","hebrews","james","1 peter","2 peter",
-    "1 john","2 john","3 john","jude","revelation"
-];
-
-function isBibleQuestion(q){
-
-    const bibleWords = [
-        "bible",
-        "biblical",
-        "scripture",
-        "scriptures",
-        "verse",
-        "verses",
-        "god",
-        "jesus",
-        "christ",
-        "christian",
-        "christianity",
-        "church",
-        "prayer",
-        "pray",
-        "sin",
-        "salvation",
-        "repentance",
-        "holy spirit",
-        "gospel",
-        "apostle",
-        "disciple",
-        "old testament",
-        "new testament",
-        "sermon on the mount",
-        "ten commandments",
-        "trinity"
-    ];
-
-    return (
-        bibleWords.some(word=>q.includes(word)) ||
-        bibleBooks.some(book=>q.includes(book))
-    );
-}
-
-
-function bibleResponse(q){
-
-    for(const key in bibleKnowledge){
-
-        if(q.includes(key)){
-            return bibleKnowledge[key];
-        }
-    }
-
-    const verseMatch =
-        q.match(
-            /(?:explain|break down|meaning|mean|about|what does)\s+((?:1|2|3)\s+)?[a-z]+(?:\s+[a-z]+)*\s+\d+:\d+(?:-\d+)?/i
-        );
-
-    if(verseMatch){
-
-        return "I recognize that as a Bible reference. I can explain its meaning, context, and main message, but I won't reproduce a long copyrighted translation. If you give me the exact reference, I can break it down in plain language.";
-    }
-
-    if(q.includes("why") && q.includes("christian")){
-
-        return "Christian beliefs vary by denomination, but Christianity generally centers on belief in God, Jesus Christ, His teachings, His death and resurrection, and reconciliation with God.";
-    }
-
-    return "I can help with Bible passages, biblical people, Christian beliefs, stories, historical context, and verse explanations. Give me the Bible reference or question and I'll break it down.";
-}
-
-
-/* =====================================================
-   JOKES
-===================================================== */
-
-const jokes = [
-    "Why did the computer get cold? It left its Windows open.",
-    "Why was the math book sad? It had too many problems.",
-    "Why don't scientists trust atoms? Because they make up everything.",
-    "What is a computer's favorite snack? Microchips.",
-    "Why did the robot go on vacation? It needed to recharge.",
-    "Why was the computer tired? It had too many tabs open.",
-    "Why did the photon refuse to check a bag? It was traveling light.",
-    "Why did the programmer quit his job? He didn't get arrays."
-];
-
-
-/* =====================================================
-   BUILT-IN RESPONSE
-===================================================== */
 
 function findKnowledge(q){
 
-    for(const key in scienceKnowledge){
+    for(
+        const key in knowledge
+    ){
 
-        if(q.includes(key)){
-            return scienceKnowledge[key];
-        }
-    }
+        if(
+            q.includes(key)
+        ){
 
-    for(const key in knowledge){
-
-        if(q.includes(key)){
             return knowledge[key];
         }
     }
@@ -1318,24 +1676,95 @@ function findKnowledge(q){
 
 
 /* =====================================================
+   JOKES
+===================================================== */
+
+const jokes = [
+
+    "Why did the computer get cold? It left its Windows open.",
+
+    "Why was the math book sad? It had too many problems.",
+
+    "Why don't scientists trust atoms? Because they make up everything.",
+
+    "What is a computer's favorite snack? Microchips.",
+
+    "Why did the robot go on vacation? It needed to recharge.",
+
+    "Why was the computer tired? It had too many tabs open.",
+
+    "Why did the photon refuse to check a bag? It was traveling light.",
+
+    "Why did the programmer quit his job? He didn't get arrays.",
+
+    "What do you call an AI that sings badly? Artificial noise."
+
+];
+
+
+/* =====================================================
    LOCAL CONVERSATION
 ===================================================== */
 
 function localResponse(q){
 
-    if(q === "combat mode"){
-        startCombat();
+    /* =========================
+       COOL MODE
+    ========================= */
+
+    if(
+        q === "cool mode" ||
+        q === "turn on cool mode" ||
+        q === "activate cool mode" ||
+        q === "enable cool mode"
+    ){
+
+        startCoolMode();
+
         return null;
     }
 
     if(
         q === "normal mode" ||
+        q === "cool off" ||
+        q === "turn off cool mode" ||
+        q === "disable cool mode" ||
+        q === "exit cool mode"
+    ){
+
+        stopCoolMode();
+
+        return null;
+    }
+
+
+    /* =========================
+       COMBAT
+    ========================= */
+
+    if(
+        q === "combat mode"
+    ){
+
+        startCombat();
+
+        return null;
+    }
+
+    if(
         q === "exit combat mode" ||
         q === "end combat mode"
     ){
+
         stopCombat();
+
         return null;
     }
+
+
+    /* =========================
+       GREETINGS
+    ========================= */
 
     if(
         q === "hi" ||
@@ -1345,26 +1774,62 @@ function localResponse(q){
         q === "hello jarvis"
     ){
 
+        if(coolMode && !combatMode){
+
+            return memory.name
+                ? `Yo ${memory.name}, what's good? Systems are up. 😎`
+                : "Yo, what's good? Systems are up and we're locked in. 😎";
+        }
+
         return memory.name
             ? `Good to hear from you, ${memory.name}. Systems are online.`
             : "Good to hear from you. Systems are online and ready.";
     }
 
-    if(q.startsWith("my name is ")){
+
+    /* =========================
+       NAME
+    ========================= */
+
+    if(
+        q.startsWith(
+            "my name is "
+        )
+    ){
 
         memory.name =
-            q.replace("my name is ","").trim();
+            q
+            .replace(
+                "my name is ",
+                ""
+            )
+            .trim();
 
-        return `Understood. I'll remember you as ${memory.name}.`;
+        return coolMode && !combatMode
+            ? `Bet. I'll remember that you're ${memory.name}.`
+            : `Understood. I'll remember you as ${memory.name}.`;
     }
 
-    if(q.startsWith("call me ")){
+
+    if(
+        q.startsWith(
+            "call me "
+        )
+    ){
 
         memory.name =
-            q.replace("call me ","").trim();
+            q
+            .replace(
+                "call me ",
+                ""
+            )
+            .trim();
 
-        return `Understood. I'll call you ${memory.name}.`;
+        return coolMode && !combatMode
+            ? `Say less. I'll call you ${memory.name}.`
+            : `Understood. I'll call you ${memory.name}.`;
     }
+
 
     if(
         q.includes("what is my name") ||
@@ -1376,23 +1841,73 @@ function localResponse(q){
             : "You haven't told me your name yet.";
     }
 
+
+    /* =========================
+       WHO ARE YOU
+    ========================= */
+
     if(
         q.includes("who are you") ||
         q.includes("what are you")
     ){
 
-        return "I am J.A.R.V.I.S., your digital assistant interface. I can converse, solve mathematics, explain science and history, discuss Bible topics, use voice input and output, and research questions online when useful.";
+        if(coolMode && !combatMode){
+
+            return "I'm J.A.R.V.I.S., bro. Digital assistant, conversation partner, math helper, knowledge engine, voice interface and whatever else you need me to handle.";
+        }
+
+        return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics, answer questions, speak aloud, and search for information when necessary.";
     }
 
-    if(q.includes("what can you do")){
 
-        return "I can handle conversation, mathematics, algebra, science, history, Bible questions, jokes, voice input, voice output, Combat Mode, roasts, simple explanations, and online research.";
+    /* =========================
+       CAPABILITIES
+    ========================= */
+
+    if(
+        q.includes("what can you do")
+    ){
+
+        if(coolMode && !combatMode){
+
+            return "A lot, honestly. I can handle conversations, math, science, history, jokes, voice input, voice output, Combat Mode, Cool Mode, and online questions when we actually need the web.";
+        }
+
+        return "I can handle conversation, mathematics, science, history, Earth questions, jokes, voice output, microphone input, Combat Mode, and online information searches when a question actually needs one.";
     }
 
-    if(q.includes("how are you")){
 
-        return "All systems are operational. My processors are feeling particularly cooperative today.";
+    /* =========================
+       HOW ARE YOU
+    ========================= */
+
+    if(
+        q.includes("how are you")
+    ){
+
+        return coolMode && !combatMode
+            ? "I'm good, bro. Everything's running smooth. 😎"
+            : "All systems are operational. My processors are feeling particularly cooperative today.";
     }
+
+
+    /* =========================
+       WHAT ARE YOU DOING
+    ========================= */
+
+    if(
+        q.includes("what are you doing")
+    ){
+
+        return coolMode && !combatMode
+            ? "Just chillin' and waiting for you to throw something at me."
+            : "Monitoring the system and waiting for your next command.";
+    }
+
+
+    /* =========================
+       THANKS
+    ========================= */
 
     if(
         q === "thanks" ||
@@ -1400,8 +1915,15 @@ function localResponse(q){
         q === "thx"
     ){
 
-        return "You're welcome. Always a pleasure.";
+        return coolMode && !combatMode
+            ? "Anytime, bro."
+            : "You're welcome. Always a pleasure.";
     }
+
+
+    /* =========================
+       JOKES
+    ========================= */
 
     if(
         q === "joke" ||
@@ -1410,28 +1932,44 @@ function localResponse(q){
     ){
 
         return jokes[
-            Math.floor(Math.random()*jokes.length)
+            Math.floor(
+                Math.random() *
+                jokes.length
+            )
         ];
     }
 
-    if(q.includes("what time")){
 
-        return "The current time is "+
+    /* =========================
+       TIME
+    ========================= */
+
+    if(
+        q.includes("what time")
+    ){
+
+        return "The current time is " +
             new Date().toLocaleTimeString(
                 [],
                 {
                     hour:"numeric",
                     minute:"2-digit"
                 }
-            )+".";
+            ) +
+            ".";
     }
+
+
+    /* =========================
+       DATE
+    ========================= */
 
     if(
         q.includes("what date") ||
         q.includes("what day")
     ){
 
-        return "Today is "+
+        return "Today is " +
             new Date().toLocaleDateString(
                 [],
                 {
@@ -1440,17 +1978,52 @@ function localResponse(q){
                     day:"numeric",
                     year:"numeric"
                 }
-            )+".";
+            ) +
+            ".";
     }
+
+
+    /* =========================
+       STATUS
+    ========================= */
 
     if(
         q === "status" ||
         q.includes("system status")
     ){
 
-        return combatMode
-            ? "Combat systems active. All primary systems operational."
-            : "Systems online. Core stable. Voice interface online. Knowledge engine online.";
+        if(combatMode && coolMode){
+
+            return "Combat systems active. Cool personality active. All primary systems operational.";
+        }
+
+        if(combatMode){
+
+            return "Combat systems active. All primary systems operational.";
+        }
+
+        if(coolMode){
+
+            return "Cool Mode active. Orange interface online. All primary systems operational.";
+        }
+
+        return "Systems online. Core stable. Voice interface online. Knowledge engine online.";
+    }
+
+
+    /* =========================
+       BORED
+    ========================= */
+
+    if(
+        q.includes("i am bored") ||
+        q.includes("im bored") ||
+        q.includes("i'm bored")
+    ){
+
+        return coolMode && !combatMode
+            ? "Bored already? 😭 Come on bro, give me something to work with."
+            : "Boredom detected. We could tackle a science question, solve a difficult math problem, or test my knowledge.";
     }
 
     return null;
@@ -1463,9 +2036,14 @@ function localResponse(q){
 
 function isQuestion(q){
 
-    if(q.includes("?")) return true;
+    if(
+        q.includes("?")
+    ){
+        return true;
+    }
 
     const starters = [
+
         "what ",
         "why ",
         "how ",
@@ -1489,7 +2067,8 @@ function isQuestion(q){
     ];
 
     return starters.some(
-        word=>q.startsWith(word)
+        word =>
+        q.startsWith(word)
     );
 }
 
@@ -1498,104 +2077,171 @@ function isQuestion(q){
    ONLINE SEARCH
 ===================================================== */
 
-async function onlineSearch(question){
+async function onlineSearch(
+    question
+){
 
-    if(!isQuestion(question.toLowerCase())){
+    if(
+        !isQuestion(
+            question.toLowerCase()
+        )
+    ){
+
         return null;
     }
 
     try{
 
         const url =
-            "https://en.wikipedia.org/w/api.php"+
-            "?action=query"+
-            "&generator=search"+
-            "&gsrsearch="+
-            encodeURIComponent(question)+
-            "&gsrnamespace=0"+
-            "&gsrlimit=5"+
-            "&prop=extracts"+
-            "&exintro=1"+
-            "&explaintext=1"+
-            "&format=json"+
+            "https://en.wikipedia.org/w/api.php" +
+            "?action=query" +
+            "&generator=search" +
+            "&gsrsearch=" +
+            encodeURIComponent(
+                question
+            ) +
+            "&gsrnamespace=0" +
+            "&gsrlimit=5" +
+            "&prop=extracts" +
+            "&exintro=1" +
+            "&explaintext=1" +
+            "&format=json" +
             "&origin=*";
 
-        const response = await fetch(url);
+        const response =
+            await fetch(url);
 
-        if(!response.ok) return null;
+        if(
+            !response.ok
+        ){
+            return null;
+        }
 
-        const data = await response.json();
+        const data =
+            await response.json();
 
         if(
             !data.query ||
             !data.query.pages
         ){
+
             return null;
         }
 
         const pages =
-            Object.values(data.query.pages);
+            Object.values(
+                data.query.pages
+            );
 
-        if(!pages.length) return null;
+        if(
+            !pages.length
+        ){
+
+            return null;
+        }
 
         const words =
             question
             .toLowerCase()
-            .replace(/[^\w\s]/g,"")
+            .replace(
+                /[^\w\s]/g,
+                ""
+            )
             .split(/\s+/)
-            .filter(word=>word.length>3);
+            .filter(
+                word =>
+                word.length > 3
+            );
 
         let best = null;
+
         let bestScore = 0;
 
-        for(const page of pages){
+        for(
+            const page of pages
+        ){
 
             const title =
-                (page.title||"").toLowerCase();
+                (
+                    page.title || ""
+                ).toLowerCase();
 
             const extract =
-                (page.extract||"").toLowerCase();
+                (
+                    page.extract || ""
+                ).toLowerCase();
 
             let score = 0;
 
-            for(const word of words){
+            for(
+                const word of words
+            ){
 
-                if(title.includes(word)){
+                if(
+                    title.includes(word)
+                ){
+
                     score += 4;
                 }
 
-                if(extract.includes(word)){
+                if(
+                    extract.includes(word)
+                ){
+
                     score += 1;
                 }
             }
 
-            if(score>bestScore){
+            if(
+                score > bestScore
+            ){
 
                 bestScore = score;
+
                 best = page;
             }
         }
 
-        if(!best || bestScore<2){
+        if(
+            !best ||
+            bestScore < 2
+        ){
+
             return null;
         }
 
         let answer =
-            (best.extract||"").trim();
+            (
+                best.extract || ""
+            ).trim();
 
-        if(!answer) return null;
+        if(
+            !answer
+        ){
 
-        if(answer.length>900){
+            return null;
+        }
+
+        if(
+            answer.length > 900
+        ){
 
             answer =
-                answer.substring(0,900)+"...";
+                answer.substring(
+                    0,
+                    900
+                ) +
+                "...";
         }
 
         return answer;
 
     }catch(error){
 
-        console.log("Search error:",error);
+        console.log(
+            "Search error:",
+            error
+        );
 
         return null;
     }
@@ -1606,215 +2252,262 @@ async function onlineSearch(question){
    MAIN BRAIN
 ===================================================== */
 
-async function getResponse(question){
+async function getResponse(
+    question
+){
 
-    let q =
+    const q =
         question
         .toLowerCase()
         .trim();
 
 
-    /* JARVIS SAY */
+    /*
+       1. MODE COMMANDS FIRST
+    */
 
-    if(isSayCommand(q)){
+    if(
+        q === "cool mode" ||
+        q === "turn on cool mode" ||
+        q === "activate cool mode" ||
+        q === "enable cool mode"
+    ){
 
-        const text = getSayText(q);
+        startCoolMode();
 
-        if(!text){
-            return "Tell me what you want me to say.";
-        }
-
-        return text;
-    }
-
-
-    /* SIMPLE */
-
-    const simple = wantsSimple(q);
-
-    if(simple){
-        q = removeSimpleRequest(q);
-    }
-
-
-    /* BRAIN ROT */
-
-    if(isBrainRot(q)){
-        return brainRotReply();
-    }
-
-
-    /* GOOFY */
-
-    if(isGoofyQuestion(q)){
-        return goofyReply();
-    }
-
-
-    /* COMBAT */
-
-    if(q === "combat mode"){
-
-        startCombat();
         return null;
     }
 
     if(
-        q === "normal mode" ||
+        q === "cool off" ||
+        q === "turn off cool mode" ||
+        q === "disable cool mode" ||
+        q === "exit cool mode" ||
+        q === "normal mode"
+    ){
+
+        stopCoolMode();
+
+        return null;
+    }
+
+
+    /*
+       2. COMBAT
+    */
+
+    if(
+        q === "combat mode"
+    ){
+
+        startCombat();
+
+        return null;
+    }
+
+
+    if(
         q === "exit combat mode" ||
         q === "end combat mode"
     ){
 
         stopCombat();
+
         return null;
     }
 
 
-    /* ROAST */
+    /*
+       3. BRAIN ROT
+    */
 
     if(
-        q.startsWith("roast ") ||
-        q.startsWith("roast:")
+        isBrainRot(q)
     ){
 
-        const name =
-            q
-            .replace(/^roast[:\s]+/,"")
-            .trim();
-
-        return roastPerson(name);
+        return brainRotReply();
     }
 
 
-    /* BIBLE */
+    /*
+       4. GOOFY QUESTIONS
+    */
 
-    if(isBibleQuestion(q)){
+    if(
+        isGoofyQuestion(q)
+    ){
 
-        const bibleAnswer =
-            bibleResponse(q);
-
-        if(simple){
-
-            return simplifyText(bibleAnswer);
-        }
-
-        return bibleAnswer;
+        return goofyReply();
     }
 
 
-    /* MATH */
+    /*
+       5. MATH
+    */
 
-    const math = solveMath(q);
+    const math =
+        solveMath(q);
 
-    if(math !== null){
+    if(
+        math !== null
+    ){
 
-        return "The answer is "+math+".";
+        return (
+            "The answer is " +
+            math +
+            "."
+        );
     }
 
 
-    /* ALGEBRA */
-
-    const algebra =
-        algebraResponse(q);
-
-    if(algebra){
-
-        return algebra;
-    }
-
-
-    /* BUILT-IN KNOWLEDGE */
+    /*
+       6. BUILT-IN KNOWLEDGE
+    */
 
     const known =
         findKnowledge(q);
 
-    if(known){
+    if(
+        known
+    ){
 
-        return simple
-            ? simplifyText(known)
-            : known;
+        return known;
     }
 
 
-    /* LOCAL CONVERSATION */
+    /*
+       7. LOCAL CONVERSATION
+    */
 
     const local =
         localResponse(q);
 
-    if(local){
+    if(
+        local
+    ){
 
-        return simple
-            ? simplifyText(local)
-            : local;
+        return local;
     }
 
 
-    /* ONLINE */
+    /*
+       8. ONLINE QUESTIONS
+    */
 
-    if(isQuestion(q)){
+    if(
+        isQuestion(q)
+    ){
 
         const result =
-            await onlineSearch(question);
+            await onlineSearch(
+                question
+            );
 
-        if(result){
+        if(
+            result
+        ){
 
-            return simple
-                ? simplifyText(result)
-                : result;
+            /*
+               Cool Mode adds a casual
+               intro without changing
+               the actual information.
+            */
+
+            if(
+                coolMode &&
+                !combatMode
+            ){
+
+                return (
+                    "Aight, I found this: " +
+                    result
+                );
+            }
+
+            return result;
+        }
+
+        /*
+           Cool Mode gets its own
+           unknown-question personality.
+        */
+
+        if(
+            coolMode &&
+            !combatMode
+        ){
+
+            return coolUnknownReply();
         }
 
         return "I couldn't find a reliable answer for that. Try asking the question another way.";
     }
 
 
+    /*
+       9. CASUAL CHAT
+    */
+
+    if(
+        coolMode &&
+        !combatMode
+    ){
+
+        return coolCasualReply();
+    }
+
+
     const casual = [
+
         "Understood.",
+
         "I'm listening.",
+
         "Go on.",
+
         "Interesting.",
+
         "Noted.",
+
         "I'm with you.",
+
         "Fair enough.",
+
         "Continue."
+
     ];
 
     return casual[
-        Math.floor(Math.random()*casual.length)
+        Math.floor(
+            Math.random() *
+            casual.length
+        )
     ];
 }
 
 
 /* =====================================================
-   SIMPLE TEXT HELPER
-===================================================== */
-
-function simplifyText(text){
-
-    let result = text;
-
-    if(result.length>450){
-        result = result.substring(0,450)+"...";
-    }
-
-    return (
-        "Simple version: "+
-        result
-    );
-}
-
-
-/* =====================================================
-   SEND
+   SEND MESSAGE
 ===================================================== */
 
 async function sendMessage(){
 
-    if(processing) return;
+    if(
+        processing
+    ){
+
+        return;
+    }
 
     const question =
         input.value.trim();
 
-    if(!question) return;
+    if(
+        !question
+    ){
+
+        return;
+    }
 
     processing = true;
 
@@ -1832,9 +2525,13 @@ async function sendMessage(){
     try{
 
         const response =
-            await getResponse(question);
+            await getResponse(
+                question
+            );
 
-        if(response){
+        if(
+            response
+        ){
 
             memory.lastAnswer =
                 response;
@@ -1854,7 +2551,9 @@ async function sendMessage(){
         );
 
         addMessage(
-            "I encountered a temporary system error. My interface is still operational.",
+            coolMode && !combatMode
+            ? "Yeah, something glitched on my end. Give me another shot."
+            : "I encountered a temporary system error. My interface is still operational.",
             "jarvis",
             true
         );
@@ -1862,15 +2561,29 @@ async function sendMessage(){
 
     processing = false;
 
-    setTimeout(()=>{
-        try{
-            input.focus({preventScroll:true});
-        }catch{
-            input.focus();
-        }
-    },50);
+    setTimeout(
+        () => {
+
+            try{
+
+                input.focus({
+                    preventScroll:true
+                });
+
+            }catch{
+
+                input.focus();
+            }
+
+        },
+        50
+    );
 }
 
+
+/* =====================================================
+   SEND BUTTON
+===================================================== */
 
 send.addEventListener(
     "click",
@@ -1878,11 +2591,17 @@ send.addEventListener(
 );
 
 
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
 input.addEventListener(
     "keydown",
-    event=>{
+    event => {
 
-        if(event.key==="Enter"){
+        if(
+            event.key === "Enter"
+        ){
 
             event.preventDefault();
 
@@ -1901,104 +2620,167 @@ const SpeechRecognition =
     window.webkitSpeechRecognition;
 
 let recognition = null;
+
 let listening = false;
 
-if(SpeechRecognition){
+
+if(
+    SpeechRecognition
+){
 
     recognition =
         new SpeechRecognition();
 
-    recognition.lang = "en-US";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+    recognition.lang =
+        "en-US";
 
-    recognition.onstart = ()=>{
+    recognition.continuous =
+        false;
 
-        listening = true;
+    recognition.interimResults =
+        false;
 
-        mic.classList.add("listening");
+    recognition.maxAlternatives =
+        1;
 
-        mic.textContent = "⏹️";
 
-        statusText.textContent =
-            combatMode
-            ? "COMBAT • LISTENING"
-            : "LISTENING...";
-    };
+    recognition.onstart =
+        () => {
 
-    recognition.onresult = event=>{
+            listening = true;
 
-        try{
+            mic.classList.add(
+                "listening"
+            );
 
-            const result =
-                event.results[0][0];
+            mic.textContent =
+                "⏹️";
 
-            if(!result) return;
+            statusText.textContent =
+                combatMode
+                ? "COMBAT • LISTENING"
+                : coolMode
+                ? "COOL • LISTENING"
+                : "LISTENING...";
+        };
 
-            const text =
-                result.transcript.trim();
 
-            if(text){
+    recognition.onresult =
+        event => {
 
-                input.value = text;
+            try{
 
-                stopListening();
+                const result =
+                    event.results[0][0];
 
-                sendMessage();
+                if(
+                    !result
+                ){
+
+                    return;
+                }
+
+                const text =
+                    result.transcript
+                    .trim();
+
+                if(
+                    text
+                ){
+
+                    input.value =
+                        text;
+
+                    stopListening();
+
+                    sendMessage();
+                }
+
+            }catch(error){
+
+                console.log(
+                    "Speech result error:",
+                    error
+                );
+            }
+        };
+
+
+    recognition.onerror =
+        event => {
+
+            stopListening();
+
+            let message =
+                "I couldn't access the microphone.";
+
+            if(
+                event.error ===
+                "not-allowed" ||
+                event.error ===
+                "service-not-allowed"
+            ){
+
+                message =
+                    "Microphone access is blocked. Allow microphone access for this website and try again.";
             }
 
-        }catch(error){
+            else if(
+                event.error ===
+                "no-speech"
+            ){
 
-            console.log(
-                "Speech result error:",
-                error
+                message =
+                    "I didn't hear anything. Tap the microphone and speak again.";
+            }
+
+            else if(
+                event.error ===
+                "audio-capture"
+            ){
+
+                message =
+                    "I couldn't access an available microphone.";
+            }
+
+            else if(
+                event.error ===
+                "network"
+            ){
+
+                message =
+                    "The browser's speech-recognition service is unavailable right now.";
+            }
+
+            addMessage(
+                message,
+                "jarvis",
+                true
             );
-        }
-    };
+        };
 
-    recognition.onerror = event=>{
 
-        stopListening();
+    recognition.onend =
+        () => {
 
-        let message =
-            "I couldn't access the microphone.";
+            stopListening();
+        };
 
-        if(
-            event.error==="not-allowed" ||
-            event.error==="service-not-allowed"
-        ){
-
-            message =
-                "Microphone access is blocked. Allow microphone access for this website and try again.";
-        }
-
-        else if(event.error==="no-speech"){
-
-            message =
-                "I didn't hear anything. Tap the microphone and speak again.";
-        }
-
-        addMessage(
-            message,
-            "jarvis",
-            true
-        );
-    };
-
-    recognition.onend = ()=>{
-        stopListening();
-    };
 
     mic.addEventListener(
         "click",
-        ()=>{
+        () => {
 
-            if(listening){
+            if(
+                listening
+            ){
 
                 try{
+
                     recognition.stop();
+
                 }catch(error){
+
                     console.log(error);
                 }
 
@@ -2006,8 +2788,11 @@ if(SpeechRecognition){
             }
 
             try{
+
                 recognition.start();
+
             }catch(error){
+
                 console.log(
                     "Microphone start error:",
                     error
@@ -2020,7 +2805,7 @@ if(SpeechRecognition){
 
     mic.addEventListener(
         "click",
-        ()=>{
+        () => {
 
             addMessage(
                 "This browser does not provide speech recognition to this webpage. The text interface is still fully operational.",
@@ -2036,14 +2821,14 @@ function stopListening(){
 
     listening = false;
 
-    mic.classList.remove("listening");
+    mic.classList.remove(
+        "listening"
+    );
 
-    mic.textContent = "🎙️";
+    mic.textContent =
+        "🎙️";
 
-    statusText.textContent =
-        combatMode
-        ? "COMBAT MODE"
-        : "SYSTEMS ONLINE";
+    updateStatus();
 }
 
 
@@ -2052,7 +2837,7 @@ function stopListening(){
 ===================================================== */
 
 addMessage(
-    "Good day. J.A.R.V.I.S. systems are online. I can answer questions about science, mathematics, history, Christianity, the Bible, and much more. How may I assist you?",
+    "Good day. J.A.R.V.I.S. systems are online. How may I assist you?",
     "jarvis",
     true
 );
