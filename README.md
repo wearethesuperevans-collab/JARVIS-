@@ -32,21 +32,17 @@ body{
     position:fixed;
     inset:0;
     overflow:hidden;
-
     background:
         radial-gradient(circle at 50% 40%,rgba(0,180,255,.12),transparent 45%),
         linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
         linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px),
         #000;
-
     background-size:auto,28px 28px,28px 28px,auto;
-
     transition:.4s;
 }
 
 #app.combat{
     color:#ff3030;
-
     background:
         radial-gradient(circle at 50% 40%,rgba(255,0,0,.15),transparent 45%),
         linear-gradient(rgba(255,0,0,.035) 1px,transparent 1px),
@@ -59,20 +55,14 @@ body{
     top:0;
     left:0;
     right:0;
-
     height:68px;
-
     padding:0 20px;
     padding-top:env(safe-area-inset-top);
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     background:rgba(0,8,12,.96);
-
     border-bottom:1px solid rgba(0,234,255,.35);
-
     z-index:100;
 }
 
@@ -84,18 +74,12 @@ body{
     font-size:22px;
     font-weight:bold;
     letter-spacing:4px;
-
-    text-shadow:
-        0 0 8px #00eaff,
-        0 0 20px rgba(0,234,255,.6);
+    text-shadow:0 0 8px #00eaff,0 0 20px rgba(0,234,255,.6);
 }
 
 .combat .logo{
     color:#ff3030;
-
-    text-shadow:
-        0 0 8px #ff2020,
-        0 0 20px rgba(255,0,0,.7);
+    text-shadow:0 0 8px #ff2020,0 0 20px rgba(255,0,0,.7);
 }
 
 .status{
@@ -115,7 +99,6 @@ body{
     border-radius:50%;
     margin-right:5px;
     background:#00ff88;
-
     box-shadow:0 0 10px #00ff88;
 }
 
@@ -126,21 +109,17 @@ body{
 
 .main{
     position:absolute;
-
     top:68px;
     left:0;
     right:0;
     bottom:0;
-
     display:flex;
     flex-direction:column;
-
     min-height:0;
 }
 
 .coreArea{
     flex:0 0 225px;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -148,7 +127,6 @@ body{
 
 .core{
     position:relative;
-
     width:165px;
     height:165px;
 }
@@ -156,31 +134,24 @@ body{
 .ring{
     position:absolute;
     inset:0;
-
     border:2px solid rgba(0,234,255,.4);
-
     border-radius:50%;
 }
 
 .r1{
     border-top-color:#00eaff;
-
     animation:spin 8s linear infinite;
 }
 
 .r2{
     inset:20px;
-
     border-right-color:#008cff;
-
     animation:spinBack 5s linear infinite;
 }
 
 .r3{
     inset:42px;
-
     border-bottom-color:#00ffff;
-
     animation:spin 3.5s linear infinite;
 }
 
@@ -202,46 +173,24 @@ body{
 
 .orb{
     position:absolute;
-
     width:52px;
     height:52px;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
     border-radius:50%;
-
     background:
-        radial-gradient(
-            circle,
-            #fff 0%,
-            #aaffff 15%,
-            #00eaff 45%,
-            #007cff 70%,
-            transparent 72%
-        );
-
+        radial-gradient(circle,#fff 0%,#aaffff 15%,#00eaff 45%,#007cff 70%,transparent 72%);
     box-shadow:
         0 0 15px #00eaff,
         0 0 40px #00eaff,
         0 0 75px rgba(0,150,255,.8);
-
     animation:pulse 2s ease-in-out infinite;
 }
 
 .combat .orb{
     background:
-        radial-gradient(
-            circle,
-            #fff 0%,
-            #ffaaaa 15%,
-            #ff2020 45%,
-            #a00000 70%,
-            transparent 72%
-        );
-
+        radial-gradient(circle,#fff 0%,#ffaaaa 15%,#ff2020 45%,#a00000 70%,transparent 72%);
     box-shadow:
         0 0 15px #ff2020,
         0 0 40px #ff2020,
@@ -250,61 +199,42 @@ body{
 
 .arc{
     position:absolute;
-
     bottom:-25px;
-
     width:100%;
-
     text-align:center;
-
     font-size:9px;
-
     letter-spacing:3px;
-
     opacity:.6;
 }
 
 .chat{
     flex:1;
-
     min-height:0;
-
     overflow-y:auto;
     overflow-x:hidden;
-
     -webkit-overflow-scrolling:touch;
     overscroll-behavior:contain;
-
     padding:5px 15px 120px;
 }
 
 .message{
     max-width:900px;
-
     margin:0 auto 12px;
-
     padding:12px 15px;
-
     border-radius:10px;
-
     line-height:1.45;
-
     font-size:15px;
-
     overflow-wrap:anywhere;
 }
 
 .jarvis{
     background:rgba(0,160,220,.08);
-
     border-left:2px solid #00eaff;
 }
 
 .user{
     background:rgba(255,255,255,.05);
-
     border-right:2px solid rgba(255,255,255,.4);
-
     color:#fff;
 }
 
@@ -314,34 +244,21 @@ body{
 
 .label{
     display:block;
-
     margin-bottom:5px;
-
     font-size:9px;
-
     letter-spacing:2px;
-
     opacity:.55;
 }
 
 .controls{
     position:absolute;
-
     left:0;
     right:0;
     bottom:0;
-
     min-height:82px;
-
-    padding:
-        9px
-        10px
-        max(12px,env(safe-area-inset-bottom));
-
+    padding:9px 10px max(12px,env(safe-area-inset-bottom));
     background:rgba(0,8,12,.98);
-
     border-top:1px solid rgba(0,234,255,.35);
-
     z-index:500;
 }
 
@@ -351,77 +268,50 @@ body{
 
 .inputRow{
     display:flex;
-
     gap:7px;
-
     width:100%;
-
     max-width:900px;
-
     margin:auto;
 }
 
 #input{
     flex:1;
-
     min-width:0;
-
     height:48px;
-
     border:1px solid rgba(0,234,255,.55);
-
     border-radius:10px;
-
     outline:none;
-
     padding:0 13px;
-
     background:#03151b;
-
     color:#fff;
-
     font-size:16px;
-
     -webkit-appearance:none;
 }
 
 #input:focus{
     border-color:#00eaff;
-
-    box-shadow:
-        0 0 12px
-        rgba(0,234,255,.2);
+    box-shadow:0 0 12px rgba(0,234,255,.2);
 }
 
 .combat #input{
     border-color:#ff3030;
 }
 
-#mic,
-#send{
+#mic,#send{
     height:48px;
-
     border:1px solid #00eaff;
-
     border-radius:10px;
-
     background:rgba(0,234,255,.08);
-
     color:#00eaff;
-
     font-weight:bold;
-
     cursor:pointer;
-
     -webkit-appearance:none;
-
     touch-action:manipulation;
 }
 
 #mic{
     width:48px;
     flex:0 0 48px;
-
     font-size:18px;
 }
 
@@ -438,43 +328,28 @@ body{
 
 #mic.listening{
     background:rgba(0,234,255,.3);
-
-    box-shadow:
-        0 0 18px
-        rgba(0,234,255,.7);
+    box-shadow:0 0 18px rgba(0,234,255,.7);
 }
 
 .combat #mic.listening{
     background:rgba(255,0,0,.3);
-
-    box-shadow:
-        0 0 18px
-        rgba(255,0,0,.7);
+    box-shadow:0 0 18px rgba(255,0,0,.7);
 }
 
 @keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+    to{transform:rotate(360deg);}
 }
 
 @keyframes spinBack{
-    to{
-        transform:rotate(-360deg);
-    }
+    to{transform:rotate(-360deg);}
 }
 
 @keyframes pulse{
     0%,100%{
-        transform:
-            translate(-50%,-50%)
-            scale(.9);
+        transform:translate(-50%,-50%) scale(.9);
     }
-
     50%{
-        transform:
-            translate(-50%,-50%)
-            scale(1.1);
+        transform:translate(-50%,-50%) scale(1.1);
     }
 }
 
@@ -515,13 +390,8 @@ body{
     </div>
 
     <div class="status">
-
         <span class="dot"></span>
-
-        <span id="statusText">
-            SYSTEMS ONLINE
-        </span>
-
+        <span id="statusText">SYSTEMS ONLINE</span>
     </div>
 
 </header>
@@ -535,7 +405,6 @@ body{
         <div class="ring r1"></div>
         <div class="ring r2"></div>
         <div class="ring r3"></div>
-
         <div class="orb"></div>
 
         <div class="arc">
@@ -546,10 +415,7 @@ body{
 
 </section>
 
-<section
-    id="chat"
-    class="chat">
-</section>
+<section id="chat" class="chat"></section>
 
 </main>
 
@@ -566,17 +432,9 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button
-            id="mic"
-            type="button">
-            🎙️
-        </button>
+        <button id="mic" type="button">🎙️</button>
 
-        <button
-            id="send"
-            type="button">
-            SEND
-        </button>
+        <button id="send" type="button">SEND</button>
 
     </div>
 
@@ -584,36 +442,21 @@ body{
 
 </div>
 
-
 <script>
 "use strict";
-
 
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
-const app =
-    document.getElementById("app");
-
-const input =
-    document.getElementById("input");
-
-const mic =
-    document.getElementById("mic");
-
-const send =
-    document.getElementById("send");
-
-const chat =
-    document.getElementById("chat");
-
-const statusText =
-    document.getElementById("statusText");
-
+const app = document.getElementById("app");
+const input = document.getElementById("input");
+const mic = document.getElementById("mic");
+const send = document.getElementById("send");
+const chat = document.getElementById("chat");
+const statusText = document.getElementById("statusText");
 
 let processing = false;
-
 let combatMode = false;
 
 let memory = {
@@ -629,9 +472,7 @@ let memory = {
 
 function speak(text){
 
-    if(
-        !("speechSynthesis" in window)
-    ){
+    if(!("speechSynthesis" in window)){
         return;
     }
 
@@ -643,9 +484,7 @@ function speak(text){
             new SpeechSynthesisUtterance(text);
 
         voice.rate = .88;
-
         voice.pitch = .72;
-
         voice.volume = 1;
 
         const voices =
@@ -660,18 +499,14 @@ function speak(text){
 
         let selected = null;
 
-        for(
-            const name of preferred
-        ){
+        for(const name of preferred){
 
             selected =
                 voices.find(
                     v =>
                     v.name
                     .toLowerCase()
-                    .includes(
-                        name.toLowerCase()
-                    )
+                    .includes(name.toLowerCase())
                 );
 
             if(selected) break;
@@ -683,9 +518,7 @@ function speak(text){
                 voices.find(
                     v =>
                     v.lang &&
-                    v.lang
-                    .toLowerCase()
-                    .startsWith("en")
+                    v.lang.toLowerCase().startsWith("en")
                 );
         }
 
@@ -697,10 +530,7 @@ function speak(text){
 
     }catch(error){
 
-        console.log(
-            "Voice error:",
-            error
-        );
+        console.log("Voice error:",error);
     }
 }
 
@@ -742,7 +572,6 @@ function addMessage(
     content.textContent = text;
 
     box.appendChild(label);
-
     box.appendChild(content);
 
     chat.appendChild(box);
@@ -760,161 +589,6 @@ function addMessage(
     ){
         speak(text);
     }
-}
-
-
-/* =====================================================
-   SAY COMMAND
-===================================================== */
-
-function jarvisSayCommand(text){
-
-    const match =
-        text.match(
-            /^\s*j\.?\s*a\.?\s*r\.?\s*v\.?\s*i\.?\s*s\.?\s*[,;:\-]?\s+say\s+(.+)$/i
-        );
-
-    if(!match){
-        return null;
-    }
-
-    const wordsToSay =
-        match[1].trim();
-
-    if(!wordsToSay){
-        return null;
-    }
-
-    return wordsToSay;
-}
-
-
-/* =====================================================
-   ROAST COMMAND
-===================================================== */
-
-const roastLines = [
-
-    name =>
-        `${name}, I've analyzed your performance and unfortunately the results require further investigation.`,
-
-    name =>
-        `${name}, even my error messages have more personality than you.`,
-
-    name =>
-        `${name}, I would explain it to you, but I don't have a setting for "extremely slow."`,
-
-    name =>
-        `${name}, your Wi-Fi signal has more direction than your life choices.`,
-
-    name =>
-        `${name}, I've seen loading screens with more progress than you.`,
-
-    name =>
-        `${name}, you bring absolutely nothing to the table. Not even the table.`,
-
-    name =>
-        `${name}, my processors just requested a break after processing that decision.`,
-
-    name =>
-        `${name}, you're the human equivalent of a low battery warning.`,
-
-    name =>
-        `${name}, I've searched my database and found no evidence of you being the main character.`,
-
-    name =>
-        `${name}, if confidence were intelligence, you'd almost be impressive.`,
-
-    name =>
-        `${name}, your brain appears to be running on the free trial.`,
-
-    name =>
-        `${name}, I've calculated your chances of winning this argument. The calculator gave up.`,
-
-    name =>
-        `${name}, you have the computational efficiency of a potato.`,
-
-    name =>
-        `${name}, even autocorrect doesn't know what you're trying to accomplish.`,
-
-    name =>
-        `${name}, I've encountered smarter decisions in a CAPTCHA.`,
-
-    name =>
-        `${name}, you are proof that humans occasionally need software updates.`,
-
-    name =>
-        `${name}, I would call that impressive, but my sensors are functioning correctly.`,
-
-    name =>
-        `${name}, your strategy appears to be "hope something happens."`,
-
-    name =>
-        `${name}, I've scanned the situation three times. The confusion is still you.`,
-
-    name =>
-        `${name}, you make absolutely no sense, and somehow that's your most consistent feature.`,
-
-    name =>
-        `${name}, I've got 30 roasts prepared and somehow you made all of them necessary.`,
-
-    name =>
-        `${name}, your plans have the structural integrity of wet cardboard.`,
-
-    name =>
-        `${name}, if common sense were a software update, you would keep pressing "remind me later."`,
-
-    name =>
-        `${name}, I have officially classified your decision-making as experimental.`,
-
-    name =>
-        `${name}, your logic has left the building and apparently forgot its keys.`,
-
-    name =>
-        `${name}, even my loading animation looks more productive than you.`,
-
-    name =>
-        `${name}, I checked the database. You're not a bug, you're a feature nobody requested.`,
-
-    name =>
-        `${name}, your brain has entered power-saving mode.`,
-
-    name =>
-        `${name}, I've run the numbers. The numbers would like some distance.`,
-
-    name =>
-        `${name}, respectfully, your operating system needs a restart.`
-
-];
-
-
-function jarvisRoastCommand(text){
-
-    const match =
-        text.match(
-            /^\s*j\.?\s*a\.?\s*r\.?\s*v\.?\s*i\.?\s*s\.?\s*[,;:\-]?\s+roast\s+(.+)$/i
-        );
-
-    if(!match){
-        return null;
-    }
-
-    const target =
-        match[1].trim();
-
-    if(!target){
-        return null;
-    }
-
-    const roast =
-        roastLines[
-            Math.floor(
-                Math.random() *
-                roastLines.length
-            )
-        ];
-
-    return roast(target);
 }
 
 
@@ -961,6 +635,161 @@ function stopCombat(){
         "jarvis",
         true
     );
+}
+
+
+/* =====================================================
+   SAY COMMAND
+   Example:
+   J.A.R.V.I.S. say hello everyone
+===================================================== */
+
+function sayCommand(text){
+
+    const patterns = [
+        /^j\.?a\.?r\.?v\.?i\.?s\.?\s+say\s+(.+)$/i,
+        /^jarvis\s+say\s+(.+)$/i,
+        /^say\s+(.+)$/i
+    ];
+
+    for(const pattern of patterns){
+
+        const match =
+            text.trim().match(pattern);
+
+        if(match){
+
+            const words =
+                match[1].trim();
+
+            if(!words){
+                return null;
+            }
+
+            return {
+                type:"say",
+                text:words
+            };
+        }
+    }
+
+    return null;
+}
+
+
+/* =====================================================
+   ROAST SYSTEM
+===================================================== */
+
+const roastLines = [
+
+    "has the confidence of a genius and the decision-making skills of a loading screen.",
+
+    "walks into a room and somehow lowers the average Wi-Fi signal.",
+
+    "could lose an argument with a mirror and still ask for a rematch.",
+
+    "has been running on low battery since birth.",
+
+    "is living proof that autocorrect sometimes gives up.",
+
+    "has the processing power of a calculator with one button missing.",
+
+    "could make a simple task look like a three-season TV series.",
+
+    "has an impressive talent for being confidently wrong.",
+
+    "is the human equivalent of clicking 'remind me tomorrow' for five years.",
+
+    "has the strategic planning skills of someone choosing random answers on a multiple-choice test.",
+
+    "could probably get lost in a hallway with signs pointing in both directions.",
+
+    "has enough confidence to run a company and enough chaos to accidentally delete the company.",
+
+    "is somehow always five minutes late to a conversation they started.",
+
+    "has the reflexes of a paused video.",
+
+    "could turn a straight line into a detour.",
+
+    "has mastered the art of making every situation unnecessarily complicated.",
+
+    "is proof that evolution occasionally likes to keep things interesting.",
+
+    "has the attention span of a notification preview.",
+
+    "could ask for directions and still somehow end up somewhere completely different.",
+
+    "has the energy of a phone at one percent pretending everything is fine.",
+
+    "could make a GPS say 'you know what, good luck.'",
+
+    "has the organizational skills of a junk drawer.",
+
+    "is basically a software update that somehow made everything more confusing.",
+
+    "could overthink a yes-or-no question until it becomes a documentary.",
+
+    "has the timing of a pop-up ad.",
+
+    "is running approximately 47 unnecessary background processes.",
+
+    "could make a loading screen look productive.",
+
+    "has somehow turned doing absolutely nothing into a full-time career.",
+
+    "has the dramatic timing of someone who enters the room five seconds after the joke.",
+
+    "is not a problem solver. They are a problem subscription service."
+];
+
+
+/* =====================================================
+   ROAST COMMAND
+   Example:
+   J.A.R.V.I.S. roast Kevin
+===================================================== */
+
+function roastCommand(text){
+
+    const patterns = [
+        /^j\.?a\.?r\.?v\.?i\.?s\.?\s+roast\s+(.+)$/i,
+        /^jarvis\s+roast\s+(.+)$/i,
+        /^roast\s+(.+)$/i
+    ];
+
+    for(const pattern of patterns){
+
+        const match =
+            text.trim().match(pattern);
+
+        if(match){
+
+            const name =
+                match[1].trim();
+
+            if(!name){
+                return null;
+            }
+
+            const roast =
+                roastLines[
+                    Math.floor(
+                        Math.random() *
+                        roastLines.length
+                    )
+                ];
+
+            return {
+                type:"roast",
+                text:
+                    `${name}, J.A.R.V.I.S. has completed the analysis: ${name} ${roast}`
+            };
+        }
+    }
+
+    return null;
 }
 
 
@@ -1014,14 +843,8 @@ function isBrainRot(text){
     const clean =
         text
         .toLowerCase()
-        .replace(
-            /[^\w\s]/g,
-            " "
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
+        .replace(/[^\w\s]/g," ")
+        .replace(/\s+/g," ")
         .trim();
 
     return brainRotTerms.some(
@@ -1057,7 +880,7 @@ function brainRotReply(){
 
 
 /* =====================================================
-   GOOFY QUESTION FILTER
+   GOOFY FILTER
 ===================================================== */
 
 const goofyTerms = [
@@ -1096,19 +919,8 @@ const goofyTerms = [
     "are you ai ai",
     "are you an ai ai",
     "what is an ai ai",
-    "what is ai if ai is ai",
-    "if you are ai are you ai",
-    "if ai is artificial intelligence",
-    "is artificial intelligence intelligence",
-    "is ai intelligent because ai is ai",
-    "are you actually ai",
-    "are you really really ai",
-    "are you ai or ai",
-    "can an ai be an ai",
-    "can ai ai",
     "ai ai ai",
-    "ai ai ai ai",
-    "what does ai mean if ai is ai"
+    "ai ai ai ai"
 ];
 
 
@@ -1117,14 +929,8 @@ function isGoofyQuestion(text){
     const clean =
         text
         .toLowerCase()
-        .replace(
-            /[^\w\s?-]/g,
-            " "
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
+        .replace(/[^\w\s?-]/g," ")
+        .replace(/\s+/g," ")
         .trim();
 
     return goofyTerms.some(
@@ -1180,40 +986,22 @@ function solveMath(text){
         expression.replace(/solve/g,"");
 
     expression =
-        expression.replace(
-            /multiplied by/g,
-            "*"
-        );
+        expression.replace(/multiplied by/g,"*");
 
     expression =
-        expression.replace(
-            /divided by/g,
-            "/"
-        );
+        expression.replace(/divided by/g,"/");
 
     expression =
-        expression.replace(
-            /plus/g,
-            "+"
-        );
+        expression.replace(/plus/g,"+");
 
     expression =
-        expression.replace(
-            /minus/g,
-            "-"
-        );
+        expression.replace(/minus/g,"-");
 
     expression =
-        expression.replace(
-            /times/g,
-            "*"
-        );
+        expression.replace(/times/g,"*");
 
     expression =
-        expression.replace(
-            /over/g,
-            "/"
-        );
+        expression.replace(/over/g,"/");
 
     expression =
         expression.replace(/×/g,"*");
@@ -1222,27 +1010,19 @@ function solveMath(text){
         expression.replace(/÷/g,"/");
 
     expression =
-        expression.replace(
-            /[^0-9+\-*/().%\s]/g,
-            ""
-        )
+        expression
+        .replace(/[^0-9+\-*/().%\s]/g,"")
         .trim();
 
     if(!expression){
         return null;
     }
 
-    if(
-        !/[+\-*/%]/.test(expression)
-    ){
+    if(!/[+\-*/%]/.test(expression)){
         return null;
     }
 
-    if(
-        !/^[0-9+\-*/().%\s]+$/.test(
-            expression
-        )
-    ){
+    if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
         return null;
     }
 
@@ -1255,15 +1035,11 @@ function solveMath(text){
                 ')'
             )();
 
-        if(
-            typeof answer !== "number"
-        ){
+        if(typeof answer !== "number"){
             return null;
         }
 
-        if(
-            !Number.isFinite(answer)
-        ){
+        if(!Number.isFinite(answer)){
             return null;
         }
 
@@ -1277,7 +1053,7 @@ function solveMath(text){
 
 
 /* =====================================================
-   BUILT-IN KNOWLEDGE
+   KNOWLEDGE
 ===================================================== */
 
 const knowledge = {
@@ -1358,14 +1134,9 @@ const knowledge = {
 
 function findKnowledge(q){
 
-    for(
-        const key in knowledge
-    ){
+    for(const key in knowledge){
 
-        if(
-            q.includes(key)
-        ){
-
+        if(q.includes(key)){
             return knowledge[key];
         }
     }
@@ -1407,12 +1178,9 @@ const jokes = [
 
 function localResponse(q){
 
-    if(
-        q === "combat mode"
-    ){
+    if(q === "combat mode"){
 
         startCombat();
-
         return null;
     }
 
@@ -1423,7 +1191,6 @@ function localResponse(q){
     ){
 
         stopCombat();
-
         return null;
     }
 
@@ -1440,32 +1207,18 @@ function localResponse(q){
             : "Good to hear from you. Systems are online and ready.";
     }
 
-    if(
-        q.startsWith("my name is ")
-    ){
+    if(q.startsWith("my name is ")){
 
         memory.name =
-            q
-            .replace(
-                "my name is ",
-                ""
-            )
-            .trim();
+            q.replace("my name is ","").trim();
 
         return `Understood. I'll remember you as ${memory.name}.`;
     }
 
-    if(
-        q.startsWith("call me ")
-    ){
+    if(q.startsWith("call me ")){
 
         memory.name =
-            q
-            .replace(
-                "call me ",
-                ""
-            )
-            .trim();
+            q.replace("call me ","").trim();
 
         return `Understood. I'll call you ${memory.name}.`;
     }
@@ -1488,23 +1241,17 @@ function localResponse(q){
         return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics, answer questions, speak aloud, and search for information when necessary.";
     }
 
-    if(
-        q.includes("what can you do")
-    ){
+    if(q.includes("what can you do")){
 
-        return "I can handle conversation, mathematics, science, history, Earth questions, jokes, voice output, microphone input, Combat Mode, roast commands, and online information searches when a question actually needs one.";
+        return "I can handle conversation, mathematics, science, jokes, voice output, microphone input, Combat Mode, custom Say commands, and my new Roast command.";
     }
 
-    if(
-        q.includes("how are you")
-    ){
+    if(q.includes("how are you")){
 
         return "All systems are operational. My processors are feeling particularly cooperative today.";
     }
 
-    if(
-        q.includes("what are you doing")
-    ){
+    if(q.includes("what are you doing")){
 
         return "Monitoring the system and waiting for your next command.";
     }
@@ -1532,9 +1279,7 @@ function localResponse(q){
         ];
     }
 
-    if(
-        q.includes("what time")
-    ){
+    if(q.includes("what time")){
 
         return "The current time is " +
             new Date().toLocaleTimeString(
@@ -1594,9 +1339,7 @@ function localResponse(q){
 
 function isQuestion(q){
 
-    if(
-        q.includes("?")
-    ){
+    if(q.includes("?")){
         return true;
     }
 
@@ -1635,16 +1378,9 @@ function isQuestion(q){
    ONLINE SEARCH
 ===================================================== */
 
-async function onlineSearch(
-    question
-){
+async function onlineSearch(question){
 
-    if(
-        !isQuestion(
-            question.toLowerCase()
-        )
-    ){
-
+    if(!isQuestion(question.toLowerCase())){
         return null;
     }
 
@@ -1655,9 +1391,7 @@ async function onlineSearch(
             "?action=query" +
             "&generator=search" +
             "&gsrsearch=" +
-            encodeURIComponent(
-                question
-            ) +
+            encodeURIComponent(question) +
             "&gsrnamespace=0" +
             "&gsrlimit=5" +
             "&prop=extracts" +
@@ -1669,9 +1403,7 @@ async function onlineSearch(
         const response =
             await fetch(url);
 
-        if(
-            !response.ok
-        ){
+        if(!response.ok){
             return null;
         }
 
@@ -1682,111 +1414,69 @@ async function onlineSearch(
             !data.query ||
             !data.query.pages
         ){
-
             return null;
         }
 
         const pages =
-            Object.values(
-                data.query.pages
-            );
+            Object.values(data.query.pages);
 
-        if(
-            !pages.length
-        ){
-
+        if(!pages.length){
             return null;
         }
 
         const words =
             question
             .toLowerCase()
-            .replace(
-                /[^\w\s]/g,
-                ""
-            )
+            .replace(/[^\w\s]/g,"")
             .split(/\s+/)
-            .filter(
-                word =>
-                word.length > 3
-            );
+            .filter(word => word.length > 3);
 
         let best = null;
         let bestScore = 0;
 
-        for(
-            const page of pages
-        ){
+        for(const page of pages){
 
             const title =
-                (
-                    page.title || ""
-                ).toLowerCase();
+                (page.title || "").toLowerCase();
 
             const extract =
-                (
-                    page.extract || ""
-                ).toLowerCase();
+                (page.extract || "").toLowerCase();
 
             let score = 0;
 
-            for(
-                const word of words
-            ){
+            for(const word of words){
 
-                if(
-                    title.includes(word)
-                ){
-
+                if(title.includes(word)){
                     score += 4;
                 }
 
-                if(
-                    extract.includes(word)
-                ){
-
+                if(extract.includes(word)){
                     score += 1;
                 }
             }
 
-            if(
-                score > bestScore
-            ){
+            if(score > bestScore){
 
                 bestScore = score;
                 best = page;
             }
         }
 
-        if(
-            !best ||
-            bestScore < 2
-        ){
-
+        if(!best || bestScore < 2){
             return null;
         }
 
         let answer =
-            (
-                best.extract || ""
-            ).trim();
+            (best.extract || "").trim();
 
-        if(
-            !answer
-        ){
-
+        if(!answer){
             return null;
         }
 
-        if(
-            answer.length > 900
-        ){
+        if(answer.length > 900){
 
             answer =
-                answer.substring(
-                    0,
-                    900
-                ) +
+                answer.substring(0,900) +
                 "...";
         }
 
@@ -1794,10 +1484,7 @@ async function onlineSearch(
 
     }catch(error){
 
-        console.log(
-            "Search error:",
-            error
-        );
+        console.log("Search error:",error);
 
         return null;
     }
@@ -1808,9 +1495,7 @@ async function onlineSearch(
    MAIN BRAIN
 ===================================================== */
 
-async function getResponse(
-    question
-){
+async function getResponse(question){
 
     const q =
         question
@@ -1820,67 +1505,47 @@ async function getResponse(
 
     /* SAY COMMAND */
 
-    const sayCommand =
-        jarvisSayCommand(question);
+    const say =
+        sayCommand(question);
 
-    if(
-        sayCommand
-    ){
+    if(say){
 
-        return {
-            type:"say",
-            text:sayCommand
-        };
+        return say;
     }
 
 
     /* ROAST COMMAND */
 
-    const roastCommand =
-        jarvisRoastCommand(question);
+    const roast =
+        roastCommand(question);
 
-    if(
-        roastCommand
-    ){
+    if(roast){
 
-        return {
-            type:"roast",
-            text:roastCommand
-        };
+        return roast;
     }
 
 
     /* BRAIN ROT */
 
-    if(
-        isBrainRot(q)
-    ){
-
+    if(isBrainRot(q)){
         return brainRotReply();
     }
 
 
     /* GOOFY QUESTIONS */
 
-    if(
-        isGoofyQuestion(q)
-    ){
-
+    if(isGoofyQuestion(q)){
         return goofyReply();
     }
 
 
     /* COMBAT */
 
-    if(
-        q === "combat mode"
-    ){
+    if(q === "combat mode"){
 
         startCombat();
-
         return null;
     }
-
 
     if(
         q === "normal mode" ||
@@ -1889,7 +1554,6 @@ async function getResponse(
     ){
 
         stopCombat();
-
         return null;
     }
 
@@ -1899,28 +1563,26 @@ async function getResponse(
     const math =
         solveMath(q);
 
-    if(
-        math !== null
-    ){
+    if(math !== null){
 
-        return (
-            "The answer is " +
-            math +
-            "."
-        );
+        return {
+            type:"normal",
+            text:"The answer is " + math + "."
+        };
     }
 
 
-    /* BUILT-IN KNOWLEDGE */
+    /* KNOWLEDGE */
 
     const known =
         findKnowledge(q);
 
-    if(
-        known
-    ){
+    if(known){
 
-        return known;
+        return {
+            type:"normal",
+            text:known
+        };
     }
 
 
@@ -1929,33 +1591,34 @@ async function getResponse(
     const local =
         localResponse(q);
 
-    if(
-        local
-    ){
+    if(local){
 
-        return local;
+        return {
+            type:"normal",
+            text:local
+        };
     }
 
 
     /* REAL QUESTIONS */
 
-    if(
-        isQuestion(q)
-    ){
+    if(isQuestion(q)){
 
         const result =
-            await onlineSearch(
-                question
-            );
+            await onlineSearch(question);
 
-        if(
-            result
-        ){
+        if(result){
 
-            return result;
+            return {
+                type:"normal",
+                text:result
+            };
         }
 
-        return "I couldn't find a reliable answer for that. Try asking the question another way.";
+        return {
+            type:"normal",
+            text:"I couldn't find a reliable answer for that. Try asking the question another way."
+        };
     }
 
 
@@ -1974,12 +1637,16 @@ async function getResponse(
 
     ];
 
-    return casual[
-        Math.floor(
-            Math.random() *
-            casual.length
-        )
-    ];
+    return {
+        type:"normal",
+        text:
+            casual[
+                Math.floor(
+                    Math.random() *
+                    casual.length
+                )
+            ]
+    };
 }
 
 
@@ -1989,20 +1656,14 @@ async function getResponse(
 
 async function sendMessage(){
 
-    if(
-        processing
-    ){
-
+    if(processing){
         return;
     }
 
     const question =
         input.value.trim();
 
-    if(
-        !question
-    ){
-
+    if(!question){
         return;
     }
 
@@ -2022,44 +1683,15 @@ async function sendMessage(){
     try{
 
         const response =
-            await getResponse(
-                question
-            );
+            await getResponse(question);
 
-
-        /* SAY OR ROAST COMMAND */
-
-        if(
-            response &&
-            typeof response === "object" &&
-            (
-                response.type === "say" ||
-                response.type === "roast"
-            )
-        ){
+        if(response){
 
             memory.lastAnswer =
                 response.text;
 
             addMessage(
                 response.text,
-                "jarvis",
-                true
-            );
-        }
-
-
-        /* NORMAL RESPONSE */
-
-        else if(
-            response
-        ){
-
-            memory.lastAnswer =
-                response;
-
-            addMessage(
-                response,
                 "jarvis",
                 true
             );
@@ -2102,7 +1734,7 @@ async function sendMessage(){
 
 
 /* =====================================================
-   SEND BUTTON
+   BUTTON
 ===================================================== */
 
 send.addEventListener(
@@ -2112,16 +1744,14 @@ send.addEventListener(
 
 
 /* =====================================================
-   ENTER KEY
+   ENTER
 ===================================================== */
 
 input.addEventListener(
     "keydown",
     event => {
 
-        if(
-            event.key === "Enter"
-        ){
+        if(event.key === "Enter"){
 
             event.preventDefault();
 
@@ -2140,165 +1770,123 @@ const SpeechRecognition =
     window.webkitSpeechRecognition;
 
 let recognition = null;
-
 let listening = false;
 
-
-if(
-    SpeechRecognition
-){
+if(SpeechRecognition){
 
     recognition =
         new SpeechRecognition();
 
-    recognition.lang =
-        "en-US";
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
 
-    recognition.continuous =
-        false;
+    recognition.onstart = () => {
 
-    recognition.interimResults =
-        false;
+        listening = true;
 
-    recognition.maxAlternatives =
-        1;
+        mic.classList.add("listening");
+
+        mic.textContent = "⏹️";
+
+        statusText.textContent =
+            combatMode
+            ? "COMBAT • LISTENING"
+            : "LISTENING...";
+    };
 
 
-    recognition.onstart =
-        () => {
+    recognition.onresult = event => {
 
-            listening = true;
+        try{
 
-            mic.classList.add(
-                "listening"
+            const result =
+                event.results[0][0];
+
+            if(!result){
+                return;
+            }
+
+            const text =
+                result.transcript.trim();
+
+            if(text){
+
+                input.value = text;
+
+                stopListening();
+
+                sendMessage();
+            }
+
+        }catch(error){
+
+            console.log(
+                "Speech result error:",
+                error
             );
-
-            mic.textContent =
-                "⏹️";
-
-            statusText.textContent =
-                combatMode
-                ? "COMBAT • LISTENING"
-                : "LISTENING...";
-        };
+        }
+    };
 
 
-    recognition.onresult =
-        event => {
+    recognition.onerror = event => {
 
-            try{
+        stopListening();
 
-                const result =
-                    event.results[0][0];
+        let message =
+            "I couldn't access the microphone.";
 
-                if(
-                    !result
-                ){
+        if(
+            event.error === "not-allowed" ||
+            event.error === "service-not-allowed"
+        ){
 
-                    return;
-                }
+            message =
+                "Microphone access is blocked. Allow microphone access for this website and try again.";
+        }
 
-                const text =
-                    result.transcript
-                    .trim();
+        else if(event.error === "no-speech"){
 
-                if(
-                    text
-                ){
+            message =
+                "I didn't hear anything. Tap the microphone and speak again.";
+        }
 
-                    input.value =
-                        text;
+        else if(event.error === "audio-capture"){
 
-                    stopListening();
+            message =
+                "I couldn't access an available microphone.";
+        }
 
-                    sendMessage();
-                }
+        else if(event.error === "network"){
 
-            }catch(error){
+            message =
+                "The browser's speech-recognition service is unavailable right now.";
+        }
 
-                console.log(
-                    "Speech result error:",
-                    error
-                );
-            }
-        };
-
-
-    recognition.onerror =
-        event => {
-
-            stopListening();
-
-            let message =
-                "I couldn't access the microphone.";
-
-            if(
-                event.error ===
-                "not-allowed" ||
-                event.error ===
-                "service-not-allowed"
-            ){
-
-                message =
-                    "Microphone access is blocked. Allow microphone access for this website and try again.";
-            }
-
-            else if(
-                event.error ===
-                "no-speech"
-            ){
-
-                message =
-                    "I didn't hear anything. Tap the microphone and speak again.";
-            }
-
-            else if(
-                event.error ===
-                "audio-capture"
-            ){
-
-                message =
-                    "I couldn't access an available microphone.";
-            }
-
-            else if(
-                event.error ===
-                "network"
-            ){
-
-                message =
-                    "The browser's speech-recognition service is unavailable right now.";
-            }
-
-            addMessage(
-                message,
-                "jarvis",
-                true
-            );
-        };
+        addMessage(
+            message,
+            "jarvis",
+            true
+        );
+    };
 
 
-    recognition.onend =
-        () => {
+    recognition.onend = () => {
 
-            stopListening();
-        };
+        stopListening();
+    };
 
 
     mic.addEventListener(
         "click",
         () => {
 
-            if(
-                listening
-            ){
+            if(listening){
 
                 try{
-
                     recognition.stop();
-
                 }catch(error){
-
                     console.log(error);
                 }
 
@@ -2339,12 +1927,9 @@ function stopListening(){
 
     listening = false;
 
-    mic.classList.remove(
-        "listening"
-    );
+    mic.classList.remove("listening");
 
-    mic.textContent =
-        "🎙️";
+    mic.textContent = "🎙️";
 
     statusText.textContent =
         combatMode
