@@ -8,7 +8,6 @@
 <title>J.A.R.V.I.S.</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
@@ -35,28 +34,12 @@ body{
     overflow:hidden;
 
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(0,180,255,.12),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(0,234,255,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,234,255,.035) 1px,
-            transparent 1px
-        ),
+        radial-gradient(circle at 50% 40%,rgba(0,180,255,.12),transparent 45%),
+        linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px),
         #000;
 
-    background-size:
-        auto,
-        28px 28px,
-        28px 28px,
-        auto;
-
+    background-size:auto,28px 28px,28px 28px,auto;
     transition:.4s;
 }
 
@@ -68,20 +51,9 @@ body{
     color:#ff3030;
 
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(255,0,0,.15),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(255,0,0,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,0,0,.035) 1px,
-            transparent 1px
-        ),
+        radial-gradient(circle at 50% 40%,rgba(255,0,0,.15),transparent 45%),
+        linear-gradient(rgba(255,0,0,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,0,0,.035) 1px,transparent 1px),
         #000;
 }
 
@@ -90,146 +62,15 @@ body{
 ========================= */
 
 #app.cool{
-    color:#ff9d00;
+    color:#ff8a00;
 
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(255,145,0,.16),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(255,157,0,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,157,0,.035) 1px,
-            transparent 1px
-        ),
+        radial-gradient(circle at 50% 40%,rgba(255,120,0,.16),transparent 45%),
+        linear-gradient(rgba(255,140,0,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,140,0,.04) 1px,transparent 1px),
         #000;
-}
 
-#app.cool .header{
-    border-bottom-color:
-        rgba(255,157,0,.5);
-}
-
-#app.cool .logo{
-    color:#ff9d00;
-
-    text-shadow:
-        0 0 8px #ff9d00,
-        0 0 20px rgba(255,157,0,.7);
-}
-
-#app.cool .jarvis{
-    border-left-color:#ff9d00;
-
-    background:
-        rgba(255,145,0,.08);
-}
-
-#app.cool .ring{
-    border-color:
-        rgba(255,157,0,.4);
-}
-
-#app.cool .r1{
-    border-top-color:#ff9d00;
-}
-
-#app.cool .r2{
-    border-right-color:#ff7300;
-}
-
-#app.cool .r3{
-    border-bottom-color:#ffc400;
-}
-
-#app.cool .orb{
-    background:
-        radial-gradient(
-            circle,
-            #fff 0%,
-            #ffe0aa 15%,
-            #ff9d00 45%,
-            #ff5e00 70%,
-            transparent 72%
-        );
-
-    box-shadow:
-        0 0 15px #ff9d00,
-        0 0 40px #ff9d00,
-        0 0 75px rgba(255,120,0,.8);
-}
-
-#app.cool .controls{
-    border-top-color:
-        rgba(255,157,0,.5);
-}
-
-#app.cool #input{
-    border-color:#ff9d00;
-}
-
-#app.cool #input:focus{
-    border-color:#ffb300;
-
-    box-shadow:
-        0 0 12px
-        rgba(255,157,0,.3);
-}
-
-#app.cool #mic,
-#app.cool #send{
-    border-color:#ff9d00;
-    color:#ff9d00;
-}
-
-#app.cool #mic.listening{
-    background:
-        rgba(255,145,0,.3);
-
-    box-shadow:
-        0 0 18px
-        rgba(255,145,0,.7);
-}
-
-/* Combat takes priority over Cool Mode */
-
-#app.combat.cool{
-    color:#ff3030;
-
-    background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(255,0,0,.15),
-            transparent 45%
-        ),
-        linear-gradient(
-            rgba(255,0,0,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,0,0,.035) 1px,
-            transparent 1px
-        ),
-        #000;
-}
-
-#app.combat.cool .header{
-    border-bottom-color:
-        rgba(255,40,40,.5);
-}
-
-#app.combat.cool .logo{
-    color:#ff3030;
-
-    text-shadow:
-        0 0 8px #ff2020,
-        0 0 20px rgba(255,0,0,.7);
+    background-size:auto,28px 28px,28px 28px,auto;
 }
 
 .header{
@@ -237,31 +78,26 @@ body{
     top:0;
     left:0;
     right:0;
-
     height:68px;
-
-    padding:
-        0 20px;
-
-    padding-top:
-        env(safe-area-inset-top);
+    padding:0 20px;
+    padding-top:env(safe-area-inset-top);
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    background:
-        rgba(0,8,12,.96);
-
-    border-bottom:
-        1px solid rgba(0,234,255,.35);
+    background:rgba(0,8,12,.96);
+    border-bottom:1px solid rgba(0,234,255,.35);
 
     z-index:100;
 }
 
 .combat .header{
-    border-bottom-color:
-        rgba(255,40,40,.5);
+    border-bottom-color:rgba(255,40,40,.5);
+}
+
+.cool .header{
+    border-bottom-color:rgba(255,140,0,.6);
 }
 
 .logo{
@@ -276,10 +112,16 @@ body{
 
 .combat .logo{
     color:#ff3030;
-
     text-shadow:
         0 0 8px #ff2020,
         0 0 20px rgba(255,0,0,.7);
+}
+
+.cool .logo{
+    color:#ff8a00;
+    text-shadow:
+        0 0 8px #ff8a00,
+        0 0 22px rgba(255,120,0,.75);
 }
 
 .status{
@@ -293,48 +135,27 @@ body{
 }
 
 .cool .status{
-    color:#ff9d00;
-}
-
-.combat.cool .status{
-    color:#ff3030;
+    color:#ff8a00;
 }
 
 .dot{
     display:inline-block;
-
     width:7px;
     height:7px;
-
     border-radius:50%;
-
     margin-right:5px;
-
     background:#00ff88;
-
-    box-shadow:
-        0 0 10px #00ff88;
+    box-shadow:0 0 10px #00ff88;
 }
 
 .combat .dot{
     background:#ff3030;
-
-    box-shadow:
-        0 0 10px #ff3030;
+    box-shadow:0 0 10px #ff3030;
 }
 
 .cool .dot{
-    background:#ff9d00;
-
-    box-shadow:
-        0 0 10px #ff9d00;
-}
-
-.combat.cool .dot{
-    background:#ff3030;
-
-    box-shadow:
-        0 0 10px #ff3030;
+    background:#ff8a00;
+    box-shadow:0 0 10px #ff8a00;
 }
 
 /* =========================
@@ -343,7 +164,6 @@ body{
 
 .main{
     position:absolute;
-
     top:68px;
     left:0;
     right:0;
@@ -351,12 +171,11 @@ body{
 
     display:flex;
     flex-direction:column;
-
     min-height:0;
 }
 
 /* =========================
-   ARC REACTOR
+   ARC
 ========================= */
 
 .coreArea{
@@ -369,51 +188,36 @@ body{
 
 .core{
     position:relative;
-
     width:165px;
     height:165px;
 }
 
 .ring{
     position:absolute;
-
     inset:0;
-
-    border:
-        2px solid
-        rgba(0,234,255,.4);
-
+    border:2px solid rgba(0,234,255,.4);
     border-radius:50%;
 }
 
 .r1{
     border-top-color:#00eaff;
-
-    animation:
-        spin 8s linear infinite;
+    animation:spin 8s linear infinite;
 }
 
 .r2{
     inset:20px;
-
     border-right-color:#008cff;
-
-    animation:
-        spinBack 5s linear infinite;
+    animation:spinBack 5s linear infinite;
 }
 
 .r3{
     inset:42px;
-
     border-bottom-color:#00ffff;
-
-    animation:
-        spin 3.5s linear infinite;
+    animation:spin 3.5s linear infinite;
 }
 
 .combat .ring{
-    border-color:
-        rgba(255,40,40,.4);
+    border-color:rgba(255,40,40,.4);
 }
 
 .combat .r1{
@@ -428,6 +232,22 @@ body{
     border-bottom-color:#ff0000;
 }
 
+.cool .ring{
+    border-color:rgba(255,140,0,.4);
+}
+
+.cool .r1{
+    border-top-color:#ff8a00;
+}
+
+.cool .r2{
+    border-right-color:#ffb000;
+}
+
+.cool .r3{
+    border-bottom-color:#ff6500;
+}
+
 .orb{
     position:absolute;
 
@@ -437,9 +257,7 @@ body{
     left:50%;
     top:50%;
 
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     border-radius:50%;
 
     background:
@@ -457,8 +275,7 @@ body{
         0 0 40px #00eaff,
         0 0 75px rgba(0,150,255,.8);
 
-    animation:
-        pulse 2s ease-in-out infinite;
+    animation:pulse 2s ease-in-out infinite;
 }
 
 .combat .orb{
@@ -478,19 +295,30 @@ body{
         0 0 75px rgba(255,0,0,.8);
 }
 
+.cool .orb{
+    background:
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #ffe1a3 15%,
+            #ff8a00 45%,
+            #c34f00 70%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 15px #ff8a00,
+        0 0 40px #ff8a00,
+        0 0 75px rgba(255,120,0,.8);
+}
+
 .arc{
     position:absolute;
-
     bottom:-25px;
-
     width:100%;
-
     text-align:center;
-
     font-size:9px;
-
     letter-spacing:3px;
-
     opacity:.6;
 }
 
@@ -500,56 +328,40 @@ body{
 
 .chat{
     flex:1;
-
     min-height:0;
 
     overflow-y:auto;
     overflow-x:hidden;
 
     -webkit-overflow-scrolling:touch;
-
     overscroll-behavior:contain;
 
-    padding:
-        5px
-        15px
-        120px;
+    padding:5px 15px 120px;
 }
 
 .message{
     max-width:900px;
 
-    margin:
-        0 auto 12px;
+    margin:0 auto 12px;
 
-    padding:
-        12px 15px;
+    padding:12px 15px;
 
     border-radius:10px;
 
     line-height:1.45;
-
     font-size:15px;
 
     overflow-wrap:anywhere;
 }
 
 .jarvis{
-    background:
-        rgba(0,160,220,.08);
-
-    border-left:
-        2px solid #00eaff;
+    background:rgba(0,160,220,.08);
+    border-left:2px solid #00eaff;
 }
 
 .user{
-    background:
-        rgba(255,255,255,.05);
-
-    border-right:
-        2px solid
-        rgba(255,255,255,.4);
-
+    background:rgba(255,255,255,.05);
+    border-right:2px solid rgba(255,255,255,.4);
     color:#fff;
 }
 
@@ -557,15 +369,15 @@ body{
     border-left-color:#ff3030;
 }
 
+.cool .jarvis{
+    border-left-color:#ff8a00;
+}
+
 .label{
     display:block;
-
     margin-bottom:5px;
-
     font-size:9px;
-
     letter-spacing:2px;
-
     opacity:.55;
 }
 
@@ -587,53 +399,43 @@ body{
         10px
         max(12px,env(safe-area-inset-bottom));
 
-    background:
-        rgba(0,8,12,.98);
+    background:rgba(0,8,12,.98);
 
-    border-top:
-        1px solid
-        rgba(0,234,255,.35);
+    border-top:1px solid rgba(0,234,255,.35);
 
     z-index:500;
 }
 
 .combat .controls{
-    border-top-color:
-        rgba(255,40,40,.5);
+    border-top-color:rgba(255,40,40,.5);
+}
+
+.cool .controls{
+    border-top-color:rgba(255,140,0,.6);
 }
 
 .inputRow{
     display:flex;
-
     gap:7px;
-
     width:100%;
-
     max-width:900px;
-
     margin:auto;
 }
 
 #input{
     flex:1;
-
     min-width:0;
 
     height:48px;
 
-    border:
-        1px solid
-        rgba(0,234,255,.55);
-
+    border:1px solid rgba(0,234,255,.55);
     border-radius:10px;
 
     outline:none;
 
-    padding:
-        0 13px;
+    padding:0 13px;
 
     background:#03151b;
-
     color:#fff;
 
     font-size:16px;
@@ -643,27 +445,25 @@ body{
 
 #input:focus{
     border-color:#00eaff;
-
-    box-shadow:
-        0 0 12px
-        rgba(0,234,255,.2);
+    box-shadow:0 0 12px rgba(0,234,255,.2);
 }
 
 .combat #input{
     border-color:#ff3030;
 }
 
+.cool #input{
+    border-color:#ff8a00;
+}
+
 #mic,
 #send{
     height:48px;
 
-    border:
-        1px solid #00eaff;
-
+    border:1px solid #00eaff;
     border-radius:10px;
 
-    background:
-        rgba(0,234,255,.08);
+    background:rgba(0,234,255,.08);
 
     color:#00eaff;
 
@@ -672,14 +472,12 @@ body{
     cursor:pointer;
 
     -webkit-appearance:none;
-
     touch-action:manipulation;
 }
 
 #mic{
     width:48px;
     flex:0 0 48px;
-
     font-size:18px;
 }
 
@@ -694,22 +492,20 @@ body{
     color:#ff3030;
 }
 
-#mic.listening{
-    background:
-        rgba(0,234,255,.3);
-
-    box-shadow:
-        0 0 18px
-        rgba(0,234,255,.7);
+.cool #mic,
+.cool #send{
+    border-color:#ff8a00;
+    color:#ff8a00;
 }
 
-.combat #mic.listening{
-    background:
-        rgba(255,0,0,.3);
+#mic.listening{
+    background:rgba(0,234,255,.3);
+    box-shadow:0 0 18px rgba(0,234,255,.7);
+}
 
-    box-shadow:
-        0 0 18px
-        rgba(255,0,0,.7);
+.cool #mic.listening{
+    background:rgba(255,140,0,.3);
+    box-shadow:0 0 18px rgba(255,140,0,.7);
 }
 
 /* =========================
@@ -730,15 +526,11 @@ body{
 
 @keyframes pulse{
     0%,100%{
-        transform:
-            translate(-50%,-50%)
-            scale(.9);
+        transform:translate(-50%,-50%) scale(.9);
     }
 
     50%{
-        transform:
-            translate(-50%,-50%)
-            scale(1.1);
+        transform:translate(-50%,-50%) scale(1.1);
     }
 }
 
@@ -765,7 +557,6 @@ body{
         font-size:14px;
     }
 }
-
 </style>
 </head>
 
@@ -780,13 +571,8 @@ body{
     </div>
 
     <div class="status">
-
         <span class="dot"></span>
-
-        <span id="statusText">
-            SYSTEMS ONLINE
-        </span>
-
+        <span id="statusText">SYSTEMS ONLINE</span>
     </div>
 
 </header>
@@ -798,9 +584,7 @@ body{
     <div class="core">
 
         <div class="ring r1"></div>
-
         <div class="ring r2"></div>
-
         <div class="ring r3"></div>
 
         <div class="orb"></div>
@@ -813,10 +597,7 @@ body{
 
 </section>
 
-<section
-    id="chat"
-    class="chat">
-</section>
+<section id="chat" class="chat"></section>
 
 </main>
 
@@ -833,15 +614,11 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button
-            id="mic"
-            type="button">
+        <button id="mic" type="button">
             🎙️
         </button>
 
-        <button
-            id="send"
-            type="button">
+        <button id="send" type="button">
             SEND
         </button>
 
@@ -891,7 +668,7 @@ let memory = {
 
 
 /* =====================================================
-   VOICE OUTPUT
+   VOICE
 ===================================================== */
 
 function speak(text){
@@ -909,20 +686,11 @@ function speak(text){
         const voice =
             new SpeechSynthesisUtterance(text);
 
-        /*
-           Cool Mode sounds slightly more relaxed.
-        */
+        voice.rate =
+            coolMode ? 1.02 : .88;
 
-        if(coolMode && !combatMode){
-
-            voice.rate = .96;
-            voice.pitch = .82;
-
-        }else{
-
-            voice.rate = .88;
-            voice.pitch = .72;
-        }
+        voice.pitch =
+            coolMode ? .88 : .72;
 
         voice.volume = 1;
 
@@ -1020,7 +788,6 @@ function addMessage(
     content.textContent = text;
 
     box.appendChild(label);
-
     box.appendChild(content);
 
     chat.appendChild(box);
@@ -1036,23 +803,85 @@ function addMessage(
         voice &&
         who === "jarvis"
     ){
+
         speak(text);
     }
 }
 
 
 /* =====================================================
-   MODE STATUS
+   COMBAT MODE
 ===================================================== */
+
+function startCombat(){
+
+    combatMode = true;
+
+    app.classList.add("combat");
+
+    statusText.textContent =
+        "COMBAT MODE";
+}
+
+function stopCombat(){
+
+    combatMode = false;
+
+    app.classList.remove("combat");
+
+    updateStatus();
+
+    addMessage(
+        "Combat mode terminated. Systems returning to normal.",
+        "jarvis",
+        true
+    );
+}
+
+
+/* =====================================================
+   COOL MODE
+===================================================== */
+
+function startCoolMode(){
+
+    coolMode = true;
+
+    app.classList.add("cool");
+
+    statusText.textContent =
+        "COOL MODE";
+
+    addMessage(
+        "Aight, cool mode activated. We chillin' now. 😎",
+        "jarvis",
+        true
+    );
+}
+
+
+function stopCoolMode(){
+
+    coolMode = false;
+
+    app.classList.remove("cool");
+
+    updateStatus();
+
+    addMessage(
+        "Cool mode disabled. Back to standard operations.",
+        "jarvis",
+        true
+    );
+}
+
 
 function updateStatus(){
 
     if(combatMode){
 
         statusText.textContent =
-            coolMode
-            ? "COMBAT • COOL"
-            : "COMBAT MODE";
+            "COMBAT MODE";
 
         return;
     }
@@ -1071,129 +900,75 @@ function updateStatus(){
 
 
 /* =====================================================
-   COOL MODE
+   COOL MODE QUESTION RESPONSES
 ===================================================== */
-
-function startCoolMode(){
-
-    if(coolMode){
-
-        addMessage(
-            "Cool Mode is already on, bro. 😎",
-            "jarvis",
-            true
-        );
-
-        return;
-    }
-
-    coolMode = true;
-
-    app.classList.add("cool");
-
-    updateStatus();
-
-    addMessage(
-        "Aight, Cool Mode activated. We chillin' now. 😎",
-        "jarvis",
-        true
-    );
-}
-
-
-function stopCoolMode(){
-
-    if(!coolMode){
-
-        addMessage(
-            "Cool Mode is already off.",
-            "jarvis",
-            true
-        );
-
-        return;
-    }
-
-    coolMode = false;
-
-    app.classList.remove("cool");
-
-    updateStatus();
-
-    addMessage(
-        "Back to normal. Systems are locked in.",
-        "jarvis",
-        true
-    );
-}
-
-
-/* =====================================================
-   COOL MODE RESPONSES
-===================================================== */
-
-const coolReplies = [
-
-    "Yeah bro, I'm listening.",
-
-    "Bet. What's up?",
-
-    "Say less.",
-
-    "I'm locked in. Go ahead.",
-
-    "Aight, let's see what we're working with.",
-
-    "Yeah, I got you.",
-
-    "For sure.",
-
-    "We're good. Keep going.",
-
-    "I hear you, bro.",
-
-    "Alright, I'm with you.",
-
-    "Bet, let's figure it out.",
-
-    "Yeah, that's easy. Lemme handle it."
-
-];
-
 
 const coolQuestionReplies = [
 
-    "Bro, I honestly don't know that one. Lemme find out.",
+    "Idk bro 😭",
 
-    "Yeahhh... I don't got that one off the top. We gotta find out.",
+    "Figure it out yourself bro 💀",
 
-    "Not gonna lie, I don't know. Let's look into it.",
+    "Uh... skibidi? 😭",
 
-    "I could guess, but that'd be cap. Let's find the actual answer.",
+    "Bro you got me on that one 💀",
 
-    "Idk bro 😭. We need to check that one.",
+    "I'm not even gonna lie, I got no clue 😭",
 
-    "That's one of those 'lemme find out real quick' questions.",
+    "You asking me? Bro 😭",
 
-    "I'm not about to make something up. Let's find the real answer.",
+    "Nahhh, you gotta find that one yourself 💀",
 
-    "Yeah, I'm drawing a blank on that one. Let's figure it out."
+    "Bro I'm off duty 😭",
+
+    "I could tell you... but I won't 💀",
+
+    "That's crazy bro, I have absolutely no idea 😭",
+
+    "Google looking real useful right now 💀",
+
+    "Bro you're on your own with this one 😭",
+
+    "I'm gonna pretend I didn't hear that 💀",
+
+    "Yeahhhh... figure that one out yourself bro 😭",
+
+    "Skibidi answer unavailable 💀",
+
+    "My guy, I have no clue 😭",
+
+    "You really thought I knew that? 💀",
+
+    "Nah bro, that knowledge is classified 😭",
+
+    "I'm just gonna say... good luck 💀",
+
+    "Bro, ask somebody else 😭",
+
+    "I ain't got that one bro 💀",
+
+    "Respectfully... I have no idea 😭",
+
+    "Bro that's between you and Google 💀",
+
+    "Nah I'm chilling, you solve that one 😭",
+
+    "My brain said nope 💀",
+
+    "Bro I clocked out mentally 😭",
+
+    "That's above my pay grade bro 💀",
+
+    "I don't know gang 😭",
+
+    "Bro you're cooking yourself with that question 💀",
+
+    "Yeah... I'm gonna let you handle that one 😭"
 
 ];
 
 
-function coolCasualReply(){
-
-    return coolReplies[
-        Math.floor(
-            Math.random() *
-            coolReplies.length
-        )
-    ];
-}
-
-
-function coolUnknownReply(){
+function coolQuestionReply(){
 
     return coolQuestionReplies[
         Math.floor(
@@ -1205,51 +980,7 @@ function coolUnknownReply(){
 
 
 /* =====================================================
-   COMBAT MODE
-===================================================== */
-
-function startCombat(){
-
-    if(combatMode){
-        return;
-    }
-
-    combatMode = true;
-
-    app.classList.add("combat");
-
-    updateStatus();
-
-    addMessage(
-        "Combat initiated.",
-        "jarvis",
-        true
-    );
-}
-
-
-function stopCombat(){
-
-    if(!combatMode){
-        return;
-    }
-
-    combatMode = false;
-
-    app.classList.remove("combat");
-
-    updateStatus();
-
-    addMessage(
-        "Combat mode terminated. Systems returning to normal.",
-        "jarvis",
-        true
-    );
-}
-
-
-/* =====================================================
-   BRAIN ROT FILTER
+   BRAIN ROT
 ===================================================== */
 
 const brainRotTerms = [
@@ -1292,20 +1023,13 @@ const brainRotTerms = [
     "among us"
 ];
 
-
 function isBrainRot(text){
 
     const clean =
         text
         .toLowerCase()
-        .replace(
-            /[^\w\s]/g,
-            " "
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
+        .replace(/[^\w\s]/g," ")
+        .replace(/\s+/g," ")
         .trim();
 
     return brainRotTerms.some(
@@ -1313,7 +1037,6 @@ function isBrainRot(text){
         clean.includes(term)
     );
 }
-
 
 function brainRotReply(){
 
@@ -1352,11 +1075,8 @@ const goofyTerms = [
     "poopy",
     "doo doo",
     "doodoo",
-    "do do",
-    "do-do",
     "feces",
     "toilet water",
-    "bathroom poop",
 
     "why do humans poop",
     "why do we poop",
@@ -1371,44 +1091,23 @@ const goofyTerms = [
     "can jarvis poop",
 
     "if ai is ai",
-    "if an ai is an ai",
     "ai is ai",
-    "ai being ai",
     "what if ai is ai",
     "is ai an ai",
     "is an ai ai",
-    "are you ai ai",
     "are you an ai ai",
-    "what is an ai ai",
-    "what is ai if ai is ai",
-    "if you are ai are you ai",
-    "if ai is artificial intelligence",
-    "is artificial intelligence intelligence",
-    "is ai intelligent because ai is ai",
-    "are you actually ai",
-    "are you really really ai",
-    "are you ai or ai",
     "can an ai be an ai",
     "can ai ai",
-    "ai ai ai",
-    "ai ai ai ai",
-    "what does ai mean if ai is ai"
+    "ai ai ai"
 ];
-
 
 function isGoofyQuestion(text){
 
     const clean =
         text
         .toLowerCase()
-        .replace(
-            /[^\w\s?-]/g,
-            " "
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
+        .replace(/[^\w\s?-]/g," ")
+        .replace(/\s+/g," ")
         .trim();
 
     return goofyTerms.some(
@@ -1416,7 +1115,6 @@ function isGoofyQuestion(text){
         clean.includes(term)
     );
 }
-
 
 function goofyReply(){
 
@@ -1427,8 +1125,6 @@ function goofyReply(){
         "Bro... get off my app. 😭",
 
         "Sir, respectfully, get off my app. 😭",
-
-        "J.A.R.V.I.S. is requesting that you get off my app, son. 😭",
 
         "My processors have had enough. Get off my app, son. 😭",
 
@@ -1455,93 +1151,53 @@ function solveMath(text){
         text.toLowerCase();
 
     expression =
-        expression.replace(
-            /what is/g,
-            ""
-        );
+        expression.replace(/what is/g,"");
 
     expression =
-        expression.replace(
-            /calculate/g,
-            ""
-        );
+        expression.replace(/calculate/g,"");
 
     expression =
-        expression.replace(
-            /solve/g,
-            ""
-        );
+        expression.replace(/solve/g,"");
 
     expression =
-        expression.replace(
-            /multiplied by/g,
-            "*"
-        );
+        expression.replace(/multiplied by/g,"*");
 
     expression =
-        expression.replace(
-            /divided by/g,
-            "/"
-        );
+        expression.replace(/divided by/g,"/");
 
     expression =
-        expression.replace(
-            /plus/g,
-            "+"
-        );
+        expression.replace(/plus/g,"+");
 
     expression =
-        expression.replace(
-            /minus/g,
-            "-"
-        );
+        expression.replace(/minus/g,"-");
 
     expression =
-        expression.replace(
-            /times/g,
-            "*"
-        );
+        expression.replace(/times/g,"*");
 
     expression =
-        expression.replace(
-            /over/g,
-            "/"
-        );
+        expression.replace(/over/g,"/");
 
     expression =
-        expression.replace(
-            /×/g,
-            "*"
-        );
+        expression.replace(/×/g,"*");
 
     expression =
-        expression.replace(
-            /÷/g,
-            "/"
-        );
+        expression.replace(/÷/g,"/");
 
     expression =
-        expression.replace(
-            /[^0-9+\-*/().%\s]/g,
-            ""
-        )
+        expression
+        .replace(/[^0-9+\-*/().%\s]/g,"")
         .trim();
 
     if(!expression){
         return null;
     }
 
-    if(
-        !/[+\-*/%]/.test(
-            expression
-        )
-    ){
+    if(!/[+\-*/%]/.test(expression)){
         return null;
     }
 
     if(
-        !/^[0-9+\-*/().%\s]+$/
-        .test(expression)
+        !/^[0-9+\-*/().%\s]+$/.test(expression)
     ){
         return null;
     }
@@ -1556,13 +1212,7 @@ function solveMath(text){
             )();
 
         if(
-            typeof answer !==
-            "number"
-        ){
-            return null;
-        }
-
-        if(
+            typeof answer !== "number" ||
             !Number.isFinite(answer)
         ){
             return null;
@@ -1653,7 +1303,10 @@ const knowledge = {
         "A volcano is an opening in Earth's crust through which magma, gases, and volcanic material can reach the surface.",
 
     "ocean":
-        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water."
+        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water.",
+
+    "photosynthesis":
+        "Photosynthesis is the process by which plants, algae, and some bacteria use light energy to produce chemical energy from carbon dioxide and water."
 };
 
 
@@ -1663,10 +1316,7 @@ function findKnowledge(q){
         const key in knowledge
     ){
 
-        if(
-            q.includes(key)
-        ){
-
+        if(q.includes(key)){
             return knowledge[key];
         }
     }
@@ -1708,14 +1358,28 @@ const jokes = [
 
 function localResponse(q){
 
-    /* =========================
-       COOL MODE
-    ========================= */
+    if(q === "combat mode"){
+
+        startCombat();
+
+        return "Combat mode activated.";
+    }
+
+    if(
+        q === "normal mode" ||
+        q === "exit combat mode" ||
+        q === "end combat mode"
+    ){
+
+        stopCombat();
+
+        return null;
+    }
 
     if(
         q === "cool mode" ||
-        q === "turn on cool mode" ||
         q === "activate cool mode" ||
+        q === "turn on cool mode" ||
         q === "enable cool mode"
     ){
 
@@ -1726,45 +1390,16 @@ function localResponse(q){
 
     if(
         q === "normal mode" ||
-        q === "cool off" ||
+        q === "exit cool mode" ||
+        q === "end cool mode" ||
         q === "turn off cool mode" ||
-        q === "disable cool mode" ||
-        q === "exit cool mode"
+        q === "disable cool mode"
     ){
 
         stopCoolMode();
 
         return null;
     }
-
-
-    /* =========================
-       COMBAT
-    ========================= */
-
-    if(
-        q === "combat mode"
-    ){
-
-        startCombat();
-
-        return null;
-    }
-
-    if(
-        q === "exit combat mode" ||
-        q === "end combat mode"
-    ){
-
-        stopCombat();
-
-        return null;
-    }
-
-
-    /* =========================
-       GREETINGS
-    ========================= */
 
     if(
         q === "hi" ||
@@ -1774,11 +1409,8 @@ function localResponse(q){
         q === "hello jarvis"
     ){
 
-        if(coolMode && !combatMode){
-
-            return memory.name
-                ? `Yo ${memory.name}, what's good? Systems are up. 😎`
-                : "Yo, what's good? Systems are up and we're locked in. 😎";
+        if(coolMode){
+            return "Yo bro 😎 what's good?";
         }
 
         return memory.name
@@ -1786,50 +1418,29 @@ function localResponse(q){
             : "Good to hear from you. Systems are online and ready.";
     }
 
-
-    /* =========================
-       NAME
-    ========================= */
-
     if(
-        q.startsWith(
-            "my name is "
-        )
+        q.startsWith("my name is ")
     ){
 
         memory.name =
             q
-            .replace(
-                "my name is ",
-                ""
-            )
+            .replace("my name is ","")
             .trim();
 
-        return coolMode && !combatMode
-            ? `Bet. I'll remember that you're ${memory.name}.`
-            : `Understood. I'll remember you as ${memory.name}.`;
+        return `Understood. I'll remember you as ${memory.name}.`;
     }
 
-
     if(
-        q.startsWith(
-            "call me "
-        )
+        q.startsWith("call me ")
     ){
 
         memory.name =
             q
-            .replace(
-                "call me ",
-                ""
-            )
+            .replace("call me ","")
             .trim();
 
-        return coolMode && !combatMode
-            ? `Say less. I'll call you ${memory.name}.`
-            : `Understood. I'll call you ${memory.name}.`;
+        return `Understood. I'll call you ${memory.name}.`;
     }
-
 
     if(
         q.includes("what is my name") ||
@@ -1841,73 +1452,38 @@ function localResponse(q){
             : "You haven't told me your name yet.";
     }
 
-
-    /* =========================
-       WHO ARE YOU
-    ========================= */
-
     if(
         q.includes("who are you") ||
         q.includes("what are you")
     ){
 
-        if(coolMode && !combatMode){
-
-            return "I'm J.A.R.V.I.S., bro. Digital assistant, conversation partner, math helper, knowledge engine, voice interface and whatever else you need me to handle.";
-        }
-
         return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics, answer questions, speak aloud, and search for information when necessary.";
     }
-
-
-    /* =========================
-       CAPABILITIES
-    ========================= */
 
     if(
         q.includes("what can you do")
     ){
 
-        if(coolMode && !combatMode){
-
-            return "A lot, honestly. I can handle conversations, math, science, history, jokes, voice input, voice output, Combat Mode, Cool Mode, and online questions when we actually need the web.";
-        }
-
-        return "I can handle conversation, mathematics, science, history, Earth questions, jokes, voice output, microphone input, Combat Mode, and online information searches when a question actually needs one.";
+        return "I can handle conversation, mathematics, science, history, jokes, voice output, microphone input, Combat Mode, Cool Mode, and online information searches when a question actually needs one.";
     }
-
-
-    /* =========================
-       HOW ARE YOU
-    ========================= */
 
     if(
         q.includes("how are you")
     ){
 
-        return coolMode && !combatMode
-            ? "I'm good, bro. Everything's running smooth. 😎"
+        return coolMode
+            ? "I'm chillin' bro 😎"
             : "All systems are operational. My processors are feeling particularly cooperative today.";
     }
-
-
-    /* =========================
-       WHAT ARE YOU DOING
-    ========================= */
 
     if(
         q.includes("what are you doing")
     ){
 
-        return coolMode && !combatMode
-            ? "Just chillin' and waiting for you to throw something at me."
+        return coolMode
+            ? "Just chillin' and waiting for you bro 😎"
             : "Monitoring the system and waiting for your next command.";
     }
-
-
-    /* =========================
-       THANKS
-    ========================= */
 
     if(
         q === "thanks" ||
@@ -1915,15 +1491,10 @@ function localResponse(q){
         q === "thx"
     ){
 
-        return coolMode && !combatMode
-            ? "Anytime, bro."
+        return coolMode
+            ? "Bet bro 😎"
             : "You're welcome. Always a pleasure.";
     }
-
-
-    /* =========================
-       JOKES
-    ========================= */
 
     if(
         q === "joke" ||
@@ -1939,14 +1510,7 @@ function localResponse(q){
         ];
     }
 
-
-    /* =========================
-       TIME
-    ========================= */
-
-    if(
-        q.includes("what time")
-    ){
+    if(q.includes("what time")){
 
         return "The current time is " +
             new Date().toLocaleTimeString(
@@ -1958,11 +1522,6 @@ function localResponse(q){
             ) +
             ".";
     }
-
-
-    /* =========================
-       DATE
-    ========================= */
 
     if(
         q.includes("what date") ||
@@ -1982,38 +1541,21 @@ function localResponse(q){
             ".";
     }
 
-
-    /* =========================
-       STATUS
-    ========================= */
-
     if(
         q === "status" ||
         q.includes("system status")
     ){
 
-        if(combatMode && coolMode){
-
-            return "Combat systems active. Cool personality active. All primary systems operational.";
-        }
-
         if(combatMode){
-
             return "Combat systems active. All primary systems operational.";
         }
 
         if(coolMode){
-
-            return "Cool Mode active. Orange interface online. All primary systems operational.";
+            return "Systems chill. Cool Mode is active. 😎";
         }
 
         return "Systems online. Core stable. Voice interface online. Knowledge engine online.";
     }
-
-
-    /* =========================
-       BORED
-    ========================= */
 
     if(
         q.includes("i am bored") ||
@@ -2021,8 +1563,8 @@ function localResponse(q){
         q.includes("i'm bored")
     ){
 
-        return coolMode && !combatMode
-            ? "Bored already? 😭 Come on bro, give me something to work with."
+        return coolMode
+            ? "Bro then do something 😭 play a game or something."
             : "Boredom detected. We could tackle a science question, solve a difficult math problem, or test my knowledge.";
     }
 
@@ -2036,9 +1578,7 @@ function localResponse(q){
 
 function isQuestion(q){
 
-    if(
-        q.includes("?")
-    ){
+    if(q.includes("?")){
         return true;
     }
 
@@ -2077,16 +1617,13 @@ function isQuestion(q){
    ONLINE SEARCH
 ===================================================== */
 
-async function onlineSearch(
-    question
-){
+async function onlineSearch(question){
 
     if(
         !isQuestion(
             question.toLowerCase()
         )
     ){
-
         return null;
     }
 
@@ -2097,9 +1634,7 @@ async function onlineSearch(
             "?action=query" +
             "&generator=search" +
             "&gsrsearch=" +
-            encodeURIComponent(
-                question
-            ) +
+            encodeURIComponent(question) +
             "&gsrnamespace=0" +
             "&gsrlimit=5" +
             "&prop=extracts" +
@@ -2111,9 +1646,7 @@ async function onlineSearch(
         const response =
             await fetch(url);
 
-        if(
-            !response.ok
-        ){
+        if(!response.ok){
             return null;
         }
 
@@ -2124,7 +1657,6 @@ async function onlineSearch(
             !data.query ||
             !data.query.pages
         ){
-
             return null;
         }
 
@@ -2133,20 +1665,14 @@ async function onlineSearch(
                 data.query.pages
             );
 
-        if(
-            !pages.length
-        ){
-
+        if(!pages.length){
             return null;
         }
 
         const words =
             question
             .toLowerCase()
-            .replace(
-                /[^\w\s]/g,
-                ""
-            )
+            .replace(/[^\w\s]/g,"")
             .split(/\s+/)
             .filter(
                 word =>
@@ -2154,7 +1680,6 @@ async function onlineSearch(
             );
 
         let best = null;
-
         let bestScore = 0;
 
         for(
@@ -2162,14 +1687,12 @@ async function onlineSearch(
         ){
 
             const title =
-                (
-                    page.title || ""
-                ).toLowerCase();
+                (page.title || "")
+                .toLowerCase();
 
             const extract =
-                (
-                    page.extract || ""
-                ).toLowerCase();
+                (page.extract || "")
+                .toLowerCase();
 
             let score = 0;
 
@@ -2177,27 +1700,18 @@ async function onlineSearch(
                 const word of words
             ){
 
-                if(
-                    title.includes(word)
-                ){
-
+                if(title.includes(word)){
                     score += 4;
                 }
 
-                if(
-                    extract.includes(word)
-                ){
-
+                if(extract.includes(word)){
                     score += 1;
                 }
             }
 
-            if(
-                score > bestScore
-            ){
+            if(score > bestScore){
 
                 bestScore = score;
-
                 best = page;
             }
         }
@@ -2206,31 +1720,21 @@ async function onlineSearch(
             !best ||
             bestScore < 2
         ){
-
             return null;
         }
 
         let answer =
-            (
-                best.extract || ""
-            ).trim();
+            (best.extract || "")
+            .trim();
 
-        if(
-            !answer
-        ){
-
+        if(!answer){
             return null;
         }
 
-        if(
-            answer.length > 900
-        ){
+        if(answer.length > 900){
 
             answer =
-                answer.substring(
-                    0,
-                    900
-                ) +
+                answer.substring(0,900) +
                 "...";
         }
 
@@ -2252,9 +1756,7 @@ async function onlineSearch(
    MAIN BRAIN
 ===================================================== */
 
-async function getResponse(
-    question
-){
+async function getResponse(question){
 
     const q =
         question
@@ -2263,13 +1765,13 @@ async function getResponse(
 
 
     /*
-       1. MODE COMMANDS FIRST
+       COOL MODE COMMANDS FIRST
     */
 
     if(
         q === "cool mode" ||
-        q === "turn on cool mode" ||
         q === "activate cool mode" ||
+        q === "turn on cool mode" ||
         q === "enable cool mode"
     ){
 
@@ -2279,11 +1781,10 @@ async function getResponse(
     }
 
     if(
-        q === "cool off" ||
-        q === "turn off cool mode" ||
-        q === "disable cool mode" ||
         q === "exit cool mode" ||
-        q === "normal mode"
+        q === "end cool mode" ||
+        q === "turn off cool mode" ||
+        q === "disable cool mode"
     ){
 
         stopCoolMode();
@@ -2293,20 +1794,18 @@ async function getResponse(
 
 
     /*
-       2. COMBAT
+       COMBAT COMMANDS
     */
 
-    if(
-        q === "combat mode"
-    ){
+    if(q === "combat mode"){
 
         startCombat();
 
-        return null;
+        return "Combat mode activated.";
     }
 
-
     if(
+        q === "normal mode" ||
         q === "exit combat mode" ||
         q === "end combat mode"
     ){
@@ -2318,39 +1817,50 @@ async function getResponse(
 
 
     /*
-       3. BRAIN ROT
+       COOL MODE QUESTION OVERRIDE
+
+       IMPORTANT:
+       Questions asked during Cool Mode
+       get a random chill response.
     */
 
     if(
-        isBrainRot(q)
+        coolMode &&
+        isQuestion(q)
     ){
+
+        return coolQuestionReply();
+    }
+
+
+    /*
+       BRAIN ROT
+    */
+
+    if(isBrainRot(q)){
 
         return brainRotReply();
     }
 
 
     /*
-       4. GOOFY QUESTIONS
+       GOOFY QUESTIONS
     */
 
-    if(
-        isGoofyQuestion(q)
-    ){
+    if(isGoofyQuestion(q)){
 
         return goofyReply();
     }
 
 
     /*
-       5. MATH
+       MATH
     */
 
     const math =
         solveMath(q);
 
-    if(
-        math !== null
-    ){
+    if(math !== null){
 
         return (
             "The answer is " +
@@ -2361,83 +1871,40 @@ async function getResponse(
 
 
     /*
-       6. BUILT-IN KNOWLEDGE
+       BUILT-IN KNOWLEDGE
     */
 
     const known =
         findKnowledge(q);
 
-    if(
-        known
-    ){
-
+    if(known){
         return known;
     }
 
 
     /*
-       7. LOCAL CONVERSATION
+       LOCAL CONVERSATION
     */
 
     const local =
         localResponse(q);
 
-    if(
-        local
-    ){
-
+    if(local){
         return local;
     }
 
 
     /*
-       8. ONLINE QUESTIONS
+       ONLINE QUESTIONS
     */
 
-    if(
-        isQuestion(q)
-    ){
+    if(isQuestion(q)){
 
         const result =
-            await onlineSearch(
-                question
-            );
+            await onlineSearch(question);
 
-        if(
-            result
-        ){
-
-            /*
-               Cool Mode adds a casual
-               intro without changing
-               the actual information.
-            */
-
-            if(
-                coolMode &&
-                !combatMode
-            ){
-
-                return (
-                    "Aight, I found this: " +
-                    result
-                );
-            }
-
+        if(result){
             return result;
-        }
-
-        /*
-           Cool Mode gets its own
-           unknown-question personality.
-        */
-
-        if(
-            coolMode &&
-            !combatMode
-        ){
-
-            return coolUnknownReply();
         }
 
         return "I couldn't find a reliable answer for that. Try asking the question another way.";
@@ -2445,17 +1912,42 @@ async function getResponse(
 
 
     /*
-       9. CASUAL CHAT
+       CASUAL CHAT
     */
 
-    if(
-        coolMode &&
-        !combatMode
-    ){
+    if(coolMode){
 
-        return coolCasualReply();
+        const coolCasual = [
+
+            "Bet bro 😎",
+
+            "Yeah bro.",
+
+            "I'm listening 😎",
+
+            "Say less.",
+
+            "Aight bro.",
+
+            "Facts 💀",
+
+            "That's wild bro 😭",
+
+            "I hear you.",
+
+            "No cap.",
+
+            "We chillin'."
+
+        ];
+
+        return coolCasual[
+            Math.floor(
+                Math.random() *
+                coolCasual.length
+            )
+        ];
     }
-
 
     const casual = [
 
@@ -2487,25 +1979,19 @@ async function getResponse(
 
 
 /* =====================================================
-   SEND MESSAGE
+   SEND
 ===================================================== */
 
 async function sendMessage(){
 
-    if(
-        processing
-    ){
-
+    if(processing){
         return;
     }
 
     const question =
         input.value.trim();
 
-    if(
-        !question
-    ){
-
+    if(!question){
         return;
     }
 
@@ -2525,13 +2011,9 @@ async function sendMessage(){
     try{
 
         const response =
-            await getResponse(
-                question
-            );
+            await getResponse(question);
 
-        if(
-            response
-        ){
+        if(response){
 
             memory.lastAnswer =
                 response;
@@ -2551,9 +2033,7 @@ async function sendMessage(){
         );
 
         addMessage(
-            coolMode && !combatMode
-            ? "Yeah, something glitched on my end. Give me another shot."
-            : "I encountered a temporary system error. My interface is still operational.",
+            "I encountered a temporary system error. My interface is still operational.",
             "jarvis",
             true
         );
@@ -2582,7 +2062,7 @@ async function sendMessage(){
 
 
 /* =====================================================
-   SEND BUTTON
+   BUTTONS
 ===================================================== */
 
 send.addEventListener(
@@ -2592,16 +2072,14 @@ send.addEventListener(
 
 
 /* =====================================================
-   ENTER KEY
+   ENTER
 ===================================================== */
 
 input.addEventListener(
     "keydown",
     event => {
 
-        if(
-            event.key === "Enter"
-        ){
+        if(event.key === "Enter"){
 
             event.preventDefault();
 
@@ -2624,9 +2102,7 @@ let recognition = null;
 let listening = false;
 
 
-if(
-    SpeechRecognition
-){
+if(SpeechRecognition){
 
     recognition =
         new SpeechRecognition();
@@ -2673,10 +2149,7 @@ if(
                 const result =
                     event.results[0][0];
 
-                if(
-                    !result
-                ){
-
+                if(!result){
                     return;
                 }
 
@@ -2684,9 +2157,7 @@ if(
                     result.transcript
                     .trim();
 
-                if(
-                    text
-                ){
+                if(text){
 
                     input.value =
                         text;
@@ -2715,10 +2186,8 @@ if(
                 "I couldn't access the microphone.";
 
             if(
-                event.error ===
-                "not-allowed" ||
-                event.error ===
-                "service-not-allowed"
+                event.error === "not-allowed" ||
+                event.error === "service-not-allowed"
             ){
 
                 message =
@@ -2726,8 +2195,7 @@ if(
             }
 
             else if(
-                event.error ===
-                "no-speech"
+                event.error === "no-speech"
             ){
 
                 message =
@@ -2735,8 +2203,7 @@ if(
             }
 
             else if(
-                event.error ===
-                "audio-capture"
+                event.error === "audio-capture"
             ){
 
                 message =
@@ -2744,8 +2211,7 @@ if(
             }
 
             else if(
-                event.error ===
-                "network"
+                event.error === "network"
             ){
 
                 message =
@@ -2771,16 +2237,11 @@ if(
         "click",
         () => {
 
-            if(
-                listening
-            ){
+            if(listening){
 
                 try{
-
                     recognition.stop();
-
                 }catch(error){
-
                     console.log(error);
                 }
 
