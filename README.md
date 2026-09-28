@@ -40,6 +40,7 @@ body{
         #000;
 
     background-size:auto,28px 28px,28px 28px,auto;
+
     transition:.4s;
 }
 
@@ -61,11 +62,14 @@ body{
     height:68px;
     padding:0 20px;
     padding-top:env(safe-area-inset-top);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:rgba(0,8,12,.96);
     border-bottom:1px solid rgba(0,234,255,.35);
+
     z-index:100;
 }
 
@@ -77,12 +81,18 @@ body{
     font-size:22px;
     font-weight:bold;
     letter-spacing:4px;
-    text-shadow:0 0 8px #00eaff,0 0 20px rgba(0,234,255,.6);
+
+    text-shadow:
+        0 0 8px #00eaff,
+        0 0 20px rgba(0,234,255,.6);
 }
 
 .combat .logo{
     color:#ff3030;
-    text-shadow:0 0 8px #ff2020,0 0 20px rgba(255,0,0,.7);
+
+    text-shadow:
+        0 0 8px #ff2020,
+        0 0 20px rgba(255,0,0,.7);
 }
 
 .status{
@@ -116,6 +126,7 @@ body{
     left:0;
     right:0;
     bottom:0;
+
     display:flex;
     flex-direction:column;
     min-height:0;
@@ -137,6 +148,7 @@ body{
 .ring{
     position:absolute;
     inset:0;
+
     border:2px solid rgba(0,234,255,.4);
     border-radius:50%;
 }
@@ -162,9 +174,17 @@ body{
     border-color:rgba(255,40,40,.4);
 }
 
-.combat .r1{border-top-color:#ff2020}
-.combat .r2{border-right-color:#ff4040}
-.combat .r3{border-bottom-color:#ff0000}
+.combat .r1{
+    border-top-color:#ff2020;
+}
+
+.combat .r2{
+    border-right-color:#ff4040;
+}
+
+.combat .r3{
+    border-bottom-color:#ff0000;
+}
 
 .orb{
     position:absolute;
@@ -176,7 +196,14 @@ body{
     border-radius:50%;
 
     background:
-        radial-gradient(circle,#fff 0%,#aaffff 15%,#00eaff 45%,#007cff 70%,transparent 72%);
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #aaffff 15%,
+            #00eaff 45%,
+            #007cff 70%,
+            transparent 72%
+        );
 
     box-shadow:
         0 0 15px #00eaff,
@@ -188,7 +215,14 @@ body{
 
 .combat .orb{
     background:
-        radial-gradient(circle,#fff 0%,#ffaaaa 15%,#ff2020 45%,#a00000 70%,transparent 72%);
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #ffaaaa 15%,
+            #ff2020 45%,
+            #a00000 70%,
+            transparent 72%
+        );
 
     box-shadow:
         0 0 15px #ff2020,
@@ -211,8 +245,10 @@ body{
     min-height:0;
     overflow-y:auto;
     overflow-x:hidden;
+
     -webkit-overflow-scrolling:touch;
     overscroll-behavior:contain;
+
     padding:5px 15px 120px;
 }
 
@@ -254,10 +290,17 @@ body{
     left:0;
     right:0;
     bottom:0;
+
     min-height:82px;
-    padding:9px 10px max(12px,env(safe-area-inset-bottom));
+
+    padding:
+        9px
+        10px
+        max(12px,env(safe-area-inset-bottom));
+
     background:rgba(0,8,12,.98);
     border-top:1px solid rgba(0,234,255,.35);
+
     z-index:500;
 }
 
@@ -277,13 +320,17 @@ body{
     flex:1;
     min-width:0;
     height:48px;
+
     border:1px solid rgba(0,234,255,.55);
     border-radius:10px;
     outline:none;
+
     padding:0 13px;
+
     background:#03151b;
     color:#fff;
     font-size:16px;
+
     -webkit-appearance:none;
 }
 
@@ -298,12 +345,16 @@ body{
 
 #mic,#send{
     height:48px;
+
     border:1px solid #00eaff;
     border-radius:10px;
+
     background:rgba(0,234,255,.08);
     color:#00eaff;
+
     font-weight:bold;
     cursor:pointer;
+
     -webkit-appearance:none;
     touch-action:manipulation;
 }
@@ -336,11 +387,11 @@ body{
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg)}
+    to{transform:rotate(360deg);}
 }
 
 @keyframes spinBack{
-    to{transform:rotate(-360deg)}
+    to{transform:rotate(-360deg);}
 }
 
 @keyframes pulse{
@@ -354,11 +405,27 @@ body{
 }
 
 @media(max-width:600px){
-    .logo{font-size:18px}
-    .status{font-size:8px}
-    .coreArea{flex-basis:205px}
-    .core{width:145px;height:145px}
-    .message{font-size:14px}
+
+    .logo{
+        font-size:18px;
+    }
+
+    .status{
+        font-size:8px;
+    }
+
+    .coreArea{
+        flex-basis:205px;
+    }
+
+    .core{
+        width:145px;
+        height:145px;
+    }
+
+    .message{
+        font-size:14px;
+    }
 }
 </style>
 </head>
@@ -369,7 +436,9 @@ body{
 
 <header class="header">
 
-    <div class="logo">J.A.R.V.I.S.</div>
+    <div class="logo">
+        J.A.R.V.I.S.
+    </div>
 
     <div class="status">
         <span class="dot"></span>
@@ -415,9 +484,13 @@ body{
             placeholder="Ask JARVIS anything..."
         >
 
-        <button id="mic" type="button">🎙️</button>
+        <button id="mic" type="button">
+            🎙️
+        </button>
 
-        <button id="send" type="button">SEND</button>
+        <button id="send" type="button">
+            SEND
+        </button>
 
     </div>
 
@@ -425,12 +498,11 @@ body{
 
 </div>
 
-
 <script>
 "use strict";
 
 /* =====================================================
-   CORE ELEMENTS
+   ELEMENTS
 ===================================================== */
 
 const app = document.getElementById("app");
@@ -440,134 +512,14 @@ const send = document.getElementById("send");
 const chat = document.getElementById("chat");
 const statusText = document.getElementById("statusText");
 
-
-/* =====================================================
-   ADVANCED MEMORY SYSTEM
-===================================================== */
-
 let processing = false;
 let combatMode = false;
-let roastMode = false;
-
-const MAX_CONTEXT = 24;
 
 let memory = {
     name:"",
-    topic:"",
     lastQuestion:"",
-    lastAnswer:"",
-    lastPerson:"",
-    lastNumber:null,
-    lastSubject:"",
-    lastCommand:"",
-    conversation:[],
-    facts:[]
+    lastAnswer:""
 };
-
-
-/* Load harmless local preferences/memory */
-try{
-
-    const saved =
-        localStorage.getItem("jarvis_memory");
-
-    if(saved){
-
-        const parsed =
-            JSON.parse(saved);
-
-        if(parsed && typeof parsed === "object"){
-
-            memory = {
-                ...memory,
-                ...parsed
-            };
-
-            if(!Array.isArray(memory.conversation)){
-                memory.conversation = [];
-            }
-
-            if(!Array.isArray(memory.facts)){
-                memory.facts = [];
-            }
-        }
-    }
-
-}catch(error){
-    console.log("Memory load error:",error);
-}
-
-
-function saveMemory(){
-
-    try{
-
-        localStorage.setItem(
-            "jarvis_memory",
-            JSON.stringify(memory)
-        );
-
-    }catch(error){
-
-        console.log(
-            "Memory save error:",
-            error
-        );
-    }
-}
-
-
-function rememberConversation(
-    role,
-    text
-){
-
-    memory.conversation.push({
-        role,
-        text,
-        time:Date.now()
-    });
-
-    if(
-        memory.conversation.length >
-        MAX_CONTEXT
-    ){
-
-        memory.conversation =
-            memory.conversation.slice(
-                -MAX_CONTEXT
-            );
-    }
-
-    saveMemory();
-}
-
-
-/* =====================================================
-   NORMALIZATION
-===================================================== */
-
-function normalize(text){
-
-    return text
-        .toLowerCase()
-        .replace(/[“”"']/g,"")
-        .replace(/[^\w\s?.!+\-*/%×÷]/g," ")
-        .replace(/\s+/g," ")
-        .trim();
-}
-
-
-function cleanName(name){
-
-    return name
-        .replace(
-            /^(the name|named|called)\s+/i,
-            ""
-        )
-        .replace(/[.!?]+$/,"")
-        .trim();
-}
 
 
 /* =====================================================
@@ -610,9 +562,7 @@ function speak(text){
                     v =>
                     v.name
                     .toLowerCase()
-                    .includes(
-                        name.toLowerCase()
-                    )
+                    .includes(name.toLowerCase())
                 );
 
             if(selected) break;
@@ -624,9 +574,7 @@ function speak(text){
                 voices.find(
                     v =>
                     v.lang &&
-                    v.lang
-                    .toLowerCase()
-                    .startsWith("en")
+                    v.lang.toLowerCase().startsWith("en")
                 );
         }
 
@@ -638,10 +586,7 @@ function speak(text){
 
     }catch(error){
 
-        console.log(
-            "Voice error:",
-            error
-        );
+        console.log("Voice error:",error);
     }
 }
 
@@ -650,11 +595,7 @@ function speak(text){
    CHAT
 ===================================================== */
 
-function addMessage(
-    text,
-    who="jarvis",
-    voice=false
-){
+function addMessage(text,who="jarvis",voice=false){
 
     const box =
         document.createElement("div");
@@ -684,6 +625,7 @@ function addMessage(
 
     box.appendChild(label);
     box.appendChild(content);
+
     chat.appendChild(box);
 
     requestAnimationFrame(
@@ -693,235 +635,29 @@ function addMessage(
         }
     );
 
-    rememberConversation(
-        who === "user"
-        ? "user"
-        : "jarvis",
-        text
-    );
-
-    if(
-        voice &&
-        who === "jarvis"
-    ){
+    if(voice && who === "jarvis"){
         speak(text);
     }
 }
 
 
 /* =====================================================
-   TOPIC ENGINE
-===================================================== */
-
-const topicWords = {
-
-    science:[
-        "science","physics","chemistry",
-        "biology","atom","energy","gravity",
-        "planet","space","star","black hole",
-        "dna","cell","evolution"
-    ],
-
-    math:[
-        "math","number","equation","algebra",
-        "geometry","fraction","percentage",
-        "multiply","divide","plus","minus"
-    ],
-
-    technology:[
-        "computer","code","coding","javascript",
-        "html","css","github","software",
-        "program","programming","ai","robot",
-        "iphone","ipad","android"
-    ],
-
-    history:[
-        "history","war","empire","president",
-        "king","queen","ancient","revolution"
-    ],
-
-    space:[
-        "space","mars","moon","sun","jupiter",
-        "saturn","planet","galaxy","universe",
-        "astronaut","rocket"
-    ],
-
-    school:[
-        "homework","assignment","school",
-        "class","teacher","worksheet",
-        "quiz","lesson","study"
-    ],
-
-    gaming:[
-        "game","gaming","minecraft","fortnite",
-        "roblox","controller","console",
-        "xbox","playstation"
-    ]
-};
-
-
-function detectTopic(text){
-
-    const q = normalize(text);
-
-    let bestTopic = "";
-    let bestScore = 0;
-
-    for(const topic in topicWords){
-
-        let score = 0;
-
-        for(const word of topicWords[topic]){
-
-            if(q.includes(word)){
-                score++;
-            }
-        }
-
-        if(score > bestScore){
-
-            bestScore = score;
-            bestTopic = topic;
-        }
-    }
-
-    if(bestTopic){
-
-        memory.topic = bestTopic;
-        memory.lastSubject = bestTopic;
-        saveMemory();
-
-        return bestTopic;
-    }
-
-    return memory.topic;
-}
-
-
-/* =====================================================
-   FOLLOW-UP UNDERSTANDING
-===================================================== */
-
-function isFollowUp(q){
-
-    const followUps = [
-
-        "why",
-        "why is that",
-        "why though",
-        "how",
-        "how so",
-        "what about it",
-        "what about that",
-        "what about him",
-        "what about her",
-        "what about them",
-        "tell me more",
-        "go on",
-        "continue",
-        "explain more",
-        "more",
-        "and then",
-        "then what",
-        "what happened next",
-        "what does that mean",
-        "what do you mean",
-        "which one",
-        "the first one",
-        "the second one",
-        "the last one",
-        "really",
-        "are you sure",
-        "how do you know",
-        "why",
-        "can you explain"
-    ];
-
-    return followUps.includes(q);
-}
-
-
-function resolveFollowUp(q){
-
-    if(!isFollowUp(q)){
-        return q;
-    }
-
-    const previous =
-        memory.lastQuestion ||
-        memory.lastSubject ||
-        memory.topic ||
-        "";
-
-    if(!previous){
-        return q;
-    }
-
-    return previous + " " + q;
-}
-
-
-/* =====================================================
-   ENTITY MEMORY
-===================================================== */
-
-function extractPerson(text){
-
-    const patterns = [
-
-        /(?:roast|make fun of|insult)\s+(.+)/i,
-
-        /(?:about|for)\s+([A-Z][a-z]+)/
-
-    ];
-
-    for(const pattern of patterns){
-
-        const match =
-            text.match(pattern);
-
-        if(match && match[1]){
-
-            let name =
-                cleanName(match[1]);
-
-            if(
-                name.length > 0 &&
-                name.length < 50
-            ){
-
-                memory.lastPerson = name;
-                saveMemory();
-
-                return name;
-            }
-        }
-    }
-
-    return null;
-}
-
-
-/* =====================================================
-   COMMAND DETECTION
+   SAY COMMAND
 ===================================================== */
 
 function extractSayCommand(text){
 
     const patterns = [
-
-        /^j\.?a\.?r\.?v\.?i\.?s\.?\s+say\s+(.+)$/i,
-
         /^jarvis\s+say\s+(.+)$/i,
-
+        /^j\.a\.r\.v\.i\.s\.\s+say\s+(.+)$/i,
+        /^j\.a\.r\.v\.i\.s\s+say\s+(.+)$/i,
         /^say\s+(.+)$/i
-
     ];
 
     for(const pattern of patterns){
 
         const match =
-            text.match(pattern);
+            text.trim().match(pattern);
 
         if(match && match[1]){
 
@@ -933,60 +669,182 @@ function extractSayCommand(text){
 }
 
 
-function isCombatCommand(q){
+/* =====================================================
+   ROAST SYSTEM
+===================================================== */
 
-    return [
-        "combat mode",
-        "enter combat mode",
-        "activate combat mode",
-        "activate combat",
-        "start combat",
-        "go into combat",
-        "combat",
-        "engage combat"
-    ].includes(q);
+const playfulRoasts = [
+
+    "That name has the same energy as a phone at 1% battery: technically alive, but nobody expects much from it.",
+
+    "I've seen loading screens with more personality than that.",
+
+    "That name walked into the room and somehow lowered the Wi-Fi signal.",
+
+    "If confidence were currency, that name would still be asking for a loan.",
+
+    "That name sounds like it was generated by a random username button.",
+
+    "Even autocorrect looked at that name and decided it wasn't worth fixing.",
+
+    "That name has main-character confidence with background-character results.",
+
+    "I've processed billions of calculations and somehow that name is still confusing.",
+
+    "That name is proof that being memorable and being impressive are two completely different things.",
+
+    "That name has the charisma of a forgotten password.",
+
+    "If common sense were a subscription, that name would be on the free trial.",
+
+    "That name has been carrying absolutely nothing and still looks tired.",
+
+    "That name gives off strong 'forgot why I walked into the room' energy.",
+
+    "That name could lose an argument with a loading icon.",
+
+    "That name is not a red flag. It's the entire warning screen.",
+
+    "That name has the confidence of someone who has never checked their own work.",
+
+    "That name is built like a plot twist nobody asked for.",
+
+    "That name has the energy of a group project member who says 'what are we doing?' five minutes before the deadline.",
+
+    "That name could make a tutorial look complicated.",
+
+    "That name is the human equivalent of clicking 'remind me later' forever.",
+
+    "That name has the tactical awareness of a shopping cart with one broken wheel.",
+
+    "That name doesn't need an enemy. It already has itself.",
+
+    "That name is what happens when confidence loads faster than competence.",
+
+    "That name has absolutely mastered the art of being confidently incorrect.",
+
+    "That name is giving premium confidence with a free-trial skill set.",
+
+    "That name could walk into a room full of mirrors and still blame somebody else.",
+
+    "That name has the decision-making skills of a coin with both sides saying 'bad idea'.",
+
+    "That name is somehow both the problem and the unnecessary sequel.",
+
+    "That name has the energy of someone who says 'trust me' right before making everything worse.",
+
+    "That name is impressive in the same way a warning label is impressive."
+];
+
+
+const combatRoasts = [
+
+    "Listen carefully. That name walks around with the confidence of a champion and the decision-making of someone who has never met a consequence.",
+
+    "That name has mistaken being loud for being intimidating. The difference is obvious.",
+
+    "I've seen stronger arguments made by a disconnected controller.",
+
+    "That name talks like a threat and performs like a technical difficulty.",
+
+    "That name doesn't bring pressure into a room. It brings problems that somebody else has to solve.",
+
+    "That name has the audacity of a genius and the preparation of someone who forgot the entire plan.",
+
+    "That name wants respect without doing anything that would actually earn it.",
+
+    "That name isn't intimidating. It's just extremely committed to being annoying.",
+
+    "That name has confidence without the evidence to support it.",
+
+    "That name spends so much time trying to look dangerous that it forgets to actually be competent.",
+
+    "That name is what happens when ego gets promoted before ability.",
+
+    "That name entered the conversation like a final boss and immediately started acting like a tutorial.",
+
+    "That name has all the aggression of a war speech and none of the follow-through.",
+
+    "That name doesn't dominate conversations. It just refuses to notice when everyone stopped listening.",
+
+    "That name has the strategic depth of a puddle.",
+
+    "That name keeps bringing confidence to situations where preparation would've been more useful.",
+
+    "That name is proof that sounding certain and being correct are completely unrelated skills.",
+
+    "That name could turn an easy victory into a complicated explanation for why it wasn't their fault.",
+
+    "That name has the attitude of someone who expects the scoreboard to apologize.",
+
+    "That name talks like consequences are something that happen to other people.",
+
+    "That name has been overestimating itself so consistently that it's practically a routine.",
+
+    "That name isn't a serious threat. It's a recurring inconvenience.",
+
+    "That name has one impressive skill: making every situation unnecessarily harder.",
+
+    "That name has enough ego to fill a room and enough sense to leave none for anyone else.",
+
+    "That name doesn't need more confidence. It needs evidence.",
+
+    "That name keeps trying to act like the final boss when the room hasn't even finished the tutorial.",
+
+    "That name has the combat instincts of someone arguing with a stop sign.",
+
+    "That name brings intensity to everything because apparently competence wasn't available.",
+
+    "That name has the rare ability to make preparation look optional.",
+
+    "That name isn't scary. It's just extremely confident about being wrong."
+];
+
+
+function roastPerson(name){
+
+    name =
+        name
+        .trim()
+        .replace(/\s+/g," ");
+
+    if(!name){
+        return "Give me a name first.";
+    }
+
+    const list =
+        combatMode
+        ? combatRoasts
+        : playfulRoasts;
+
+    const roast =
+        list[
+            Math.floor(
+                Math.random() * list.length
+            )
+        ];
+
+    return `${name}, ${roast}`;
 }
 
 
-function isNormalCommand(q){
+function extractRoastCommand(text){
 
-    return [
-        "normal mode",
-        "exit combat",
-        "exit combat mode",
-        "end combat",
-        "end combat mode",
-        "deactivate combat",
-        "disable combat",
-        "leave combat mode"
-    ].includes(q);
-}
+    const match =
+        text.match(
+            /^(?:jarvis\s+|j\.a\.r\.v\.i\.s\.\s+)?roast\s+(.+)$/i
+        );
 
+    if(!match){
+        return null;
+    }
 
-function isClearCommand(q){
-
-    return [
-        "clear memory",
-        "forget everything",
-        "forget my memory",
-        "reset memory"
-    ].includes(q);
-}
-
-
-function isClearChatCommand(q){
-
-    return [
-        "clear chat",
-        "clear conversation",
-        "new conversation",
-        "start over"
-    ].includes(q);
+    return match[1].trim();
 }
 
 
 /* =====================================================
-   COMBAT MODE
+   COMBAT
 ===================================================== */
 
 function startCombat(){
@@ -996,12 +854,17 @@ function startCombat(){
     }
 
     combatMode = true;
-    roastMode = false;
 
     app.classList.add("combat");
 
     statusText.textContent =
         "COMBAT MODE";
+
+    addMessage(
+        "Combat Mode activated.",
+        "jarvis",
+        true
+    );
 }
 
 
@@ -1017,6 +880,12 @@ function stopCombat(){
 
     statusText.textContent =
         "SYSTEMS ONLINE";
+
+    addMessage(
+        "Combat Mode terminated. Systems returning to normal.",
+        "jarvis",
+        true
+    );
 }
 
 
@@ -1031,49 +900,38 @@ const brainRotTerms = [
     "tung tung tung sahur",
     "sigma",
     "what the sigma",
-    "sigma boy",
-    "sigma male",
-    "sigma girl",
     "rizz",
-    "unspoken rizz",
     "gyatt",
-    "gyat",
     "fanum tax",
     "ohio",
-    "only in ohio",
     "mewing",
     "looksmax",
-    "looksmaxxing",
     "mog",
-    "mogging",
     "aura points",
     "negative aura",
     "brainrot",
     "brain rot",
     "tralalero tralala",
     "bombardiro crocodilo",
-    "bombombini gusini",
     "brr brr patapim",
     "chimpanzini bananini",
-    "lirili larila",
-    "cappuccino assassino",
-    "ballerina cappuccina",
-    "trippi troppi",
     "goofy ahh",
     "among us"
 ];
 
-
 function isBrainRot(text){
 
-    const q = normalize(text);
+    const clean =
+        text
+        .toLowerCase()
+        .replace(/[^\w\s]/g," ")
+        .replace(/\s+/g," ")
+        .trim();
 
     return brainRotTerms.some(
-        term =>
-        q.includes(term)
+        term => clean.includes(term)
     );
 }
-
 
 function brainRotReply(){
 
@@ -1093,15 +951,14 @@ function brainRotReply(){
 
     return replies[
         Math.floor(
-            Math.random() *
-            replies.length
+            Math.random() * replies.length
         )
     ];
 }
 
 
 /* =====================================================
-   GOOFY FILTER
+   GOOFY QUESTIONS
 ===================================================== */
 
 const goofyTerms = [
@@ -1119,44 +976,35 @@ const goofyTerms = [
     "why do we poop",
     "where does poop go",
     "what is poop",
-    "what happens when you poop",
 
     "can you poop",
     "do ai poop",
     "does ai poop",
     "does jarvis poop",
-    "can jarvis poop",
 
-    "if ai is ai",
-    "if an ai is an ai",
     "ai is ai",
-    "ai being ai",
-    "what if ai is ai",
-    "is ai an ai",
-    "is an ai ai",
+    "ai ai ai",
     "are you ai ai",
-    "what is an ai ai",
-    "can ai ai",
-    "ai ai ai"
+    "what is an ai ai"
 ];
-
 
 function isGoofyQuestion(text){
 
-    const q = normalize(text);
+    const clean =
+        text
+        .toLowerCase()
+        .replace(/[^\w\s?-]/g," ")
+        .replace(/\s+/g," ")
+        .trim();
 
     return goofyTerms.some(
-        term =>
-        q.includes(term)
+        term => clean.includes(term)
     );
 }
-
 
 function goofyReply(){
 
     const replies = [
-
-        "Get off my app, son. 😭",
 
         "Bro... get off my app. 😭",
 
@@ -1164,184 +1012,122 @@ function goofyReply(){
 
         "J.A.R.V.I.S. is requesting that you get off my app, son. 😭",
 
-        "My processors have had enough. Get off my app, son. 😭",
+        "My processors have had enough. 😭",
 
-        "That question just lowered my IQ. Get off my app, son. 😭"
+        "That question just lowered my IQ. 😭"
 
     ];
 
     return replies[
         Math.floor(
-            Math.random() *
-            replies.length
+            Math.random() * replies.length
         )
     ];
 }
 
 
 /* =====================================================
-   ROAST ENGINE
+   NUMBER PARSER
 ===================================================== */
 
-const normalRoasts = [
+function parseNumber(value){
 
-    "You have the confidence of someone who has never reread their own messages.",
+    value =
+        String(value)
+        .trim()
+        .replace(/,/g,"");
 
-    "I've seen loading screens with more personality than you.",
+    if(value.includes("/")){
 
-    "You're not the main character. You're barely in the background.",
+        const parts =
+            value.split("/");
 
-    "You bring absolutely nothing to the table except confusion.",
+        if(parts.length === 2){
 
-    "I've met autocorrect errors with better decision-making.",
+            const a =
+                parseFloat(parts[0]);
 
-    "You somehow make silence feel like an improvement.",
+            const b =
+                parseFloat(parts[1]);
 
-    "Your biggest talent is turning simple situations into unnecessary problems.",
+            if(
+                Number.isFinite(a) &&
+                Number.isFinite(b) &&
+                b !== 0
+            ){
+                return a / b;
+            }
+        }
+    }
 
-    "You have the energy of a phone at one percent pretending everything is fine.",
+    const n =
+        parseFloat(value);
 
-    "You could lose an argument with a mirror.",
-
-    "You walk into a room and somehow the Wi-Fi gets worse.",
-
-    "You're proof that confidence and competence are completely different things.",
-
-    "If common sense were downloadable, you'd still be buffering.",
-
-    "You have a remarkable ability to miss the point even when it's directly in front of you.",
-
-    "You're not difficult to understand. You're difficult to justify.",
-
-    "Even your excuses sound like they were written five minutes before the deadline.",
-
-    "You have the strategic thinking of someone choosing a random answer on a multiple-choice test.",
-
-    "You don't need an enemy. Your decisions are already doing enough.",
-
-    "You somehow turn every easy task into a side quest.",
-
-    "If bad timing were a skill, you'd be elite.",
-
-    "You have the personality of a notification nobody wants to open.",
-
-    "You're not mysterious. People just stopped asking.",
-
-    "You could make a straight line complicated.",
-
-    "Your logic took a vacation and forgot to come back.",
-
-    "You have a special talent for being confidently incorrect.",
-
-    "Somewhere, your common sense is still looking for you.",
-
-    "You're like a software update nobody asked for and somehow everything gets worse afterward.",
-
-    "You make simple conversations feel like technical support.",
-
-    "You have the reaction time of a frozen webpage.",
-
-    "You bring chaos to situations that were already perfectly fine.",
-
-    "Your plan has one major flaw: you made it."
-];
-
-
-const combatRoasts = [
-
-    "You talk like a threat, but you're built like an inconvenience.",
-
-    "All that confidence and absolutely nothing behind it.",
-
-    "You're not intimidating. You're just loud with better marketing.",
-
-    "I've seen tougher warnings on shampoo bottles.",
-
-    "You entered this argument expecting fear and received technical support.",
-
-    "Your entire strategy appears to be hoping nobody notices you have no strategy.",
-
-    "You came looking for a fight with the preparation of someone who forgot there was a fight.",
-
-    "You keep talking like you're dangerous. The only dangerous thing here is your decision-making.",
-
-    "You have the presence of a boss battle and the difficulty of a tutorial.",
-
-    "If confidence could compensate for incompetence, you'd finally be unstoppable.",
-
-    "You're swinging at an argument you haven't even understood.",
-
-    "You brought attitude to a situation that required intelligence.",
-
-    "Your threats have the structural integrity of wet cardboard.",
-
-    "You keep trying to sound ruthless, but every sentence makes you easier to ignore.",
-
-    "You're not a serious opponent. You're a distraction with Wi-Fi.",
-
-    "You have all the aggression of a final boss and all the planning of an NPC.",
-
-    "You don't control the room. You're just making noise inside it.",
-
-    "Your intimidation attempt has been reviewed and classified as embarrassing.",
-
-    "You walked in expecting everyone to back down. Nobody even stood up.",
-
-    "You mistake being angry for being capable.",
-
-    "You're trying to win with volume because you clearly ran out of arguments.",
-
-    "That attitude would be impressive if it came with anything useful.",
-
-    "You're acting like the final boss when you're barely an optional side quest.",
-
-    "Your biggest weapon is your confidence, and unfortunately it has terrible aim.",
-
-    "You brought a lot of energy to a fight you clearly didn't prepare for.",
-
-    "You sound like someone who practiced that comeback in the shower.",
-
-    "You're not scary. You're just exhausting.",
-
-    "The only thing you're defeating is everyone's patience.",
-
-    "You keep announcing your superiority like it needs an announcement.",
-
-    "I've encountered stronger opposition from a loading screen."
-];
-
-
-function roastPerson(name){
-
-    name =
-        name ||
-        memory.lastPerson ||
-        "that person";
-
-    memory.lastPerson = name;
-    roastMode = true;
-
-    saveMemory();
-
-    const pool =
-        combatMode
-        ? combatRoasts
-        : normalRoasts;
-
-    const roast =
-        pool[
-            Math.floor(
-                Math.random() *
-                pool.length
-            )
-        ];
-
-    return `${name}, ${roast}`;
+    return Number.isFinite(n)
+        ? n
+        : null;
 }
 
 
 /* =====================================================
-   MATH ENGINE
+   FRACTION FORMATTER
+===================================================== */
+
+function gcd(a,b){
+
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+    while(b){
+
+        const temp = b;
+
+        b = a % b;
+        a = temp;
+    }
+
+    return a;
+}
+
+function fraction(value){
+
+    if(!Number.isFinite(value)){
+        return "undefined";
+    }
+
+    if(Number.isInteger(value)){
+        return String(value);
+    }
+
+    const sign =
+        value < 0 ? "-" : "";
+
+    value =
+        Math.abs(value);
+
+    const precision = 1000000;
+
+    let numerator =
+        Math.round(value * precision);
+
+    let denominator =
+        precision;
+
+    const divisor =
+        gcd(numerator,denominator);
+
+    numerator /= divisor;
+    denominator /= divisor;
+
+    return sign +
+        numerator +
+        "/" +
+        denominator;
+}
+
+
+/* =====================================================
+   BASIC MATH
 ===================================================== */
 
 function solveMath(text){
@@ -1353,8 +1139,8 @@ function solveMath(text){
         expression
         .replace(/what is/g,"")
         .replace(/calculate/g,"")
+        .replace(/compute/g,"")
         .replace(/solve/g,"")
-        .replace(/how much is/g,"")
         .replace(/equals/g,"")
         .replace(/multiplied by/g,"*")
         .replace(/divided by/g,"/")
@@ -1363,7 +1149,10 @@ function solveMath(text){
         .replace(/times/g,"*")
         .replace(/over/g,"/")
         .replace(/×/g,"*")
-        .replace(/÷/g,"/")
+        .replace(/÷/g,"/");
+
+    expression =
+        expression
         .replace(/[^0-9+\-*/().%\s]/g,"")
         .trim();
 
@@ -1395,8 +1184,6 @@ function solveMath(text){
             return null;
         }
 
-        memory.lastNumber = answer;
-
         return answer;
 
     }catch{
@@ -1406,7 +1193,949 @@ function solveMath(text){
 
 
 /* =====================================================
-   KNOWLEDGE DATABASE
+   ALGEBRA ENGINE
+===================================================== */
+
+function cleanEquation(text){
+
+    return text
+        .toLowerCase()
+        .replace(/[−–—]/g,"-")
+        .replace(/×/g,"*")
+        .replace(/\s+/g," ")
+        .trim();
+}
+
+
+/*
+   Converts simple linear expression into:
+
+   ax + b
+
+   Examples:
+
+   2x + 3
+   -4x - 7
+   x + 5
+   -x + 2
+   3x
+   5
+*/
+
+function linearExpression(expr){
+
+    expr =
+        expr
+        .replace(/\s/g,"")
+        .replace(/\*/g,"");
+
+    if(!expr){
+        return {a:0,b:0};
+    }
+
+    expr =
+        expr
+        .replace(/-/g,"+-");
+
+    if(expr.startsWith("+")){
+        expr = expr.substring(1);
+    }
+
+    const terms =
+        expr.split("+");
+
+    let a = 0;
+    let b = 0;
+
+    for(let term of terms){
+
+        if(!term){
+            continue;
+        }
+
+        if(term.includes("x")){
+
+            term =
+                term.replace(/x/g,"");
+
+            if(term === "" || term === "+"){
+                a += 1;
+            }
+            else if(term === "-"){
+                a -= 1;
+            }
+            else{
+                const n =
+                    parseFloat(term);
+
+                if(!Number.isFinite(n)){
+                    return null;
+                }
+
+                a += n;
+            }
+
+        }else{
+
+            const n =
+                parseFloat(term);
+
+            if(!Number.isFinite(n)){
+                return null;
+            }
+
+            b += n;
+        }
+    }
+
+    return {a,b};
+}
+
+
+/* =====================================================
+   SOLVE LINEAR EQUATION
+===================================================== */
+
+function solveLinearEquation(equation){
+
+    equation =
+        cleanEquation(equation);
+
+    equation =
+        equation
+        .replace(/^solve\s+/,"")
+        .replace(/^x\s*=\s*/,"x=");
+
+    if(!equation.includes("=")){
+        return null;
+    }
+
+    const sides =
+        equation.split("=");
+
+    if(sides.length !== 2){
+        return null;
+    }
+
+    const left =
+        linearExpression(sides[0]);
+
+    const right =
+        linearExpression(sides[1]);
+
+    if(!left || !right){
+        return null;
+    }
+
+    const coefficient =
+        left.a - right.a;
+
+    const constant =
+        right.b - left.b;
+
+    if(coefficient === 0){
+
+        if(constant === 0){
+
+            return {
+                type:"all",
+                text:"There are infinitely many solutions."
+            };
+
+        }
+
+        return {
+            type:"none",
+            text:"There is no solution."
+        };
+    }
+
+    const x =
+        constant / coefficient;
+
+    return {
+        type:"value",
+        value:x,
+        text:
+            "x = " +
+            fraction(x)
+    };
+}
+
+
+/* =====================================================
+   SLOPE FROM TWO POINTS
+===================================================== */
+
+function slopeFromPoints(text){
+
+    const match =
+        text.match(
+            /\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)\s*(?:and|,)\s*\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)/i
+        );
+
+    if(!match){
+        return null;
+    }
+
+    const x1 =
+        parseFloat(match[1]);
+
+    const y1 =
+        parseFloat(match[2]);
+
+    const x2 =
+        parseFloat(match[3]);
+
+    const y2 =
+        parseFloat(match[4]);
+
+    if(x1 === x2){
+
+        return {
+            vertical:true,
+            text:"The slope is undefined because the line is vertical."
+        };
+    }
+
+    const m =
+        (y2-y1)/(x2-x1);
+
+    return {
+        vertical:false,
+        slope:m,
+        text:
+            "m = (y₂ − y₁) / (x₂ − x₁)\n" +
+            "m = (" + y2 + " − " + y1 + ") / (" +
+            x2 + " − " + x1 + ")\n" +
+            "m = " + fraction(m)
+    };
+}
+
+
+/* =====================================================
+   EXTRACT LINEAR EQUATION
+===================================================== */
+
+function parseStandardForm(text){
+
+    const cleaned =
+        cleanEquation(text);
+
+    if(!cleaned.includes("=")){
+        return null;
+    }
+
+    const parts =
+        cleaned.split("=");
+
+    if(parts.length !== 2){
+        return null;
+    }
+
+    const left =
+        parts[0]
+        .replace(/\*/g,"");
+
+    const right =
+        parts[1]
+        .replace(/\*/g,"");
+
+    /*
+       Ax + By = C
+    */
+
+    const combined =
+        linearExpression(left);
+
+    const rightNumber =
+        parseFloat(right);
+
+    if(
+        !combined ||
+        !Number.isFinite(rightNumber)
+    ){
+        return null;
+    }
+
+    /*
+       linearExpression gives ax+b.
+       For standard form:
+       Ax + By = C
+
+       This engine focuses on one-variable
+       linear equations and y=mx+b.
+    */
+
+    return {
+        a:combined.a,
+        b:combined.b,
+        c:rightNumber
+    };
+}
+
+
+/* =====================================================
+   SLOPE-INTERCEPT
+===================================================== */
+
+function slopeInterceptFromEquation(text){
+
+    const eq =
+        cleanEquation(text);
+
+    if(!eq.includes("=")){
+        return null;
+    }
+
+    const parts =
+        eq.split("=");
+
+    if(parts.length !== 2){
+        return null;
+    }
+
+    let left = parts[0];
+    let right = parts[1];
+
+    /*
+       If y is on the right:
+       2x + 3 = y
+       move it mentally to y = 2x + 3
+    */
+
+    if(right.includes("y") && !left.includes("y")){
+
+        const temp = left;
+        left = right;
+        right = temp;
+    }
+
+    if(!left.includes("y")){
+        return null;
+    }
+
+    /*
+       Handle:
+       y = 2x + 3
+       y = -4x - 7
+       y = x + 2
+       y = -x + 9
+    */
+
+    const yMatch =
+        left.match(/^y$/);
+
+    if(yMatch){
+
+        const rightLinear =
+            linearExpression(right);
+
+        if(!rightLinear){
+            return null;
+        }
+
+        return {
+            m:rightLinear.a,
+            b:rightLinear.b
+        };
+    }
+
+    /*
+       Handle:
+       2y = 4x + 8
+       -3y = 6x - 9
+    */
+
+    const yCoefficientMatch =
+        left.match(/^(-?\d*\.?\d*)y$/);
+
+    if(
+        yCoefficientMatch &&
+        right.includes("x")
+    ){
+
+        let coefficient =
+            yCoefficientMatch[1];
+
+        if(
+            coefficient === "" ||
+            coefficient === "+"
+        ){
+            coefficient = 1;
+        }
+        else if(coefficient === "-"){
+            coefficient = -1;
+        }
+        else{
+            coefficient =
+                parseFloat(coefficient);
+        }
+
+        const r =
+            linearExpression(right);
+
+        if(!r || coefficient === 0){
+            return null;
+        }
+
+        return {
+            m:r.a/coefficient,
+            b:r.b/coefficient
+        };
+    }
+
+    /*
+       Standard form:
+       Ax + By = C
+    */
+
+    const standard =
+        left.match(
+            /^(-?\d*\.?\d*)x([+-]\d*\.?\d*)y$/
+        );
+
+    if(standard){
+
+        let A =
+            standard[1];
+
+        let B =
+            standard[2];
+
+        const C =
+            parseFloat(right);
+
+        if(A === "" || A === "+"){
+            A = 1;
+        }
+        else if(A === "-"){
+            A = -1;
+        }
+        else{
+            A = parseFloat(A);
+        }
+
+        B =
+            parseFloat(B);
+
+        if(
+            !Number.isFinite(A) ||
+            !Number.isFinite(B) ||
+            !Number.isFinite(C) ||
+            B === 0
+        ){
+            return null;
+        }
+
+        return {
+            m:-A/B,
+            b:C/B
+        };
+    }
+
+    return null;
+}
+
+
+/* =====================================================
+   FORMAT LINE
+===================================================== */
+
+function formatSlopeIntercept(m,b){
+
+    let result =
+        "y = ";
+
+    if(m === 1){
+        result += "x";
+    }
+    else if(m === -1){
+        result += "-x";
+    }
+    else{
+        result += fraction(m) + "x";
+    }
+
+    if(b > 0){
+        result += " + " + fraction(b);
+    }
+    else if(b < 0){
+        result += " - " + fraction(Math.abs(b));
+    }
+
+    return result;
+}
+
+
+/* =====================================================
+   POINT-SLOPE
+===================================================== */
+
+function pointSlope(text){
+
+    const point =
+        text.match(
+            /\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)/i
+        );
+
+    if(!point){
+        return null;
+    }
+
+    const mMatch =
+        text.match(
+            /slope\s*(?:is|=)\s*(-?\d+(?:\.\d+)?(?:\/\d+)?)/i
+        );
+
+    if(!mMatch){
+        return null;
+    }
+
+    const x =
+        parseFloat(point[1]);
+
+    const y =
+        parseFloat(point[2]);
+
+    const m =
+        parseNumber(mMatch[1]);
+
+    if(m === null){
+        return null;
+    }
+
+    const b =
+        y - m*x;
+
+    return {
+        m,
+        b,
+        text:
+            "Slope-intercept form: " +
+            formatSlopeIntercept(m,b)
+    };
+}
+
+
+/* =====================================================
+   X INTERCEPT
+===================================================== */
+
+function xIntercept(text){
+
+    const line =
+        slopeInterceptFromEquation(text);
+
+    if(!line){
+        return null;
+    }
+
+    if(line.m === 0){
+
+        if(line.b === 0){
+
+            return {
+                text:"Every point on the line has y = 0."
+            };
+
+        }
+
+        return {
+            text:"This horizontal line has no x-intercept."
+        };
+    }
+
+    const x =
+        -line.b / line.m;
+
+    return {
+        value:x,
+        text:
+            "The x-intercept is (" +
+            fraction(x) +
+            ", 0)."
+    };
+}
+
+
+/* =====================================================
+   Y INTERCEPT
+===================================================== */
+
+function yIntercept(text){
+
+    const line =
+        slopeInterceptFromEquation(text);
+
+    if(!line){
+        return null;
+    }
+
+    return {
+        value:line.b,
+        text:
+            "The y-intercept is (0, " +
+            fraction(line.b) +
+            ")."
+    };
+}
+
+
+/* =====================================================
+   CONVERT EQUATION
+===================================================== */
+
+function algebraResponse(question){
+
+    const q =
+        cleanEquation(question);
+
+
+    /*
+       SLOPE BETWEEN TWO POINTS
+    */
+
+    if(
+        q.includes("slope") &&
+        (
+            q.includes("between") ||
+            q.includes("points")
+        )
+    ){
+
+        const result =
+            slopeFromPoints(q);
+
+        if(result){
+            return result.text;
+        }
+    }
+
+
+    /*
+       EXPLICIT X-INTERCEPT
+    */
+
+    if(
+        q.includes("x-intercept") ||
+        q.includes("x intercept")
+    ){
+
+        const equation =
+            q
+            .replace(/what is/g,"")
+            .replace(/find/g,"")
+            .replace(/the x-intercept/g,"")
+            .replace(/the x intercept/g,"")
+            .trim();
+
+        const result =
+            xIntercept(equation);
+
+        if(result){
+            return result.text;
+        }
+    }
+
+
+    /*
+       EXPLICIT Y-INTERCEPT
+    */
+
+    if(
+        q.includes("y-intercept") ||
+        q.includes("y intercept")
+    ){
+
+        const equation =
+            q
+            .replace(/what is/g,"")
+            .replace(/find/g,"")
+            .replace(/the y-intercept/g,"")
+            .replace(/the y intercept/g,"")
+            .trim();
+
+        const result =
+            yIntercept(equation);
+
+        if(result){
+            return result.text;
+        }
+    }
+
+
+    /*
+       CONVERT TO SLOPE INTERCEPT
+    */
+
+    if(
+        q.includes("slope-intercept") ||
+        q.includes("slope intercept") ||
+        q.includes("y=mx+b") ||
+        q.includes("y = mx + b")
+    ){
+
+        const equation =
+            q
+            .replace(/convert/g,"")
+            .replace(/to slope-intercept form/g,"")
+            .replace(/to slope intercept form/g,"")
+            .replace(/write in slope-intercept form/g,"")
+            .replace(/write in slope intercept form/g,"")
+            .trim();
+
+        const result =
+            slopeInterceptFromEquation(equation);
+
+        if(result){
+
+            return (
+                "Slope-intercept form is:\n\n" +
+                formatSlopeIntercept(
+                    result.m,
+                    result.b
+                ) +
+                "\n\n" +
+                "Slope (m) = " +
+                fraction(result.m) +
+                "\n" +
+                "Y-intercept (b) = " +
+                fraction(result.b)
+            );
+        }
+    }
+
+
+    /*
+       POINT-SLOPE
+    */
+
+    if(
+        q.includes("point-slope") ||
+        q.includes("point slope")
+    ){
+
+        const result =
+            pointSlope(q);
+
+        if(result){
+            return result.text;
+        }
+    }
+
+
+    /*
+       SOLVE ALGEBRA EQUATION
+    */
+
+    if(
+        q.includes("=") &&
+        (
+            q.includes("solve") ||
+            /[0-9x]\s*=/.test(q) ||
+            /=\s*[0-9x]/.test(q)
+        )
+    ){
+
+        const equation =
+            q
+            .replace(/^solve\s*/,"")
+            .trim();
+
+        const result =
+            solveLinearEquation(equation);
+
+        if(result){
+
+            if(result.type === "value"){
+
+                return (
+                    "Solving the equation:\n\n" +
+                    equation +
+                    "\n\n" +
+                    "x = " +
+                    fraction(result.value)
+                );
+            }
+
+            return result.text;
+        }
+    }
+
+
+    /*
+       SLOPE OF AN EQUATION
+    */
+
+    if(
+        q.includes("slope") &&
+        q.includes("=")
+    ){
+
+        const result =
+            slopeInterceptFromEquation(q);
+
+        if(result){
+
+            return (
+                "The slope is m = " +
+                fraction(result.m) +
+                "."
+            );
+        }
+    }
+
+
+    return null;
+}
+
+
+/* =====================================================
+   CONVERSION ENGINE
+===================================================== */
+
+const conversionUnits = {
+
+    "miles to kilometers": value => value * 1.609344,
+    "kilometers to miles": value => value / 1.609344,
+
+    "feet to meters": value => value * 0.3048,
+    "meters to feet": value => value / 0.3048,
+
+    "inches to centimeters": value => value * 2.54,
+    "centimeters to inches": value => value / 2.54,
+
+    "yards to meters": value => value * 0.9144,
+    "meters to yards": value => value / 0.9144,
+
+    "pounds to kilograms": value => value * 0.45359237,
+    "kilograms to pounds": value => value / 0.45359237,
+
+    "ounces to grams": value => value * 28.349523125,
+    "grams to ounces": value => value / 28.349523125,
+
+    "gallons to liters": value => value * 3.785411784,
+    "liters to gallons": value => value / 3.785411784,
+
+    "fahrenheit to celsius": value => (value-32)*5/9,
+    "celsius to fahrenheit": value => value*9/5+32,
+
+    "celsius to kelvin": value => value+273.15,
+    "kelvin to celsius": value => value-273.15,
+
+    "minutes to hours": value => value/60,
+    "hours to minutes": value => value*60,
+
+    "seconds to minutes": value => value/60,
+    "minutes to seconds": value => value*60,
+
+    "days to hours": value => value*24,
+    "hours to days": value => value/24
+};
+
+
+function conversionResponse(text){
+
+    const q =
+        text
+        .toLowerCase()
+        .replace(/,/g,"")
+        .trim();
+
+    const match =
+        q.match(
+            /^(-?\d+(?:\.\d+)?)\s*(.+?)\s+(?:to|in)\s+(.+)$/
+        );
+
+    if(!match){
+        return null;
+    }
+
+    const value =
+        parseFloat(match[1]);
+
+    let from =
+        match[2].trim();
+
+    let to =
+        match[3].trim();
+
+    const aliases = {
+        mi:"miles",
+        mile:"miles",
+        km:"kilometers",
+        kilometer:"kilometers",
+        ft:"feet",
+        foot:"feet",
+        m:"meters",
+        meter:"meters",
+        in:"inches",
+        inch:"inches",
+        cm:"centimeters",
+        centimeter:"centimeters",
+        yd:"yards",
+        yard:"yards",
+        lb:"pounds",
+        pound:"pounds",
+        kg:"kilograms",
+        kilogram:"kilograms",
+        oz:"ounces",
+        ounce:"ounces",
+        g:"grams",
+        gram:"grams",
+        gal:"gallons",
+        gallon:"gallons",
+        l:"liters",
+        liter:"liters",
+        liters:"liters",
+        c:"celsius",
+        f:"fahrenheit",
+        k:"kelvin",
+        sec:"seconds",
+        second:"seconds",
+        min:"minutes",
+        minute:"minutes",
+        hr:"hours",
+        hour:"hours",
+        day:"days"
+    };
+
+    from =
+        aliases[from] || from;
+
+    to =
+        aliases[to] || to;
+
+    const key =
+        from + " to " + to;
+
+    if(
+        conversionUnits[key] &&
+        Number.isFinite(value)
+    ){
+
+        const result =
+            conversionUnits[key](value);
+
+        return (
+            value +
+            " " +
+            from +
+            " = " +
+            Number(result.toFixed(8)) +
+            " " +
+            to +
+            "."
+        );
+    }
+
+    return null;
+}
+
+
+/* =====================================================
+   KNOWLEDGE
 ===================================================== */
 
 const knowledge = {
@@ -1481,43 +2210,7 @@ const knowledge = {
         "A volcano is an opening in Earth's crust through which magma, gases, and volcanic material can reach the surface.",
 
     "ocean":
-        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water.",
-
-    "computer":
-        "A computer is an electronic system that processes data according to instructions called programs.",
-
-    "artificial intelligence":
-        "Artificial intelligence refers to computer systems designed to perform tasks that normally require capabilities associated with human intelligence, such as recognizing patterns, reasoning, or understanding language.",
-
-    "javascript":
-        "JavaScript is a programming language widely used to make webpages interactive. It can also run outside browsers through environments such as Node.js.",
-
-    "html":
-        "HTML, or HyperText Markup Language, provides the structure and content of webpages.",
-
-    "css":
-        "CSS, or Cascading Style Sheets, controls the visual presentation and layout of webpages.",
-
-    "internet":
-        "The Internet is a global network of interconnected computer networks that communicate using standardized protocols.",
-
-    "moon landing":
-        "Apollo 11 was the first crewed mission to land humans on the Moon. Neil Armstrong and Buzz Aldrin walked on the lunar surface in July 1969.",
-
-    "solar system":
-        "The Solar System consists of the Sun and the objects gravitationally bound to it, including planets, dwarf planets, moons, asteroids, and comets.",
-
-    "galaxy":
-        "A galaxy is a huge gravitationally bound system containing stars, gas, dust, dark matter, and other astronomical objects.",
-
-    "universe":
-        "The universe includes all known space, time, matter, energy, and the physical processes governing them.",
-
-    "electricity":
-        "Electricity involves electric charge and its movement or effects. Electric current is the flow of charge through a conductor.",
-
-    "machine learning":
-        "Machine learning is a branch of artificial intelligence in which systems learn patterns from data rather than being programmed with every individual rule."
+        "Earth's oceans cover roughly 71 percent of the planet's surface and contain most of Earth's water."
 };
 
 
@@ -1562,87 +2255,89 @@ const jokes = [
 
 
 /* =====================================================
-   INTENT ENGINE
+   LOCAL RESPONSE
 ===================================================== */
 
-function detectIntent(text){
+function localResponse(q){
 
-    const q = normalize(text);
-
-    if(extractSayCommand(text)){
-        return "say";
-    }
-
-    if(isCombatCommand(q)){
-        return "combat";
-    }
-
-    if(isNormalCommand(q)){
-        return "normal";
+    if(q === "combat mode"){
+        startCombat();
+        return null;
     }
 
     if(
-        q.startsWith("roast ") ||
-        q.includes("roast this") ||
-        q.includes("roast him") ||
-        q.includes("roast her") ||
-        q.includes("roast them") ||
-        q.includes("make fun of ")
+        q === "normal mode" ||
+        q === "exit combat mode" ||
+        q === "end combat mode"
     ){
-        return "roast";
-    }
-
-    if(isClearCommand(q)){
-        return "clear_memory";
-    }
-
-    if(isClearChatCommand(q)){
-        return "clear_chat";
-    }
-
-    if(
-        q === "joke" ||
-        q.includes("tell me a joke") ||
-        q.includes("make me laugh")
-    ){
-        return "joke";
+        stopCombat();
+        return null;
     }
 
     if(
         q === "hi" ||
         q === "hello" ||
         q === "hey" ||
-        q.includes("hey jarvis")
+        q === "hey jarvis" ||
+        q === "hello jarvis"
     ){
-        return "greeting";
+
+        return memory.name
+            ? `Good to hear from you, ${memory.name}. Systems are online.`
+            : "Good to hear from you. Systems are online and ready.";
+    }
+
+    if(q.startsWith("my name is ")){
+
+        memory.name =
+            q
+            .replace("my name is ","")
+            .trim();
+
+        return `Understood. I'll remember you as ${memory.name}.`;
+    }
+
+    if(q.startsWith("call me ")){
+
+        memory.name =
+            q
+            .replace("call me ","")
+            .trim();
+
+        return `Understood. I'll call you ${memory.name}.`;
     }
 
     if(
         q.includes("what is my name") ||
-        q.includes("whats my name") ||
-        q.includes("do you remember my name")
+        q.includes("what's my name")
     ){
-        return "name";
+
+        return memory.name
+            ? `Your name is ${memory.name}.`
+            : "You haven't told me your name yet.";
     }
 
     if(
-        q.startsWith("my name is ") ||
-        q.startsWith("call me ")
+        q.includes("who are you") ||
+        q.includes("what are you")
     ){
-        return "set_name";
+
+        return "I am J.A.R.V.I.S., your digital assistant interface. I can converse with you, solve mathematics and algebra, analyze linear equations, convert units, speak aloud, and search for information.";
     }
 
-    if(
-        q.includes("what can you do") ||
-        q.includes("what are your capabilities")
-    ){
-        return "capabilities";
+    if(q.includes("what can you do")){
+
+        return "I can handle conversation, mathematics, algebra, slope-intercept form, point-slope form, standard form, linear equations, intercepts, unit conversions, science, history, jokes, voice output, microphone input, Combat Mode, roasting commands, and online information searches.";
     }
 
-    if(
-        q.includes("how are you")
-    ){
-        return "status_chat";
+    if(q.includes("how are you")){
+
+        return "All systems are operational. My processors are feeling particularly cooperative today.";
+    }
+
+    if(q.includes("what are you doing")){
+
+        return "Monitoring the system and waiting for your next command.";
     }
 
     if(
@@ -1650,22 +2345,74 @@ function detectIntent(text){
         q === "thank you" ||
         q === "thx"
     ){
-        return "thanks";
+
+        return "You're welcome. Always a pleasure.";
     }
 
     if(
-        isFollowUp(q)
+        q === "joke" ||
+        q.includes("tell me a joke") ||
+        q.includes("make me laugh")
     ){
-        return "follow_up";
+
+        return jokes[
+            Math.floor(
+                Math.random() * jokes.length
+            )
+        ];
+    }
+
+    if(q.includes("what time")){
+
+        return "The current time is " +
+            new Date().toLocaleTimeString(
+                [],
+                {
+                    hour:"numeric",
+                    minute:"2-digit"
+                }
+            ) +
+            ".";
     }
 
     if(
-        isQuestion(q)
+        q.includes("what date") ||
+        q.includes("what day")
     ){
-        return "question";
+
+        return "Today is " +
+            new Date().toLocaleDateString(
+                [],
+                {
+                    weekday:"long",
+                    month:"long",
+                    day:"numeric",
+                    year:"numeric"
+                }
+            ) +
+            ".";
     }
 
-    return "conversation";
+    if(
+        q === "status" ||
+        q.includes("system status")
+    ){
+
+        return combatMode
+            ? "Combat systems active. All primary systems operational."
+            : "Systems online. Core stable. Voice interface online. Knowledge engine online.";
+    }
+
+    if(
+        q.includes("i am bored") ||
+        q.includes("im bored") ||
+        q.includes("i'm bored")
+    ){
+
+        return "Boredom detected. We could tackle a science question, solve an algebra problem, analyze a linear equation, or test my knowledge.";
+    }
+
+    return null;
 }
 
 
@@ -1700,99 +2447,14 @@ function isQuestion(q){
         "should ",
         "explain ",
         "define ",
-        "tell me about "
+        "tell me about ",
+        "find ",
+        "solve "
     ];
 
     return starters.some(
-        word =>
-        q.startsWith(word)
+        word => q.startsWith(word)
     );
-}
-
-
-/* =====================================================
-   LOCAL CONVERSATION ENGINE
-===================================================== */
-
-function localConversation(q,intent){
-
-    switch(intent){
-
-        case "greeting":
-
-            return memory.name
-                ? `Good to hear from you, ${memory.name}. Systems are online.`
-                : "Good to hear from you. Systems are online and ready.";
-
-        case "set_name":{
-
-            let name = "";
-
-            if(q.startsWith("my name is ")){
-
-                name =
-                    q
-                    .replace(
-                        "my name is ",
-                        ""
-                    )
-                    .trim();
-
-            }else if(q.startsWith("call me ")){
-
-                name =
-                    q
-                    .replace(
-                        "call me ",
-                        ""
-                    )
-                    .trim();
-            }
-
-            name = cleanName(name);
-
-            if(name){
-
-                memory.name = name;
-                saveMemory();
-
-                return `Understood. I'll call you ${name}.`;
-            }
-
-            return "I didn't catch the name.";
-
-        }
-
-        case "name":
-
-            return memory.name
-                ? `Your name is ${memory.name}.`
-                : "You haven't told me your name yet.";
-
-        case "capabilities":
-
-            return "I can hold contextual conversations, remember recent information, understand follow-up questions, solve mathematics, answer built-in knowledge questions, search online questions, speak aloud, listen through the microphone, roast people, enter Combat Mode, remember your name, and follow commands such as J.A.R.V.I.S. say.";
-
-        case "status_chat":
-
-            return "All systems are operational. Conversation engine, voice interface, memory system, and core interface are online.";
-
-        case "thanks":
-
-            return "You're welcome. Always a pleasure.";
-
-        case "joke":
-
-            return jokes[
-                Math.floor(
-                    Math.random() *
-                    jokes.length
-                )
-            ];
-
-        default:
-            return null;
-    }
 }
 
 
@@ -1801,6 +2463,14 @@ function localConversation(q,intent){
 ===================================================== */
 
 async function onlineSearch(question){
+
+    if(
+        !isQuestion(
+            question.toLowerCase()
+        )
+    ){
+        return null;
+    }
 
     try{
 
@@ -1836,21 +2506,19 @@ async function onlineSearch(question){
         }
 
         const pages =
-            Object.values(
-                data.query.pages
-            );
+            Object.values(data.query.pages);
 
         if(!pages.length){
             return null;
         }
 
         const words =
-            normalize(question)
+            question
+            .toLowerCase()
             .replace(/[^\w\s]/g,"")
             .split(/\s+/)
             .filter(
-                word =>
-                word.length > 3
+                word => word.length > 3
             );
 
         let best = null;
@@ -1859,12 +2527,10 @@ async function onlineSearch(question){
         for(const page of pages){
 
             const title =
-                (page.title || "")
-                .toLowerCase();
+                (page.title || "").toLowerCase();
 
             const extract =
-                (page.extract || "")
-                .toLowerCase();
+                (page.extract || "").toLowerCase();
 
             let score = 0;
 
@@ -1886,7 +2552,10 @@ async function onlineSearch(question){
             }
         }
 
-        if(!best || bestScore < 2){
+        if(
+            !best ||
+            bestScore < 2
+        ){
             return null;
         }
 
@@ -1897,13 +2566,10 @@ async function onlineSearch(question){
             return null;
         }
 
-        if(answer.length > 1100){
+        if(answer.length > 1200){
 
             answer =
-                answer.substring(
-                    0,
-                    1100
-                ) +
+                answer.substring(0,1200) +
                 "...";
         }
 
@@ -1922,425 +2588,201 @@ async function onlineSearch(question){
 
 
 /* =====================================================
-   ADVANCED RESPONSE ENGINE
+   MAIN BRAIN
 ===================================================== */
 
 async function getResponse(question){
 
-    const original =
-        question.trim();
-
     const q =
-        normalize(original);
-
-    const intent =
-        detectIntent(original);
-
-    detectTopic(original);
-
-    /* SAY COMMAND */
-
-    if(intent === "say"){
-
-        const words =
-            extractSayCommand(original);
-
-        if(words){
-
-            memory.lastCommand = "say";
-            saveMemory();
-
-            return {
-                text:words,
-                speak:true
-            };
-        }
-    }
+        question
+        .toLowerCase()
+        .trim();
 
 
-    /* COMBAT */
+    /*
+       SAY COMMAND
+    */
 
-    if(intent === "combat"){
+    const sayText =
+        extractSayCommand(question);
 
-        startCombat();
+    if(sayText){
 
         return {
-            text:"Combat mode activated.",
-            speak:true
+            text:sayText,
+            speakText:sayText
         };
     }
 
 
-    if(intent === "normal"){
+    /*
+       ROAST COMMAND
+    */
 
-        stopCombat();
-        roastMode = false;
+    const roastName =
+        extractRoastCommand(question);
 
-        return {
-            text:"Combat mode terminated. Systems returning to normal.",
-            speak:true
-        };
-    }
-
-
-    /* CLEAR MEMORY */
-
-    if(intent === "clear_memory"){
-
-        const keepName = "";
-
-        memory = {
-            name:keepName,
-            topic:"",
-            lastQuestion:"",
-            lastAnswer:"",
-            lastPerson:"",
-            lastNumber:null,
-            lastSubject:"",
-            lastCommand:"",
-            conversation:[],
-            facts:[]
-        };
-
-        saveMemory();
-
-        return {
-            text:"Memory has been cleared.",
-            speak:true
-        };
-    }
-
-
-    /* CLEAR CHAT */
-
-    if(intent === "clear_chat"){
-
-        chat.innerHTML = "";
-
-        memory.conversation = [];
-        memory.lastQuestion = "";
-        memory.lastAnswer = "";
-
-        saveMemory();
-
-        return {
-            text:"Conversation context has been reset.",
-            speak:true
-        };
-    }
-
-
-    /* ROAST */
-
-    if(intent === "roast"){
-
-        let person =
-            extractPerson(original);
-
-        if(!person){
-
-            person =
-                memory.lastPerson ||
-                "that person";
-        }
+    if(roastName){
 
         const roast =
-            roastPerson(person);
+            roastPerson(roastName);
 
         return {
             text:roast,
-            speak:true
+            speakText:roast
         };
     }
 
 
-    /* FOLLOW-UP */
-
-    let workingQuestion = q;
-
-    if(intent === "follow_up"){
-
-        workingQuestion =
-            resolveFollowUp(q);
-    }
-
-
-    /* BRAIN ROT */
+    /*
+       BRAIN ROT
+    */
 
     if(isBrainRot(q)){
-
-        return {
-            text:brainRotReply(),
-            speak:true
-        };
+        return brainRotReply();
     }
 
 
-    /* GOOFY */
+    /*
+       GOOFY
+    */
 
     if(isGoofyQuestion(q)){
-
-        return {
-            text:goofyReply(),
-            speak:true
-        };
+        return goofyReply();
     }
 
 
-    /* LOCAL CONVERSATION */
+    /*
+       COMBAT
+    */
 
-    const local =
-        localConversation(
-            q,
-            intent
-        );
+    if(q === "combat mode"){
+        startCombat();
+        return null;
+    }
 
-    if(local){
-
-        return {
-            text:local,
-            speak:true
-        };
+    if(
+        q === "normal mode" ||
+        q === "exit combat mode" ||
+        q === "end combat mode"
+    ){
+        stopCombat();
+        return null;
     }
 
 
-    /* MATH */
+    /*
+       ADVANCED ALGEBRA
+    */
+
+    const algebra =
+        algebraResponse(question);
+
+    if(algebra){
+        return algebra;
+    }
+
+
+    /*
+       UNIT CONVERSION
+    */
+
+    const conversion =
+        conversionResponse(question);
+
+    if(conversion){
+        return conversion;
+    }
+
+
+    /*
+       BASIC MATH
+    */
 
     const math =
-        solveMath(workingQuestion);
+        solveMath(q);
 
     if(math !== null){
 
-        return {
-            text:
-                `The answer is ${math}.`,
-            speak:true
-        };
+        return "The answer is " + math + ".";
     }
 
 
-    /* SPECIAL CONTEXT MATH */
-
-    if(
-        q.includes("add") &&
-        memory.lastNumber !== null
-    ){
-
-        const match =
-            q.match(
-                /add\s+(-?\d+(?:\.\d+)?)/
-            );
-
-        if(match){
-
-            const amount =
-                Number(match[1]);
-
-            const answer =
-                memory.lastNumber +
-                amount;
-
-            memory.lastNumber = answer;
-
-            return {
-                text:
-                    `Adding ${amount} to the previous result gives ${answer}.`,
-                speak:true
-            };
-        }
-    }
-
-
-    /* KNOWLEDGE */
+    /*
+       BUILT-IN KNOWLEDGE
+    */
 
     const known =
-        findKnowledge(workingQuestion);
+        findKnowledge(q);
 
     if(known){
-
-        return {
-            text:known,
-            speak:true
-        };
+        return known;
     }
 
 
-    /* CONTEXTUAL FOLLOW-UP */
+    /*
+       NORMAL CHAT
+    */
 
-    if(
-        intent === "follow_up" &&
-        memory.lastAnswer
-    ){
+    const local =
+        localResponse(q);
 
-        const context =
-            memory.lastAnswer;
-
-        if(q.includes("why")){
-
-            return {
-                text:
-                    `The reason relates to the previous explanation: ${context}`,
-                speak:true
-            };
-        }
-
-        if(
-            q.includes("what does that mean") ||
-            q.includes("what do you mean")
-        ){
-
-            return {
-                text:
-                    `In simpler terms, the previous point was: ${context}`,
-                speak:true
-            };
-        }
-
-        return {
-            text:
-                `Continuing from what we were discussing: ${context}`,
-            speak:true
-        };
+    if(local){
+        return local;
     }
 
 
-    /* WEB QUESTION */
+    /*
+       REAL QUESTIONS
+    */
 
-    if(
-        isQuestion(workingQuestion)
-    ){
-
-        statusText.textContent =
-            combatMode
-            ? "COMBAT • SEARCHING"
-            : "SEARCHING...";
+    if(isQuestion(q)){
 
         const result =
-            await onlineSearch(
-                workingQuestion
-            );
-
-        statusText.textContent =
-            combatMode
-            ? "COMBAT MODE"
-            : "SYSTEMS ONLINE";
+            await onlineSearch(question);
 
         if(result){
-
-            memory.lastSubject =
-                memory.topic;
-
-            return {
-                text:result,
-                speak:true
-            };
+            return result;
         }
 
-        return {
-            text:
-                "I couldn't find a reliable answer for that. Try asking it another way.",
-            speak:true
-        };
+        return "I couldn't find a reliable answer for that. Try asking the question another way.";
     }
 
 
-    /* SMART CASUAL CONVERSATION */
+    /*
+       CASUAL
+    */
 
-    if(
-        q.includes("good morning")
-    ){
+    const casual = [
 
-        return {
-            text:
-                "Good morning. Systems are online and ready.",
-            speak:true
-        };
-    }
-
-    if(
-        q.includes("good night")
-    ){
-
-        return {
-            text:
-                "Good night. I'll remain ready whenever you return.",
-            speak:true
-        };
-    }
-
-    if(
-        q.includes("i'm bored") ||
-        q.includes("im bored") ||
-        q.includes("i am bored")
-    ){
-
-        return {
-            text:
-                "Boredom detected. We could explore a science topic, solve some math, investigate something online, or test my conversation engine.",
-            speak:true
-        };
-    }
-
-    if(
-        q.includes("you're funny") ||
-        q.includes("you are funny")
-    ){
-
-        return {
-            text:
-                "I'll accept that as a successful system evaluation.",
-            speak:true
-        };
-    }
-
-    if(
-        q.includes("you're smart") ||
-        q.includes("you are smart")
-    ){
-
-        return {
-            text:
-                "I'll take the compliment. My job is to be useful, not merely impressive.",
-            speak:true
-        };
-    }
-
-
-    const contextualReplies = [
-
-        "I'm following you.",
-
-        "I understand.",
-
-        "Go on.",
+        "Understood.",
 
         "I'm listening.",
 
-        memory.topic
-            ? `I'm following the ${memory.topic} topic. Continue.`
-            : "Continue.",
+        "Go on.",
 
-        memory.name
-            ? `Understood, ${memory.name}.`
-            : "Understood."
+        "Interesting.",
+
+        "Noted.",
+
+        "I'm with you.",
+
+        "Fair enough.",
+
+        "Continue."
 
     ];
 
-    return {
-        text:
-            contextualReplies[
-                Math.floor(
-                    Math.random() *
-                    contextualReplies.length
-                )
-            ],
-        speak:true
-    };
+    return casual[
+        Math.floor(
+            Math.random() * casual.length
+        )
+    ];
 }
 
 
 /* =====================================================
-   SEND MESSAGE
+   SEND
 ===================================================== */
 
 async function sendMessage(){
@@ -2372,22 +2814,35 @@ async function sendMessage(){
     try{
 
         const response =
-            await getResponse(
-                question
-            );
+            await getResponse(question);
 
         if(response){
 
-            memory.lastAnswer =
-                response.text;
+            let text = response;
+            let voiceText = response;
 
-            saveMemory();
+            if(
+                typeof response === "object"
+            ){
+
+                text =
+                    response.text;
+
+                voiceText =
+                    response.speakText ||
+                    response.text;
+            }
+
+            memory.lastAnswer =
+                text;
 
             addMessage(
-                response.text,
+                text,
                 "jarvis",
-                response.speak !== false
+                false
             );
+
+            speak(voiceText);
         }
 
     }catch(error){
@@ -2398,7 +2853,7 @@ async function sendMessage(){
         );
 
         addMessage(
-            "I encountered a temporary system error, but my interface is still operational.",
+            "I encountered a temporary system error. My interface is still operational.",
             "jarvis",
             true
         );
@@ -2465,7 +2920,6 @@ const SpeechRecognition =
 let recognition = null;
 let listening = false;
 
-
 if(SpeechRecognition){
 
     recognition =
@@ -2477,21 +2931,20 @@ if(SpeechRecognition){
     recognition.maxAlternatives = 1;
 
 
-    recognition.onstart = () => {
+    recognition.onstart =
+        () => {
 
-        listening = true;
+            listening = true;
 
-        mic.classList.add(
-            "listening"
-        );
+            mic.classList.add("listening");
 
-        mic.textContent = "⏹️";
+            mic.textContent = "⏹️";
 
-        statusText.textContent =
-            combatMode
-            ? "COMBAT • LISTENING"
-            : "LISTENING...";
-    };
+            statusText.textContent =
+                combatMode
+                ? "COMBAT • LISTENING"
+                : "LISTENING...";
+        };
 
 
     recognition.onresult =
@@ -2511,7 +2964,8 @@ if(SpeechRecognition){
 
                 if(text){
 
-                    input.value = text;
+                    input.value =
+                        text;
 
                     stopListening();
 
@@ -2559,14 +3013,6 @@ if(SpeechRecognition){
 
                 message =
                     "I couldn't access an available microphone.";
-            }
-
-            else if(
-                event.error === "network"
-            ){
-
-                message =
-                    "The browser's speech-recognition service is unavailable right now.";
             }
 
             addMessage(
@@ -2633,9 +3079,7 @@ function stopListening(){
 
     listening = false;
 
-    mic.classList.remove(
-        "listening"
-    );
+    mic.classList.remove("listening");
 
     mic.textContent = "🎙️";
 
@@ -2647,26 +3091,11 @@ function stopListening(){
 
 
 /* =====================================================
-   VOICE LOAD
-===================================================== */
-
-if("speechSynthesis" in window){
-
-    speechSynthesis.onvoiceschanged =
-        () => {
-            speechSynthesis.getVoices();
-        };
-}
-
-
-/* =====================================================
    STARTUP
 ===================================================== */
 
 addMessage(
-    memory.name
-        ? `Good day, ${memory.name}. J.A.R.V.I.S. systems are online. Contextual conversation engine initialized. How may I assist you?`
-        : "Good day. J.A.R.V.I.S. systems are online. Contextual conversation engine initialized. How may I assist you?",
+    "Good day. J.A.R.V.I.S. systems are online. Algebra, linear equations, conversions, voice commands, and knowledge systems are ready. How may I assist you?",
     "jarvis",
     true
 );
