@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -218,6 +219,70 @@ body{
 
 .combat .command b{
     color:#ff3030;
+}
+
+/* VOICE CHANGER */
+
+.voiceChanger{
+    margin:14px 0;
+    padding:12px;
+    border:1px solid rgba(0,234,255,.4);
+    border-radius:10px;
+    background:rgba(0,234,255,.06);
+}
+
+.voiceChanger label{
+    display:block;
+    margin-bottom:9px;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    color:#00eaff;
+}
+
+.cool .voiceChanger{
+    border-color:rgba(255,138,0,.5);
+    background:rgba(255,138,0,.06);
+}
+
+.cool .voiceChanger label{
+    color:#ff8a00;
+}
+
+.combat .voiceChanger{
+    border-color:rgba(255,48,48,.5);
+    background:rgba(255,48,48,.06);
+}
+
+.combat .voiceChanger label{
+    color:#ff3030;
+}
+
+#voiceSelect{
+    width:100%;
+    height:42px;
+    padding:0 10px;
+    border:1px solid #00eaff;
+    border-radius:7px;
+    outline:none;
+    background:#03151b;
+    color:#fff;
+    font-size:14px;
+}
+
+.cool #voiceSelect{
+    border-color:#ff8a00;
+}
+
+.combat #voiceSelect{
+    border-color:#ff3030;
+}
+
+.voiceNote{
+    margin-top:8px;
+    color:#aaa;
+    font-size:10px;
+    line-height:1.4;
 }
 
 /* MAIN */
@@ -525,6 +590,24 @@ body{
 
     <h2>J.A.R.V.I.S. COMMANDS</h2>
 
+    <!-- VOICE CHANGER -->
+    <div class="voiceChanger">
+        <label for="voiceSelect">🎙️ VOICE CHANGER</label>
+
+        <select id="voiceSelect">
+            <option value="jarvis">🤖 J.A.R.V.I.S. - Original</option>
+            <option value="sonic">💨 Sonic-style Voice</option>
+            <option value="mario">🍄 Mario-style Voice</option>
+            <option value="mickey">🐭 Mickey-style Voice</option>
+            <option value="spongebob">🧽 SpongeBob-style Voice</option>
+            <option value="normal">🗣️ Normal Voice</option>
+        </select>
+
+        <div class="voiceNote">
+            Choose a voice style. The sound depends on the voices supported by your browser.
+        </div>
+    </div>
+
     <div class="command">
         <b>J.A.R.V.I.S. say [text]</b><br>
         Makes J.A.R.V.I.S. say exactly what follows.
@@ -643,16 +726,86 @@ const chat = document.getElementById("chat");
 const statusText = document.getElementById("statusText");
 const commandsBtn = document.getElementById("commandsBtn");
 const commandsPanel = document.getElementById("commandsPanel");
+const voiceSelect = document.getElementById("voiceSelect");
 
 let processing = false;
 let combatMode = false;
 let coolMode = false;
+
+let selectedVoice = "jarvis";
 
 let memory = {
     name:"",
     lastQuestion:"",
     lastAnswer:""
 };
+
+
+/* =====================================================
+   VOICE CHANGER SETTINGS
+===================================================== */
+
+const voicePresets = {
+
+    jarvis:{
+        rate:.88,
+        pitch:.72
+    },
+
+    sonic:{
+        rate:1.25,
+        pitch:1.45
+    },
+
+    mario:{
+        rate:.95,
+        pitch:1.65
+    },
+
+    mickey:{
+        rate:1.05,
+        pitch:1.85
+    },
+
+    spongebob:{
+        rate:1.12,
+        pitch:1.65
+    },
+
+    normal:{
+        rate:1,
+        pitch:1
+    }
+
+};
+
+voiceSelect.addEventListener("change",function(){
+
+    selectedVoice = voiceSelect.value;
+
+    const names = {
+
+        jarvis:"J.A.R.V.I.S. original voice selected.",
+
+        sonic:"Sonic-style voice selected! Gotta go fast!",
+
+        mario:"Mario-style voice selected! Let's-a go!",
+
+        mickey:"Mickey-style voice selected! Oh boy!",
+
+        spongebob:"SpongeBob-style voice selected! I'm ready!",
+
+        normal:"Normal voice selected."
+
+    };
+
+    addMessage(
+        names[selectedVoice],
+        "jarvis",
+        true
+    );
+
+});
 
 
 /* =====================================================
@@ -683,8 +836,27 @@ function speak(text){
         const voice =
             new SpeechSynthesisUtterance(String(text));
 
-        voice.rate = coolMode ? 1.02 : .88;
-        voice.pitch = coolMode ? .9 : .72;
+        const preset =
+            voicePresets[selectedVoice] ||
+            voicePresets.jarvis;
+
+        /*
+          Keep the original J.A.R.V.I.S. Cool Mode
+          voice behavior when the original voice is selected.
+        */
+
+        if(selectedVoice === "jarvis"){
+
+            voice.rate = coolMode ? 1.02 : .88;
+            voice.pitch = coolMode ? .9 : .72;
+
+        }else{
+
+            voice.rate = preset.rate;
+            voice.pitch = preset.pitch;
+
+        }
+
         voice.volume = 1;
 
         const voices =
@@ -2054,15 +2226,6 @@ async function getResponse(question){
       ABSOLUTE PRIORITY COMMAND:
       J.A.R.V.I.S. SAY
       ===================================================
-
-      IMPORTANT:
-      This runs BEFORE brain rot, Cool Mode,
-      questions, math, web search, etc.
-
-      Examples:
-      J.A.R.V.I.S. say hello
-      jarvis say I love pizza
-      JARVIS SAY this is a test
     */
 
     const sayMatch =
@@ -2076,11 +2239,6 @@ async function getResponse(question){
             sayMatch[1].trim();
 
         if(wordsToSay){
-
-            /*
-              Return a special marker so sendMessage
-              knows this is an exact speech command.
-            */
 
             return {
                 type:"say",
@@ -2260,11 +2418,7 @@ async function getResponse(question){
 
 
     /*
-       COOL MODE:
-       Still lets commands, math, knowledge, etc.
-       work above this point.
-
-       Unknown questions get the Cool Mode response.
+       COOL MODE
     */
 
     if(coolMode && isQuestion(q)){
