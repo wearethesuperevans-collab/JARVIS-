@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +111,7 @@ body{
     font-size:9px;
     letter-spacing:1.5px;
     color:#00ff88;
-    margin-right:90px;
+    margin-right:135px;
 }
 
 .combat .status{color:#ff3030;}
@@ -165,6 +164,24 @@ body{
 
 .cool #youtubeBtn{border-color:#ff8a00;color:#ff8a00;}
 .combat #youtubeBtn{border-color:#ff3030;color:#ff3030;}
+
+/* MOVIE BUTTON */
+#movieBtn{
+    position:absolute;
+    top:14px;
+    right:98px;
+    z-index:300;
+    width:35px;
+    height:35px;
+    border:1px solid #00eaff;
+    border-radius:8px;
+    background:rgba(0,234,255,.08);
+    color:#00eaff;
+    font-size:16px;
+}
+
+.cool #movieBtn{border-color:#ff8a00;color:#ff8a00;}
+.combat #movieBtn{border-color:#ff3030;color:#ff3030;}
 
 #commandsPanel{
     position:absolute;
@@ -564,6 +581,165 @@ body{
     line-height:1.5;
 }
 
+/* MOVIE THEATER SCREEN */
+#movieScreen{
+    display:none;
+    position:absolute;
+    inset:68px 0 0;
+    z-index:210;
+    background:
+        radial-gradient(circle at 50% 40%,rgba(0,180,255,.12),transparent 45%),
+        linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px),
+        #000;
+    background-size:auto,28px 28px,28px 28px,auto;
+    padding:18px 14px;
+    overflow-y:auto;
+}
+
+#app.combat #movieScreen{
+    background:
+        radial-gradient(circle at 50% 40%,rgba(255,0,0,.15),transparent 45%),
+        linear-gradient(rgba(255,0,0,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,0,0,.035) 1px,transparent 1px),
+        #000;
+}
+
+#app.cool #movieScreen{
+    background:
+        radial-gradient(circle at 50% 40%,rgba(255,130,0,.16),transparent 45%),
+        linear-gradient(rgba(255,140,0,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,140,0,.035) 1px,transparent 1px),
+        #000;
+}
+
+#movieScreen.show{display:block;}
+
+.movieTitle{
+    text-align:center;
+    font-size:19px;
+    letter-spacing:4px;
+    margin:12px 0 8px;
+    text-shadow:0 0 12px currentColor;
+}
+
+.movieSubtitle{
+    text-align:center;
+    font-size:10px;
+    letter-spacing:2px;
+    opacity:.6;
+    margin-bottom:20px;
+}
+
+.movieSearchRow{
+    display:flex;
+    gap:7px;
+    width:100%;
+    max-width:750px;
+    margin:0 auto 15px;
+}
+
+#movieInput{
+    flex:1;
+    min-width:0;
+    height:45px;
+    border:1px solid #00eaff;
+    border-radius:9px;
+    outline:none;
+    padding:0 12px;
+    background:#03151b;
+    color:#fff;
+    font-size:14px;
+}
+
+#movieSearchBtn,#movieBrowseBtn,#movieBack{
+    min-height:43px;
+    border:1px solid #00eaff;
+    border-radius:9px;
+    background:rgba(0,234,255,.08);
+    color:#00eaff;
+    padding:0 13px;
+    font-weight:bold;
+}
+
+.combat #movieInput{border-color:#ff3030;}
+.combat #movieSearchBtn,.combat #movieBrowseBtn,.combat #movieBack{
+    border-color:#ff3030;
+    color:#ff3030;
+}
+.cool #movieInput{border-color:#ff8a00;}
+.cool #movieSearchBtn,.cool #movieBrowseBtn,.cool #movieBack{
+    border-color:#ff8a00;
+    color:#ff8a00;
+}
+
+.movieActions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:0 auto 16px;
+}
+
+.moviePlayerBox{
+    width:100%;
+    max-width:850px;
+    margin:0 auto;
+    border:1px solid rgba(0,234,255,.55);
+    border-radius:10px;
+    overflow:hidden;
+    background:#000;
+    box-shadow:0 0 20px rgba(0,234,255,.12);
+}
+
+.combat .moviePlayerBox{border-color:#ff3030;}
+.cool .moviePlayerBox{border-color:#ff8a00;}
+
+#moviePlayer{
+    display:block;
+    width:100%;
+    aspect-ratio:16/9;
+    border:0;
+    background:#000;
+}
+
+.movieStatus{
+    max-width:850px;
+    margin:12px auto;
+    font-size:10px;
+    letter-spacing:1.5px;
+    line-height:1.6;
+    opacity:.7;
+    text-align:center;
+}
+
+.movieNote{
+    max-width:680px;
+    margin:18px auto;
+    color:#888;
+    font-size:11px;
+    text-align:center;
+    line-height:1.6;
+}
+
+.movieBackRow{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+#movieBack{min-width:190px;}
+
+@media(max-width:600px){
+    .logo{font-size:18px;}
+    .status{font-size:7px;margin-right:135px;}
+    .coreArea{flex-basis:205px;}
+    .core{width:145px;height:145px;}
+    .message{font-size:14px;}
+    .youtubeSearchRow,.movieSearchRow{flex-wrap:wrap;}
+    #youtubeInput,#movieInput{width:100%;flex-basis:100%;}
+}
+
 /* ANIMATION */
 
 @keyframes spin{to{transform:rotate(360deg);}}
@@ -571,16 +747,6 @@ body{
 @keyframes pulse{
     0%,100%{transform:translate(-50%,-50%) scale(.9);}
     50%{transform:translate(-50%,-50%) scale(1.1);}
-}
-
-@media(max-width:600px){
-    .logo{font-size:18px;}
-    .status{font-size:7px;}
-    .coreArea{flex-basis:205px;}
-    .core{width:145px;height:145px;}
-    .message{font-size:14px;}
-    .youtubeSearchRow{flex-wrap:wrap;}
-    #youtubeInput{width:100%;flex-basis:100%;}
 }
 </style>
 </head>
@@ -598,6 +764,7 @@ body{
         <span id="statusText">SYSTEMS ONLINE</span>
     </div>
 
+    <button id="movieBtn" type="button" aria-label="Open Movie Theater">🎬</button>
     <button id="youtubeBtn" type="button" aria-label="Open YouTube">▶</button>
     <button id="commandsBtn" type="button">☰</button>
 
@@ -637,6 +804,7 @@ body{
     <div class="command"><b>Bible questions</b><br>Ask about Bible books, verses, people, themes, and context.</div>
     <div class="command"><b>Science / History / Culinary / Peer Counseling</b><br>Ask normal questions or multiple-choice questions.</div>
     <div class="command"><b>open youtube</b><br>Opens the built-in YouTube player.</div>
+    <div class="command"><b>open movies</b><br>Opens the J.A.R.V.I.S. Movie Theater.</div>
 
 </div>
 
@@ -727,6 +895,59 @@ body{
 
 </section>
 
+<!-- MOVIE THEATER -->
+<section id="movieScreen">
+
+    <div class="movieTitle">🎬 MOVIE THEATER</div>
+
+    <div class="movieSubtitle">
+        J.A.R.V.I.S. CINEMA INTERFACE
+    </div>
+
+    <div class="movieSearchRow">
+        <input
+            id="movieInput"
+            type="text"
+            placeholder="Enter a movie title or paste an Archive.org link..."
+            autocomplete="off"
+        >
+
+        <button id="movieSearchBtn" type="button">
+            SEARCH
+        </button>
+    </div>
+
+    <div class="movieActions">
+        <button id="movieBrowseBtn" type="button">
+            BROWSE FREE MOVIES
+        </button>
+    </div>
+
+    <div class="moviePlayerBox">
+        <iframe
+            id="moviePlayer"
+            title="J.A.R.V.I.S. Movie Player"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="movieStatus" id="movieStatus">
+        CINEMA SYSTEM READY. SEARCH FOR A MOVIE OR PASTE A MOVIE LINK.
+    </div>
+
+    <div class="movieNote">
+        Search opens Internet Archive movie results. Select a movie that is authorized for free viewing or marked public domain. Copy its Archive.org movie page link and paste it above to play it here. Some titles may have playback restrictions.
+    </div>
+
+    <div class="movieBackRow">
+        <button id="movieBack" type="button">
+            ← BACK TO J.A.R.V.I.S.
+        </button>
+    </div>
+
+</section>
+
 </div>
 
 <script>
@@ -755,6 +976,16 @@ const youtubeSearchBtn = document.getElementById("youtubeSearchBtn");
 const youtubePlayer = document.getElementById("youtubePlayer");
 const youtubeStatus = document.getElementById("youtubeStatus");
 
+/* MOVIE THEATER ELEMENTS */
+const movieBtn = document.getElementById("movieBtn");
+const movieScreen = document.getElementById("movieScreen");
+const movieInput = document.getElementById("movieInput");
+const movieSearchBtn = document.getElementById("movieSearchBtn");
+const movieBrowseBtn = document.getElementById("movieBrowseBtn");
+const movieBack = document.getElementById("movieBack");
+const moviePlayer = document.getElementById("moviePlayer");
+const movieStatus = document.getElementById("movieStatus");
+
 let processing = false;
 let combatMode = false;
 let coolMode = false;
@@ -774,7 +1005,11 @@ let memory = {
 function openYouTube(){
 
     commandsPanel.classList.remove("show");
+    movieScreen.classList.remove("show");
     youtubeScreen.classList.add("show");
+
+    moviePlayer.src = "";
+
     youtubeStatus.textContent =
         "MEDIA SYSTEM READY. SEARCH FOR A VIDEO OR PASTE A VIDEO LINK.";
 
@@ -783,10 +1018,6 @@ function openYouTube(){
 function closeYouTube(){
 
     youtubeScreen.classList.remove("show");
-
-    /*
-      Stop the video when returning to the main screen.
-    */
     youtubePlayer.src = "";
 
 }
@@ -795,9 +1026,6 @@ function getYouTubeID(value){
 
     value = value.trim();
 
-    /*
-      Allow a direct 11-character video ID.
-    */
     if(/^[a-zA-Z0-9_-]{11}$/.test(value)){
         return value;
     }
@@ -923,6 +1151,184 @@ youtubeInput.addEventListener("keydown",event=>{
 
     if(event.key === "Enter"){
         searchYouTube();
+    }
+
+});
+
+
+/* =====================================================
+   MOVIE THEATER
+===================================================== */
+
+function openMovies(){
+
+    commandsPanel.classList.remove("show");
+    youtubeScreen.classList.remove("show");
+    movieScreen.classList.add("show");
+
+    youtubePlayer.src = "";
+
+    movieStatus.textContent =
+        "CINEMA SYSTEM READY. SEARCH FOR A MOVIE OR PASTE A MOVIE LINK.";
+
+}
+
+function closeMovies(){
+
+    movieScreen.classList.remove("show");
+
+    /*
+      Stop movie playback when leaving the theater.
+    */
+    moviePlayer.src = "";
+
+}
+
+function getArchiveID(value){
+
+    value = value.trim();
+
+    /*
+      Allow a direct Internet Archive identifier.
+    */
+    if(/^[a-zA-Z0-9._-]+$/.test(value)){
+        return value;
+    }
+
+    try{
+
+        const url = new URL(value);
+
+        const host = url.hostname.toLowerCase();
+
+        if(
+            host !== "archive.org" &&
+            host !== "www.archive.org"
+        ){
+            return null;
+        }
+
+        const parts =
+            url.pathname.split("/").filter(Boolean);
+
+        const detailsIndex = parts.indexOf("details");
+        const embedIndex = parts.indexOf("embed");
+        const downloadIndex = parts.indexOf("download");
+
+        let id = "";
+
+        if(detailsIndex !== -1){
+            id = parts[detailsIndex + 1] || "";
+        }else if(embedIndex !== -1){
+            id = parts[embedIndex + 1] || "";
+        }else if(downloadIndex !== -1){
+            id = parts[downloadIndex + 1] || "";
+        }
+
+        return /^[a-zA-Z0-9._-]+$/.test(id)
+            ? id
+            : null;
+
+    }catch(error){
+
+        return null;
+
+    }
+
+}
+
+function playArchiveMovie(value){
+
+    const id = getArchiveID(value);
+
+    if(!id){
+
+        movieStatus.textContent =
+            "I COULDN'T RECOGNIZE THAT MOVIE LINK. USE AN ARCHIVE.ORG MOVIE PAGE LINK.";
+
+        return false;
+
+    }
+
+    moviePlayer.src =
+        "https://archive.org/embed/" +
+        encodeURIComponent(id);
+
+    movieStatus.textContent =
+        "MOVIE PLAYER LOADED. IF THE TITLE ALLOWS EMBEDDING, PLAYBACK SHOULD BEGIN.";
+
+    return true;
+
+}
+
+function searchMovies(){
+
+    const query = movieInput.value.trim();
+
+    if(!query){
+
+        movieStatus.textContent =
+            "PLEASE ENTER A MOVIE TITLE OR PASTE AN ARCHIVE.ORG LINK.";
+
+        return;
+
+    }
+
+    const id = getArchiveID(query);
+
+    if(id){
+
+        playArchiveMovie(query);
+
+        return;
+
+    }
+
+    const searchURL =
+        "https://archive.org/search?query=" +
+        encodeURIComponent(
+            "mediatype:movies AND " + query
+        );
+
+    window.open(
+        searchURL,
+        "_blank",
+        "noopener"
+    );
+
+    movieStatus.textContent =
+        "MOVIE SEARCH OPENED. CHOOSE A TITLE THAT IS AUTHORIZED FOR FREE VIEWING, THEN COPY ITS ARCHIVE.ORG LINK HERE.";
+
+}
+
+function browseFreeMovies(){
+
+    const browseURL =
+        "https://archive.org/search?query=" +
+        encodeURIComponent(
+            "mediatype:movies AND publicdomain"
+        );
+
+    window.open(
+        browseURL,
+        "_blank",
+        "noopener"
+    );
+
+    movieStatus.textContent =
+        "MOVIE COLLECTION OPENED. CHECK EACH TITLE'S RIGHTS AND PLAYBACK INFORMATION BEFORE WATCHING.";
+
+}
+
+movieBtn.addEventListener("click",openMovies);
+movieBack.addEventListener("click",closeMovies);
+movieSearchBtn.addEventListener("click",searchMovies);
+movieBrowseBtn.addEventListener("click",browseFreeMovies);
+
+movieInput.addEventListener("keydown",event=>{
+
+    if(event.key === "Enter"){
+        searchMovies();
     }
 
 });
@@ -1893,6 +2299,22 @@ async function getResponse(question){
         openYouTube();
 
         return "Opening YouTube media system.";
+    }
+
+    /*
+      MOVIE COMMAND
+    */
+    if(
+        q === "movies" ||
+        q === "movie mode" ||
+        q === "open movies" ||
+        q === "open movie theater" ||
+        q === "movie theater"
+    ){
+
+        openMovies();
+
+        return "Opening the J.A.R.V.I.S. Movie Theater.";
     }
 
     /*
